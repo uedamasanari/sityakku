@@ -27,6 +27,7 @@
                 }
             }
         }
+        //ログイン
         public function login($mail,$pass){
             $pdo=$this->dbConnect();
             $sql = "SELECT * FROM users WHERE user_mail = ? AND user_pass = ?";
@@ -41,6 +42,7 @@
             }
         }
 
+        //新規登録
         public function shinki($mail,$pass){
             $pdo=$this->dbConnect();
             $sql = "INSERT INTO users (user_mail,user_pass)VALUE(?,?)";
@@ -49,6 +51,16 @@
             $ps->bindValue(2,$pass,PDO::PARAM_STR);
             $ps->execute();
             
+        }
+
+        //お気に入り作成
+        public function okiniiri($cssid,$userid){
+            $pdo = $this->dbConnect();
+            $sql = "INSERT INTO favorite (item_id,user_id) VALUES(?,?)";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1,$userid,PDO::PARAM_INT);
+            $ps->bindValue(2,$cssid,PDO::PARAM_INT);
+            $ps->execute();
         }
     }
 ?>

@@ -19,3 +19,8 @@
     pass<input type="pass" name = "pass1"><br>
     <input type = "submit" value="新規登録">
 </form>
+
+<h3>お気に入り登録</h3>
+<form action="tameshi.php" method = "post">
+    <input type = "submit" value="お気に入り登録">
+</form>
