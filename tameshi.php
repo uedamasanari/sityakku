@@ -1,25 +1,28 @@
 <?php
 
-    $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','kanako','2101003');
+    require 'PHP/itoyama.php';
 
-    $sql = "SELECT * FROM users WHERE user_mail = ? AND user_pass = ?";
-
-    $ps = $pdo->prepare($sql);
-
-    $ps->bindValue(1,$_POST['mail'],PDO::PARAM_STR);
-
-    $ps->bindValue(2,$_POST['pass'],PDO::PARAM_STR);
-
-    $ps->execute();
-
-    $result = $ps->fetchAll();
-
-    if($result == null){
-        echo "一致しません。";
-    }else{
-        foreach($result as $row){
-            echo $row['user_id'];
-        }
+    $dbmg = new Itoyama();
+    if(isset($_POST['mail'])){
+        login();
+    }else if(isset($_POST['mail1'])){
+        newtoroku();
+    }
+    function login(){
+        $dbmg = new Itoyama();
+        $tameshi = $dbmg->tameshi($_POST['mail'],$_POST['pass']);
+        $roguin = $dbmg->login($_POST['mail'],$_POST['pass']);
+        echo $tameshi ;
+        echo $roguin;
+    }
+    function newtoroku(){
+        $dbmg = new Itoyama();
+        $shinki = $dbmg->shinki($_POST['mail1'],$_POST['pass1']);
     }
 
+    function okiniiri(){
+        $dbmg = new Itoyama();
+        $favorite = $dbmg->okiniiri();
+    }
+    
 ?>
