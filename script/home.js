@@ -12,3 +12,12 @@ $('.tabmenu-wrap .tab-nav').find('a').on('click', function(e) {
  });
 
   //モーダル表示
+
+  $(function () {
+    $('#openModal').click(function(){
+        $('#modalArea').fadeIn();
+    });
+    $('#closeModal , #modalBg').click(function(){
+      $('#modalArea').fadeOut();
+    });
+  });
