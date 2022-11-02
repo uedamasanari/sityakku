@@ -3,7 +3,7 @@ CREATE TABLE cart_detail(
     cart_id        INT     NOT NULL,
     item_id        INT     NOT NULL,
     PRIMARY KEY (cart_detail_id,cart_id),
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (item_id) REFERENCES items(item_id),
     FOREIGN KEY (cart_id) REFERENCES cart(cart_id)
 );
 
