@@ -53,14 +53,20 @@
             
         }
 
-        //お気に入り作成
-        public function okiniiri($cssid,$userid){
+        //お気に入り
+        public function okiniiri($item,$user){
             $pdo = $this->dbConnect();
             $sql = "INSERT INTO favorite (item_id,user_id) VALUES(?,?)";
             $ps = $pdo->prepare($sql);
-            $ps->bindValue(1,$userid,PDO::PARAM_INT);
-            $ps->bindValue(2,$cssid,PDO::PARAM_INT);
+            $ps->bindValue(1,$item,PDO::PARAM_INT);
+            $ps->bindValue(2,$user,PDO::PARAM_INT);
             $ps->execute();
+        }
+
+        //商品取り消し
+        public function sakujo(){
+            $pdo = $this->dbConnect();
+            $sql = "DELETE FROM ";
         }
     }
 ?>
