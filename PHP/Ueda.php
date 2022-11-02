@@ -2,10 +2,10 @@
 header('Content-Type: application/json; charset=UTF-8');
 header("Access-Control-Allow-Origin: *");
 $ueda = new Ueda();
-if(isset($_GET['sw'])==true){
-    if($_GET['sw']==1){
-        $ueda->loginfunk();
-    }
+if(isset($_GET['login'])){
+    $ueda->loginfunk();
+}else if(isset($_GET['youfuku'])){
+    $ueda->youfuku();
 }
 
 class Ueda{
@@ -25,6 +25,33 @@ class Ueda{
 
         foreach ($search as $row) {
             array_push($data, array('username' => $row['user_name']));
+        }
+        $json_array = json_encode($data);
+        print $json_array;
+    }
+    function youfuku(){
+        $pdo = $this->dbConnect();
+        $sql = 'SELECT * FROM items';
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $search = $ps->fetchAll();
+
+        $data = array();
+
+        foreach ($search as $row) {
+            array_push($data, array(
+                'item_id' => $row['item_id'],
+                'user_id' => $row['user_id'],
+                'category_id' => $row['category_id'],
+                'item_name' => $row['item_name'],
+                'item_class' => $row['item_class'],
+                'item_size' => $row['item_size'],
+                'item_money' => $row['item_money'],
+                'item_feature' => $row['item_feature'],
+                'item_image' => $row['item_image'],
+                'item_fitting' => $row['item_fitting'],
+                'item_time' => $row['item_time']
+            ));
         }
         $json_array = json_encode($data);
         print $json_array;
