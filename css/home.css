@@ -981,3 +981,116 @@ td.checkout {
   -moz-box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 1px 3px 1px rgba(0, 0, 0, 0.25);
 }
+/*  */
+.wishlist-heart-group {
+  display: inline-block;
+  height: 40px;
+  position: relative;
+  width: 30px;
+  margin-top: 35px;
+  margin-right: 10px;
+}
+.wishlist-heart-group input[type=checkbox] {
+  left: -999999px;
+  position: absolute;
+  top: -999999px;
+}
+.wishlist-heart-group input[type=checkbox] + label svg {
+  transform: rotate(0deg);
+}
+.wishlist-heart-group input[type=checkbox]:checked + label svg {
+  -webkit-animation: wishlist-heart-wiggle 400ms 50ms forwards ease-in-out;
+          animation: wishlist-heart-wiggle 400ms 50ms forwards ease-in-out;
+}
+.wishlist-heart-group input[type=checkbox]:checked + label svg .heart-path {
+  -webkit-animation: wishlist-heart-add 300ms forwards;
+          animation: wishlist-heart-add 300ms forwards;
+  stroke: #f8332a;
+}
+.wishlist-heart-group input[type=checkbox] + label svg .heart-path {
+  transition: fill 200ms;
+}
+.wishlist-heart-group input[type=checkbox] + label:hover svg .heart-path {
+  transition: stroke 150ms linear;
+  /* stroke: #f8332a; */
+}
+.wishlist-heart-group input[type=checkbox] + label:before {
+  align-items: center;
+  background-color: #000;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #FFF;
+  content: attr(data-hover-text);
+  display: flex;
+  font-size: 0.8em;
+  height: 25px;
+  justify-content: center;
+  left: 50%;
+  line-height: 1;
+  opacity: 0;
+  padding: 0.5em;
+  position: absolute;
+  text-align: center;
+  top: -2.25em;
+  transform: translateX(-50%);
+  transition: opacity 100ms linear;
+  white-space: pre;
+}
+
+.wishlist-heart-group label {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+@-webkit-keyframes wishlist-heart-wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes wishlist-heart-wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes wishlist-heart-add {
+  0% {
+    stroke-width: 5;
+  }
+  50% {
+    stroke-width: 20;
+  }
+  100% {
+    fill: #f8332a;
+    stroke-width: 5;
+  }
+}
+@keyframes wishlist-heart-add {
+  0% {
+    stroke-width: 5;
+  }
+  50% {
+    stroke-width: 20;
+  }
+  100% {
+    fill: #f8332a;
+    stroke-width: 5;
+  }
+}
