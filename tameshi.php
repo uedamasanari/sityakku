@@ -1,11 +1,22 @@
 <?php
+    session_start();
 
     require 'PHP/itoyama.php';
 
-    $dbmg = new Itoyama();
-    if(isset($_POST['mail'])){
+    //$dbmg = new Itoyama();
+    // if(isset($_POST['mail'])){
+    //     login();
+    // }else if(isset($_POST['mail1'])){
+    //     newtoroku();
+    
+    if(isset($_SESSION['user'])==true){
+
+        header('Location:home.html');
+
+    }else{
         login();
-    }else if(isset($_POST['mail1'])){
+    }
+    if(isset($_POST['mail1'])){
         newtoroku();
     }
     function login(){
