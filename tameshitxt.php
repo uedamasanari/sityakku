@@ -24,3 +24,8 @@
 <form action="tameshi.php" method = "post">
     <input type = "submit" value="お気に入り登録">
 </form>
+
+<h3>削除</h3>
+<form action="tameshi.php" method = "post">
+    <input type="submit" value="削除">
+</form>
