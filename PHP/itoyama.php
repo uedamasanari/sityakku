@@ -5,68 +5,70 @@
             return $pdo;
         }
 
-        // if(isset($_SESSION['mail'])==true &&isset($_SESSION['pass']) == true){
+            //お気に入り
+            public function okiniiri($item){
+                $pdo = $this->dbConnect();
+                $sql = "INSERT INTO favorite (item_id,user_id) VALUES(?,?)";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$item,PDO::PARAM_INT);
+                $ps->bindValue(2,$_SESSION['user'],PDO::PARAM_INT);
+                $ps->execute();
+            }
 
-        //     header('Location:');
-    
-        // }
+            //お気に入り商品取り消し
+            public function favoritesakujo($item){
+                $pdo = $this->dbConnect();
+                $sql = "DELETE FROM favorite WHERE item_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$item,POD::PARAM_INT);
+            }
+            //カート商品取り消し
+            public function cartsakujo($item){
+                $pdo = $this->dbConnect();
+                $sql = "DELETE FROM cart_detail WHERE item_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$item,POD::PARAM_INT);
+            }
+            //出品商品取り消し
+            public function syuppinsakujo($item){
+                $pdo = $this->dbConnect();
+                $sql = "DELETE FROM settlement_detail WHERE item_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$item,POD::PARAM_INT);
+            }
 
-        public function tameshi($mail,$pass){
-            $pdo = $this->dbConnect();
-            $sql = "SELECT * FROM users WHERE user_mail = ? AND user_pass = ?";
-            $ps = $pdo->prepare($sql);
-            $ps->bindValue(1,$mail,PDO::PARAM_STR);
-            $ps->bindValue(2,$pass,PDO::PARAM_STR);
-            $ps->execute();
-            $result = $ps->fetchAll();
-            if($result == null){
-                return $hyouzi =  "一致しません。";
-            }else{
-                foreach($result as $row){
-                        return $hyouzi =  $row['user_id'];
+            //ログイン
+            public function login($mail,$pass){
+                $pdo=$this->dbConnect();
+                $sql = "SELECT * FROM users WHERE user_mail = ? AND user_pass = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$mail,PDO::PARAM_STR);
+                $ps->bindValue(2,$pass,PDO::PARAM_STR);
+                $ps->execute();
+                    foreach($ps->fetchAll() as $row){
+                        $_SESSION['user'] =$row['user_id'];
+                        header("Location:../home.html");
+                    }
+                    if(count($data)==0){
+                        header("Location:../toroku.html");
+                    }
                 }
+
+            //新規登録
+            public function shinki($mail,$pass){
+                $pdo=$this->dbConnect();
+                $sql = "INSERT INTO users (user_mail,user_pass)VALUE(?,?)";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$mail,PDO::PARAM_STR);
+                $ps->bindValue(2,$pass,PDO::PARAM_STR);
+                $ps->execute();  
             }
-        }
-        //ログイン
-        public function login($mail,$pass){
-            $pdo=$this->dbConnect();
-            $sql = "SELECT * FROM users WHERE user_mail = ? AND user_pass = ?";
-            $ps = $pdo->prepare($sql);
-            $ps->bindValue(1,$mail,PDO::PARAM_STR);
-            $ps->bindValue(2,$pass,PDO::PARAM_STR);
-            $data = $ps->execute();
-            if($data == null){
-                return $hyouzi = "メールアドレスまたはパスワードが一致しません";
-            }else{
-                    return $hyouzi = "ログイン成功";
+
+            //支払い方法作成
+            public function shiharai(){
+                $pdo = $this.dbConnect();
+                $sql = "SELECT * FROM ";
             }
-        }
 
-        //新規登録
-        public function shinki($mail,$pass){
-            $pdo=$this->dbConnect();
-            $sql = "INSERT INTO users (user_mail,user_pass)VALUE(?,?)";
-            $ps = $pdo->prepare($sql);
-            $ps->bindValue(1,$mail,PDO::PARAM_STR);
-            $ps->bindValue(2,$pass,PDO::PARAM_STR);
-            $ps->execute();
-            
-        }
-
-        //お気に入り
-        public function okiniiri($item,$user){
-            $pdo = $this->dbConnect();
-            $sql = "INSERT INTO favorite (item_id,user_id) VALUES(?,?)";
-            $ps = $pdo->prepare($sql);
-            $ps->bindValue(1,$item,PDO::PARAM_INT);
-            $ps->bindValue(2,$user,PDO::PARAM_INT);
-            $ps->execute();
-        }
-
-        //商品取り消し
-        public function sakujo(){
-            $pdo = $this->dbConnect();
-            $sql = "DELETE FROM ";
-        }
-    }
+         }
 ?>
