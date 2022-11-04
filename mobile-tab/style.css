@@ -1,0 +1,72 @@
+
+body{
+  margin-left: 0;
+  margin-right: 0;
+}
+.bottom-tabmenu{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+.bottom-nav {
+  transition: background 300ms;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  background: rgb(235, 227, 234);
+  padding: 1.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+  flex: 1 1 25%;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  transition: all 500ms ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+}
+.nav-item .title {
+  display: inline-block;
+  color: transparent;
+  vertical-align: super;
+  margin-left: 4px;
+}
+
+.nav-item.active {
+  flex: 1e-9 1e-8 70px;
+}
+.nav-item.active .title {
+  color: inherit;
+}
+
+.nav-item[data-color="#5b37b7"].active {
+  color: #5b37b7;
+  fill: #5b37b7 !important;
+  background: rgba(91, 55, 183, 0.3);
+}
+
+.nav-item[data-color="#c9379d"].active {
+  color: #c9379d;
+  fill: #c9379d !important;
+  background: rgba(201, 55, 157, 0.3);
+}
+
+.nav-item[data-color="#e5a919"].active {
+  color: #e5a919;
+  fill: #e5a919 !important;
+  background: rgba(229, 169, 25, 0.3);
+}
+
+.nav-item[data-color="#1194aa"].active {
+  color: #1194aa;
+  fill: #1194aa !important;
+  background: rgba(17, 148, 170, 0.3);
+}
+
+*[class^=icon-] {
+  height: 24px;
+  width: 24px;
+}
