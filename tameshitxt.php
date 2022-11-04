@@ -1,13 +1,5 @@
-<h3>試しテキスト</h3>
-
-<form action="tameshi.php" method = "post">
-    <input type="text" name = "mail"><br>
-    <input type = "pass" name = "pass"><br>
-    <input type="submit" value="送信">
-</form>
-
 <h3>ログイン</h3>
-<form action="tameshi.php" method  ="post">
+<form action="./PHP/login.php" method  ="post">
     mail<input type = "text" name ="mail"><br>
     pass<input type = "pass" name = "pass"><br>
     <input type = "submit" value = "login">
@@ -23,4 +15,9 @@
 <h3>お気に入り登録</h3>
 <form action="tameshi.php" method = "post">
     <input type = "submit" value="お気に入り登録">
+</form>
+
+<h3>削除</h3>
+<form action="tameshi.php" method = "post">
+    <input type="submit" value="削除">
 </form>
