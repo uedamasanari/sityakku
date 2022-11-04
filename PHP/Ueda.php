@@ -5,7 +5,18 @@ $ueda = new Ueda();
 if(isset($_GET['login'])){
     $ueda->loginfunk();
 }else if(isset($_GET['youfuku'])){
-    $ueda->youfuku();
+    $ueda->SelectYoufuku();
+}else if(isset($_GET['post'])){
+    $uploadFile = "./" . basename($_FILES['image']['name']);
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
+        $image = file_get_contents($uploadFile);
+        unlink($uploadFile);
+    } else {
+        echo "upload error.";
+    }
+    $base64Text = "data:image/png;base64,".base64_encode($image);
+    $ueda->InsertSyohin();
 }
 
 class Ueda{
@@ -29,7 +40,7 @@ class Ueda{
         $json_array = json_encode($data);
         print $json_array;
     }
-    function youfuku(){
+    function SelectYoufuku(){
         $pdo = $this->dbConnect();
         $sql = 'SELECT * FROM items';
         $ps = $pdo->prepare($sql);
@@ -55,6 +66,22 @@ class Ueda{
         }
         $json_array = json_encode($data);
         print $json_array;
+    }
+    public function InsertSyohin($user_id,$category_id,$item_name,$item_class,$item_size,$item_money,$item_feature,$item_image,$item_fitting,$item_tiem){
+        $pdo = $this->dbConnect();
+        $sql = "INSERT INTO items (user_id,css_id) VALUES(?,?,?,?,?,?,?,?,?,?)";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$user_id,PDO::PARAM_INT);
+        $ps->bindValue(2,$category_id,PDO::PARAM_INT);
+        $ps->bindValue(3,$item_name,PDO::PARAM_STR);
+        $ps->bindValue(4,$item_class,PDO::PARAM_STR);
+        $ps->bindValue(5,$item_size,PDO::PARAM_STR);
+        $ps->bindValue(6,$item_money,PDO::PARAM_INT);
+        $ps->bindValue(7,$item_feature,PDO::PARAM_STR);
+        $ps->bindValue(8,$item_image,PDO::PARAM_STR);
+        $ps->bindValue(9,$item_fitting,PDO::PARAM_STR);
+        $ps->bindValue(10,$item_tiem,PDO::PARAM_STR);
+        $ps->execute();
     }
 }
 
