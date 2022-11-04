@@ -1,6 +1,89 @@
+.button-tag {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  
+  .button-space {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .touroku {
+    margin: auto;
+    padding: 20px 46px;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.6s ease;
+  }
+  
+  
+  .no-border {
+    border: none;
+    margin-left:130px;
+
+  }
+  
+  .txt-white {
+    color: white;
+	  margin-right:130px;
+  }
+  
+  .bkgnd-black {
+    background-color: black;
+  }
+  
+  .border-radius-50px {
+    border-radius: 50px;
+  }
+  
+  button.no-shadow:hover {
+    box-shadow: none !important;
+  }
+  
+.box{
+	position:relative;
+}
+
+
+.rireki{
+	position:absolute;
+	right:330px;
+	
+}
+
+.mei{
+    position:absolute;
+    left:330px;
+	
+}
+
+
+.kin{
+    position:absolute;
+    left:330px;
+	
+}
+
+.sai{
+    position:absolute;
+    left:330px;
+	
+}
 .history{
-    display:none;
+  display: none;
 }
 .toroku{
-    display:none;
+  display: none;
 }
+  

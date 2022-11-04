@@ -184,23 +184,26 @@
 </body>
 
 
-
-    <input type="submit" value="出品登録" onclick="mein1()">
-    <input type="submit" value="出品履歴" onclick="mein2()">
+<div class="button-tag">
+    <div class="main">
+    <div class="button-space">
+    <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04" onclick="mein1()">出品登録</button>
+    <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04" onclick="mein2()">出品履歴</button>
+    </div>
+    </div>
+    </div>
 	<div class="history" id="history">
 		<img src="./furaito.jpg" width="100">
-		<P><button onclick="change()">編集</button>      商品名:フライトジャケット</P>
-		<p></p><input type="submit" value="削除">              値段:￥107600    サイズ:L</p>
+		<p><button onclick="change()">編集</button> 商品名:フライトジャケット</p>
+        <p><button>削除</button>                   値段:￥107600    サイズ:L</p>
 	</div>
 	<div class="toroku" id="toroku">
-		<p>
-			商品名:<input type="text" name="syouhin">
-		</p>
-		<p>
-		分類:<select name="example1">
-			<option value="1">メンズ</option>
+			<p>商品名:<input type="text" name="syouhin"></p>
+            <p>分類:<select name="example1"></p>
+			<p><option value="1">メンズ</option>
 			<option value="2">レディース</option>
 			<option value="3">ユニセックス</option>
+            </p>
 			</select>
 
 			カテゴリー:<select name="example2">
@@ -214,13 +217,9 @@
 			<option value="8">M</option>
 			<option value="9">L</option>
 			</select>
-		</p>
-		<p>
-			値段:<input type="text" name="nedan">
-		</p>
-		<p>
-			特徴:<input type="text" size="30" name="tokucyou" >
-		</p>
+
+			<p>値段:<input type="text" name="nedan"></p>
+			<p>特徴:<input type="text" size="30" name="tokucyou"></p>
 		<input type="file" name="example" accept="image/jpeg, image/png">
 		<input type="submit" value="出品確認" onclick="kakunin()">
 	</div>
