@@ -45,7 +45,8 @@
                 $ps->bindValue(1,$mail,PDO::PARAM_STR);
                 $ps->bindValue(2,$pass,PDO::PARAM_STR);
                 $ps->execute();
-                    foreach($ps->fetchAll() as $row){
+                $data = $ps->fetchAll();
+                    foreach($data as $row){
                         $_SESSION['user'] =$row['user_id'];
                         header("Location:../home.html");
                     }
@@ -67,7 +68,19 @@
             //支払い方法作成
             public function shiharai(){
                 $pdo = $this.dbConnect();
-                $sql = "SELECT * FROM ";
+                $sql = "SELECT * FROM users WHERE user_id = ?";
+                $ps = $pdo ->prepare($sql);
+                $ps->bindValue(1,$_SESSION['user'],PDO::PARAM_INT);
+                $ps->execute();
+            }
+
+            //プロフィール編集
+            public function prohenkou(){
+                $pdo = $this.dbConnect();
+                $sql = "SELECT * FROM users WHERE user_id = ?";
+                $ps = $pdo -> prepare($sql);
+                $ps->bindValue(1,$_SESSION['user'],PDO::PARAM_INT);
+                $ps->execute();
             }
 
          }

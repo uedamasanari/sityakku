@@ -14,16 +14,19 @@
         header('Location:home.html');
 
     }else{
-        login();
+        if(isset($_POST['mail1'])){
+            newtoroku();
+        }
+        if(isset($_POST['mail'])){
+            login();
+        }
     }
-    if(isset($_POST['mail1'])){
-        newtoroku();
-    }
+    
     function login(){
         $dbmg = new Itoyama();
-        $tameshi = $dbmg->tameshi($_POST['mail'],$_POST['pass']);
+        //$tameshi = $dbmg->tameshi($_POST['mail'],$_POST['pass']);
         $roguin = $dbmg->login($_POST['mail'],$_POST['pass']);
-        echo $tameshi ;
+        //echo $tameshi ;
         echo $roguin;
     }
     function newtoroku(){
