@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>商品出品画面</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="../header/header.css">
   <link rel="stylesheet" href="../css/SS.css">
   <script>
 	function mein1(){
@@ -23,88 +23,187 @@
 </head>
 <body>	
 	<div class="hero-anime">
-	<div class="navigation-wrap bg-light start-header start-style">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
-					
-						<a class="navbar-brand" href="#" target="_blank">
-              <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-            </a>	
-						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0">
+        <div class="navigation-wrap bg-light start-header start-style">
+            <div class="container">
+                <div class="row">
+                    <div class="col-11">
+                        <nav class="navbar navbar-expand-md navbar-light">
 
-							
-								<li class=" pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link syuppin_button" href="#">出品</a>
-								</li>
+                            <a class="navbar-brand" href="#" target="_blank">
+                                <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
+                            </a>
 
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">
-										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-										<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-										<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-									  </svg>
-									  アカウント</a>
-								</li>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto py-4 py-md-0">
 
 
+                                    <li class=" pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link syuppin_button" href="#">出品</a>
+                                    </li>
+
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                            </svg>
+                                            アカウント</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                            </svg>
+                                            お気に入り</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" id="openModal">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                                            </svg>
+                                            カート<span class="shiva"><span class="count">1</span></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header_matome">
+        <section id="modalArea" class="modalArea">
+            <div id="w">
+                <header id="title">
+                    <div class="modal-title">ショッピングカート</div>
+                    <div class="modal-close closeModal" id="closeModal">×</div>
+                </header>
+                <div id="page">
+                    <table id="cart">
+                        <thead>
+                            <tr>
+                                <th class="first">画像</th>
+                                <th class="second">あとで購入</th>
+                                <th class="third">商品名</th>
+                                <th class="fourth">値段</th>
+                                <th class="fifth">削除</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- shopping cart contents -->
+                            <tr class="productitm">
+                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
+                                <td>
+                                    <span class="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path
+                                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                        </svg>
+                                    </span>
+                                </td>
+                                <td>じゃっけと</td>
+                                <td>1000円</td>
+                                <td>
+                                    <span class="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="productitm">
+                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
+                                <td>
+                                    <span class="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                            <path
+                                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                        </svg>
+                                    </span>
+                                </td>
+                                <td>じゃっけと</td>
+                                <td>1000円</td>
+                                <td>
+                                    <span class="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </span>
+                                </td>
+                            </tr>
 
 
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">
-										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-											<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-										  </svg>
-										お気に入り</a>
-								</li>
+                            <!-- tax + subtotal -->
+                            <tr class="extracosts">
+                                <td class="light">商品数量</td>
+                                <td colspan="2" class="light"></td>
+                                <td>３点</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="totalprice">
+                                <td class="light">合計金額</td>
+                                <td colspan="2">&nbsp;</td>
+                                <td colspan="2"><span class="thick">３００円</span></td>
+                            </tr>
+
+                            <!-- checkout btn -->
+                            <tr class="checkoutrow">
+                                <td colspan="5" class="checkout"><button id="submitbtn">購入画面へ進む</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
 
 
-
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">
-										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-											<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-										  </svg>
-										カート<span class="shiva"><span class="count">1</span></span>
-									</a>
-										
-								</li>
-
-
-
-							</ul>
-						</div>
-						
-					</nav>		
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-    <input type="submit" value="出品登録" onclick="mein1()">
-    <input type="submit" value="出品履歴" onclick="mein2()">
+<div class="button-tag">
+    <div class="main">
+    <div class="button-space">
+    <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04" onclick="mein1()">出品登録</button>
+    <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04" onclick="mein2()">出品履歴</button>
+    </div>
+    </div>
+    </div>
 	<div class="history" id="history">
 		<img src="./furaito.jpg" width="100">
-		<P><button onclick="change()">編集</button>      商品名:フライトジャケット</P>
-		<p></p><input type="submit" value="削除">              値段:￥107600    サイズ:L</p>
+		<p><button onclick="change()">編集</button> 商品名:フライトジャケット</p>
+        <p><button>削除</button>                   値段:￥107600    サイズ:L</p>
 	</div>
 	<div class="toroku" id="toroku">
-		<p>
-			商品名:<input type="text" name="syouhin">
-		</p>
-		<p>
-		分類:<select name="example1">
-			<option value="1">メンズ</option>
+			<p>商品名:<input type="text" name="syouhin"></p>
+            <p>分類:<select name="example1"></p>
+			<p><option value="1">メンズ</option>
 			<option value="2">レディース</option>
 			<option value="3">ユニセックス</option>
+            </p>
 			</select>
 
 			カテゴリー:<select name="example2">
@@ -118,17 +217,16 @@
 			<option value="8">M</option>
 			<option value="9">L</option>
 			</select>
-		</p>
-		<p>
-			値段:<input type="text" name="nedan">
-		</p>
-		<p>
-			特徴:<input type="text" size="30" name="tokucyou" >
-		</p>
+
+			<p>値段:<input type="text" name="nedan"></p>
+			<p>特徴:<input type="text" size="30" name="tokucyou"></p>
 		<input type="file" name="example" accept="image/jpeg, image/png">
 		<input type="submit" value="出品確認" onclick="kakunin()">
 	</div>
+
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="header.js"></script>
 </body>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 </html>
