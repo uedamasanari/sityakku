@@ -15,12 +15,13 @@
                 $ps->execute();
             }
 
-            //お気に入り商品取り消し
+            //お気に入り商品取り消し  itemをゲットする場所はどこから？？
             public function favoritesakujo($item){
                 $pdo = $this->dbConnect();
                 $sql = "DELETE FROM favorite WHERE item_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$item,POD::PARAM_INT);
+                $ps->execute();
             }
             //カート商品取り消し
             public function cartsakujo($item){
@@ -28,6 +29,7 @@
                 $sql = "DELETE FROM cart_detail WHERE item_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$item,POD::PARAM_INT);
+                $ps->execute();
             }
             //出品商品取り消し
             public function syuppinsakujo($item){
@@ -35,6 +37,7 @@
                 $sql = "DELETE FROM settlement_detail WHERE item_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$item,POD::PARAM_INT);
+                $ps->execute();
             }
 
             //ログイン
@@ -67,20 +70,22 @@
 
             //支払い方法作成
             public function shiharai(){
-                $pdo = $this.dbConnect();
+                $pdo = $this->dbConnect();
                 $sql = "SELECT * FROM users WHERE user_id = ?";
                 $ps = $pdo ->prepare($sql);
                 $ps->bindValue(1,$_SESSION['user'],PDO::PARAM_INT);
                 $ps->execute();
+                return $ps;
             }
 
             //プロフィール編集
             public function prohenkou(){
-                $pdo = $this.dbConnect();
+                $pdo = $this->dbConnect();
                 $sql = "SELECT * FROM users WHERE user_id = ?";
                 $ps = $pdo -> prepare($sql);
                 $ps->bindValue(1,$_SESSION['user'],PDO::PARAM_INT);
                 $ps->execute();
+                return $ps;
             }
 
          }

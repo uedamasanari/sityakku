@@ -37,6 +37,7 @@
     function okiniiri(){
         $dbmg = new Itoyama();
         $favorite = $dbmg->okiniiri();
+        //商品IDコードはどうやって持ってくる？？
     }
     
 ?>
