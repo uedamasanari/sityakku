@@ -1,0 +1,160 @@
+.button-tag {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  
+  .button-space {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .touroku {
+    margin: auto;
+    padding: 20px 46px;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.6s ease;
+      
+  }
+  .none{
+    display: none;
+  }
+  .ai{
+    display: grid;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px ;
+    grid-template-columns: 50px 50px 250px 250px 250px 250px;
+    /* display: none; */
+    margin-top: 5%;
+  }
+
+  .syo{
+    grid-row: 1/2;
+    grid-column: 4/7;
+    margin-left: -2%;
+    /* background-color: red; */
+  }
+
+  .s{
+    width: 70%;
+  }
+
+  .bun{
+    grid-row: 2/3;
+    grid-column: 4/5;
+    /* background-color:blue; */
+  }
+
+  .ka{
+    grid-row: 2/3;
+    grid-column: 5/6;
+    /* background-color:green; */
+  } 
+  
+  .sa{
+    grid-row: 2/3;
+    grid-column: 6/7;
+    /* background-color:yellow; */
+  }
+  .ne{
+    grid-row: 3/4;
+    grid-column: 4/7;
+  }
+
+  .n{
+    width: 70%;
+  }
+  .to{
+    grid-row: 4/6;
+    grid-column: 4/7;
+  }
+  .t{
+    width: 70%;
+    height: 100%;
+  }
+
+  .ga{
+    grid-row: 6/7;
+    grid-column: 4/5;
+  }
+
+  .no-border {
+    border: none;
+    margin-left:130px;
+
+  }
+  
+  .txt-white {
+    color: white;
+	  margin-right:130px;
+  }
+  
+  .bkgnd-black {
+    background-color: black;
+  }
+  
+  .border-radius-50px {
+    border-radius: 50px;
+  }
+  
+  button.no-shadow:hover {
+    box-shadow: none !important;
+  }
+  
+.box{
+	position:relative;
+}
+
+
+.rireki{
+	position:absolute;
+	right:330px;
+	
+}
+
+.mei{
+    position:absolute;
+    left:330px;
+	
+}
+
+
+.kin{
+    position:absolute;
+    left:330px;
+	
+}
+
+.sai{
+    position:absolute;
+    left:330px;
+	
+}
+.history{
+  border: solid;
+  width: 260px;
+  border: 4px solid;
+  border-radius: 8px;
+  display: none;
+}
+
+.syu{
+  grid-row: 6/7;
+  grid-column: 6/7;
+}
+
+.kakunin{
+  width: 5000px;
+  margin-left: 1300%;
+  margin-top: 500%;
+}

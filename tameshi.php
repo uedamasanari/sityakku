@@ -1,25 +1,43 @@
 <?php
+    session_start();
 
-    $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','kanako','2101003');
+    require 'PHP/itoyama.php';
 
-    $sql = "SELECT * FROM users WHERE user_mail = ? AND user_pass = ?";
+    //$dbmg = new Itoyama();
+    // if(isset($_POST['mail'])){
+    //     login();
+    // }else if(isset($_POST['mail1'])){
+    //     newtoroku();
+    
+    if(isset($_SESSION['user'])==true){
 
-    $ps = $pdo->prepare($sql);
+        header('Location:home.html');
 
-    $ps->bindValue(1,$_POST['mail'],PDO::PARAM_STR);
-
-    $ps->bindValue(2,$_POST['pass'],PDO::PARAM_STR);
-
-    $ps->execute();
-
-    $result = $ps->fetchAll();
-
-    if($result == null){
-        echo "一致しません。";
     }else{
-        foreach($result as $row){
-            echo $row['user_id'];
+        if(isset($_POST['mail1'])){
+            newtoroku();
+        }
+        if(isset($_POST['mail'])){
+            login();
         }
     }
+    
+    function login(){
+        $dbmg = new Itoyama();
+        //$tameshi = $dbmg->tameshi($_POST['mail'],$_POST['pass']);
+        $roguin = $dbmg->login($_POST['mail'],$_POST['pass']);
+        //echo $tameshi ;
+        echo $roguin;
+    }
+    function newtoroku(){
+        $dbmg = new Itoyama();
+        $shinki = $dbmg->shinki($_POST['mail1'],$_POST['pass1']);
+    }
 
+    function okiniiri(){
+        $dbmg = new Itoyama();
+        $favorite = $dbmg->okiniiri();
+        //商品IDコードはどうやって持ってくる？？
+    }
+    
 ?>
