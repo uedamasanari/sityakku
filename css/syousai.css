@@ -1,10 +1,12 @@
 .con{
     display: grid;
-    grid-template-rows: 130px 110px 90px 90px 90px;
-    grid-template-columns: 200px 170px 250px 150px;
-    margin-top: 5%;
+    grid-template-rows: 130px 110px 90px 90px;
+    grid-template-columns: 200px 170px 250px;
+width: 60%;
+margin-right: 0;
+    /* margin-top: 5%;
     margin-left: 30%;
-    margin-right: 50%;
+    margin-right: 50%; */
 }
 #c11{
     grid-row: 1 / 3;
