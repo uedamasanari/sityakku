@@ -1,0 +1,79 @@
+.hennkou{
+  width: 100px;
+  height:40px;
+}
+
+.hennkou{
+  background: black;
+  color:white
+}
+
+.hennkou{
+   position:absolute;
+   top: 45px;
+   left:400px
+}
+
+.button_solid004 a {
+  width: 100px;
+  height:40px;
+  top: 45px;
+  left:400px;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 240px;
+  padding: 10px 25px;
+  color: #FFF;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  background: black;
+  border-radius: 8px;
+  border-bottom: solid 5px white;
+}
+.button_solid004 a:hover {
+  border-bottom: solid 2px #1d7fde;
+  transform: translateY(3px);
+}
+
+
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px black;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: black;
+  color: white;
+}
+
+.kessaihouhou{
+  position:absolute;
+  top: 125px; 
+  left:300px;
+}
+
+.haisousaki{
+  position:absolute;
+  top: 250px;
+  left:300px;
+}
+
+.hennkou{
+  width: 150px;
+  padding: 10px;
+}
+
+.wakusenn{
+  width:550px;
+  height:400px;
+}
+
