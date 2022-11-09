@@ -2,12 +2,12 @@ window.onload = function(){
   $.ajax({
     url: "PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
   })
-  .success(function(resyoufuku) {
-      console.log(resyoufuku);
+  .success(function(res) {
+      console.log(res);
       const div1 = document.getElementById("list");
       for(let i=0;i<100;i++){
           const p = document.createElement("list");
-          p.innerHTML = '<div class="list--item"><figure class="list--item_div"><a href=""><img src="//placehold.it/250x250" alt=""></a><header><h2>商品名</h2></header><figcaption>値段</figcaption></figure></div>';
+          p.innerHTML = '<div class="list--item"><figure class="list--item_div"><a href=""><img src="'+res[0].item_image+'" alt=""></a><header><h2>'+res[0].item_name+'</h2></header><figcaption>'+res[0].item_money+'円</figcaption></figure></div>';
           div1.appendChild(p);
           // div1.innerHTML += '<img src="'+resyoufuku[0].item_image+'">';
       }
