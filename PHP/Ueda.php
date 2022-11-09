@@ -17,6 +17,8 @@ if(isset($_GET['login'])){
     $ueda->UpdataSyohin($_POST['b'],$_POST['A'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")),13);
     $json_array = json_encode("送信完了しました！");
     echo $json_array;
+}else if(isset($_GET['like'])){
+    $ueda->SelectLike();
 }
 
 class Ueda{
@@ -128,5 +130,32 @@ class Ueda{
         $ps->bindValue(10,$item_id,PDO::PARAM_INT);
         $ps->execute();
         
+    }
+    function SelectLike(){
+        $pdo = $this->dbConnect();
+        $sql = 'SELECT * FROM items WHERE item_id IN(SELECT item_id FROM favorite WHERE user_id = 1)';
+        $ps = $pdo->prepare($sql);
+        $ps->execute();
+        $search = $ps->fetchAll();
+
+        $data = array();
+
+        foreach ($search as $row) {
+            array_push($data, array(
+                'item_id' => $row['item_id'],
+                'user_id' => $row['user_id'],
+                'category_id' => $row['category_id'],
+                'item_name' => $row['item_name'],
+                'item_class' => $row['item_class'],
+                'item_size' => $row['item_size'],
+                'item_money' => $row['item_money'],
+                'item_feature' => $row['item_feature'],
+                'item_image' => $row['item_image'],
+                'item_fitting' => $row['item_fitting'],
+                'item_time' => $row['item_time']
+            ));
+        }
+        $json_array = json_encode($data);
+        print $json_array;
     }
 }

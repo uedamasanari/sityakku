@@ -1,6 +1,14 @@
 // let reslogin={};
 // let resyoufuku={};
-
+function sakujo() {
+// 要素の削除
+const div1 = document.getElementById("kekka");
+var removeChilds = div1.querySelectorAll('kekka');
+for(let i=0;i<removeChilds.length;i++){
+// div1.removeChild(div1.firstChild);
+div1.removeChild(removeChilds[i]);
+}
+}
 function hyouji(){
     $.ajax({
         url: "PHP/Ueda.php/?login=true&timestamp=${new Date().getTime()}"
@@ -19,10 +27,12 @@ function youfuku(){
     })
     .success(function(resyoufuku) {
         console.log(resyoufuku);
+        const div1 = document.getElementById("kekka");
         for(let i=0;i<100;i++){
             const p = document.createElement("kekka");
-            p.innerHTML = '<img src="'+resyoufuku[0].item_image+'">';
-            document.body.appendChild(p);
+            p.innerHTML = '<div id="i'+i+'"><img src="'+resyoufuku[0].item_image+'"></div>';
+            div1.appendChild(p);
+            // div1.innerHTML += '<img src="'+resyoufuku[0].item_image+'">';
         }
     }).error(function(XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -122,5 +132,24 @@ function hensyuu(){
     }
     reader.readAsDataURL(file);
     //↑base64終了
+}
+function like(){
+    $.ajax({
+        url: "PHP/Ueda.php/?like=true&timestamp=${new Date().getTime()}"
+    })
+    .success(function(res) {
+        console.log(res);
+        const div1 = document.getElementById("kekka");
+        for(let i=0;i<res.lentgth;i++){
+            const p = document.createElement("kekka");
+            p.innerHTML = '<div id="i'+i+'"><img src="'+res[0].item_image+'"></div>';
+            div1.appendChild(p);
+            // div1.innerHTML += '<img src="'+resyoufuku[0].item_image+'">';
+        }
+    }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
 }
             
