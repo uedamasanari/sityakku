@@ -1,0 +1,17 @@
+1、PHPの授業のようにコントロールパネルを開いて、MySQLをstartし、Adminを押してください。
+   押したらサイトに移るので、新規作成を押してください。
+   名前は sittyaku にして、他は何もしないで作成して大丈夫です。
+2、作成されたsittyakuを押した状態で前期の授業のようにSQLを押すと、SQLを実行する画面に移ります。
+   その画面に、下のファイルの順番でファイルの上にあるCREATE文をコピペして実行してください。
+
+   users.sql
+   category.sql
+   items.sql
+   favorite.sql
+   cart.sql
+   cart_detail.sql
+   settlement.sql
+   settlement_detail.sql
+
+3、上のファイルと全く同じ順番で、各ファイルの下にあるINSERT文をコピペして実行してください。そしたら終わりです！
+
