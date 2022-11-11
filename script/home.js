@@ -5,11 +5,41 @@ window.onload = function(){
   .success(function(res) {
       console.log(res);
       const div1 = document.getElementById("list");
-      for(let i=0;i<100;i++){
-          const p = document.createElement("list");
-          p.innerHTML = '<div class="list--item"><figure class="list--item_div"><a href=""><img src="'+res[0].item_image+'" alt=""></a><header><h2>'+res[0].item_name+'</h2></header><figcaption>'+res[0].item_money+'円</figcaption></figure></div>';
-          div1.appendChild(p);
-          // div1.innerHTML += '<img src="'+resyoufuku[0].item_image+'">';
+      for(let i=0;i<res.length;i++){
+          let ele = document.createElement("div");
+          ele.className = 'list--item';
+          div1.appendChild(ele);
+
+          ele = document.createElement("figure");
+          ele.className = 'list--item_div';
+          let tag = document.getElementsByClassName("list--item")[i];
+          tag.appendChild(ele);
+
+          ele = document.createElement("a");
+          ele.className = 'atag';
+          ele.href = "#";
+          tag = document.getElementsByClassName("list--item_div")[i];
+          tag.appendChild(ele);
+
+          ele = document.createElement("img");
+          ele.src = res[i].item_image;
+          tag = document.getElementsByClassName("atag")[i];
+          tag.appendChild(ele);
+
+          ele = document.createElement("header");
+          ele.className = 'headertag';
+          tag = document.getElementsByClassName("list--item_div")[i];
+          tag.appendChild(ele);
+
+          ele = document.createElement("h2");
+          ele.textContent = res[i].item_name;
+          tag = document.getElementsByClassName("headertag")[i];
+          tag.appendChild(ele);
+
+          ele = document.createElement("figcaption");
+          ele.textContent = res[i].item_money+'円';
+          tag = document.getElementsByClassName("list--item_div")[i];
+          tag.appendChild(ele);
       }
   }).error(function(XMLHttpRequest, textStatus, errorThrown) {
       console.log("XMLHttpRequest : " + XMLHttpRequest.status);
