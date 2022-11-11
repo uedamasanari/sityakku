@@ -772,6 +772,10 @@ padding: 0;
   font-weight: normal;
   text-align: center;
 }
+.tbody{
+  overflow: scroll;
+  height: 100px;
+}
 .modal-close{
 
   /* border: 1px solid #999; */
@@ -1102,18 +1106,22 @@ td.checkout {
 .syouhin-modal{
   display: none;
   position:absolute;
+  width: 550px;
   top: 120px;
   right: 0;
+  height: 500px;
+  background-color: #ffffff;
 padding: 0;
 }
 .syouhin-w{
   display: block;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  width: 550px;
   font-size: 62.5%;
-  height: auto;
   color: #414141;
   line-height: 1;
+}
+.syousai{
+  display: flex;
 }
 .con{
   display: grid;
