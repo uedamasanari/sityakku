@@ -72,3 +72,12 @@ $(function () {
   });
 });
 
+
+$(function () {
+  $('#openSyousai').click(function(){
+      $('#goodsModal').fadeIn();
+  });
+  $('#close-syousai , #modalBg').click(function(){
+    $('#goodsModal').fadeOut();
+  });
+});
