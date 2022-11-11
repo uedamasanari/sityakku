@@ -65,11 +65,17 @@ if(isset($_POST['mail'])){
                                 'state' => '成功',
                                 'user_id' => $row['user_id']
                             ));
+                        }else{
+                            array_push($dataarray,array(
+                                'state' => '失敗',
+                                'er' => 1
+                            ));
                         }
                     }
                     if(count($data)==0){
                         array_push($dataarray,array(
-                            'state' => '失敗'
+                            'state' => '失敗',
+                            'er' => 2
                         ));
                     }
                     $json_array = json_encode($dataarray);

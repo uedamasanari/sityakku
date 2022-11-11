@@ -15,13 +15,22 @@ function login(){
     })
     .success(function(data) {
         //通信に成功
-        console.log(data[0].user_id);
+        //console.log(data[0].user_id);
+        console.log(data);
         if(data[0].state == '成功'){
             sessionStorage.setItem('id',data[0].user_id);
             //console.log(`dataの型は${typeof data}`); 型の確認
-            location.href='http://localhost/Web/sityakku/home.html';
+            location.href='http://localhost/Web/kanako/home.html';
         }else{
-            location.href='http://localhost/Web/sityakku/toroku.html';
+            if(data[0].er == 1){
+                let element = document.getElementById('error');
+                element.innerHTML = 'パスワードが正しくありません。';
+            }else{
+                let element = document.getElementById('error');
+                element.innerHTML = 'メールアドレスが正しくありません。';
+            }
+            
+            //location.href='http://localhost/Web/kanako/toroku.html';
         }
     })
     .error(function(XMLHttpRequest, textStatus, errorThrown) {
