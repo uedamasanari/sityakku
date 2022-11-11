@@ -51,3 +51,4 @@ $(function () {
     $('#goodsModal').fadeOut();
   });
 });
+// profile-modal
