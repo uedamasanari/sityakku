@@ -3,22 +3,23 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-  }
+}
   
-  .main {
+.main {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-  }
+}
   
-  .button-space {
+.button-space {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
+    margin-top: 3%;
+}
   
-  .touroku {
+.touroku {
     margin: auto;
     padding: 20px 46px;
     font-size: 1em;
@@ -26,90 +27,86 @@
     cursor: pointer;
     transition: all 0.6s ease;
       
-  }
-  .none{
+}
+.none{
     display: none;
-  }
-  .ai{
+}
+.ai{
     display: grid;
     grid-template-rows: 50px 50px 50px 50px 50px 50px 50px ;
     grid-template-columns: 50px 50px 250px 250px 250px 250px;
-    /* display: none; */
     margin-top: 5%;
-  }
+}
 
-  .syo{
+.syo{
     grid-row: 1/2;
     grid-column: 4/7;
     margin-left: -2%;
-    /* background-color: red; */
-  }
+}
 
-  .s{
+.s{
     width: 70%;
-  }
+}
 
-  .bun{
+.bun{
     grid-row: 2/3;
     grid-column: 4/5;
-    /* background-color:blue; */
-  }
+}
 
-  .ka{
+.ka{
     grid-row: 2/3;
     grid-column: 5/6;
-    /* background-color:green; */
-  } 
+} 
   
-  .sa{
+.sa{
     grid-row: 2/3;
     grid-column: 6/7;
-    /* background-color:yellow; */
-  }
-  .ne{
+}
+.ne{
     grid-row: 3/4;
     grid-column: 4/7;
-  }
+}
 
-  .n{
+.n{
     width: 70%;
-  }
-  .to{
+}
+.to{
     grid-row: 4/6;
     grid-column: 4/7;
-  }
-  .t{
+}
+.t{
     width: 70%;
     height: 100%;
-  }
+}
 
-  .ga{
+.ga{
     grid-row: 6/7;
     grid-column: 4/5;
-  }
+    margin-top: 5%;
+}
 
-  .no-border {
+.no-border {
     border: none;
     margin-left:130px;
 
-  }
+}
   
-  .txt-white {
+.txt-white {
     color: white;
 	  margin-right:130px;
-  }
+}
   
-  .bkgnd-black {
+.bkgnd-black {
     background-color: black;
-  }
+}
   
-  .border-radius-50px {
+.border-radius-50px {
     border-radius: 50px;
-  }
+}
   
-  button.no-shadow:hover {
+button.no-shadow:hover {
     box-shadow: none !important;
-  }
+}
   
 .box{
 	position:relative;
@@ -141,11 +138,74 @@
 	
 }
 .history{
-  border: solid;
-  width: 260px;
-  border: 4px solid;
+  margin-left: 5%;
+  box-shadow: 5px 5px 5px #808080;
+  width: 280px;
+  border: 1px solid;
   border-radius: 8px;
   display: none;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+.gazou{
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 3%;
+}
+
+.furaito{
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 3%;
+}
+
+.kane{
+  margin-top: 3%;
+  margin-left: 16%;
+  margin-right: 16%;
+  margin-bottom: 3%;
+}
+
+.elu{
+  margin-top: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 3%;
+}
+
+.hensyu{
+  width: 130px;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border: none;
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+  padding: 20px;
+  font-size: 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.6s ease;
+}
+
+.sakujyo{
+  width: 130px;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  border: none;
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+  padding: 20px;
+  font-size: 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.6s ease;
 }
 
 .syu{
