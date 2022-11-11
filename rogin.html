@@ -1,5 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./JS/kanako.js"></script>
+        <title>Login</title>
         <link href="css/rogin.css" rel="stylesheet">
     </head>
     <body>
@@ -7,30 +13,36 @@
         <p>ログイン</p>
         </div>
 
-        <div class="mailmoji">メールまたは電話番号
+        <form onsubmit="return false;" action="" name="tameshilogin" method="post"> 
+                <div class="mailmoji">メールまたは電話番号
 
-        </div>
+                </div>
 
-        <div class="mail">
-            <input  type="text" style="width: 40%; height:7.5%" name="mail">
-        </div>
-        <br>
+                <div class="mail">
+                    <input  type="text" style="width: 40%; height:7.5%" name="mail">
+                </div>
+                <br>
 
-        <div class="passmoji">パスワード
+                <div class="passmoji">パスワード
 
-        </div>
+                </div>
 
-        <div class="pass">
-            <input type="text" style="width: 40%; height:7.5%" name="pass">
-        </div>
-        <br>
-        <div class="main">
-<div class="section">
-        <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow" id="button_04">ログイン</button>
-        
-    </div>
-        </div>
+                <div class="pass">
+                    <input type="text" style="width: 40%; height:7.5%" name="pass">
+                </div>
+                <br>
 
+                <div>
+                    <h4 style="color: red; text-align: center;" id="error"></h4>
+                </div>
+
+                <div class="main">
+                    <div class="section">
+                            <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow" id="button_04" onclick="login()" type="submit">ログイン</button>
+                    
+                    </div>
+                </div>
+        </form> 
 
             <br>
             <br>
@@ -49,6 +61,10 @@
             <br>
 
 
-            
+     <!-- JSONを扱うためのCDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- JSの読み込み -->
+    <script src="./JS/kanako.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>       
     </body>
 </html>

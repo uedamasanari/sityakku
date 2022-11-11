@@ -772,6 +772,10 @@ padding: 0;
   font-weight: normal;
   text-align: center;
 }
+.tbody{
+  overflow: scroll;
+  height: 100px;
+}
 .modal-close{
 
   /* border: 1px solid #999; */
@@ -1102,18 +1106,22 @@ td.checkout {
 .syouhin-modal{
   display: none;
   position:absolute;
+  width: 550px;
   top: 120px;
   right: 0;
+  height: 500px;
+  background-color: #ffffff;
 padding: 0;
 }
 .syouhin-w{
   display: block;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  width: 550px;
   font-size: 62.5%;
-  height: auto;
   color: #414141;
   line-height: 1;
+}
+.syousai{
+  display: flex;
 }
 .con{
   display: grid;
@@ -1155,9 +1163,6 @@ margin-right: 0;
 
 }
 
-#c13{
-  
-}
 #c21{
   grid-row: 1 / 2;
   grid-column: 3 / 4;
@@ -1169,44 +1174,3 @@ margin-right: 0;
   grid-column: 3 / 4;
   background-color: orange;
 }
-#c31{
-  /* grid-row: 1 / 2;
-  grid-column: 2 / 3;
-  background-color: green; */
-}
-#c32{
-  /* grid-row: 2 / 3;
-  grid-column: 2 / 3;
-  background-color: pink; */
-}
-
-
-/* .abc{
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-   width: 600px;
-   height: 400px;
-   background-color: orange;
-   margin-top: 10%;
-}
-.button{
-  margin-top: 300px;
-  margin-left:-150px;
-  width:100px;
-  height:40px;
-} */
-
-/* .a{
-  color: #000;
-  background-color:blue;
-}
-
-.b{
-  color: #000;
-  background-color:red;
-} */
-
-/* .moji {
-  float:200px;
-} */
