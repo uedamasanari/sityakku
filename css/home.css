@@ -753,6 +753,7 @@ margin-bottom: 2.5%;
 }
 .modalArea {
   display: none;
+  z-index: 90;
   /* position: absolute; */
   position:absolute;
   top: 120px;
@@ -1112,6 +1113,7 @@ td.checkout {
   top: 120px;
   right: 0;
   height: 500px;
+  z-index: 90;
   background-color: #ffffff;
 padding: 0;
 }
