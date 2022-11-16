@@ -185,13 +185,13 @@ const hyouji=(a,b)=>{
         ele = document.createElement("a");
         ele.className = 'atag';
         ele.id='openSyousai';
-        ele.href = "#";
         tag = document.getElementsByClassName("list--item_div")[sw];
         tag.appendChild(ele);
 
         ele = document.createElement("img");
         ele.src = kari[index].item_image;
-        ele.style = "height:250px;width:250px;"
+        ele.style = "height:250px;width:250px;";
+        ele.onclick('openssyousai');
         tag = document.getElementsByClassName("atag")[sw];
         tag.appendChild(ele);
 
