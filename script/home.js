@@ -75,6 +75,7 @@ $(function () {
     $('#goodsModal').fadeOut();
   });
 });
+
 // profile-modal
 window.addEventListener("DOMContentLoaded", () => {
   // モーダルを取得
@@ -111,6 +112,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 const hyouji=(a,b)=>{
   let list=document.getElementsByClassName("list")[a];
