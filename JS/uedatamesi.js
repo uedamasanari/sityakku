@@ -148,4 +148,3 @@ function like(){
         console.log("errorThrown    : " + errorThrown.message);
     });
 }
-            
