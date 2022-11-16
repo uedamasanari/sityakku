@@ -5,6 +5,9 @@ let accessory=Array();
 let count=[0,0,0];
 let page=[0,0,0];
 let maxpage=[0,0,0];
+let category=[true,true];
+let value1;
+let value2;
 window.onload = function(){
   $.ajax({
     url: "PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
@@ -80,20 +83,24 @@ const hyouji=(a,b)=>{
   let loop=20;
   let kari=Array();
   let index;
+  let boo=true;
   if(b==0){
     if(page[a]==0){
-      alert("このページが一番最初です。");
+      swal("このページが一番最初です。","","error");
+      boo=false;
     }else{
       page[a]--;
     }
   }else if(b==1){
     if(maxpage[a]<page[a]+1){
-      alert("このページが一番最後です。");
+      swal("このページが一番最後です。","","error");
+      boo=false;
     }else{
       page[a]++;
     }
   }
   index=page[a]*20;
+  if(boo){
   switch(a){
     case 0:
       while(list.firstChild){
@@ -129,6 +136,7 @@ const hyouji=(a,b)=>{
       break;
   }
   for(let i=0;i<loop;i++){
+      if(category[kari[index].category_id - 1]){
     let ele = document.createElement("div");
     ele.className = 'list--item';
     list.appendChild(ele);
@@ -167,5 +175,59 @@ const hyouji=(a,b)=>{
     count[a]++;
     sw++;
     index++;
+      }
+    }
   }
 }
+
+const sort=()=>{
+  const c1 = document.getElementById("c1");
+  const c2 = document.getElementById("c2");
+  const radio1 = document.getElementsByName("radio1");
+  const radio2 = document.getElementsByName("radio2");
+  let jouken;
+  if(c1.checked){
+    category[0]=true;
+  }else{
+    category[0]=false;
+  }
+  if(c2.checked){
+    category[1]=true;
+  }else{
+    category[1]=false;
+  }
+
+  for (let i = 0; i < radio1.length; i++){
+    if (radio1.item(i).checked){
+        value1 = radio1.item(i).value;
+    }
+  }
+  for (let i = 0; i < radio2.length; i++){
+    if (radio2.item(i).checked){
+        value2 = radio2.item(i).value;
+    }
+  }
+  //並び替え条件式
+  if(value1==1){
+    if(value2==1){
+      jouken = "a.item_time > b.item_time";
+    }else if(value2==2){
+      jouken = "a.item_time < b.item_time";
+    }
+  }else if(value2==2){
+    if(value2==1){
+      jouken = "a.item_money > b.item_money";
+    }else if(value2==2){
+      jouken = "a.item_money < b.item_money";
+    }
+  }
+  mens.sort(function(a, b) {
+    
+    if (jouken) {
+      return 1;
+    } else {
+      return -1;
+    }
+  })
+}
+
