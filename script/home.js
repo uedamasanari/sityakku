@@ -77,7 +77,6 @@ $(function () {
 });
 
 const hyouji=(a,b)=>{
-  //上のそれぞれのfunctionをここにまとめる
   let list=document.getElementsByClassName("list")[a];
   let sw=0;
   let loop=20;
@@ -101,80 +100,80 @@ const hyouji=(a,b)=>{
   }
   index=page[a]*20;
   if(boo){
-  switch(a){
-    case 0:
-      while(list.firstChild){
-        list.removeChild(list.firstChild);
-      }
-      if(mens.length-page[a]*20<20){
-        loop=mens.length-page[a]*20;
-      }
-      count[0]=0;
-      kari=mens;
-      break;
-    case 1:
-      while(list.firstChild){
-        list.removeChild(list.firstChild);
-      }
-      if(ladius.length-page[a]*20<20){
-        loop=ladius.length-page[a]*20;
-      }
-      count[1]=0;
-      sw=count[0];
-      kari=ladius;
-      break;
-    case 2:
-      while(list.firstChild){
-        list.removeChild(list.firstChild);
-      }
-      if(accessory.length-page[a]*20<20){
-        loop=accessory.length-page[a]*20;
-      }
-      count[2]=0;
-      sw=count[0]+count[1];
-      kari=accessory;
-      break;
-  }
-  for(let i=0;i<loop;i++){
+    switch(a){
+      case 0:
+        while(list.firstChild){
+          list.removeChild(list.firstChild);
+        }
+        if(mens.length-page[a]*20<20){
+          loop=mens.length-page[a]*20;
+        }
+        count[0]=0;
+        kari=mens;
+        break;
+      case 1:
+        while(list.firstChild){
+          list.removeChild(list.firstChild);
+        }
+        if(ladius.length-page[a]*20<20){
+          loop=ladius.length-page[a]*20;
+        }
+        count[1]=0;
+        sw=count[0];
+        kari=ladius;
+        break;
+      case 2:
+        while(list.firstChild){
+          list.removeChild(list.firstChild);
+        }
+        if(accessory.length-page[a]*20<20){
+          loop=accessory.length-page[a]*20;
+        }
+        count[2]=0;
+        sw=count[0]+count[1];
+        kari=accessory;
+        break;
+    }
+    for(let i=0;i<loop;i++){
       if(category[kari[index].category_id - 1]){
-    let ele = document.createElement("div");
-    ele.className = 'list--item';
-    list.appendChild(ele);
-    ele = document.createElement("figure");
-    ele.className = 'list--item_div';
-    let tag = document.getElementsByClassName("list--item")[sw];
-    tag.appendChild(ele);
+        let ele = document.createElement("div");
+        ele.className = 'list--item';
+        list.appendChild(ele);
+        ele = document.createElement("figure");
+        ele.className = 'list--item_div';
+        let tag = document.getElementsByClassName("list--item")[sw];
+        tag.appendChild(ele);
 
-    ele = document.createElement("a");
-    ele.className = 'atag';
-    ele.href = "#";
-    tag = document.getElementsByClassName("list--item_div")[sw];
-    tag.appendChild(ele);
+        ele = document.createElement("a");
+        ele.className = 'atag';
+        ele.href = "#";
+        tag = document.getElementsByClassName("list--item_div")[sw];
+        tag.appendChild(ele);
 
-    ele = document.createElement("img");
-    ele.src = kari[index].item_image;
-    ele.style = "height:250px;width:250px;"
-    tag = document.getElementsByClassName("atag")[sw];
-    tag.appendChild(ele);
+        ele = document.createElement("img");
+        ele.src = kari[index].item_image;
+        ele.style = "height:250px;width:250px;"
+        tag = document.getElementsByClassName("atag")[sw];
+        tag.appendChild(ele);
 
-    ele = document.createElement("header");
-    ele.className = 'headertag';
-    tag = document.getElementsByClassName("list--item_div")[sw];
-    tag.appendChild(ele);
+        ele = document.createElement("header");
+        ele.className = 'headertag';
+        tag = document.getElementsByClassName("list--item_div")[sw];
+        tag.appendChild(ele);
 
-    ele = document.createElement("h2");
-    ele.textContent = kari[index].item_name;
-    tag = document.getElementsByClassName("headertag")[sw];
-    tag.appendChild(ele);
+        ele = document.createElement("h2");
+        ele.textContent = kari[index].item_name;
+        tag = document.getElementsByClassName("headertag")[sw];
+        tag.appendChild(ele);
 
-    ele = document.createElement("figcaption");
-    ele.textContent = kari[index].item_money+'円';
-    tag = document.getElementsByClassName("list--item_div")[sw];
-    tag.appendChild(ele);
-    console.log(i);
-    count[a]++;
-    sw++;
-    index++;
+        ele = document.createElement("figcaption");
+        ele.textContent = kari[index].item_money+'円';
+        tag = document.getElementsByClassName("list--item_div")[sw];
+        tag.appendChild(ele);
+        console.log(i);
+        count[a]++;
+        sw++;
+        index++;
       }
     }
   }
