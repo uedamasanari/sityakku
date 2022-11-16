@@ -5,6 +5,9 @@ let accessory=Array();
 let count=[0,0,0];
 let page=[0,0,0];
 let maxpage=[0,0,0];
+let category=[true,true];
+let value1;
+let value2;
 window.onload = function(){
   $.ajax({
     url: "PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
@@ -112,99 +115,156 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 const hyouji=(a,b)=>{
-  //上のそれぞれのfunctionをここにまとめる
   let list=document.getElementsByClassName("list")[a];
   let sw=0;
   let loop=20;
   let kari=Array();
   let index;
+  let boo=true;
   if(b==0){
     if(page[a]==0){
-      alert("このページが一番最初です。");
+      swal("このページが一番最初です。","","error");
+      boo=false;
     }else{
       page[a]--;
     }
   }else if(b==1){
     if(maxpage[a]<page[a]+1){
-      alert("このページが一番最後です。");
+      swal("このページが一番最後です。","","error");
+      boo=false;
     }else{
       page[a]++;
     }
   }
   index=page[a]*20;
-  switch(a){
-    case 0:
-      while(list.firstChild){
-        list.removeChild(list.firstChild);
+  if(boo){
+    switch(a){
+      case 0:
+        while(list.firstChild){
+          list.removeChild(list.firstChild);
+        }
+        if(mens.length-page[a]*20<20){
+          loop=mens.length-page[a]*20;
+        }
+        count[0]=0;
+        kari=mens;
+        break;
+      case 1:
+        while(list.firstChild){
+          list.removeChild(list.firstChild);
+        }
+        if(ladius.length-page[a]*20<20){
+          loop=ladius.length-page[a]*20;
+        }
+        count[1]=0;
+        sw=count[0];
+        kari=ladius;
+        break;
+      case 2:
+        while(list.firstChild){
+          list.removeChild(list.firstChild);
+        }
+        if(accessory.length-page[a]*20<20){
+          loop=accessory.length-page[a]*20;
+        }
+        count[2]=0;
+        sw=count[0]+count[1];
+        kari=accessory;
+        break;
+    }
+    for(let i=0;i<loop;i++){
+      if(category[kari[index].category_id - 1]){
+        let ele = document.createElement("div");
+        ele.className = 'list--item';
+        list.appendChild(ele);
+        ele = document.createElement("figure");
+        ele.className = 'list--item_div';
+        let tag = document.getElementsByClassName("list--item")[sw];
+        tag.appendChild(ele);
+
+        ele = document.createElement("a");
+        ele.className = 'atag';
+        ele.href = "#";
+        tag = document.getElementsByClassName("list--item_div")[sw];
+        tag.appendChild(ele);
+
+        ele = document.createElement("img");
+        ele.src = kari[index].item_image;
+        ele.style = "height:250px;width:250px;"
+        tag = document.getElementsByClassName("atag")[sw];
+        tag.appendChild(ele);
+
+        ele = document.createElement("header");
+        ele.className = 'headertag';
+        tag = document.getElementsByClassName("list--item_div")[sw];
+        tag.appendChild(ele);
+
+        ele = document.createElement("h2");
+        ele.textContent = kari[index].item_name;
+        tag = document.getElementsByClassName("headertag")[sw];
+        tag.appendChild(ele);
+
+        ele = document.createElement("figcaption");
+        ele.textContent = kari[index].item_money+'円';
+        tag = document.getElementsByClassName("list--item_div")[sw];
+        tag.appendChild(ele);
+        console.log(i);
+        count[a]++;
+        sw++;
+        index++;
       }
-      if(mens.length-page[a]*20<20){
-        loop=mens.length-page[a]*20;
-      }
-      count[0]=0;
-      kari=mens;
-      break;
-    case 1:
-      while(list.firstChild){
-        list.removeChild(list.firstChild);
-      }
-      if(ladius.length-page[a]*20<20){
-        loop=ladius.length-page[a]*20;
-      }
-      count[1]=0;
-      sw=count[0];
-      kari=ladius;
-      break;
-    case 2:
-      while(list.firstChild){
-        list.removeChild(list.firstChild);
-      }
-      if(accessory.length-page[a]*20<20){
-        loop=accessory.length-page[a]*20;
-      }
-      count[2]=0;
-      sw=count[0]+count[1];
-      kari=accessory;
-      break;
+    }
   }
-  for(let i=0;i<loop;i++){
-    let ele = document.createElement("div");
-    ele.className = 'list--item';
-    list.appendChild(ele);
-    ele = document.createElement("figure");
-    ele.className = 'list--item_div';
-    let tag = document.getElementsByClassName("list--item")[sw];
-    tag.appendChild(ele);
+}
 
-    ele = document.createElement("a");
-    ele.className = 'atag';
-    ele.href = "#";
-    tag = document.getElementsByClassName("list--item_div")[sw];
-    tag.appendChild(ele);
-
-    ele = document.createElement("img");
-    ele.src = kari[index].item_image;
-    ele.style = "height:250px;width:250px;"
-    tag = document.getElementsByClassName("atag")[sw];
-    tag.appendChild(ele);
-
-    ele = document.createElement("header");
-    ele.className = 'headertag';
-    tag = document.getElementsByClassName("list--item_div")[sw];
-    tag.appendChild(ele);
-
-    ele = document.createElement("h2");
-    ele.textContent = kari[index].item_name;
-    tag = document.getElementsByClassName("headertag")[sw];
-    tag.appendChild(ele);
-
-    ele = document.createElement("figcaption");
-    ele.textContent = kari[index].item_money+'円';
-    tag = document.getElementsByClassName("list--item_div")[sw];
-    tag.appendChild(ele);
-    console.log(i);
-    count[a]++;
-    sw++;
-    index++;
+const sort=()=>{
+  const c1 = document.getElementById("c1");
+  const c2 = document.getElementById("c2");
+  const radio1 = document.getElementsByName("radio1");
+  const radio2 = document.getElementsByName("radio2");
+  let jouken;
+  if(c1.checked){
+    category[0]=true;
+  }else{
+    category[0]=false;
   }
+  if(c2.checked){
+    category[1]=true;
+  }else{
+    category[1]=false;
+  }
+
+  for (let i = 0; i < radio1.length; i++){
+    if (radio1.item(i).checked){
+        value1 = radio1.item(i).value;
+    }
+  }
+  for (let i = 0; i < radio2.length; i++){
+    if (radio2.item(i).checked){
+        value2 = radio2.item(i).value;
+    }
+  }
+  //並び替え条件式
+  if(value1==1){
+    if(value2==1){
+      jouken = "a.item_time > b.item_time";
+    }else if(value2==2){
+      jouken = "a.item_time < b.item_time";
+    }
+  }else if(value2==2){
+    if(value2==1){
+      jouken = "a.item_money > b.item_money";
+    }else if(value2==2){
+      jouken = "a.item_money < b.item_money";
+    }
+  }
+  mens.sort(function(a, b) {
+    
+    if (jouken) {
+      return 1;
+    } else {
+      return -1;
+    }
+  })
 }
 
