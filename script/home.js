@@ -146,6 +146,7 @@ const hyouji=(a,b)=>{
 
         ele = document.createElement("a");
         ele.className = 'atag';
+        ele.id='openSyousai';
         ele.href = "#";
         tag = document.getElementsByClassName("list--item_div")[sw];
         tag.appendChild(ele);
