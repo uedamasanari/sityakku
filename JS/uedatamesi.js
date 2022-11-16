@@ -48,8 +48,6 @@ function syuppin(){
     const reader = new FileReader()
     reader.onload = (event) => {
         imagetxt = event.currentTarget.result;
-        //変換したものにimgタグで表示できるようにdata~の文を追加
-        imagetxt = imagetxt.replace("data:image/png;base64,", "");
         
         //ajaxでPHPに送信するための配列作成
         let data = {
@@ -100,8 +98,6 @@ function hensyuu(){
     const reader = new FileReader()
     reader.onload = (event) => {
         imagetxt = event.currentTarget.result;
-        //変換したものにimgタグで表示できるようにdata~の文を追加
-        imagetxt = imagetxt.replace("data:image/png;base64,", "");
         
         //ajaxでPHPに送信するための配列作成
         let data = {

@@ -1,7 +1,7 @@
 .item{
     display: grid;
-    grid-template-rows: 120px 120px 110px 100px 100px;
-    grid-template-columns: 350px;
+    grid-template-rows: 95px 95px 65px 65px 65px 95px 45px;
+    grid-template-columns: 250px;
     margin-top: 5%;
     /* background-color: antiquewhite; */
 }
@@ -9,25 +9,54 @@
 #image{
     grid-row: 1 / 3;
     grid-column: 1 / 2;
-    background-color: red;
-    margin-left: 3%;
+    /* background-color: red; */
+    margin-left: 7%;
 }
 
-#itemPoint{
+#itemPoint1{
     grid-row: 3 / 4;
     grid-column: 1 / 2;
-    white-space: pre-line;
-    background-color: aqua;
+    /* white-space: pre-line; */
+    /* background-color: aqua; */
+}
+#itemPoint2{
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+    /* white-space: pre-line;
+    background-color: aqua; */
 }
 
+#itemPoint3{
+    grid-row: 5 / 6;
+    grid-column: 1 / 2;
+    /* white-space: pre-line; */
+    /* background-color: aqua; */
+}
 #itemLook{
-    grid-row: 4 / 5;
+    grid-row: 6 / 7;
     grid-column: 1 / 2;
     background-color: blue;
 }
 
 #button{
-    grid-row: 5 / 6;
+    grid-row: 7 / 8;
     grid-column: 1 / 2;
     background-color: springgreen;
+}
+
+.tryButton{
+    background: white;
+    color: black;
+    border-radius:10px;
+    width: 41%;
+    padding: 2%;
+    margin-bottom: 2%;
+}
+
+.favoriteButton{
+    background: white;
+    color: black;
+    border-radius:10px; 
+    width: 13%;
+    padding: 3%;
 }
