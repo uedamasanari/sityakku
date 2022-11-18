@@ -6,58 +6,7 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
   <link rel="stylesheet" href="../header/header.css">
   <link rel="stylesheet" href="../css/SS.css">
-  <script>
-	function mein1(){
-		document.getElementById("history").style.display ="none";
-		document.getElementById("none").style.display ="block";
-	}
-	function mein2(){
-		document.getElementById("history").style.display ="block";
-		document.getElementById("none").style.display ="none";
-	}
-	function change(){
-		document.getElementById("history").style.display ="none";
-		document.getElementById("none").style.display ="block";
-	}
-    function syuppin(){
-    const formElements = document.forms['postshouhin'];
-    //↓base64(画像を文字へ変換)
-    const uploadImage = document.querySelector('#image')
-    const file = uploadImage.files[0]
-    const reader = new FileReader()
-    reader.onload = (event) => {
-        imagetxt = event.currentTarget.result;
-        
-        //ajaxでPHPに送信するための配列作成
-        let data = {
-            a:formElements.elements['syouhin'].value,
-            b:formElements.elements['kategori'].value,
-            c:formElements.elements['bunrui'].value ,
-            d:formElements.elements['size'].value ,
-            e:formElements.elements['nedan'].value ,
-            f:formElements.elements['tokucyou'].value,
-            g:imagetxt
-        }
-        //↓ajaxでPHPと通信
-        $.ajax({
-            type: "post",   //送信の通信だと定義
-            url: "PHP/Ueda.php",    //送信先のリンク
-            data: data,     //送信するデータを定義
-        })
-        .success(function(data) {
-            //通信に成功
-            console.log(data);
-        }).error(function(XMLHttpRequest, textStatus, errorThrown) {
-            //通信に失敗
-            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-            console.log("textStatus     : " + textStatus);
-            console.log("errorThrown    : " + errorThrown.message);
-        });
-    }
-    reader.readAsDataURL(file);
-    //↑base64終了
-}
-</script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>	
 	<div class="hero-anime">
@@ -237,6 +186,7 @@
         <button class="hensyu" onclick="change()">編集</button>
         <button class="sakujyo">削除</button>
 	</div>
+    <form onsubmit="return false;" name="postshouhin" method="post" action="">
     <div class="none" id="none">
 	<div class="ai" id="ai">
         
@@ -270,11 +220,14 @@
 
 	</div>
     </div>
+</form>
 
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    
 	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="header.js"></script>
+	<script src="../header/header.js"></script>
+    <script src="./SS.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
