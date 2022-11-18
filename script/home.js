@@ -190,6 +190,7 @@ const hyouji = (a, b) => {
 
                 ele = document.createElement("img");
                 ele.src = kari[index].item_image;
+                ele.onclick = "syouhinsyousai("+index+")";
                 ele.style = "height:250px;width:250px;"
                 tag = document.getElementsByClassName("atag")[sw];
                 tag.appendChild(ele);
@@ -294,4 +295,8 @@ const sort = () => {
     hyouji(1, 2);
     hyouji(2, 2);
     
+}
+
+function syouhinsyousai(a){
+    document.getElementById("size").textContent=mens[a].item_size;
 }
