@@ -191,8 +191,8 @@ const hyouji = (a, b) => {
                 ele = document.createElement("img");
                 ele.src = kari[index].item_image;
                 ele.style = "height:250px;width:250px;";
-                ele.onclick = function(){
-                    syouhinsyousai(a,i);
+                ele.onclick = function () {
+                    syouhinsyousai(a, i);
                 };
                 tag = document.getElementsByClassName("atag")[sw];
                 tag.appendChild(ele);
@@ -211,14 +211,13 @@ const hyouji = (a, b) => {
                 ele.textContent = kari[index].item_money + '円';
                 tag = document.getElementsByClassName("list--item_div")[sw];
                 tag.appendChild(ele);
-                console.log(i);
                 count[a]++;
                 sw++;
                 index++;
             }
         }
     }
-  }
+}
 
 
 const sort = () => {
@@ -251,53 +250,146 @@ const sort = () => {
     //並び替え条件式
     if (value1 == 1) {
         if (value2 == 1) {
-            jouken = "a.item_time < b.item_time";
-            console.log('1 1');
+            mens.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_time > b.item_time) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
         } else if (value2 == 2) {
-            jouken = "a.item_time > b.item_time";
-            console.log('1 2');
+            mens.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_time < b.item_time) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
         }
     } else if (value1 == 2) {
         if (value2 == 1) {
-            jouken = "a.item_money < b.item_money";
-            console.log('2 1');
+            mens.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_money > b.item_money) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
         } else if (value2 == 2) {
-            jouken = "a.item_money > b.item_money";
-            console.log('2 2');
+            mens.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_money < b.item_money) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
         }
     }
-    mens.sort(function (a, b) {
-      console.log('通った');
-        if (jouken) {
-            return 1;
-        } else {
-            return -1;
+
+    if (value1 == 1) {
+        if (value2 == 1) {
+            ladius.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_time > b.item_time) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            ladius.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_time < b.item_time) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
         }
-        
-    })
-    ladius.sort(function (a, b) {
-      console.log('通った');
-        if (jouken) {
-            return 1;
-        } else {
-            return -1;
+    } else if (value1 == 2) {
+        if (value2 == 1) {
+            ladius.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_money > b.item_money) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            ladius.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_money < b.item_money) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
         }
-        
-    })
-    accessory.sort(function (a, b) {
-      console.log('通った');
-        if (jouken) {
-            return 1;
-        } else {
-            return -1;
+    }
+    if (value1 == 1) {
+        if (value2 == 1) {
+            accessory.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_time < b.item_time) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            accessory.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_time > b.item_time) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
         }
-        
-    })
+    } else if (value1 == 2) {
+        if (value2 == 1) {
+            accessory.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_money > b.item_money) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            accessory.sort(function (a, b) {
+                console.log('通った');
+                if (a.item_money < b.item_money) {
+                    return 1;
+                } else {
+                    console.log(-1);
+                    return -1;
+                }
+            })
+        }
+    }
     hyouji(0, 2);
     hyouji(1, 2);
     hyouji(2, 2);
-    
+
 }
-function syouhinsyousai(seibetu,a){
-    document.getElementById("size").textContent=mens[a].item_size;
+
+function syouhinsyousai(seibetu, a) {
+    document.getElementById("size").textContent = mens[a].item_size;
 }
