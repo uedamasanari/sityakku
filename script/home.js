@@ -298,5 +298,8 @@ const sort = () => {
 }
 
 function syouhinsyousai(a){
+    document.getElementById("itemName").textContent=mens[a].item_name;
     document.getElementById("size").textContent=mens[a].item_size;
+    document.getElementById("price").textContent=mens[a].item_money;
+    document.getElementById("ProductDetails").textContent=mens[a].item_size;
 }
