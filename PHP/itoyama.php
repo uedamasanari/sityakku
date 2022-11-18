@@ -4,7 +4,13 @@ header("Access-Control-Allow-Origin: *");
 $itoyama = new Itoyama();
 
 if(isset($_POST['mail'])){
+
     $itoyama->login($_POST['mail'],$_POST['pass']);
+
+}else if(isset($_GET['profile'])){
+
+    $itoyama->prohenkou($_GET['user_id']);
+
 }
 
 
@@ -103,13 +109,26 @@ if(isset($_POST['mail'])){
             }
 
             //プロフィール編集
-            public function prohenkou(){
+            public function prohenkou($id1){
                 $pdo = $this->dbConnect();
                 $sql = "SELECT * FROM users WHERE user_id = ?";
-                $ps = $pdo -> prepare($sql);
-                $ps->bindValue(1,$_SESSION['user'],PDO::PARAM_INT);
+                $ps = $pdo ->prepare($sql);
+                $ps->bindValue(1,$id1,PDO::PARAM_INT);
                 $ps->execute();
-                return $ps;
+                $sea = $ps->fetchAll();
+                $data = array();
+                foreach ($sea as $row) {
+                    array_push($data, array(
+                        'user_name' => $row['user_name'],
+                        'user_height' => $row['user_height'],
+                        'user_weight' => $row['user_weight'],
+                        'user_gender' => $row['user_gender'],
+                        'user_buy' => $row['user_buy'],
+                        'user_address' => $row['user_address']
+                    ));
+                }
+                $json_array = json_encode($data);
+                print $json_array;
             }
 
          }
