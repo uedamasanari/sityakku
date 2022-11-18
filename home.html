@@ -7,11 +7,14 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
     <link rel="stylesheet" href="css/home.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    
-
+    <link rel="import" href="https://www.polymer-project.org/0.5/components/paper-ripple/paper-ripple.html">
+    <link rel="import" href="http://www.polymer-project.org/components/core-icons/core-icons.html">
+    <link rel="import" href="http://www.polymer-project.org/components/font-roboto/roboto.html">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
 <body>
+
     <div class="hero-anime">
         <div class="navigation-wrap bg-light start-header start-style">
             <div class="container">
@@ -36,23 +39,24 @@
                                     <li class=" pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link syuppin_button" href="#">出品</a>
                                     </li>
-
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="#">
+                                        <button class="nav-link modalOpen button-border" data-modal="1">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                 fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                                                 <path fill-rule="evenodd"
                                                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                             </svg>
-                                            アカウント</a>
+                                            アカウント</button>
                                     </li>
+                                    <!--  -->
 
+                                    <!--  -->
 
 
 
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="favorite.html">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                 fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
@@ -85,6 +89,208 @@
                 </div>
             </div>
         </div>
+        <section id="modalArea" class="modalArea">
+            <div id="w">
+                <header id="title">
+                    <div class="modal-title">ショッピングカート</div>
+                    <div class="modal-close closeModal" id="closeModal">×</div>
+                </header>
+                <div id="page">
+                    <table id="cart">
+                        <thead>
+                            <tr>
+                                <th class="first">画像</th>
+                                <th class="second">あとで<br>購入</th>
+                                <th class="third">商品名</th>
+                                <th class="fourth">値段</th>
+                                <th class="fifth">削除</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            <!-- shopping cart contents -->
+                            <tr class="productitm">
+                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
+                                <td>
+                                    <span class="remove">
+                                        <div class="wishlist-heart-group">
+                                            <!-- product-333を変更しなければならない -->
+                                            <input name="product-333" id="product-333" data-product-id="333"
+                                                type="checkbox" />
+                                            <label for="product-333">
+                                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                                    xmlns:cc="http://creativecommons.org/ns#"
+                                                    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                                    xmlns:svg="http://www.w3.org/2000/svg"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                                                    version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
+                                                    <g transform="translate(0,-952.36218)">
+                                                        <path style="color:#000000;enable-background:accumulate;"
+                                                            d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                            fill="transparent" class="heart-path" stroke="#737373"
+                                                            stroke-width="5" marker="none" visibility="visible"
+                                                            display="inline" overflow="visible" />
+                                                    </g>
+                                                </svg>
+                                            </label>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td>じゃっけと</td>
+                                <td>1000円</td>
+                                <td>
+                                    <span class="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="productitm">
+                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
+                                <td>
+                                    <span class="remove">
+                                        <div class="wishlist-heart-group">
+                                            <!-- product-333を変更しなければならない -->
+                                            <input name="product-333" id="product-333" data-product-id="333"
+                                                type="checkbox" />
+                                            <label for="product-333">
+                                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                                    xmlns:cc="http://creativecommons.org/ns#"
+                                                    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                                    xmlns:svg="http://www.w3.org/2000/svg"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                                                    version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
+                                                    <g transform="translate(0,-952.36218)">
+                                                        <path style="color:#000000;enable-background:accumulate;"
+                                                            d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                            fill="transparent" class="heart-path" stroke="#737373"
+                                                            stroke-width="5" marker="none" visibility="visible"
+                                                            display="inline" overflow="visible" />
+                                                    </g>
+                                                </svg>
+                                            </label>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td>じゃっけと</td>
+                                <td>1000円</td>
+                                <td>
+                                    <span class="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="productitm">
+                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
+                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
+                                <td>
+                                    <span class="remove">
+                                        <div class="wishlist-heart-group">
+                                            <input name="product-332" id="product-332" data-product-id="333"
+                                                type="checkbox" />
+                                            <label for="product-332">
+                                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                                    xmlns:cc="http://creativecommons.org/ns#"
+                                                    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                                    xmlns:svg="http://www.w3.org/2000/svg"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                                                    version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
+                                                    <g transform="translate(0,-952.36218)">
+                                                        <path style="color:#000000;enable-background:accumulate;"
+                                                            d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                            fill="transparent" class="heart-path" stroke="#737373"
+                                                            stroke-width="5" marker="none" visibility="visible"
+                                                            display="inline" overflow="visible" />
+                                                    </g>
+                                                </svg>
+                                            </label>
+                                        </div>
+                                    </span>
+                                </td>
+                                <td>じゃっけと</td>
+                                <td>1000円</td>
+                                <td>
+                                    <span class="remove">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <!-- tax + subtotal -->
+                            <tr class="extracosts">
+                                <td class="light">商品数量</td>
+                                <td colspan="2" class="light"></td>
+                                <td>３点</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr class="totalprice">
+                                <td class="light">合計金額</td>
+                                <td colspan="2">&nbsp;</td>
+                                <td colspan="2"><span class="thick">３００円</span></td>
+                            </tr>
+
+                            <!-- checkout btn -->
+                            <tr class="checkoutrow">
+                                <td colspan="5" class="checkout"><button id="submitbtn">購入画面へ進む</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <!--  -->
+        <section id="goodsModal" class="syouhin-modal">
+            <div class="syouhin-w">
+                <header id="title">
+                    <div class="modal-title">商品詳細</div>
+                    <div class="modal-close closeModal" id="close-syousai">×</div>
+                </header>
+                <div class="con">
+                    <div id="c11">
+                        <img src="/script/siro.jpg" alt="実験" width="370" height="350">
+                    </div>
+                    <div id="c12">
+                        <input type="submit" class="try" value="  試着する  ">
+                        <input type="submit" class="favorite" value="♡">
+                        <div id="c13">
+                            <input type="submit" class="try" value="カートに入れる">
+                        </div>
+                    </div>
+                    <div id="c21">商品名
+                        サイズ
+                        値段
+                    </div>
+                    <div id="c22">
+                        商品詳細
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </div>
     <!-- under tabmenu -->
     <div class="header_matome">
@@ -95,11 +301,91 @@
                 <span class="nav"><a href="#tabcon-03">アクセサリー</a></span>
             </div>
             <div class="tab-con">
+                <!--  -->
+                <div class="modal-pro" id="modal-pro">
+                    <div class="modal__overlay modalClose"></div>
+                    <div class="modal__content">
+                        <div class="modal_inner">
+                            <div class="modal__close-btn modalClose" aria-label="閉じる"><span class="lineClose"></span>
+                            </div>
+                            <!-- スライダー -->
+                            <div class="swiper modalInSlider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide modalInSlider">
+                                        <fieldset class="wakusenn">
+                                            <a href="#" class="btn-flat-border modalClose">閉じる</a>
+                                            <h4 class="userh4">ユーザー名</h4>
+                                            <input type="text" size="15" value="@@@@@@@@@" readonly>
+                                            <h4>身長</h4>
+                                            <input type="text" size="5" value="@@@@" readonly>
+                                            <label for="text_id">cm</label>
+                                            <h4>体重</h4>
+                                            <input type="text" size="5" value="@@@@" readonly>
+                                            <label for="text_id">kg</label>
+                                            <h4>性別</h4>
+                                            <div>man or ledy</div>
+                                            <div class="button_solid004 swiper-button-next">
+                                                <a href="#">編集</a>
+                                            </div>
+                                            <div class="kessaihouhou">
+                                                <h4>決済方法</h4>
+                                                <form>
+                                                    <div>ATM</div>
+                                            </div>
+                                            </form>
+                                            <div class="haisousaki">
+                                                <h4>配送先</h4>
+                                                <input type="text" size="20" value="@@@@@@@@@@@" readonly>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="swiper-slide modalInSlider">
+                                        <fieldset class="wakusennn">
+                                            <a href="#" class="btn-flat-border1 swiper-button-prev">戻る</a>
+                                            <h4 class="modal-h4">ユーザー名</h4>
+                                            <input type="text" name="text" value="" size="15">
+                                            <h4>身長</h4>
+                                            <input type="text" name="text" value="" size="5">
+                                            <label for="text_id">cm</label>
+                                            <h4>体重</h4>
+                                            <input type="text" name="text" value="" size="5">
+                                            <label for="text_id">kg</label>
+                                            <h4>性別</h4>
+                                            <input type="radio" name="性別" value="女性">男性
+                                            <input type="radio" name="性別" value="男性">女性
+                                            <div class="button_solid005">
+                                                <a href="#">変更</a>
+                                            </div>
+                                            <div class="kessaihouhou">
+                                                <h4>決済方法</h4>
+                                                <form>
+                                                    <select name="select1">
+                                                        <option value="konnbinibarai">銀行振込</option>
+                                                        <option value="ginnkouhurikomi">コンビニ払い</option>
+                                                        <option value="kurezittoka-do">クレジットカード</option>
+                                                    </select>
+                                            </div>
+                                            </form>
+                                            <div class="haisousaki">
+                                                <h4>配送先</h4>
+                                                <input type="text" name="text" value="" size="20">
+                                            </div>
+                                        </fieldset>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next "></div>
+                    </div>
+                </div>
+                <!--  -->
                 <div id="tabcon-01" class="con-box" style="display:block;">
                     <!--  -->
                     <div class="goods_footer">
                         <div class="list" id="list">
-                            <!-- <div class="list--item">
+                            <div class="list--item">
                                 <figure class="list--item_div">
                                     <a id="openSyousai"><img src="./script/siro.jpg" alt=""></a>
                                     <header>
@@ -318,24 +604,27 @@
                                         値段
                                     </figcaption>
                                 </figure>
-                            </div> -->
+                            </div>
                         </div>
-                         <!--  -->
-                    <div class="container_footer">
-                        <div class="pagination p11">
-                            <ul class="footer_ul">
-                                <a href="#" class="footer_a footer_left">
-                                    <li>Prev</li>
-                                </a>
-                                <a class="is-active footer_a footer_right" href="#">
-                                    <li>Next</li>
-                                </a>
-                            </ul>
+
+
+                        <!--  -->
+                        <div class="container_footer">
+                            <div class="pagination p11">
+                                <ul class="footer_ul">
+                                    <a class="footer_a footer_left">
+                                        <div style="cursor: pointer;" onclick="hyouji(0,0)">Prev</div>
+                                    </a>
+                                    <a class="is-active footer_a footer_right">
+                                        <div style="cursor: pointer;" onclick="hyouji(0,1)">Next</div>
+                                    </a>
+                                </ul>
+
+                            </div>
+
                         </div>
+
                     </div>
-                    <!--  -->
-                    </div>
-                   
                 </div>
                 <div id="tabcon-02" class="con-box">
                     <div class="goods_footer">
@@ -561,20 +850,21 @@
                                 </figure>
                             </div>
                         </div>
-                         <!--  -->
-                    <div class="container_footer">
-                        <div class="pagination p11">
-                            <ul class="footer_ul">
-                                <a href="#" class="footer_a footer_left">
-                                    <li>Prev</li>
-                                </a>
-                                <a class="is-active footer_a footer_right" href="#">
-                                    <li>Next</li>
-                                </a>
-                            </ul>
+
+                        <!--  -->
+                        <div class="container_footer">
+                            <div class="pagination p11">
+                                <ul class="footer_ul">
+                                    <a class="footer_a footer_left">
+                                        <div style="cursor: pointer;" onclick="hyouji(1,0)">Prev</div>
+                                    </a>
+                                    <a class="is-active footer_a footer_right">
+                                        <div style="cursor: pointer;" onclick="hyouji(1,1)">Next</div>
+                                    </a>
+                                </ul>
+                            </div>
+                            <!--  -->
                         </div>
-                    </div>
-                    <!--  -->
                     </div>
                 </div>
                 <div id="tabcon-03" class="con-box">
@@ -801,254 +1091,83 @@
                                 </figure>
                             </div>
                         </div>
-                         <!--  -->
-                    <div class="container_footer">
-                        <div class="pagination p11">
-                            <ul class="footer_ul">
-                                <a href="#" class="footer_a footer_left">
-                                    <li>Prev</li>
-                                </a>
-                                <a class="is-active footer_a footer_right" href="#">
-                                    <li>Next</li>
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--  -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- under sort button -->
-        <div class="modal-container">
-            <input id="modal-toggle" type="checkbox">
-            <label class="modal-btn" for="modal-toggle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
-                </svg>
-                <!-- 絞り込み -->
-            </label>
-            <label class="modal-backdrop" for="modal-toggle"></label>
-            <div class="modal-content">
-                <label class="modal-closee" for="modal-toggle">&#x2715;</label>
-                <h2>絞り込み</h2>
-                <hr>
-                <!-- <p>Hello from inside the modal!</p>  -->
-                <!-- <input type="checkbox" value="top"> -->
 
-                <div class="checkbox">
-                    <ul class="checkul">
-                        <li class="checkli">
-                            <input id="c1" type="checkbox" checked>
-                            <label for="c1">トップス</label>
-                            <input id="c2" type="checkbox">
-                            <label for="c2">ボトムス</label>
-                        </li>
-                        <li class="checkli">
-                            <input id="r1" type="radio" name="radio1" value="1" checked>
-                            <label for="r1">商品追加順</label>
-                            <input id="r2" type="radio" name="radio1" value="2">
-                            <label for="r2">値段順</label>
-                        </li>
-                        <li class="checkli">
-                            <input id="r1" type="radio" name="radio2" value="1" checked>
-                            <label for="r1">昇順</label>
-                            <input id="r2" type="radio" name="radio2" value="2">
-                            <label for="r2">降順</label>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <label class="modal-content-btn" for="modal-toggle" onclick="">絞り込む</label>
-            </div>
-        </div>
-    <section id="modalArea" class="modalArea">
-        <div id="w">
-            <header id="title">
-                <div class="modal-title">ショッピングカート</div>
-                <div class="modal-close closeModal" id="closeModal">×</div>
-            </header>
-            <div id="page">
-                <table id="cart">
-                    <thead>
-                        <tr>
-                            <th class="first">画像</th>
-                            <th class="second">あとで<br>購入</th>
-                            <th class="third">商品名</th>
-                            <th class="fourth">値段</th>
-                            <th class="fifth">削除</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- shopping cart contents -->
-                        <tr class="productitm">
-                            <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                            <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
-                            <td>
-                                <span class="remove">
-                                    <div class="wishlist-heart-group">
-                                        <!-- product-333を変更しなければならない -->
-                                        <input name="product-333" 
-                                        id="product-333" 
-                                        data-product-id="333" 
-                                        type="checkbox"/>
-                                        <label for="product-333">
-                                            <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                             xmlns:cc="http://creativecommons.org/ns#" 
-                                             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-                                             xmlns:svg="http://www.w3.org/2000/svg" 
-                                             xmlns="http://www.w3.org/2000/svg" 
-                                             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" 
-                                             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" 
-                                             version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
-                                                <g transform="translate(0,-952.36218)">
-                                                    <path style="color:#000000;enable-background:accumulate;" 
-                                                    d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z" 
-                                                    fill="transparent" 
-                                                    class="heart-path" 
-                                                    stroke="#737373" 
-                                                    stroke-width="5" 
-                                                    marker="none" 
-                                                    visibility="visible" 
-                                                    display="inline" 
-                                                    overflow="visible"/>
-                                                </g>
-                                            </svg>
-                                        </label>
-                                    </div>
-                                </span>
-                            </td>
-                            <td>じゃっけと</td>
-                            <td>1000円</td>
-                            <td>
-                                <span class="remove">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                        <path
-                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                        <path fill-rule="evenodd"
-                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                    </svg>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="productitm">
-                            <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                            <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
-                            <td>
-                                <span class="remove">
-                                    <div class="wishlist-heart-group">
-                                        <input name="product-332" 
-                                        id="product-332" 
-                                        data-product-id="333" 
-                                        type="checkbox"/>
-                                        <label for="product-332">
-                                            <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                             xmlns:cc="http://creativecommons.org/ns#" 
-                                             xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
-                                             xmlns:svg="http://www.w3.org/2000/svg" 
-                                             xmlns="http://www.w3.org/2000/svg" 
-                                             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" 
-                                             xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" 
-                                             version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
-                                                <g transform="translate(0,-952.36218)">
-                                                    <path style="color:#000000;enable-background:accumulate;" 
-                                                    d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z" 
-                                                    fill="transparent" 
-                                                    class="heart-path" 
-                                                    stroke="#737373" 
-                                                    stroke-width="5" 
-                                                    marker="none" 
-                                                    visibility="visible" 
-                                                    display="inline" 
-                                                    overflow="visible"/>
-                                                </g>
-                                            </svg>
-                                        </label>
-                                    </div>
-                                </span>
-                            </td>
-                            <td>じゃっけと</td>
-                            <td>1000円</td>
-                            <td>
-                                <span class="remove">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                        <path
-                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                        <path fill-rule="evenodd"
-                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                    </svg>
-                                </span>
-                            </td>
-                        </tr>
-
-
-                        <!-- tax + subtotal -->
-                        <tr class="extracosts">
-                            <td class="light">商品数量</td>
-                            <td colspan="2" class="light"></td>
-                            <td>３点</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr class="totalprice">
-                            <td class="light">合計金額</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2"><span class="thick">３００円</span></td>
-                        </tr>
-
-                        <!-- checkout btn -->
-                        <tr class="checkoutrow">
-                            <td colspan="5" class="checkout"><button id="submitbtn">購入画面へ進む</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-    <section id="goodsModal" class="syouhin-modal">
-            <div id="syouhin-w">
-                <header id="title">
-                    <div class="modal-title">商品詳細</div>
-                    <div class="modal-close closeModal" id="close-syousai">×</div>
-                </header>
-                <div class="goods-modal-body">
-                    <div class="con">
-                        <div id="c11">
-                            <img src="/script/siro.jpg" alt="実験"  width="370" height="350">
-                        </div>
-                        <div id="c12">
-                            <input type="submit" class= "try" value="  試着する  ">
-                            <input type="submit"  class= "favorite"value="♡">
-                            <div id="c13">
-                                <input type="submit" class= "try" value="カートに入れる">
+                        <!--  -->
+                        <div class="container_footer">
+                            <div class="pagination p11">
+                                <ul class="footer_ul">
+                                    <a class="footer_a footer_left">
+                                        <div style="cursor: pointer;" onclick="hyouji(2,0)">Prev</div>
+                                    </a>
+                                    <a class="is-active footer_a footer_right">
+                                        <div style="cursor: pointer;" onclick="hyouji(2,1)">Next</div>
+                                    </a>
+                                </ul>
                             </div>
+                            <!--  -->
                         </div>
-                        <div id="c21">商品名
-                            サイズ
-                            値段
-                        </div>
-                        <div id="c22">
-                            商品詳細
-                        </div>
-                
                     </div>
                 </div>
             </div>
-    </section>
-</div>
+            <!-- under sort button -->
+            <div class="modal-container">
+                <input id="modal-toggle" type="checkbox">
+                <label class="modal-btn" for="modal-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-sliders" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
+                    </svg>
+                    <!-- 絞り込み -->
+                </label>
+                <label class="modal-backdrop" for="modal-toggle"></label>
+                <div class="modal-content">
+                    <label class="modal-closee" for="modal-toggle">&#x2715;</label>
+                    <h2>絞り込み</h2>
+                    <hr>
+                    <!-- <p>Hello from inside the modal!</p>  -->
+                    <!-- <input type="checkbox" value="top"> -->
 
-    <!-- modal -->
+                    <div class="checkbox">
+                        <ul class="checkul">
+                            <li class="checkli">
+                                <input id="c1" type="checkbox" checked>
+                                <label for="c1">トップス</label>
+                                <input id="c2" type="checkbox">
+                                <label for="c2">ボトムス</label>
+                            </li>
+                            <li class="checkli">
+                                <input id="r11" type="radio" name="radio1" value="1" checked>
+                                <label for="r1">商品追加順</label>
+                                <input id="r12" type="radio" name="radio1" value="2">
+                                <label for="r2">値段順</label>
+                            </li>
+                            <li class="checkli">
+                                <input id="r21" type="radio" name="radio2" value="1" checked>
+                                <label for="r1">昇順</label>
+                                <input id="r22" type="radio" name="radio2" value="2">
+                                <label for="r2">降順</label>
+                            </li>
+                        </ul>
+                    </div>
 
-    <!--  -->
+
+                    <label class="modal-content-btn" for="modal-toggle">絞り込む</label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- modal -->
+
+        <!--  -->
 </body>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="script/home.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </html>

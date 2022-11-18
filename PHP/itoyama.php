@@ -1,4 +1,13 @@
 <?php
+header('Content-Type: application/json; charset=UTF-8');
+header("Access-Control-Allow-Origin: *");
+$itoyama = new Itoyama();
+
+if(isset($_POST['mail'])){
+    $itoyama->login($_POST['mail'],$_POST['pass']);
+}
+
+
     class Itoyama{
         private function dbConnect(){
             $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','kanako','2101003');
@@ -43,19 +52,34 @@
             //ログイン
             public function login($mail,$pass){
                 $pdo=$this->dbConnect();
-                $sql = "SELECT * FROM users WHERE user_mail = ? AND user_pass = ?";
+                $sql = "SELECT * FROM users WHERE user_mail = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$mail,PDO::PARAM_STR);
-                $ps->bindValue(2,$pass,PDO::PARAM_STR);
+                //$ps->bindValue(2,$pass,PDO::PARAM_STR);
                 $ps->execute();
                 $data = $ps->fetchAll();
+                $dataarray=array();
                     foreach($data as $row){
-                        $_SESSION['user'] =$row['user_id'];
-                        header("Location:../home.html");
+                        if($pass == $row['user_pass']){
+                            array_push($dataarray,array(
+                                'state' => '成功',
+                                'user_id' => $row['user_id']
+                            ));
+                        }else{
+                            array_push($dataarray,array(
+                                'state' => '失敗',
+                                'er' => 1
+                            ));
+                        }
                     }
                     if(count($data)==0){
-                        header("Location:../toroku.html");
+                        array_push($dataarray,array(
+                            'state' => '失敗',
+                            'er' => 2
+                        ));
                     }
+                    $json_array = json_encode($dataarray);
+                    print $json_array;
                 }
 
             //新規登録
