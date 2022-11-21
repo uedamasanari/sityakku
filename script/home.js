@@ -10,7 +10,7 @@ let value1;
 let value2;
 window.onload = function () {
     $.ajax({
-            url: "PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
+            url: "./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
         })
         .success(function (res) {
             console.log(res);
@@ -299,8 +299,21 @@ const sort = () => {
     
 }
 function syouhinsyousai(seibetu,a){
-    document.getElementById("itemName").textContent=mens[a].item_name;
-    document.getElementById("size").textContent=mens[a].item_size;
-    document.getElementById("price").textContent=mens[a].item_money;
-    document.getElementById("ProductDetails").textContent=mens[a].item_size;
+    let kari=Array();
+    switch (seibetu) {
+        case 0:
+            kari = mens;
+            break;
+        case 1:
+            kari = ladius;
+            break;
+        case 2:
+            kari = accessory;
+            break;
+    }
+    document.getElementById("itemImg").src=kari[a].item_image;
+    document.getElementById("itemName").textContent=kari[a].item_name;
+    document.getElementById("size").textContent=kari[a].item_size;
+    document.getElementById("price").textContent=kari[a].item_money;
+    document.getElementById("ProductDetails").textContent=kari[a].item_feature;
 }
