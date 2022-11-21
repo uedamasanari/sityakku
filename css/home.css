@@ -570,6 +570,8 @@ width: 100%;
   .list--item img {
     display: block;
     width: 100%;
+    mix-blend-mode: multiply;
+    background-color: #2ecc71;
   }
   .list--item figcaption {
     padding: 6px 12px 12px;

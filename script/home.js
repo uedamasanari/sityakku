@@ -5,7 +5,7 @@ let accessory = Array();
 let count = [0, 0, 0];
 let page = [0, 0, 0];
 let maxpage = [0, 0, 0];
-let category = [true, true];
+let category = [true,true,true,true];
 let value1;
 let value2;
 window.onload = function () {
@@ -192,6 +192,7 @@ const hyouji = (a, b) => {
                 ele.src = kari[index].item_image;
                 ele.style = "height:250px;width:250px;";
                 ele.onclick = function () {
+                    $('#goodsModal').fadeIn();
                     syouhinsyousai(a, i);
                 };
                 tag = document.getElementsByClassName("atag")[sw];
@@ -223,19 +224,15 @@ const hyouji = (a, b) => {
 const sort = () => {
     const c1 = document.getElementById("c1");
     const c2 = document.getElementById("c2");
+    const c3 = document.getElementById("c3");
+    const c4 = document.getElementById("c4");
     const radio1 = document.getElementsByName("radio1");
     const radio2 = document.getElementsByName("radio2");
-    let jouken;
-    if (c1.checked) {
-        category[0] = true;
-    } else {
-        category[0] = false;
-    }
-    if (c2.checked) {
-        category[1] = true;
-    } else {
-        category[1] = false;
-    }
+    c1.checked ? category[0] = true : category[0] = false;
+    c2.checked ? category[1] = true : category[1] = false;
+    c3.checked ? category[2] = true : category[2] = false;
+    c4.checked ? category[3] = true : category[3] = false;
+
 
     for (let i = 0; i < radio1.length; i++) {
         if (radio1.item(i).checked) {

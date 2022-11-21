@@ -29,7 +29,7 @@ if(isset($_POST['mail'])){
                 $pdo = $this->dbConnect();
                 $sql = "DELETE FROM favorite WHERE item_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$item,POD::PARAM_INT);
+                $ps->bindValue(1,$item,PDO::PARAM_INT);
                 $ps->execute();
             }
             //カート商品取り消し
@@ -37,7 +37,7 @@ if(isset($_POST['mail'])){
                 $pdo = $this->dbConnect();
                 $sql = "DELETE FROM cart_detail WHERE item_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$item,POD::PARAM_INT);
+                $ps->bindValue(1,$item,PDO::PARAM_INT);
                 $ps->execute();
             }
             //出品商品取り消し
@@ -45,7 +45,7 @@ if(isset($_POST['mail'])){
                 $pdo = $this->dbConnect();
                 $sql = "DELETE FROM settlement_detail WHERE item_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$item,POD::PARAM_INT);
+                $ps->bindValue(1,$item,PDO::PARAM_INT);
                 $ps->execute();
             }
 
