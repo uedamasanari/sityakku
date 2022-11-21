@@ -40,7 +40,7 @@
                                         <a class="nav-link syuppin_button" href="#">出品</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <button class="nav-link modalOpen button-border" data-modal="1" onclick="profile()">
+                                        <button class="nav-link modalOpen button-border" data-modal="1" >
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                 fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -315,12 +315,12 @@
                                         <fieldset class="wakusenn">
                                             <a href="#" class="btn-flat-border modalClose">閉じる</a>
                                             <h4 class="userh4">ユーザー名</h4>
-                                            <input type="text" size="15" value="@@@@@@@@@" readonly>
+                                            <input type="text" size="15" value="@@@@@@@@@" id="user_name" readonly>
                                             <h4>身長</h4>
-                                            <input type="text" size="5" value="@@@@" readonly>
+                                            <input type="text" size="5" value="@@@@" id="user_sintyou" readonly>
                                             <label for="text_id">cm</label>
                                             <h4>体重</h4>
-                                            <input type="text" size="5" value="@@@@" readonly>
+                                            <input type="text" size="5" value="@@@@" id="user_taiju" readonly>
                                             <label for="text_id">kg</label>
                                             <h4>性別</h4>
                                             <div>man or ledy</div>
@@ -335,7 +335,7 @@
                                             </form>
                                             <div class="haisousaki">
                                                 <h4>配送先</h4>
-                                                <input type="text" size="20" value="@@@@@@@@@@@" readonly>
+                                                <input type="text" size="20" value="@@@@@@@@@@@" id="user_jusyo" readonly>
                                             </div>
                                         </fieldset>
                                     </div>
