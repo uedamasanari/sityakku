@@ -255,7 +255,8 @@
 
                             <!-- checkout btn -->
                             <tr class="checkoutrow">
-                                <td colspan="5" class="checkout"><button id="submitbtn" class="modalOpen" data-modal="3">購入画面へ進む</button></td>
+                                <td colspan="5" class="checkout"><button id="submitbtn" class="modalOpen"
+                                        data-modal="3">購入画面へ進む</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -274,7 +275,7 @@
                         <img src="/script/siro.jpg" width="370" height="350">
                     </div>
                     <div id="c12">
-                        <input type="submit" class="try" value="  試着する  ">
+                        <input type="submit" class="try" value="  試着する  " id="opensityaku">
                         <input type="submit" class="favorite" value="♡">
                         <div id="c13">
                             <input type="submit" class="try" value="カートに入れる">
@@ -378,9 +379,10 @@
                                                 <form>
 
                                                     <div class="row mb-3">
-                                                        <label class="col-sm-3 col-form-label">支払い方法<span class="badge bg-danger">必須</span></label>
+                                                        <label class="col-sm-3 col-form-label">支払い方法<span
+                                                                class="badge bg-danger">必須</span></label>
                                                         <div class="col-sm-9">
-                                    
+
                                                             <div class="form-group">
 
                                                                 <select class="form-control" id="sel1">
@@ -393,73 +395,86 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                    
+
                                                     <div class="row">
-                                                        <label class="col-sm-3 col-form-label">配送先郵便番号 <span class="badge bg-danger">必須</span></label>
+                                                        <label class="col-sm-3 col-form-label">配送先郵便番号 <span
+                                                                class="badge bg-danger">必須</span></label>
                                                         <div class="col-sm-9">
                                                             <p>
-                                                                <input type="text" name="postal-code" autocomplete="postal-code" class="form-control"
+                                                                <input type="text" name="postal-code"
+                                                                    autocomplete="postal-code" class="form-control"
                                                                     placeholder="郵便番号" required />
                                                             </p>
                                                         </div>
                                                     </div>
-                                    
+
                                                     <div class="row">
-                                                        <label class="col-sm-3 col-form-label">配送先住所 <span class="badge bg-danger">必須</span></label>
+                                                        <label class="col-sm-3 col-form-label">配送先住所 <span
+                                                                class="badge bg-danger">必須</span></label>
                                                         <div class="col-sm-9">
                                                             <div class="row mb-3">
                                                                 <label class="col-form-label col-sm-4">都道府県</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" name="address-level1" autocomplete="address-level1"
-                                                                        class="form-control" placeholder="東京都" required />
+                                                                    <input type="text" name="address-level1"
+                                                                        autocomplete="address-level1"
+                                                                        class="form-control" placeholder="東京都"
+                                                                        required />
                                                                 </div>
                                                             </div>
                                                             <div class="row mb-3">
                                                                 <label class="col-form-label col-sm-4">市区町村</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" name="address-level2" autocomplete="address-level2"
-                                                                        class="form-control" placeholder="中央区" required />
+                                                                    <input type="text" name="address-level2"
+                                                                        autocomplete="address-level2"
+                                                                        class="form-control" placeholder="中央区"
+                                                                        required />
                                                                 </div>
                                                             </div>
-                                    
+
                                                             <div class="row mb-3">
                                                                 <label class="col-form-label col-sm-4">番地等</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" name="address-line1" autocomplete="address-line1"
-                                                                        class="form-control" placeholder="◯丁目◯番" required />
+                                                                    <input type="text" name="address-line1"
+                                                                        autocomplete="address-line1"
+                                                                        class="form-control" placeholder="◯丁目◯番"
+                                                                        required />
                                                                 </div>
                                                             </div>
-                                    
-                                    
+
+
                                                             <div class="row mb-3">
                                                                 <label class="col-form-label col-sm-4">建物名・部屋番号等</label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" name="address-line2" autocomplete="address-line2"
-                                                                        class="form-control" placeholder="コーポ◯◯ 101号室" />
+                                                                    <input type="text" name="address-line2"
+                                                                        autocomplete="address-line2"
+                                                                        class="form-control"
+                                                                        placeholder="コーポ◯◯ 101号室" />
                                                                 </div>
                                                             </div>
-                                    
+
                                                         </div>
                                                     </div>
-                                    
-                                    
-                                    
+
+
+
                                                     <div class="row">
                                                         <label class="col-sm-3 col-form-label">配達日時</label>
-                                    
+
                                                         <div class="col-sm-9">
-                                    
-                                                            <select class="custom-select w-25" title="生年月日(西暦)" name="bday-year" autocomplete="bday-year">
+
+                                                            <select class="custom-select w-25" title="生年月日(西暦)"
+                                                                name="bday-year" autocomplete="bday-year">
                                                                 <option selected="">----</option>
                                                                 <option value="2010">2010</option>
                                                                 <option value="2009">2009</option>
                                                                 <option value="2008">2008</option>
                                                                 <option value="2007">2007</option>
                                                                 <option value="2006">2006</option>
-                                                                <option value="2005">2005</option>          
+                                                                <option value="2005">2005</option>
                                                             </select>
                                                             年
-                                                            <select class="custom-select w-25" title="生年月日(月)" name="bday-month" autocomplete="bday-month">
+                                                            <select class="custom-select w-25" title="生年月日(月)"
+                                                                name="bday-month" autocomplete="bday-month">
                                                                 <option selected="">--</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
@@ -475,7 +490,8 @@
                                                                 <option value="12">12</option>
                                                             </select>
                                                             月
-                                                            <select class="custom-select w-25" title="生年月日(日)" name="bday-day" autocomplete="bday-day">
+                                                            <select class="custom-select w-25" title="生年月日(日)"
+                                                                name="bday-day" autocomplete="bday-day">
                                                                 <option selected="">--</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
@@ -511,22 +527,25 @@
                                                             </select>
                                                             日
                                                         </div>
-                                    
+
                                                     </div>
                                                     <div class="button-flex">
                                                         <div class="text-center my-5">
-                                                            <button type="submit" class="btn btn-primary button-padding modalClose">戻る</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary button-padding modalClose">戻る</button>
                                                         </div>
-                                    
+
                                                         <div class="text-center my-5">
-                                                            <button type="submit" class=" button-padding swiper-button-next buytext"><a class="buttext">購入確認</a></button>
+                                                            <button type="submit"
+                                                                class=" button-padding swiper-button-next buytext"><a
+                                                                    class="buttext">購入確認</a></button>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                      <div class="swiper-slide modalInSlider">
+                                    <div class="swiper-slide modalInSlider">
                                         <div class="list-all">
                                             <ol class="sample1">
                                                 <li class="li"><img src="" alt="" class="i-img">
@@ -558,21 +577,23 @@
                                             </div>
                                             <div class="sendday">
                                                 <label">配送希望日</label>
-                                                    <input type="text" class="sendday-inp" placeholder="yyyymmdd" readonly>
+                                                    <input type="text" class="sendday-inp" placeholder="yyyymmdd"
+                                                        readonly>
                                             </div>
                                         </div>
                                         <div class="address-button">
                                             <div class="sendaddress">
                                                 <label>配送先住所</label>
-                                                    <input type="text" class="sendaddress-inp" placeholder="東京都港区青山一丁目" readonly>
+                                                <input type="text" class="sendaddress-inp" placeholder="東京都港区青山一丁目"
+                                                    readonly>
                                             </div>
                                             <div class="submitbutton">
                                                 <button type="submit" class="btn btn-primary">購入確定</button>
                                             </div>
                                         </div>
                                     </div>
-                                  
-                                  
+
+
                                 </div>
                             </div>
                         </div>
@@ -1332,19 +1353,21 @@
                         <ul class="checkul">
                             <li class="checkli">
                                 <div>
-                                <input id="c1" type="checkbox" checked>
-                                <label for="c1">トップス</label>
-                                <input id="c2" type="checkbox">
-                                <label for="c2">ボトムス</label>
-                                <input id="c3" type="checkbox">
-                                <label for="c3">指輪</label>
+                                    <input id="c1" type="checkbox" checked>
+                                    <label for="c1">トップス</label>
+                                    <input id="c2" type="checkbox" checked>
+                                    <label for="c2">ボトムス</label>
+                                    <input id="c3" type="checkbox" checked>
+                                    <label for="c3">指輪</label>
                                 </div>
-                                <input id="c4" type="checkbox">
-                                <label for="c4">ネックレス</label>
+                                <div>
+                                    <input id="c4" type="checkbox" checked>
+                                    <label for="c4">ネックレス</label>
+                                </div>
                             </li>
                             <li class="checkli">
                                 <input id="r11" type="radio" name="radio1" value="1" checked>
-                                <label for="r1">商品追加順</label>
+                                <label for="r1">出品日時順</label>
                                 <input id="r12" type="radio" name="radio1" value="2">
                                 <label for="r2">値段順</label>
                             </li>
@@ -1363,6 +1386,10 @@
             </div>
 
         </div>
+
+        <section id="modalsityaku" class="modalsityaku" >
+            <div class="modal-close closeModal" id="close-sityaku">×</div>
+        </section>
 
         <!-- modal -->
 

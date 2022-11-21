@@ -76,6 +76,15 @@ $(function () {
     });
 });
 
+$(function () {
+    $('#opensityaku').click(function () {
+        $('#modalsityaku').fadeIn();
+    });
+    $('#close-sityaku , #modalBg').click(function () {
+        $('#modalsityaku').fadeOut();
+    });
+});
+
 // profile-modal
 window.addEventListener("DOMContentLoaded", () => {
     // モーダルを取得
@@ -214,8 +223,8 @@ const hyouji = (a, b) => {
                 tag.appendChild(ele);
                 count[a]++;
                 sw++;
-                index++;
             }
+            index++;
         }
     }
 }
@@ -233,7 +242,6 @@ const sort = () => {
     c3.checked ? category[2] = true : category[2] = false;
     c4.checked ? category[3] = true : category[3] = false;
 
-
     for (let i = 0; i < radio1.length; i++) {
         if (radio1.item(i).checked) {
             value1 = radio1.item(i).value;
@@ -248,21 +256,17 @@ const sort = () => {
     if (value1 == 1) {
         if (value2 == 1) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time > b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time < b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -270,21 +274,17 @@ const sort = () => {
     } else if (value1 == 2) {
         if (value2 == 1) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money > b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money < b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -294,21 +294,18 @@ const sort = () => {
     if (value1 == 1) {
         if (value2 == 1) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time > b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
+
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time < b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -316,21 +313,17 @@ const sort = () => {
     } else if (value1 == 2) {
         if (value2 == 1) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money > b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money < b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -339,21 +332,17 @@ const sort = () => {
     if (value1 == 1) {
         if (value2 == 1) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time < b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time > b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -361,21 +350,17 @@ const sort = () => {
     } else if (value1 == 2) {
         if (value2 == 1) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money > b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money < b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
