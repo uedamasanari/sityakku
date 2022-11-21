@@ -20,7 +20,7 @@ function login(){
         if(data[0].state == '成功'){
             sessionStorage.setItem('id',data[0].user_id);
             //console.log(`dataの型は${typeof data}`); 型の確認
-            location.href='http://localhost/Web/kanako/home.html';
+            location.href='http://xampp/htdocs/Web/sityakku/home.html';
         }else{
             if(data[0].er == 1){
                 let element = document.getElementById('error');
