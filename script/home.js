@@ -10,7 +10,7 @@ let value1;
 let value2;
 window.onload = function () {
     $.ajax({
-            url: "PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
+            url: "./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
         })
         .success(function (res) {
             console.log(res);
@@ -73,6 +73,15 @@ $(function () {
     });
     $('#close-syousai , #modalBg').click(function () {
         $('#goodsModal').fadeOut();
+    });
+});
+
+$(function () {
+    $('#opensityaku').click(function () {
+        $('#modalsityaku').fadeIn();
+    });
+    $('#close-sityaku , #modalBg').click(function () {
+        $('#modalsityaku').fadeOut();
     });
 });
 
@@ -214,8 +223,8 @@ const hyouji = (a, b) => {
                 tag.appendChild(ele);
                 count[a]++;
                 sw++;
-                index++;
             }
+            index++;
         }
     }
 }
@@ -233,7 +242,6 @@ const sort = () => {
     c3.checked ? category[2] = true : category[2] = false;
     c4.checked ? category[3] = true : category[3] = false;
 
-
     for (let i = 0; i < radio1.length; i++) {
         if (radio1.item(i).checked) {
             value1 = radio1.item(i).value;
@@ -248,21 +256,17 @@ const sort = () => {
     if (value1 == 1) {
         if (value2 == 1) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time > b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time < b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -270,21 +274,17 @@ const sort = () => {
     } else if (value1 == 2) {
         if (value2 == 1) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money > b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             mens.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money < b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -294,21 +294,18 @@ const sort = () => {
     if (value1 == 1) {
         if (value2 == 1) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time > b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
+
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time < b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -316,21 +313,17 @@ const sort = () => {
     } else if (value1 == 2) {
         if (value2 == 1) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money > b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             ladius.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money < b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -339,21 +332,17 @@ const sort = () => {
     if (value1 == 1) {
         if (value2 == 1) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time < b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_time > b.item_time) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -361,21 +350,17 @@ const sort = () => {
     } else if (value1 == 2) {
         if (value2 == 1) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money > b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
         } else if (value2 == 2) {
             accessory.sort(function (a, b) {
-                console.log('通った');
                 if (a.item_money < b.item_money) {
                     return 1;
                 } else {
-                    console.log(-1);
                     return -1;
                 }
             })
@@ -384,9 +369,24 @@ const sort = () => {
     hyouji(0, 2);
     hyouji(1, 2);
     hyouji(2, 2);
-
+    
 }
-
-function syouhinsyousai(seibetu, a) {
-    document.getElementById("size").textContent = mens[a].item_size;
+function syouhinsyousai(seibetu,a){
+    let kari=Array();
+    switch (seibetu) {
+        case 0:
+            kari = mens;
+            break;
+        case 1:
+            kari = ladius;
+            break;
+        case 2:
+            kari = accessory;
+            break;
+    }
+    document.getElementById("itemImg").src=kari[a].item_image;
+    document.getElementById("itemName").textContent=kari[a].item_name;
+    document.getElementById("size").textContent=kari[a].item_size;
+    document.getElementById("price").textContent=kari[a].item_money;
+    document.getElementById("ProductDetails").textContent=kari[a].item_feature;
 }
