@@ -324,16 +324,14 @@
                                             <input type="text" size="5" value="@@@@" id="user_taiju" readonly>
                                             <label for="text_id">kg</label>
                                             <h4>性別</h4>
-                                            <div>man or ledy</div>
+                                            <div><p id="user_sei"></p></div>
                                             <div class="button_solid004 swiper-button-next">
                                                 <a href="#">編集</a>
                                             </div>
                                             <div class="kessaihouhou">
                                                 <h4>決済方法</h4>
-                                                <form>
-                                                    <div>ATM</div>
+                                                    <div><p id="user_siharai"></p></div>
                                             </div>
-                                            </form>
                                             <div class="haisousaki">
                                                 <h4>配送先</h4>
                                                 <input type="text" size="20" value="@@@@@@@@@@@" id="user_jusyo" readonly>
@@ -344,32 +342,33 @@
                                         <fieldset class="wakusennn">
                                             <a href="#" class="btn-flat-border1 swiper-button-prev">戻る</a>
                                             <h4 class="modal-h4">ユーザー名</h4>
-                                            <input type="text" name="text" value="" size="15">
+                                            <input type="text" name="text" value="" size="15" id="user_name1">
                                             <h4>身長</h4>
-                                            <input type="text" name="text" value="" size="5">
+                                            <input type="text" name="text" value="" size="5" id="user_sintyou1">
                                             <label for="text_id">cm</label>
                                             <h4>体重</h4>
-                                            <input type="text" name="text" value="" size="5">
+                                            <input type="text" name="text" value="" size="5" id="user_taiju1">
                                             <label for="text_id">kg</label>
                                             <h4>性別</h4>
-                                            <input type="radio" name="性別" value="女性">男性
-                                            <input type="radio" name="性別" value="男性">女性
+                                            <input type="radio" name="sei" value="男性">男性
+                                            <input type="radio" name="sei" value="女性">女性
                                             <div class="button_solid005">
                                                 <a href="#">変更</a>
                                             </div>
                                             <div class="kessaihouhou">
                                                 <h4>決済方法</h4>
                                                 <form>
-                                                    <select name="select1">
-                                                        <option value="konnbinibarai">銀行振込</option>
-                                                        <option value="ginnkouhurikomi">コンビニ払い</option>
-                                                        <option value="kurezittoka-do">クレジットカード</option>
+                                                    <select name="select1" id="select_1">
+                                                        <option value="ginkou">銀行振込</option>
+                                                        <option value="konbini">コンビニ払い</option>
+                                                        <option value="kure">クレジットカード</option>
+                                                        <option value="dai">代引</option>
                                                     </select>
                                             </div>
                                             </form>
                                             <div class="haisousaki">
                                                 <h4>配送先</h4>
-                                                <input type="text" name="text" value="" size="20">
+                                                <input type="text" name="text" value="" size="20" id="user_jusyo1">
                                             </div>
                                         </fieldset>
                                     </div>
@@ -1402,6 +1401,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="script/home.js"></script>
 <script src="script/profile.js"></script>
+<script src="JS/kanako.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </html>
