@@ -22,6 +22,30 @@ window.addEventListener("load", function () {
         let t5 = document.getElementById("user_jusyo"); 
 	    t5.setAttribute("value", res[0].user_address);
 
+        if(res[0].user_gender == "男"){
+            let te = document.getElementById('user_sei');
+            te.innerHTML= '男性';
+        }else{
+            let te = document.getElementById('user_sei');
+            te.innerHTML= '女性';
+        }
+
+        let t6 = document.getElementById('user_siharai');
+        t6.innerHTML = res[0].user_buy;
+
+        //編集画面の動き
+        let hename = document.getElementById("user_name1"); 
+	    hename.setAttribute("value", res[0].user_name);
+
+        let hesin = document.getElementById("user_sintyou1"); 
+	    hesin.setAttribute("value", res[0].user_height);
+
+        let hetai = document.getElementById("user_taiju1"); 
+	    hetai.setAttribute("value", res[0].user_weight);
+
+        let heju = document.getElementById("user_jusyo1"); 
+	    heju.setAttribute("value", res[0].user_address);
+
         let hoge = document.getElementsByName("sei");
         if(res[0].user_gender == "男"){
             hoge[0].checked = true;
@@ -30,12 +54,14 @@ window.addEventListener("load", function () {
         }
 
         let select = document.getElementById("select_1");
-        if(res[0].user_buy == "クレジットカード"){
-            select.options[2].selected = true;
-        }else if(res[0].user_buy == "代引"){
-            select.options[1].selected = true
-        }else{
+        if(res[0].user_buy == "銀行振込"){
             select.options[0].selected = true;
+        }else if(res[0].user_buy == "コンビニ払い"){
+            select.options[1].selected = true;
+        }else if(res[0].user_buy == "クレジットカード"){
+            select.options[2].selected = true;
+        }else{
+            select.options[3].selected = true;
         }
 
 
