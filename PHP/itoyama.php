@@ -11,7 +11,11 @@ if(isset($_POST['mail'])){
 
     $itoyama->prohenkou($_GET['user_id']);
 
-}
+}else if(isset($_GET['pro']){
+
+    $itoyama->pro($_GET['user_id']);
+
+})
 
 
     class Itoyama{
@@ -108,7 +112,7 @@ if(isset($_POST['mail'])){
                 return $ps;
             }
 
-            //プロフィール編集
+            //プロフィール情報
             public function prohenkou($id1){
                 $pdo = $this->dbConnect();
                 $sql = "SELECT * FROM users WHERE user_id = ?";
@@ -129,6 +133,12 @@ if(isset($_POST['mail'])){
                 }
                 $json_array = json_encode($data);
                 print $json_array;
+            }
+
+            //プロフィールアップデート
+            public function pro($id,$name,$hei,$wei,$gen,$buy,$add){
+                $pdo = $this->dbConnect();
+                $sql = "UPDATE";
             }
 
          }
