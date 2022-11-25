@@ -9,8 +9,6 @@ if(isset($_GET['login'])){
     $ueda->SelectYoufuku();
 }else if(isset($_POST['a'])){
     $ueda->InsertSyohin(1,$_POST['b'],$_POST['a'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")));
-    $json_array = json_encode("送信完了しました！");
-    print $json_array;
 }else if(isset($_GET['mysyuppin'])){
     $ueda->SelectMysyuppin($_GET['user_id']);
 }else if(isset($_POST['A'])){
@@ -23,7 +21,7 @@ if(isset($_GET['login'])){
 
 class Ueda{
     private function dbConnect(){
-        $pdo=new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','ueda','!3qWaHSRi9Bse5m[');
+        $pdo=new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','sityakku','abccsd2');
         return $pdo;
     }
     function loginfunk(){
@@ -84,7 +82,8 @@ class Ueda{
         $ps->bindValue(9,$item_fitting,PDO::PARAM_STR);
         $ps->bindValue(10,$item_tiem,PDO::PARAM_STR);
         $ps->execute();
-        
+        $json_array = json_encode("送信完了しました！");
+        print $json_array;
     }
     function SelectMysyuppin($user_id){
         $pdo = $this->dbConnect();
