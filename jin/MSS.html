@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>商品出品画面</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/mobile-home.css">
-  <link rel="stylesheet" href="../https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="../css/MSS.css">
-  <script>
-	function mein1(){
-		document.getElementById("history").style.display ="none";
-		document.getElementById("none").style.display ="block";
-	}
-	function mein2(){
-		document.getElementById("history").style.display ="block";
-		document.getElementById("none").style.display ="none";
-	}
-	function change(){
-		document.getElementById("history").style.display ="none";
-		document.getElementById("none").style.display ="block";
-	}
-</script>
+    <meta charset="UTF-8">
+    <title>商品出品画面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/mobile-home.css">
+    <link rel="stylesheet" href="../https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="../css/MSS.css">
+    <script>
+        function mein1() {
+            document.getElementById("history").style.display = "none";
+            document.getElementById("none").style.display = "block";
+        }
+
+        function mein2() {
+            document.getElementById("history").style.display = "block";
+            document.getElementById("none").style.display = "none";
+        }
+
+        function change() {
+            document.getElementById("history").style.display = "none";
+            document.getElementById("none").style.display = "block";
+        }
+
+        function clickEvent() {
+            alert('完了しました');
+        }
+
+        function saku() {
+            alert('削除しました');
+        }
+    </script>
 </head>
+
 <body>
     <div class="mo-header">
         <div class="logo">
@@ -44,54 +56,62 @@
             </button>
         </div>
     </div>
-	
-    
+
+
     <div class="button-tag">
         <div class="main">
-        <div class="button-space">
-        <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04" onclick="mein1()">出品登録</button>
-        <button class="no-border2 txt-white2 bkgnd-black2 border-radius-50px2 no-shadow2 touroku2" id="button_04" onclick="mein2()">出品履歴</button>
+            <div class="button-space">
+                <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04"
+                    onclick="mein1()">出品登録</button>
+                <button class="no-border2 txt-white2 bkgnd-black2 border-radius-50px2 no-shadow2 touroku2"
+                    id="button_04" onclick="mein2()">出品履歴</button>
+            </div>
         </div>
-        </div>
-        </div>
-	<div class="history" id="history">
-		<p class="gazou"><img src="./furaito.jpg" width="100"></p>
-        <p class="furaito">商品名:    フライトジャケット</p>              
-        <p class="kane">値段:     ￥107600</p>    <p class="elu">サイズ:        L</p>
+    </div>
+    <div class="history" id="history">
+        <p class="gazou"><img src="./furaito.jpg" width="100"></p>
+        <p class="furaito">商品名: フライトジャケット</p>
+        <p class="kane">値段: ￥107600</p>
+        <p class="elu">サイズ: L</p>
         <button class="hensyu" onclick="change()">編集</button>
-        <button class="sakujyo">削除</button>
-	</div>
+        <button class="sakujyo" onclick="saku()">削除</button>
+    </div>
     <div class="none" id="none">
-	<div class="ai" id="ai">
-			<p class="syo">商品名</p><input type="text" class="s" name="syouhin">
+        <div class="ai" id="ai">
+            <p class="syo">商品名</p><input type="text" class="s" name="syouhin">
             <p class="sen">選択</p><select name="example1" class="b">
-                <p><option value="1">メンズ</option>
-                <option value="2">レディース</option>
-                <option value="3">ユニセックス</option>
+                <p>
+                    <option value="1">メンズ</option>
+                    <option value="2">レディース</option>
+                    <option value="3">ユニセックス</option>
                 </p>
-			</select>
+            </select>
 
-			<select name="example2" class="k">
-				<p><option value="4">トップス</option>
-				<option value="5">ジャケット</option>
-				<option value="6">パンツ</option>
+            <select name="example2" class="k">
+                <p>
+                    <option value="4">トップス</option>
+                    <option value="5">ジャケット</option>
+                    <option value="6">パンツ</option>
                 </p>
-				</select>
+            </select>
 
-			<select name="example2" class="saizu">
-                <p><option value="7">S</option>
-                <option value="8">M</option>
-                <option value="9">L</option>
+            <select name="example2" class="saizu">
+                <p>
+                    <option value="7">S</option>
+                    <option value="8">M</option>
+                    <option value="9">L</option>
                 </p>
-			</select>
+            </select>
 
-			<p class="ne">値段</p><input type="text" class="n" name="nedan">
-			<p class="to">特徴</p><input type="text" class="t" name="tokucyou">
-		<p class="ga"><input type="file" name="example" accept="image/jpeg, image/png"></p>
-        <p class="kakunin"><button class=" syu no-border1 txt-white1 bkgnd-black1 border-radius-50px1 no-shadow1 touroku1" id="button_04" onclick="kakunin()">出品確認</button></p>
+            <p class="ne">値段</p><input type="text" class="n" name="nedan">
+            <p class="to">特徴</p><input type="text" class="t" name="tokucyou">
+            <p class="ga"><input type="file" name="example" accept="image/jpeg, image/png"></p>
+            <p class="kakunin"><button
+                    class=" syu no-border1 txt-white1 bkgnd-black1 border-radius-50px1 no-shadow1 touroku1"
+                    id="button_04" onclick="clickEvent()">出品確認</button></p>
 
 
-	</div>
+        </div>
     </div>
     <!-- under bottom tabmenu -->
     <div class="bottom-tabmenu">
@@ -145,4 +165,5 @@
 <script src="../https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="..///ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../script/mobile-tabmenu.js"></script>
+
 </html>
