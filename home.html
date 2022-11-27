@@ -66,7 +66,6 @@
                                     </li>
 
 
-
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link" id="openModal">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -74,7 +73,7 @@
                                                 <path
                                                     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                             </svg>
-                                            カート<span class="shiva"><span class="count">1</span></span>
+                                            カート<span class="shiva"><span class="count" id="cartcount">1</span></span>
                                         </a>
 
                                     </li>
@@ -138,10 +137,10 @@
                                         </div>
                                     </span>
                                 </td>
-                                <td>じゃっけと</td>
-                                <td>1000円</td>
+                                <td id="syouhin_mei">じゃっけと</td>
+                                <td id="syouhin_kin">1000円</td>
                                 <td>
-                                    <span class="remove">
+                                    <span class="remove" onclick="sakujo()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path
@@ -242,15 +241,15 @@
 
                             <!-- tax + subtotal -->
                             <tr class="extracosts">
-                                <td class="light">商品数量</td>
+                                <td class="light" >商品数量</td>
                                 <td colspan="2" class="light"></td>
-                                <td>３点</td>
+                                <td id="suuryou">３点</td>
                                 <td>&nbsp;</td>
                             </tr>
                             <tr class="totalprice">
-                                <td class="light">合計金額</td>
+                                <td class="light" >合計金額</td>
                                 <td colspan="2">&nbsp;</td>
-                                <td colspan="2"><span class="thick">３００円</span></td>
+                                <td colspan="2"><span class="thick" id="goukei">３００円</span></td>
                             </tr>
 
                             <!-- checkout btn -->
@@ -1402,6 +1401,7 @@
 <script src="script/home.js"></script>
 <script src="script/profile.js"></script>
 <script src="JS/kanako.js"></script>
+<script src="script/cart.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </html>

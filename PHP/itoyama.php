@@ -12,7 +12,16 @@ if(isset($_POST['mail'])){
     $itoyama->prohenkou($_GET['user_id']);
 
 }else if(isset($_POST['user_name1'])){
+
     $itoyama->pro($_POST['id'],$_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add']);
+
+}else if(isset($_GET['cart'])){
+
+    $itoyama->cart($_GET['id']);
+
+}else if(isset($_GET['cartsakujo'])){
+
+    $itoyama->cartsakujo($_GET['id'],$_GET['itemid']);
 }
 
 
@@ -41,12 +50,27 @@ if(isset($_POST['mail'])){
                 $ps->execute();
             }
             //カート商品取り消し
-            public function cartsakujo($item){
+            public function cartsakujo($id,$itemid){
                 $pdo = $this->dbConnect();
-                $sql = "DELETE FROM cart_detail WHERE item_id = ?";
+                $sql = "DELETE FROM cart_detail WHERE item_id =?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$item,PDO::PARAM_INT);
+                $ps->bindValue(1,$itemid,PDO::PARAM_INT);
                 $ps->execute();
+                $sea = $ps->fetchAll();
+                $data = array();
+                foreach($sea as $row){
+                    array_push($data, array(
+                        'state' => "成功"
+                    ));
+                }
+                if($sea == null){
+                    array_push($data, array(
+                        'state' => "失敗"
+                    ));
+                }
+                
+                $json_array = json_encode($data);
+                print $json_array;
             }
             //出品商品取り消し
             public function syuppinsakujo($item){
@@ -136,8 +160,9 @@ if(isset($_POST['mail'])){
             //プロフィールアップデート
             public function pro($id,$name,$hei,$wei,$gen,$buy,$add){
                 $pdo = $this->dbConnect();
-                $sql = "UPDATE users SET user_name = ?, user_height = ?, user_weight = ?,user_gender = ?, user_buy = ?,user_address = ? WHERE user_id = ?";
-                $ps = $pdo -> prepare($sql);
+                //user_id,user_mail,user_pass,user_name,user_height,user_weight,user_gender,user_buy,user_address
+                $sql = "UPDATE users SET user_name = '?',user_height = ?,user_weight = ?,user_gender = '?',user_buy = '?',user_address = '?' WHERE user_id = ?";
+                $ps = $pdo -> prepare($sql);//sqlまではphpで成功確認済み
                 $ps->bindValue(1,$name,PDO::PARAM_STR);
                 $ps->bindValue(2,$hei,PDO::PARAM_INT);
                 $ps->bindValue(3,$wei,PDO::PARAM_INT);
@@ -150,10 +175,37 @@ if(isset($_POST['mail'])){
                 $data = array();
                 foreach($sea as $row){
                     array_push($data, array(
-                        'state' => "成功"
+                        'state' => "プロフィール変更成功"
+                    ));
+                }
+                if($sea==null){
+                    array_push($data, array(
+                        'state' => "プロフィール変更失敗"
                     ));
                 }
                 
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            //カート表示
+            public function cart($id){
+                $pdo = $this->dbConnect();
+                $sql = "SELECT * FROM items WHERE item_id IN(SELECT item_id FROM cart_detail WHERE cart_id IN  (SELECT cart_id FROM cart WHERE user_id = ?))";
+                $ps = $pdo -> prepare($sql);
+                $ps->bindValue(1,$id,PDO::PARAM_INT);
+                $ps->execute();
+                $search = $ps->fetchAll();
+                $data = array();
+                foreach ($search as $row) {
+                    array_push($data, array(
+                        'item_id' => $row['item_id'],
+                        'user_id' => $row['user_id'],
+                        'item_name' => $row['item_name'],
+                        'item_money' => $row['item_money'],
+                        'item_image' => $row['item_image']
+                    ));
+                }
                 $json_array = json_encode($data);
                 print $json_array;
             }

@@ -100,7 +100,7 @@ function henkou(){
         buy:str,
         add:document.getElementById('user_jusyo1').value,
     }
-    console.log(data.id+" "+data.name+" "+data.sin+" "+data.gen+" "+data.buy+" "+data.add);
+    console.log(data.id+" "+data.name+" "+data.sin+" "+data.gen+" "+data.buy+" "+data.add);//ここまでは実行されている！
     //↓ajaxでPHPと通信
     $.ajax({
         type: "post",   //送信の通信だと定義
