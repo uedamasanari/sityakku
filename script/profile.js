@@ -71,3 +71,27 @@ window.addEventListener("load", function () {
         console.log("errorThrown    : " + errorThrown.message);
     });
 });
+
+function henkou(){
+
+    //↓　ajaxでPHPに送信するための配列作成
+    let data = {
+        mail:formElements.elements['mail'].value,
+        pass:formElements.elements['pass'].value
+    }
+    console.log(data.mail+" "+data.pass);
+    //↓ajaxでPHPと通信
+    $.ajax({
+        type: "post",   //送信の通信だと定義
+        url: "PHP/itoyama.php",    //送信先のリンク
+        data: data,     //送信するデータを定義
+    })
+
+    .success(function(res) {
+        console.log(res);
+    }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+}
