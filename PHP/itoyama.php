@@ -11,11 +11,9 @@ if(isset($_POST['mail'])){
 
     $itoyama->prohenkou($_GET['user_id']);
 
-}else if(isset($_GET['pro']){
-
-    $itoyama->pro($_GET['user_id']);
-
-})
+}else if(isset($_POST['user_name1'])){
+    $itoyama->pro($_POST['id'],$_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add']);
+}
 
 
     class Itoyama{
@@ -138,7 +136,26 @@ if(isset($_POST['mail'])){
             //プロフィールアップデート
             public function pro($id,$name,$hei,$wei,$gen,$buy,$add){
                 $pdo = $this->dbConnect();
-                $sql = "UPDATE";
+                $sql = "UPDATE users SET user_name = ?, user_height = ?, user_weight = ?,user_gender = ?, user_buy = ?,user_address = ? WHERE user_id = ?";
+                $ps = $pdo -> prepare($sql);
+                $ps->bindValue(1,$name,PDO::PARAM_STR);
+                $ps->bindValue(2,$hei,PDO::PARAM_INT);
+                $ps->bindValue(3,$wei,PDO::PARAM_INT);
+                $ps->bindValue(4,$gen,PDO::PARAM_STR);
+                $ps->bindValue(5,$buy,PDO::PARAM_STR);
+                $ps->bindValue(6,$add,PDO::PARAM_STR);
+                $ps->bindValue(7,$id,PDO::PARAM_INT);
+                $ps->execute();
+                $sea = $ps->fetchAll();
+                $data = array();
+                foreach($sea as $row){
+                    array_push($data, array(
+                        'state' => "成功"
+                    ));
+                }
+                
+                $json_array = json_encode($data);
+                print $json_array;
             }
 
          }
