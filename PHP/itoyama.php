@@ -16,7 +16,7 @@ if(isset($_POST['mail'])){
 
     class Itoyama{
         private function dbConnect(){
-            $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','kanako','2101003');
+            $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','sityakku','sityakku');
             return $pdo;
         }
 
