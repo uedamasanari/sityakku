@@ -81,32 +81,27 @@ ugoku.addEventListener('click',function(){
 let kaku = document.getElementById('kakunin');
 kaku.addEventListener('click',function(){
 
-        let id = sessionStorage.getItem('id');
-        let siha = document.getElementById('sel1').value;
-        let yuubin = document.getElementById('yuubin').value;
-        let ken = document.getElementById('ken').value;
-        let sityou = document.getElementById('sityou').value;
-        let banti = document.getElementById('banti').value;
-        let heyaban = document.getElementById('heyaban').value;
-        let tosi = document.getElementById('bday-year').value;
-        let tuki = document.getElementById('bday-month').value;
-        let day = document.getElementById('bday-day').value;
-
         //支払い方法などのデータをlocalstorageで保存
         if(window.localStorage){
             let e = sessionStorage.getItem('id');
+            //↓セレクトボックスの値を取得
             let data = {
                 id:e,
                 siha:document.getElementById('sel1').value,
+                yuubin:document.getElementById('yuubin').value,
+                ken:document.getElementById('ken').value,
+                sityou:document.getElementById('sityou').value,
+                banti:document.getElementById('banti').value,
+                heyaban:document.getElementById('heyaban').value,
+                tosi:document.getElementById('bday-year').value,
+                tuki:document.getElementById('bday-month').value,
+                day:document.getElementById('bday-day').value
+
             };
             let json = JSON.stringify(data,undefined,1);
             localStorage.setItem('key',json);
         }
-        let data1 = localStorage.getItem('key');
-        data1 = JSON.parse(data1);
-        console.log(data1);
-        let kakusiha = document.getElementById('kaku_siha');
-        //kakusiha.innerHTML = data1.
+        
 
         let d = sessionStorage.getItem('id');
         $.ajax({
@@ -115,32 +110,41 @@ kaku.addEventListener('click',function(){
 
         .success(function(res) {
             console.log(res);
-            let list = document.getElementsByClassName('swiper-slide modalInSlider');
-            for(let i = 0; i<res.length;i++){
-                let ele = document.createElement('div');
-                ele.className = 'list-all';
-                list.appendChild(ele);
-                ele = document.createElement('ol');
-                ele.className = 'sample1';
-                list.appendChild(ele);
-                ele = document.createElement('li');
-                ele.className = 'li';
-                let tag = document.getElementsByClassName('sample1');
-                tag.appendChild(ele);
-                ele = document.createElement('img');
-                ele.src = "";
-                ele.alt = "";
-                ele.className = 'i-img';
-                tag = document.getElementsByClassName('li');
-                tag.appendChild(ele);
-                ele = document.createElement('div');
-                ele.className = 'ko-gona';
-                ele.textContent = res[i].item_name;
-                tag.appendChild(ele);
-                ele = document.createElement('div');
-                ele.className = 'ko-dol';
-                ele.textContent = res[i].item_money;
-            }
+            let data1 = localStorage.getItem('key');
+            data1 = JSON.parse(data1);
+            console.log(data1.siha);
+            console.log(data1.tosi);
+            document.getElementById('kaku_siha').value = data1.siha;
+            // let kakukibou = document.getElementById('kaku_kiboubi');
+            // kakukibou.textContent = data1.tosi+data1.tuki+data1.day;
+            // let kakujuu = document.getElementById('kaku_juu');
+            // kakujuu.textContent = data1.ken+data1.sityou+data1.banti+data1.heyaban;
+            //let list = document.getElementsByClassName('swiper-slide modalInSlider');
+            // for(let i = 0; i<res.length;i++){
+            //     let ele = document.createElement('div');
+            //     ele.className = 'list-all';
+            //     list.appendChild(ele);
+            //     ele = document.createElement('ol');
+            //     ele.className = 'sample1';
+            //     list.appendChild(ele);
+            //     ele = document.createElement('li');
+            //     ele.className = 'li';
+            //     let tag = document.getElementsByClassName('sample1');
+            //     tag.appendChild(ele);
+            //     ele = document.createElement('img');
+            //     ele.src = "";
+            //     ele.alt = "";
+            //     ele.className = 'i-img';
+            //     tag = document.getElementsByClassName('li');
+            //     tag.appendChild(ele);
+            //     ele = document.createElement('div');
+            //     ele.className = 'ko-gona';
+            //     ele.textContent = res[i].item_name;
+            //     tag.appendChild(ele);
+            //     ele = document.createElement('div');
+            //     ele.className = 'ko-dol';
+            //     ele.textContent = res[i].item_money;
+            // }
 
             
         }).error(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -149,4 +153,11 @@ kaku.addEventListener('click',function(){
             console.log("errorThrown    : " + errorThrown.message);
         });
 
+});
+
+//購入確定のボタンがクリックされたときの処理
+let kakutei= document.getElementById('kou_kakutei');
+kakutei.addEventListener('click',function(){
+    alert("購入が確定しました！");
+    location.href = 'home.html';
 });
