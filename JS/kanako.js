@@ -42,3 +42,25 @@ function login(){
         //PHPのエラーではなくDBのエラーをどうするか
     });
 }
+
+let ugoku = document.getElementById('submitbtn');
+ugoku.addEventListener('click',function(){
+// function kessai_susumu(){
+
+    let c = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?cart=true&id=${c}$timestamp=${new Date().getTime()}`
+    })
+    .success(function(mo) {
+        console.log(mo);
+
+        console.log('購入画面へ進める');
+
+        
+    }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+
+});

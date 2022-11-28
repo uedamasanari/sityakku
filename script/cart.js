@@ -62,3 +62,4 @@ function sakujo(){
         //PHPのエラーではなくDBのエラーをどうするか
     });
 }
+
