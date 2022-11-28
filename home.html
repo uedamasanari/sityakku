@@ -384,11 +384,11 @@
                                                             <div class="form-group">
 
                                                                 <select class="form-control" id="sel1">
-                                                                    <option>--</option>
-                                                                    <option>クレジットカード</option>
-                                                                    <option>代引き</option>
-                                                                    <option>コンビニ</option>
-                                                                    <option>銀行振込</option>
+                                                                    <option value="--">--</option>
+                                                                    <option value="銀行振込">銀行振込</option>
+                                                                    <option value="コンビニ払い">コンビニ払い</option>
+                                                                    <option value="クレジットカード">クレジットカード</option>
+                                                                    <option value="代引">代引</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -401,7 +401,7 @@
                                                             <p>
                                                                 <input type="text" name="postal-code"
                                                                     autocomplete="postal-code" class="form-control"
-                                                                    placeholder="郵便番号" required />
+                                                                    placeholder="郵便番号" id="yuubin" required />
                                                             </p>
                                                         </div>
                                                     </div>
@@ -415,7 +415,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-level1"
                                                                         autocomplete="address-level1"
-                                                                        class="form-control" placeholder="東京都"
+                                                                        class="form-control" placeholder="東京都" id="ken"
                                                                         required />
                                                                 </div>
                                                             </div>
@@ -424,7 +424,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-level2"
                                                                         autocomplete="address-level2"
-                                                                        class="form-control" placeholder="中央区"
+                                                                        class="form-control" placeholder="中央区" id="sityou"
                                                                         required />
                                                                 </div>
                                                             </div>
@@ -434,7 +434,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-line1"
                                                                         autocomplete="address-line1"
-                                                                        class="form-control" placeholder="◯丁目◯番"
+                                                                        class="form-control" placeholder="◯丁目◯番" id="banti"
                                                                         required />
                                                                 </div>
                                                             </div>
@@ -445,7 +445,7 @@
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-line2"
                                                                         autocomplete="address-line2"
-                                                                        class="form-control"
+                                                                        class="form-control" id="heyaban"
                                                                         placeholder="コーポ◯◯ 101号室" />
                                                                 </div>
                                                             </div>
@@ -461,7 +461,7 @@
                                                         <div class="col-sm-9">
 
                                                             <select class="custom-select w-25" title="生年月日(西暦)"
-                                                                name="bday-year" autocomplete="bday-year">
+                                                                name="bday-year" autocomplete="bday-year" id="bday-year">
                                                                 <option selected="">----</option>
                                                                 <option value="2010">2010</option>
                                                                 <option value="2009">2009</option>
@@ -472,7 +472,7 @@
                                                             </select>
                                                             年
                                                             <select class="custom-select w-25" title="生年月日(月)"
-                                                                name="bday-month" autocomplete="bday-month">
+                                                                name="bday-month" autocomplete="bday-month" id="bday-month">
                                                                 <option selected="">--</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
@@ -489,7 +489,7 @@
                                                             </select>
                                                             月
                                                             <select class="custom-select w-25" title="生年月日(日)"
-                                                                name="bday-day" autocomplete="bday-day">
+                                                                name="bday-day" autocomplete="bday-day" id="bday-day">
                                                                 <option selected="">--</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
@@ -536,7 +536,7 @@
                                                         <div class="text-center my-5">
                                                             <button type="submit"
                                                                 class=" button-padding swiper-button-next buytext"><a
-                                                                    class="buttext">購入確認</a></button>
+                                                                    class="buttext" id="kakunin">購入確認</a></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -571,7 +571,7 @@
                                         <div class="input-flex">
                                             <div class="howhowpay">
                                                 <label">支払い方法</label>
-                                                    <input type="text" class="howpay-inp" placeholder="クレジット" readonly>
+                                                    <input type="text" class="howpay-inp" placeholder="クレジット" id="kaku_siha" readonly>
                                             </div>
                                             <div class="sendday">
                                                 <label">配送希望日</label>
