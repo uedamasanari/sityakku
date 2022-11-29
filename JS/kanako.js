@@ -77,14 +77,22 @@ ugoku.addEventListener('click',function(){
 
 });
 
-//購入確定ボタンクリック時の動き
+//購入確認ボタンクリック時の動き
 let kaku = document.getElementById('kakunin');
 kaku.addEventListener('click',function(){
 
         //支払い方法などのデータをlocalstorageで保存
         if(window.localStorage){
             let e = sessionStorage.getItem('id');
-            //↓セレクトボックスの値を取得
+             //↓セレクトボックスの値を取得
+            const sele1 = document.getElementById('bday-month');
+            const num = sele1.selectedIndex;//値(数値)を取得
+            const str = sele1.options[num].value;// 値(数値)から値(value値)を取得
+  
+            const sele2 = document.getElementById('bday-month');
+            const num2 = sele2.selectedIndex;//値(数値)を取得
+            const str2 = sele1.options[num2].value;// 値(数値)から値(value値)を取得
+
             let data = {
                 id:e,
                 siha:document.getElementById('sel1').value,
@@ -93,9 +101,8 @@ kaku.addEventListener('click',function(){
                 sityou:document.getElementById('sityou').value,
                 banti:document.getElementById('banti').value,
                 heyaban:document.getElementById('heyaban').value,
-                tosi:document.getElementById('bday-year').value,
-                tuki:document.getElementById('bday-month').value,
-                day:document.getElementById('bday-day').value
+                tuki:str,
+                day2:str2
 
             };
             let json = JSON.stringify(data,undefined,1);
@@ -113,7 +120,8 @@ kaku.addEventListener('click',function(){
             let data1 = localStorage.getItem('key');
             data1 = JSON.parse(data1);
             console.log(data1.siha);
-            console.log(data1.tosi);
+            console.log(data1.tuki);
+            console.log(data1.day2);
             document.getElementById('kaku_siha').value = data1.siha;
             // let kakukibou = document.getElementById('kaku_kiboubi');
             // kakukibou.textContent = data1.tosi+data1.tuki+data1.day;
