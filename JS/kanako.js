@@ -89,7 +89,7 @@ kaku.addEventListener('click',function(){
             const num = sele1.selectedIndex;//値(数値)を取得
             const str = sele1.options[num].value;// 値(数値)から値(value値)を取得
   
-            const sele2 = document.getElementById('bday-month');
+            const sele2 = document.getElementById('bday-day');
             const num2 = sele2.selectedIndex;//値(数値)を取得
             const str2 = sele1.options[num2].value;// 値(数値)から値(value値)を取得
 
@@ -119,15 +119,13 @@ kaku.addEventListener('click',function(){
             console.log(res);
             let data1 = localStorage.getItem('key');
             data1 = JSON.parse(data1);
-            console.log(data1.siha);
-            console.log(data1.tuki);
-            console.log(data1.day2);
-            document.getElementById('kaku_siha').value = data1.siha;
-            // let kakukibou = document.getElementById('kaku_kiboubi');
-            // kakukibou.textContent = data1.tosi+data1.tuki+data1.day;
-            // let kakujuu = document.getElementById('kaku_juu');
-            // kakujuu.textContent = data1.ken+data1.sityou+data1.banti+data1.heyaban;
-            //let list = document.getElementsByClassName('swiper-slide modalInSlider');
+            let hyou1 = data1.siha;
+            let hyou2 = data1.tuki + data1.day2;
+            let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
+            document.getElementById('kaku_siha').value = hyou1;
+            document.getElementById('kaku_kiboubi').value = hyou2;
+            document.getElementById('kaku_juu').value = hyou2;
+
             // for(let i = 0; i<res.length;i++){
             //     let ele = document.createElement('div');
             //     ele.className = 'list-all';

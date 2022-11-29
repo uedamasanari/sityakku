@@ -42,7 +42,8 @@ window.onload = function () {
     });
 }
 
-function sakujo(){
+let cartsakujo = document.getElementById('sakujo');
+cartsakujo.addEventListener('click',function(){
 
     let b = sessionStorage.getItem('id');
     let item=res[i].item_id;//クリックされた場所のitemidのデータを取得したい
@@ -61,5 +62,5 @@ function sakujo(){
         console.log("errorThrown    : " + errorThrown.message);    
         //PHPのエラーではなくDBのエラーをどうするか
     });
-}
+});
 

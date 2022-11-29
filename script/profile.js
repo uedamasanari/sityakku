@@ -72,7 +72,10 @@ window.addEventListener("load", function () {
     });
 });
 
-function henkou(){
+//変更ボタンがクリックされたときの処理
+// let henbtn = document.getElementById('henkoubtn');
+// henbtn.addEventListener('click',function(){
+    function henkou(){
 
     //↓性別の値を取得
     let elements = document.getElementsByName('sei');
@@ -100,7 +103,7 @@ function henkou(){
         buy:str,
         add:document.getElementById('user_jusyo1').value,
     }
-    console.log(data.id+" "+data.name+" "+data.sin+" "+data.gen+" "+data.buy+" "+data.add);//ここまでは実行されている！
+
     //↓ajaxでPHPと通信
     $.ajax({
         type: "post",   //送信の通信だと定義
@@ -110,6 +113,7 @@ function henkou(){
 
     .success(function(res) {
         console.log(res);
+        location.href = 'home.html';
     }).error(function(XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);

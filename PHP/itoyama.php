@@ -11,9 +11,9 @@ if(isset($_POST['mail'])){
 
     $itoyama->prohenkou($_GET['user_id']);
 
-}else if(isset($_POST['user_name1'])){
+}else if(isset($_POST['sin'])){
 
-    $itoyama->pro($_POST['id'],$_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add']);
+    $itoyama->pro($_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add'],$_POST['id']);
 
 }else if(isset($_GET['cart'])){
 
@@ -58,16 +58,10 @@ if(isset($_POST['mail'])){
                 $ps->execute();
                 $sea = $ps->fetchAll();
                 $data = array();
-                foreach($sea as $row){
                     array_push($data, array(
                         'state' => "成功"
                     ));
-                }
-                if($sea == null){
-                    array_push($data, array(
-                        'state' => "失敗"
-                    ));
-                }
+
                 
                 $json_array = json_encode($data);
                 print $json_array;
@@ -158,10 +152,9 @@ if(isset($_POST['mail'])){
             }
 
             //プロフィールアップデート
-            public function pro($id,$name,$hei,$wei,$gen,$buy,$add){
+            public function pro($name,$hei,$wei,$gen,$buy,$add,$id){
                 $pdo = $this->dbConnect();
-                //user_id,user_mail,user_pass,user_name,user_height,user_weight,user_gender,user_buy,user_address
-                $sql = "UPDATE users SET user_name = '?',user_height = ?,user_weight = ?,user_gender = '?',user_buy = '?',user_address = '?' WHERE user_id = ?";
+                $sql = "UPDATE users SET user_name = ?,user_height = ?,user_weight = ?,user_gender = ?,user_buy = ?,user_address = ? WHERE user_id = ?";
                 $ps = $pdo -> prepare($sql);//sqlまではphpで成功確認済み
                 $ps->bindValue(1,$name,PDO::PARAM_STR);
                 $ps->bindValue(2,$hei,PDO::PARAM_INT);
@@ -173,16 +166,10 @@ if(isset($_POST['mail'])){
                 $ps->execute();
                 $sea = $ps->fetchAll();
                 $data = array();
-                foreach($sea as $row){
-                    array_push($data, array(
-                        'state' => "プロフィール変更成功"
-                    ));
-                }
-                if($sea==null){
-                    array_push($data, array(
-                        'state' => "プロフィール変更失敗"
-                    ));
-                }
+                array_push($data,array(
+                    'state' =>'成功'
+                ));
+                
                 
                 $json_array = json_encode($data);
                 print $json_array;
