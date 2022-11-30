@@ -46,7 +46,7 @@ let cartsakujo = document.getElementById('sakujo');
 cartsakujo.addEventListener('click',function(){
 
     let b = sessionStorage.getItem('id');
-    let item=res[i].item_id;//クリックされた場所のitemidのデータを取得したい
+    document.getElementsByClassName('remove').addEventListener('click',hoge);
     $.ajax({
         url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
     })
@@ -63,4 +63,8 @@ cartsakujo.addEventListener('click',function(){
         //PHPのエラーではなくDBのエラーをどうするか
     });
 });
+
+function hoge(e){
+    console.log(e.target.id);
+}
 

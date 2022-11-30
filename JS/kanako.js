@@ -43,9 +43,9 @@ function login(){
     });
 }
 
-let ugoku = document.getElementById('submitbtn');
-ugoku.addEventListener('click',function(){
-// function kessai_susumu(){
+// let ugoku = document.getElementById('submitbtn');
+// ugoku.addEventListener('click',function(){
+ function kessai_susumu(){
 
     let c = sessionStorage.getItem('id');
     $.ajax({
@@ -75,7 +75,7 @@ ugoku.addEventListener('click',function(){
         console.log("errorThrown    : " + errorThrown.message);
     });
 
-});
+};
 
 //購入確認ボタンクリック時の動き
 let kaku = document.getElementById('kakunin');
@@ -93,6 +93,7 @@ kaku.addEventListener('click',function(){
             const num2 = sele2.selectedIndex;//値(数値)を取得
             const str2 = sele1.options[num2].value;// 値(数値)から値(value値)を取得
 
+            let array = [];
             let data = {
                 id:e,
                 siha:document.getElementById('sel1').value,
@@ -105,6 +106,7 @@ kaku.addEventListener('click',function(){
                 day2:str2
 
             };
+            array.push(data);
             let json = JSON.stringify(data,undefined,1);
             localStorage.setItem('key',json);
         }
@@ -167,3 +169,8 @@ kakutei.addEventListener('click',function(){
     alert("購入が確定しました！");
     location.href = 'home.html';
 });
+
+//やるべきこと
+//カートの削除機能でのitemidを取得してPHP側で動かせる・カートに入っている情報を繰り返し表示させる
+//決済画面でのカートに入っている情報を表示させる
+//カートでのハートボタンのJSの動作
