@@ -21,7 +21,11 @@ if(isset($_POST['mail'])){
 
 }else if(isset($_GET['cartsakujo'])){
 
-    $itoyama->cartsakujo($_GET['id'],$_GET['itemid']);
+    $itoyama->cartsakujo($_GET['id'].$_GET['itemid']);
+
+}else if(isset($_GET['favo'])){
+
+    $itoyama->okiniiri($_get['id'],$_GET['itemid']);
 }
 
 
@@ -31,26 +35,34 @@ if(isset($_POST['mail'])){
             return $pdo;
         }
 
-            //お気に入り
-            public function okiniiri($item){
+            //カートのお気に入り追加
+            public function okiniiri($id,$item){
                 $pdo = $this->dbConnect();
-                $sql = "INSERT INTO favorite (item_id,user_id) VALUES(?,?)";
+                $sql = "INSERT INTO favorite (user_id,item_id) VALUES(?,?)";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$item,PDO::PARAM_INT);
-                $ps->bindValue(2,$_SESSION['user'],PDO::PARAM_INT);
+                $ps->bindValue(1,$id,PDO::PARAM_INT);
+                $ps->bindValue(2,$item,PDO::PARAM_INT);
                 $ps->execute();
+
             }
 
             //お気に入り商品取り消し  itemをゲットする場所はどこから？？
-            public function favoritesakujo($item){
+            public function favoritesakujo($id,$item){
                 $pdo = $this->dbConnect();
-                $sql = "DELETE FROM favorite WHERE item_id = ?";
+                $sql = "DELETE FROM favorite WHERE user_id = ? AND  item_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$item,PDO::PARAM_INT);
+                $ps->bindValue(1,$id,PDO::PARAM_INT);
+                $ps->bindValue(2,$item,PDO::PARAM_INT);
                 $ps->execute();
+                $data = array();
+                    array_push($data, array(
+                        'state' => "成功"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
             }
             //カート商品取り消し
-            public function cartsakujo($id,$itemid){
+            public function cartsakujo($itemid){
                 $pdo = $this->dbConnect();
                 $sql = "DELETE FROM cart_detail WHERE item_id =?";
                 $ps = $pdo->prepare($sql);

@@ -23,7 +23,7 @@ window.onload = function () {
         let co = document.getElementById('cartcount');
         co.innerHTML = res.length;
 
-        //表示される分の枠を作る必要がある
+        //表示される分の枠を作る必要がある　ここをなんとかする！！！
         for(let i = 0; i < res.length; i++){
 
             let mei = document.getElementById('syouhin_mei');
@@ -42,17 +42,21 @@ window.onload = function () {
     });
 }
 
+//カートの削除ボタンが押されたときの処理    
 let cartsakujo = document.getElementById('sakujo');
 cartsakujo.addEventListener('click',function(){
 
     let b = sessionStorage.getItem('id');
-    document.getElementsByClassName('remove').addEventListener('click',hoge);
     $.ajax({
-        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cart=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`,
+        url: `PHP/itoyama.php/?cartsakujo=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
+
     })
-    .success(function(data) {
+    .success(function(data1,data2) {
         //通信に成功
-        console.log(data);
+        console.log(data1);
+        console.log(data2);
+
         
     })
     .error(function(XMLHttpRequest, textStatus, errorThrown) {
