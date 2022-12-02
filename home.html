@@ -66,7 +66,6 @@
                                     </li>
 
 
-
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link" id="openModal">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
@@ -74,7 +73,7 @@
                                                 <path
                                                     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                             </svg>
-                                            カート<span class="shiva"><span class="count">1</span></span>
+                                            カート<span class="shiva"><span class="count" id="cartcount">1</span></span>
                                         </a>
 
                                     </li>
@@ -96,51 +95,33 @@
                     <div class="modal-close closeModal" id="closeModal">×</div>
                 </header>
                 <div id="page">
-                    <table id="cart">
-                        <thead>
-                            <tr>
-                                <th class="first">画像</th>
-                                <th class="second">あとで<br>購入</th>
-                                <th class="third">商品名</th>
-                                <th class="fourth">値段</th>
-                                <th class="fifth">削除</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tbody">
-                            <!-- shopping cart contents -->
-                            <tr class="productitm">
-                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
-                                <td>
+                    <div id="cart">
+                        <div >
+                            <div class="div-flex-home div-btween">
+                                <div class="first">画像</div>
+                                <div class="second">あとで<br>購入</div>
+                                <div class="third">商品名</div>
+                                <div class="fourth">値段</div>
+                                <div class="fifth">削除</div>
+                            </div>
+                        </div>
+                        <div class="tbody">
+                            <div class="productitm div-flex-home div-btween">
+                                <div><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></div>
+                                <div>
                                     <span class="remove">
                                         <div class="wishlist-heart-group">
-                                            <!-- product-333を変更しなければならない -->
                                             <input name="product-333" id="product-333" data-product-id="333"
                                                 type="checkbox" />
-                                            <label for="product-333">
-                                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                                    xmlns:cc="http://creativecommons.org/ns#"
-                                                    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                                    xmlns:svg="http://www.w3.org/2000/svg"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                                                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                                    version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
-                                                    <g transform="translate(0,-952.36218)">
-                                                        <path style="color:#000000;enable-background:accumulate;"
-                                                            d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
-                                                            fill="transparent" class="heart-path" stroke="#737373"
-                                                            stroke-width="5" marker="none" visibility="visible"
-                                                            display="inline" overflow="visible" />
-                                                    </g>
-                                                </svg>
-                                            </label>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                                  </svg>
                                         </div>
                                     </span>
-                                </td>
-                                <td>じゃっけと</td>
-                                <td>1000円</td>
-                                <td>
+                                </div>
+                                <div>じゃっけと</div>
+                                <div>1000円</div>
+                                <div>
                                     <span class="remove">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -150,41 +131,24 @@
                                                 d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                         </svg>
                                     </span>
-                                </td>
-                            </tr>
-                            <tr class="productitm">
-                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
-                                <td>
+                                </div>
+                            </div>
+                            <div class="productitm div-flex-home div-btween">
+                                <div><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></div>
+                                <div>
                                     <span class="remove">
                                         <div class="wishlist-heart-group">
-                                            <!-- product-333を変更しなければならない -->
                                             <input name="product-333" id="product-333" data-product-id="333"
                                                 type="checkbox" />
-                                            <label for="product-333">
-                                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                                    xmlns:cc="http://creativecommons.org/ns#"
-                                                    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                                    xmlns:svg="http://www.w3.org/2000/svg"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                                                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                                    version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
-                                                    <g transform="translate(0,-952.36218)">
-                                                        <path style="color:#000000;enable-background:accumulate;"
-                                                            d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
-                                                            fill="transparent" class="heart-path" stroke="#737373"
-                                                            stroke-width="5" marker="none" visibility="visible"
-                                                            display="inline" overflow="visible" />
-                                                    </g>
-                                                </svg>
-                                            </label>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                                  </svg>
                                         </div>
                                     </span>
-                                </td>
-                                <td>じゃっけと</td>
-                                <td>1000円</td>
-                                <td>
+                                </div>
+                                <div>じゃっけと</div>
+                                <div>1000円</div>
+                                <div>
                                     <span class="remove">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -194,72 +158,24 @@
                                                 d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                         </svg>
                                     </span>
-                                </td>
-                            </tr>
-                            <tr class="productitm">
-                                <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
-                                <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
-                                <td>
-                                    <span class="remove">
-                                        <div class="wishlist-heart-group">
-                                            <input name="product-332" id="product-332" data-product-id="333"
-                                                type="checkbox" />
-                                            <label for="product-332">
-                                                <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
-                                                    xmlns:cc="http://creativecommons.org/ns#"
-                                                    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                                                    xmlns:svg="http://www.w3.org/2000/svg"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                                                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                                                    version="1.1" x="0px" y="0px" viewBox="0 0 100 100">
-                                                    <g transform="translate(0,-952.36218)">
-                                                        <path style="color:#000000;enable-background:accumulate;"
-                                                            d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
-                                                            fill="transparent" class="heart-path" stroke="#737373"
-                                                            stroke-width="5" marker="none" visibility="visible"
-                                                            display="inline" overflow="visible" />
-                                                    </g>
-                                                </svg>
-                                            </label>
-                                        </div>
-                                    </span>
-                                </td>
-                                <td>じゃっけと</td>
-                                <td>1000円</td>
-                                <td>
-                                    <span class="remove">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                            <path
-                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                            <path fill-rule="evenodd"
-                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                        </svg>
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <!-- tax + subtotal -->
-                            <tr class="extracosts">
-                                <td class="light">商品数量</td>
-                                <td colspan="2" class="light"></td>
-                                <td>３点</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr class="totalprice">
-                                <td class="light">合計金額</td>
-                                <td colspan="2">&nbsp;</td>
-                                <td colspan="2"><span class="thick">３００円</span></td>
-                            </tr>
-
-                            <!-- checkout btn -->
-                            <tr class="checkoutrow">
-                                <td colspan="5" class="checkout"><button id="submitbtn" class="modalOpen"
-                                        data-modal="3">購入画面へ進む</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </div>
+                            </div>
+                        </div>
+                  
+                        <div class="extracosts div-flex-home div-btween">
+                            <div class="light">商品数量</div>
+                            <div colspan="2" class="light"></div>
+                            <div>３点</div>
+                        </div>
+                        <div class="totalprice div-flex-home div-btween">
+                            <div class="light">合計金額</div>
+                            <div colspan="2">&nbsp;</div>
+                            <div colspan="2"><span class="thick">３００円</span></div>
+                        </div>
+                        <div class="checkoutrow">
+                            <div colspan="5" class="checkout"><button id="submitbtn" class="modalOpen" data-modal="3">購入画面へ進む</button></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -350,19 +266,19 @@
                                             <input type="text" name="text" value="" size="5" id="user_taiju1">
                                             <label for="text_id">kg</label>
                                             <h4>性別</h4>
-                                            <input type="radio" name="sei" value="男性">男性
-                                            <input type="radio" name="sei" value="女性">女性
-                                            <div class="button_solid005" onclick="henkou()">
+                                            <input type="radio" name="sei" value="男">男性
+                                            <input type="radio" name="sei" value="女">女性
+                                            <div class="button_solid005" id="henkoubtn" onclick="henkou()">
                                                 <a href="#">変更</a>
                                             </div>
                                             <div class="kessaihouhou">
                                                 <h4>決済方法</h4>
-                                                <form>
+                                                <form name="form1">
                                                     <select name="select1" id="select_1">
-                                                        <option value="ginkou">銀行振込</option>
-                                                        <option value="konbini">コンビニ払い</option>
-                                                        <option value="kure">クレジットカード</option>
-                                                        <option value="dai">代引</option>
+                                                        <option value="銀行振込">銀行振込</option>
+                                                        <option value="コンビニ払い">コンビニ払い</option>
+                                                        <option value="クレジットカード">クレジットカード</option>
+                                                        <option value="代引">代引</option>
                                                     </select>
                                             </div>
                                             </form>
@@ -385,11 +301,11 @@
                                                             <div class="form-group">
 
                                                                 <select class="form-control" id="sel1">
-                                                                    <option>--</option>
-                                                                    <option>クレジットカード</option>
-                                                                    <option>代引き</option>
-                                                                    <option>コンビニ</option>
-                                                                    <option>銀行振込</option>
+                                                                    <option value="--">--</option>
+                                                                    <option value="銀行振込">銀行振込</option>
+                                                                    <option value="コンビニ払い">コンビニ払い</option>
+                                                                    <option value="クレジットカード">クレジットカード</option>
+                                                                    <option value="代引">代引</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -402,7 +318,7 @@
                                                             <p>
                                                                 <input type="text" name="postal-code"
                                                                     autocomplete="postal-code" class="form-control"
-                                                                    placeholder="郵便番号" required />
+                                                                    placeholder="郵便番号" id="yuubin" required />
                                                             </p>
                                                         </div>
                                                     </div>
@@ -415,8 +331,8 @@
                                                                 <label class="col-form-label col-sm-4">都道府県</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-level1"
-                                                                        autocomplete="address-level1"
-                                                                        class="form-control" placeholder="東京都"
+                                                                        autocomplete="address-level1" 
+                                                                        class="form-control" placeholder="東京都" id="ken"
                                                                         required />
                                                                 </div>
                                                             </div>
@@ -424,8 +340,8 @@
                                                                 <label class="col-form-label col-sm-4">市区町村</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-level2"
-                                                                        autocomplete="address-level2"
-                                                                        class="form-control" placeholder="中央区"
+                                                                        autocomplete="address-level2" 
+                                                                        class="form-control" placeholder="中央区" id="sityou"
                                                                         required />
                                                                 </div>
                                                             </div>
@@ -434,8 +350,8 @@
                                                                 <label class="col-form-label col-sm-4">番地等</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-line1"
-                                                                        autocomplete="address-line1"
-                                                                        class="form-control" placeholder="◯丁目◯番"
+                                                                        autocomplete="address-line1" 
+                                                                        class="form-control" placeholder="◯丁目◯番" id="banti"
                                                                         required />
                                                                 </div>
                                                             </div>
@@ -445,8 +361,8 @@
                                                                 <label class="col-form-label col-sm-4">建物名・部屋番号等</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-line2"
-                                                                        autocomplete="address-line2"
-                                                                        class="form-control"
+                                                                        autocomplete="address-line2" 
+                                                                        class="form-control" id="heyaban"
                                                                         placeholder="コーポ◯◯ 101号室" />
                                                                 </div>
                                                             </div>
@@ -461,9 +377,9 @@
 
                                                         <div class="col-sm-9">
 
-                                                            <select class="custom-select w-25" title="生年月日(西暦)"
-                                                                name="bday-year" autocomplete="bday-year">
-                                                                <option selected="">----</option>
+                                                            <!-- <select class="custom-select w-25" title="生年月日(西暦)"
+                                                                name="bday-year" autocomplete="bday-year" id="bday-year">
+                                                                <option value="----">----</option>
                                                                 <option value="2010">2010</option>
                                                                 <option value="2009">2009</option>
                                                                 <option value="2008">2008</option>
@@ -471,10 +387,11 @@
                                                                 <option value="2006">2006</option>
                                                                 <option value="2005">2005</option>
                                                             </select>
-                                                            年
+                                                            年 -->
+                                                            <form name="form_1">
                                                             <select class="custom-select w-25" title="生年月日(月)"
-                                                                name="bday-month" autocomplete="bday-month">
-                                                                <option selected="">--</option>
+                                                                name="bday-month" autocomplete="bday-month" id="bday-month">
+                                                                <option value="--">--</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
                                                                 <option value="3">3</option>
@@ -489,9 +406,10 @@
                                                                 <option value="12">12</option>
                                                             </select>
                                                             月
+                                                            </form>
                                                             <select class="custom-select w-25" title="生年月日(日)"
-                                                                name="bday-day" autocomplete="bday-day">
-                                                                <option selected="">--</option>
+                                                                name="bday-day" autocomplete="bday-day" id="bday-day">
+                                                                <option value="--">--</option>
                                                                 <option value="1">1</option>
                                                                 <option value="2">2</option>
                                                                 <option value="3">3</option>
@@ -537,7 +455,7 @@
                                                         <div class="text-center my-5">
                                                             <button type="submit"
                                                                 class=" button-padding swiper-button-next buytext"><a
-                                                                    class="buttext">購入確認</a></button>
+                                                                    class="buttext" id="kakunin">購入確認</a></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -572,22 +490,22 @@
                                         <div class="input-flex">
                                             <div class="howhowpay">
                                                 <label">支払い方法</label>
-                                                    <input type="text" class="howpay-inp" placeholder="クレジット" readonly>
+                                                    <input type="text" class="howpay-inp" value="クレジット" id="kaku_siha" readonly>
                                             </div>
                                             <div class="sendday">
                                                 <label">配送希望日</label>
-                                                    <input type="text" class="sendday-inp" placeholder="yyyymmdd"
+                                                    <input type="text" class="sendday-inp" value="yyyymmdd" id="kaku_kiboubi"
                                                         readonly>
                                             </div>
                                         </div>
                                         <div class="address-button">
                                             <div class="sendaddress">
                                                 <label>配送先住所</label>
-                                                <input type="text" class="sendaddress-inp" placeholder="東京都港区青山一丁目"
+                                                <input type="text" class="sendaddress-inp" value="東京都港区青山一丁目" id="kaku_juu"
                                                     readonly>
                                             </div>
                                             <div class="submitbutton">
-                                                <button type="submit" class="btn btn-primary">購入確定</button>
+                                                <button type="submit" class="btn btn-primary" id="kou_kakutei">購入確定</button>
                                             </div>
                                         </div>
                                     </div>
@@ -1402,6 +1320,7 @@
 <script src="script/home.js"></script>
 <script src="script/profile.js"></script>
 <script src="JS/kanako.js"></script>
+<script src="script/cart.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </html>

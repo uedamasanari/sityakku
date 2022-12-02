@@ -765,7 +765,12 @@ padding: 0;
   /* width: 100%; */
   /* height: 100%; */
 }
-
+.div-flex-home{
+    display: flex !important;
+}
+.div-btween{
+    justify-content: space-around !important;
+}
 .modal-title {
   font-family: 'Fredoka One', Helvetica, Tahoma, sans-serif;
   color: #fff;
@@ -779,8 +784,14 @@ padding: 0;
 }
 .tbody{
   overflow: scroll;
-  height: 100px;
+  height: 125px;
+  -ms-overflow-style: none;
 }
+
+ /* Chrome, Safari 対応 */
+ .tbody::-webkit-scrollbar {
+  display:none;
+ }
 .modal-close{
 
   /* border: 1px solid #999; */
@@ -800,6 +811,7 @@ padding: 0;
   text-shadow: 1px 2px 0 #7184d8;
 }
   
+
 .modal-close:hover{
   background:#a699d3;
   border-color: #a699d3;
@@ -850,51 +862,51 @@ padding: 0;
   color: #444;
 }
 
-#cart thead th {
-  padding: 8px 0;
+#cart div div {
+  padding: 1px 0;
   font-weight: bold;
   width: 100%;
 }
 
-#cart thead th.first {
+/* #cart div div.first {
   width: 160px;
 text-align: center;
 }
 
-#cart thead th.second {
+#cart div div.second {
   width: 45px;
   text-align: center
 }
 
-#cart thead th.third {
+#cart div div.third {
   width: 230px;
   text-align: center
 }
 
-#cart thead th.fourth {
+#cart div div.fourth {
   width: 130px;
   text-align: center
 }
 
-#cart thead th.fifth {
+#cart div div.fifth {
   width: 40px;
   text-align: center
 
-}
+} */
 
-#cart tbody td {
+#cart div div {
   text-align: center;
   margin-top: 4px;
 }
 
-tr.productitm {
+div.productitm {
   line-height: 65px;
   width: 100%;
   border-bottom: 1px solid #d7dbe0;
 }
 
 
-#cart tbody td img.thumb {
+#cart div div img.thumb {
   vertical-align: bottom;
   border: 1px solid rgb(24, 22, 22);
   margin: 10px;
@@ -903,13 +915,13 @@ tr.productitm {
   height: 90px;
 }
 
-tr.totalprice,
-tr.extracosts {
+div.totalprice,
+div.extracosts {
   height: 35px;
   line-height: 35px;
 }
 
-tr.extracosts {
+div.extracosts {
   background: #e4edf4;
 }
 
@@ -938,13 +950,13 @@ tr.extracosts {
 
 
 /** submit btn **/
-tr.checkoutrow {
+div.checkoutrow {
   background: #cfdae8;
   border-top: 1px solid #abc0db;
   border-bottom: 1px solid #abc0db;
 }
 
-td.checkout {
+div.checkout {
   padding: 12px 0;
   padding-top: 20px;
   width: 100%;
