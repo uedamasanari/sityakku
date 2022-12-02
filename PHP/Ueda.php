@@ -21,7 +21,7 @@ if(isset($_GET['login'])){
 
 class Ueda{
     private function dbConnect(){
-        $pdo=new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','sityakku','abccsd2');
+        $pdo=new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','sityakku','sityakku');
         return $pdo;
     }
     function loginfunk(){
