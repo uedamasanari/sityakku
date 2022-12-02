@@ -19,4 +19,3 @@ select(activeEl);
 // }, 1500);
 
 
-    

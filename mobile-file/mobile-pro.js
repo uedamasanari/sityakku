@@ -1,7 +1,5 @@
-
-
 var tabs = document.getElementsByClassName('nav-item');
-var activeEl = tabs[0];
+var activeEl = tabs[3];
 
 function select(el){
   activeEl.classList.remove('active');
@@ -11,12 +9,3 @@ function select(el){
 }
 
 select(activeEl);
-// autoplay
-// var iter = 0;
-// setInterval(() => {
-//   iter = ++iter >= tabs.length ? 0: iter; 
-//   select(tabs[iter]); 
-// }, 1500);
-
-
-    

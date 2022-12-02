@@ -1,7 +1,7 @@
 
 
 var tabs = document.getElementsByClassName('nav-item');
-var activeEl = tabs[0];
+var activeEl = tabs[2];
 
 function select(el){
   activeEl.classList.remove('active');
@@ -19,4 +19,3 @@ select(activeEl);
 // }, 1500);
 
 
-    
