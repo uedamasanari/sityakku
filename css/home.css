@@ -1327,6 +1327,7 @@ color: transparent !important;
 }
 .button_solid004 a:hover {
   border-bottom: solid 2px #1d7fde;
+  border-bottom: solid 2px black;
   transform: translateY(3px);
 }
 .modal-h4{
@@ -1365,8 +1366,7 @@ margin-bottom: 20px !important;
     border: solid 2px black;
     border-radius: 3px;
     transition: .4s;
-  }
-  
+  } 
   .btn-flat-border1:hover {
     background: black;
     color: white;
@@ -1408,36 +1408,28 @@ margin-bottom: 20px !important;
   left:80px;
 }
 
-.wakusenn{
+.wakusennn{
   width: 100%;
   height:400px;
   padding-top: 50px;
 }
-.wakusennn{
+
+.wakusenn{
     width: 100%;
     height:400px;
     padding-top: 70px;
   }
   
 
-/* プロフィール編集画面 */
-.hennkou{
-  width: 100px;
-  height:40px;
-}
 
-.hennkou{
-  background: black;
-  color:white
-}
+/* プロフィール編集画面 */
 .button-border{
   border: none;
   background-color: transparent;
 }
-.hennkou{
-   position:absolute;
-   top: 45px;
-   left:400px
+.button-border{
+  border: none;
+  background-color: transparent;
 }
 
 .button_solid005 a {
@@ -1461,6 +1453,8 @@ margin-bottom: 20px !important;
 }
 .button_solid005 a:hover {
   border-bottom: solid 2px #1d7fde;
+  border-bottom: solid 2px black;
+  border-bottom: solid 2px black;
   transform: translateY(3px);
 }
 
