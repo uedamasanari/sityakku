@@ -34,12 +34,12 @@ window.onload = function () {
         //     kin.innerHTML = res[i].item_money + "円";
         // }
         
-        let stockList = []; //ここが配列になる
-        for (let i=0; i<res.length; i++){
-        stockList.push('<li></li><img src = "'+res[i].item_img+'"><div>'+res[i].item_name+'</div><div>'+res[i].item_money+'</div></li>'); //ここにpush()がくる
-        }
+        // let stockList = []; //ここが配列になる
+        // for (let i=0; i<res.length; i++){
+        // stockList.push('<li></li><img src = "'+res[i].item_img+'"><div>'+res[i].item_name+'</div><div>'+res[i].item_money+'</div></li>'); //ここにpush()がくる
+        // }
 
-        document.getElementById('li1').innerHTML = stockList.join(''); //innerHTMLへ入れる時にjoin()で文字列にする
+        // document.getElementById('li1').innerHTML = stockList.join(''); //innerHTMLへ入れる時にjoin()で文字列にする
         
     }).error(function(XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
