@@ -43,30 +43,173 @@ function login(){
     });
 }
 
-function profilehen(){
-    let a = sessionStorage.getItem('id');
+// let ugoku = document.getElementById('submitbtn');
+// ugoku.addEventListener('click',function(){
+ function kessai_susumu(){
+
+    let c = sessionStorage.getItem('id');
     $.ajax({
-        url: `PHP/itoyama.php/?profile=true&user_id=${a}&timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?profile=true&user_id=${c}&timestamp=${new Date().getTime()}`
     })
+    .success(function(mo) {
+        console.log(mo);
 
-    .success(function(res) {
-        console.log(res);
+        //console.log('購入画面へ進める');
+        //支払い方法選択表示
+        let select = document.getElementById("sel1");
+        if(mo[0].user_buy == "銀行振込"){
+            select.options[1].selected = true;
+        }else if(mo[0].user_buy == "コンビニ払い"){
+            select.options[2].selected = true;
+        }else if(mo[0].user_buy == "クレジットカード"){
+            select.options[3].selected = true;
+        }else{
+            select.options[4].selected = true;
+        }
+        
 
-        let t1 = document.getElementById("user_name1"); 
-	    t1.setAttribute("value", res[0].user_name);
-
-        let t2 = document.getElementById("user_sintyo1"); 
-	    t2.setAttribute("value", res[0].user_height);
-
-        let t3 = document.getElementById("user_taiju1"); 
-	    t3.setAttribute("value", res[0].user_weight);
-
-        let t5 = document.getElementById("user_jusyo1"); 
-	    t5.setAttribute("value", res[0].user_address);
-
+        
     }).error(function(XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);
         console.log("errorThrown    : " + errorThrown.message);
     });
-}
+
+};
+
+//購入確認ボタンクリック時の動き
+let kaku = document.getElementById('kakunin');
+kaku.addEventListener('click',function(){
+
+        //支払い方法などのデータをlocalstorageで保存
+        if(window.localStorage){
+            let e = sessionStorage.getItem('id');
+             //↓セレクトボックスの値を取得
+            const sele1 = document.getElementById('bday-month');
+            const num = sele1.selectedIndex;//値(数値)を取得
+            const str = sele1.options[num].value;// 値(数値)から値(value値)を取得
+  
+            const sele2 = document.getElementById('bday-day');
+            const num2 = sele2.selectedIndex;//値(数値)を取得
+            const str2 = sele1.options[num2].value;// 値(数値)から値(value値)を取得
+
+            let array = [];
+            let data = {
+                id:e,
+                siha:document.getElementById('sel1').value,
+                yuubin:document.getElementById('yuubin').value,
+                ken:document.getElementById('ken').value,
+                sityou:document.getElementById('sityou').value,
+                banti:document.getElementById('banti').value,
+                heyaban:document.getElementById('heyaban').value,
+                tuki:str,
+                day2:str2
+
+            };
+            array.push(data);
+            let json = JSON.stringify(data,undefined,1);
+            localStorage.setItem('key',json);
+        }
+        
+
+        let d = sessionStorage.getItem('id');
+        $.ajax({
+            url: `PHP/itoyama.php/?cart=true&id=${d}$timestamp=${new Date().getTime()}`
+        })
+
+        .success(function(res) {
+            console.log(res);
+            let data1 = localStorage.getItem('key');
+            data1 = JSON.parse(data1);
+            let hyou1 = data1.siha;
+            let hyou2 = data1.tuki + data1.day2;
+            let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
+            document.getElementById('kaku_siha').value = hyou1;
+            document.getElementById('kaku_kiboubi').value = hyou2;
+            document.getElementById('kaku_juu').value = hyou2;
+
+            // for(let i = 0; i<res.length;i++){
+            //     let ele = document.createElement('div');
+            //     ele.className = 'list-all';
+            //     list.appendChild(ele);
+            //     ele = document.createElement('ol');
+            //     ele.className = 'sample1';
+            //     list.appendChild(ele);
+            //     ele = document.createElement('li');
+            //     ele.className = 'li';
+            //     let tag = document.getElementsByClassName('sample1');
+            //     tag.appendChild(ele);
+            //     ele = document.createElement('img');
+            //     ele.src = "";
+            //     ele.alt = "";
+            //     ele.className = 'i-img';
+            //     tag = document.getElementsByClassName('li');
+            //     tag.appendChild(ele);
+            //     ele = document.createElement('div');
+            //     ele.className = 'ko-gona';
+            //     ele.textContent = res[i].item_name;
+            //     tag.appendChild(ele);
+            //     ele = document.createElement('div');
+            //     ele.className = 'ko-dol';
+            //     ele.textContent = res[i].item_money;
+            // }
+
+            
+        }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            console.log("textStatus     : " + textStatus);
+            console.log("errorThrown    : " + errorThrown.message);
+        });
+
+});
+
+//購入確定のボタンがクリックされたときの処理
+let kakutei= document.getElementById('kou_kakutei');
+kakutei.addEventListener('click',function(){
+    alert("購入が確定しました！");
+    location.href = 'home.html';
+});
+
+//やるべきこと
+//カートの削除機能でのitemidを取得してPHP側で動かせる・カートに入っている情報を繰り返し表示させる
+//決済画面でのカートに入っている情報を表示させる
+//カートでのハートボタンのJSの動作 あと少し
+
+//カートのお気に入りボタンがクリックされたときの処理
+let okini = document.getElementById('');
+okini.addEventListener('click',function(){
+
+    let okiid = localStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?cart=true&id=${okiid}$timestamp=${new Date().getTime()}`
+    })
+
+    .success(function(data) {
+        //通信に成功
+        console.log(data);
+        let user = data.user_id;
+        let item = data.item_id;
+        $.ajax({
+            url: `PHP/itoyama.php/?favo=true&id=${user}&itemid=${item}$timestamp=${new Date().getTime()}`
+        })
+        .success(function(sei){
+            console.log(sei);
+            alert('お気に入り登録完了');
+        })
+        .error(function(XMLHttpRequest, textStatus, errorThrown) {
+            //通信に失敗
+            console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+            console.log("textStatus     : " + textStatus);             //エ
+            console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
+            //PHPのエラーではなくDBのエラーをどうするか
+        });
+        
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+        console.log("textStatus     : " + textStatus);             //エ
+        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+});

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - tabs bottom, menu mobile, navigation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="mobile.css">
+
+</head>
+
+<body>
+
+    <div id="modalArea" class="modalArea">
+        <div id="modalBg" class="modalBg"></div>
+        <div class="modalWrapper">
+            <div class="modal-header">
+                <div class="modal-title">ショッピングカート</div>
+                <div class="modal-close" id="modal-close">×</div>
+            </div>
+            <div class="modal-main">
+                <div class="modal-list">
+                    <img src="" alt="" class="cart-image">
+                    <div class="else">
+                        <div class="goods-name">商品名</div>
+                        <div class="else-con">
+                            <div>1000yen</div>
+                            <div class="goods-heart">
+                                <div class="wishlist-heart-group">
+                                    <input name="product-333" id="product-333" data-product-id="333" type="checkbox" />
+                                    <label for="product-333" data-hover-text="add favorite">
+                                        <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                            xmlns:cc="http://creativecommons.org/ns#"
+                                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                            xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1"
+                                            x="0px" y="0px" viewBox="0 0 100 100">
+                                            <g transform="translate(0,-952.36218)">
+                                                <path style="color:#000000;enable-background:accumulate;"
+                                                    d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                    fill="transparent" id="heart-path" stroke="#737373" stroke-width="5"
+                                                    marker="none" visibility="visible" display="inline"
+                                                    overflow="visible" />
+                                            </g>
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="goods-delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-main">
+                <div class="modal-list">
+                    <img src="" alt="" class="cart-image">
+                    <div class="else">
+                        <div class="goods-name">商品名</div>
+                        <div class="else-con">
+                            <div>1000yen</div>
+                            <div class="goods-heart">
+                                <div class="wishlist-heart-group">
+                                    <input name="product-333" id="product-333" data-product-id="333" type="checkbox" />
+                                    <label for="product-333" data-hover-text="add favorite">
+                                        <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                            xmlns:cc="http://creativecommons.org/ns#"
+                                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                            xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1"
+                                            x="0px" y="0px" viewBox="0 0 100 100">
+                                            <g transform="translate(0,-952.36218)">
+                                                <path style="color:#000000;enable-background:accumulate;"
+                                                    d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                    fill="transparent" id="heart-path" stroke="#737373" stroke-width="5"
+                                                    marker="none" visibility="visible" display="inline"
+                                                    overflow="visible" />
+                                            </g>
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="goods-delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-main">
+                <div class="modal-list">
+                    <img src="" alt="" class="cart-image">
+                    <div class="else">
+                        <div class="goods-name">商品名</div>
+                        <div class="else-con">
+                            <div>1000yen</div>
+                            <div class="goods-heart">
+                                <div class="wishlist-heart-group">
+                                    <input name="product-333" id="product-333" data-product-id="333" type="checkbox" />
+                                    <label for="product-333" data-hover-text="add favorite">
+                                        <svg xmlns:dc="http://purl.org/dc/elements/1.1/"
+                                            xmlns:cc="http://creativecommons.org/ns#"
+                                            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                                            xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                                            xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1"
+                                            x="0px" y="0px" viewBox="0 0 100 100">
+                                            <g transform="translate(0,-952.36218)">
+                                                <path style="color:#000000;enable-background:accumulate;"
+                                                    d="m 34.166665,972.36218 c -11.41955,0 -19.16666,8.91891 -19.16666,20.27029 0,19.45943 15,27.56753 35,39.72973 20.00001,-12.1622 34.99999,-20.2703 34.99999,-39.72973 0,-11.35137 -7.7471,-20.27029 -19.16665,-20.27029 -7.35014,0 -13.39148,4.05405 -15.83334,6.48647 -2.44185,-2.43241 -8.48319,-6.48647 -15.83334,-6.48647 z"
+                                                    fill="transparent" id="heart-path" stroke="#737373" stroke-width="5"
+                                                    marker="none" visibility="visible" display="inline"
+                                                    overflow="visible" />
+                                            </g>
+                                        </svg>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="goods-delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                    <path fill-rule="evenodd"
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+
+                <div class="cart-total">1234yen</div>
+                <div class="cart-sum">(4個)</div>
+                <button class="cart-button">購入画面へ</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mo-header">
+        <div class="logo">
+            logo
+        </div>
+        <div class="cart-div">
+            <!-- under-open -->
+            <button id="openModal" class="button-design">
+                <span class="cart">
+                    <svg height="512pt" viewBox="0 -31 512.00026 512" width="512pt" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m164.960938 300.003906h.023437c.019531 0 .039063-.003906.058594-.003906h271.957031c6.695312 0 12.582031-4.441406 14.421875-10.878906l60-210c1.292969-4.527344.386719-9.394532-2.445313-13.152344-2.835937-3.757812-7.269531-5.96875-11.976562-5.96875h-366.632812l-10.722657-48.253906c-1.527343-6.863282-7.613281-11.746094-14.644531-11.746094h-90c-8.285156 0-15 6.714844-15 15s6.714844 15 15 15h77.96875c1.898438 8.550781 51.3125 230.917969 54.15625 243.710938-15.941406 6.929687-27.125 22.824218-27.125 41.289062 0 24.8125 20.1875 45 45 45h272c8.285156 0 15-6.714844 15-15s-6.714844-15-15-15h-272c-8.269531 0-15-6.730469-15-15 0-8.257812 6.707031-14.976562 14.960938-14.996094zm312.152343-210.003906-51.429687 180h-248.652344l-40-180zm0 0" />
+                        <path
+                            d="m150 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0" />
+                        <path
+                            d="m362 405c0 24.8125 20.1875 45 45 45s45-20.1875 45-45-20.1875-45-45-45-45 20.1875-45 45zm45-15c8.269531 0 15 6.730469 15 15s-6.730469 15-15 15-15-6.730469-15-15 6.730469-15 15-15zm0 0" />
+                    </svg>
+                    <span class="cart__count">5</span>
+                </span>
+            </button>
+        </div>
+    </div>
+<div class="favorite-title"><img src="fvorite.png" alt="" width="40%" height="40%"></div>
+
+    <div class="tabmenu-wrap">
+        <div class="tab-con">
+            <div id="tabcon-01" class="con-box" style="display: block;">
+                <div class="list">
+                    <div class="list--item">
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="list--item">
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="list--item">
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="list--item">
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="list--item">
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="list--item">
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="list--item">
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="list--item-f">
+                            <a href="#"><img src="//placehold.it/250x250" alt=""></a>
+                            <!-- <div class="list-header"> -->
+                            <div class="nedan">$$$</div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+                <div class="pagination-con"></div>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <!-- under bottom tabmenu -->
+    <div class="bottom-tabmenu">
+        <nav class="bottom-nav">
+            <div class="nav-item" data-color="#5b37b7" onclick="select(this);senia()">
+                <span class="icon-home">
+                    <svg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px'>
+                        <path
+                            d='M9,19V13H11L13,13H15V19H18V10.91L12,4.91L6,10.91V19H9M12,2.09L21.91,12H20V21H13V15H11V21H4V12H2.09L12,2.09Z' />
+                    </svg>
+                </span>
+                <div class="title">Home</div>
+            </div>
+
+            <div class="nav-item" data-color="#e5a919" onclick="select(this)">
+                <span class="icon-search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-camera" viewBox="0 0 16 16">
+                        <path
+                            d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                        <path
+                            d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                    </svg>
+                </span>
+                <div class="title">Show</div>
+            </div>
+            <div class="nav-item" data-color="#c9379d" onclick="select(this)">
+                <span class="icon-heart">
+                    <svg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px'>
+                        <path
+                            d='M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z' />
+                    </svg>
+                </span>
+                <div class="title">Likes</div>
+            </div>
+            <div class="nav-item" data-color="#1194aa" onclick="select(this);senic()">
+                <span class="icon-profile">
+                    <svg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px'>
+                        <path
+                            d='M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z' />
+                    </svg>
+                </span>
+                <div class="title">Profile</div>
+            </div>
+        </nav>
+    </div>
+</body>
+<script src="mobile-fav.js"></script>
+<script src="mobile-fav2.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="tabmenu.js"></script>
+
+</html>
