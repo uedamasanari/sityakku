@@ -1,3 +1,6 @@
+window.onload = function(){
+    mysyuppin();
+}
 function mein1(){
     document.getElementById("history").style.display ="none";
     document.getElementById("none").style.display ="block";
@@ -47,4 +50,48 @@ reader.onload = (event) => {
 }
 reader.readAsDataURL(file);
 //↑base64終了
+}
+const mysyuppin=()=>{
+    //データを入れる
+    let list = document.getElementById("history");
+    for (let i = 0; i < 5; i++) {
+            let ele = document.createElement("p");
+            ele.className = 'gazou';
+            list.appendChild(ele);
+
+            ele = document.createElement("img");
+            ele.src = './furaito.jpg';
+            ele.width = "100";
+            let tag = document.getElementsByClassName("gazou")[i];
+            tag.appendChild(ele);
+            
+            ele = document.createElement("p");
+            ele.className = 'furaito';
+            ele.textContent = '商品名：';
+            list.appendChild(ele);
+
+            ele = document.createElement("p");
+            ele.className = 'kane';
+            ele.textContent = '値段：￥';
+            list.appendChild(ele);
+
+            ele = document.createElement("p");
+            ele.className = 'elu';
+            ele.textContent = 'サイズ：';
+            list.appendChild(ele);
+
+            ele = document.createElement("button");
+            ele.className="hensyu";
+            ele.onclick = function () {
+                change(i);
+            };
+            list.appendChild(ele);
+
+            ele = document.createElement("button");
+            ele.className="sakujyo";
+            ele.onclick = function () {
+                saku(i);
+            };
+            list.appendChild(ele);
+    }
 }
