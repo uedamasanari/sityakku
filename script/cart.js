@@ -13,10 +13,10 @@ window.onload = function () {
         for(let a = 0; a < res.length;a++){
             sum = sum +  res[a].item_money;
         }
-        //console.log(sum);//合計金額表示
+        //合計金額表示
         let gou = document.getElementById('goukei');
         gou.innerHTML = sum;
-        //console.log(res.length);//カートの中の数量
+        //カートの中の数量
         let hyou = document.getElementById('suuryou');
         hyou.innerHTML = res.length + "点";
 
@@ -24,16 +24,22 @@ window.onload = function () {
         co.innerHTML = res.length;
 
         //表示される分の枠を作る必要がある　ここをなんとかする！！！
-        for(let i = 0; i < res.length; i++){
+        // for(let i = 0; i < res.length; i++){
 
-            let mei = document.getElementById('syouhin_mei');
-            let kin = document.getElementById('syouhin_kin');
-            let pic = document.getElementsByClassName('thumb');
-            pic.innerHTML = res[i].item_image;
-            mei.innerHTML = res[i].item_name;
-            kin.innerHTML = res[i].item_money + "円";
+        //     let mei = document.getElementById('syouhin_mei');
+        //     let kin = document.getElementById('syouhin_kin');
+        //     let pic = document.getElementsByClassName('thumb');
+        //     pic.innerHTML = res[i].item_image;
+        //     mei.innerHTML = res[i].item_name;
+        //     kin.innerHTML = res[i].item_money + "円";
+        // }
+        
+        let stockList = []; //ここが配列になる
+        for (let i=0; i<res.length; i++){
+        stockList.push('<li></li><img src = "'+res[i].item_img+'"><div>'+res[i].item_name+'</div><div>'+res[i].item_money+'</div></li>'); //ここにpush()がくる
         }
 
+        document.getElementById('li1').innerHTML = stockList.join(''); //innerHTMLへ入れる時にjoin()で文字列にする
         
     }).error(function(XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -42,14 +48,14 @@ window.onload = function () {
     });
 }
 
-//カートの削除ボタンが押されたときの処理    
+//カートの削除ボタンが押されたときの処理    itemidを取得する
 let cartsakujo = document.getElementById('sakujo');
 cartsakujo.addEventListener('click',function(){
 
     let b = sessionStorage.getItem('id');
     $.ajax({
-        url: `PHP/itoyama.php/?cart=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`,
-        url: `PHP/itoyama.php/?cartsakujo=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cart=true}&id=${b}$timestamp=${new Date().getTime()}`,
+        //ここ！！url: `PHP/itoyama.php/?cartsakujo=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
 
     })
     .success(function(data1,data2) {

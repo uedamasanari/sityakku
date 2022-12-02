@@ -454,7 +454,7 @@
 
                                                         <div class="text-center my-5">
                                                             <button type="submit"
-                                                                class=" button-padding swiper-button-next buytext"><a
+                                                                class=" button-padding swiper-button-next buytext" onclick="kakunin()"><a
                                                                     class="buttext" id="kakunin">購入確認</a></button>
                                                         </div>
                                                     </div>
@@ -465,9 +465,9 @@
                                     <div class="swiper-slide modalInSlider">
                                         <div class="list-all">
                                             <ol class="sample1">
-                                                <li class="li"><img src="" alt="" class="i-img">
-                                                    <div class="ko-gona">goods name</div>
-                                                    <div class="ko-dol">$2980</div>
+                                                <li class="li" id="li1"><img src="" alt="" class="i-img" id="img1">
+                                                    <div class="ko-gona" id="goodsname">goods name</div>
+                                                    <div class="ko-dol" id="dol1">$2980</div>
                                                 </li>
                                                 <li class="li"><img src="" alt="" class="i-img">
                                                     <div class="ko-gona">goods name</div>
@@ -505,7 +505,7 @@
                                                     readonly>
                                             </div>
                                             <div class="submitbutton">
-                                                <button type="submit" class="btn btn-primary" id="kou_kakutei">購入確定</button>
+                                                <button type="submit" class="btn btn-primary" id="kou_kakutei" onclick="kakutei()">購入確定</button>
                                             </div>
                                         </div>
                                     </div>

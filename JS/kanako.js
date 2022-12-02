@@ -78,8 +78,9 @@ function login(){
 };
 
 //購入確認ボタンクリック時の動き
-let kaku = document.getElementById('kakunin');
-kaku.addEventListener('click',function(){
+// let kaku = document.getElementById('kakunin');
+// kaku.addEventListener('click',function(){
+    function kakunin(){
 
         //支払い方法などのデータをlocalstorageで保存
         if(window.localStorage){
@@ -161,14 +162,15 @@ kaku.addEventListener('click',function(){
             console.log("errorThrown    : " + errorThrown.message);
         });
 
-});
+}
 
 //購入確定のボタンがクリックされたときの処理
-let kakutei= document.getElementById('kou_kakutei');
-kakutei.addEventListener('click',function(){
+// let kakutei= document.getElementById('kou_kakutei');
+// kakutei.addEventListener('click',function(){
+    function kakutei(){
     alert("購入が確定しました！");
     location.href = 'home.html';
-});
+}
 
 //やるべきこと
 //カートの削除機能でのitemidを取得してPHP側で動かせる・カートに入っている情報を繰り返し表示させる
@@ -176,9 +178,9 @@ kakutei.addEventListener('click',function(){
 //カートでのハートボタンのJSの動作 あと少し
 
 //カートのお気に入りボタンがクリックされたときの処理
-let okini = document.getElementById('');
-okini.addEventListener('click',function(){
-
+// let okini = document.getElementById('okiniiri');
+// okini.addEventListener('click',function(){
+    function hato(){
     let okiid = localStorage.getItem('id');
     $.ajax({
         url: `PHP/itoyama.php/?cart=true&id=${okiid}$timestamp=${new Date().getTime()}`
@@ -212,4 +214,4 @@ okini.addEventListener('click',function(){
         console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
         //PHPのエラーではなくDBのエラーをどうするか
     });
-});
+}
