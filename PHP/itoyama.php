@@ -43,6 +43,12 @@ if(isset($_POST['mail'])){
                 $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->bindValue(2,$item,PDO::PARAM_INT);
                 $ps->execute();
+                $data = array();
+                    array_push($data, array(
+                        'state' => "お気に入り追加成功"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
 
             }
 

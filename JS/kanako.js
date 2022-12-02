@@ -45,6 +45,7 @@ function login(){
 
 // let ugoku = document.getElementById('submitbtn');
 // ugoku.addEventListener('click',function(){
+//購入画面へ進むボタンがクリックされたときの処理
  function kessai_susumu(){
 
     let c = sessionStorage.getItem('id');
@@ -92,12 +93,16 @@ function login(){
   
             const sele2 = document.getElementById('bday-day');
             const num2 = sele2.selectedIndex;//値(数値)を取得
-            const str2 = sele1.options[num2].value;// 値(数値)から値(value値)を取得
+            const str2 = sele2.options[num2].value;// 値(数値)から値(value値)を取得
+
+            const sele3 = document.getElementById('sel1');
+            const num3 = sele3.selectedIndex;//値(数値)を取得
+            const str3 = sele3.options[num3].value;// 値(数値)から値(value値)を取得
 
             let array = [];
             let data = {
                 id:e,
-                siha:document.getElementById('sel1').value,
+                siha:str3,
                 yuubin:document.getElementById('yuubin').value,
                 ken:document.getElementById('ken').value,
                 sityou:document.getElementById('sityou').value,
@@ -125,35 +130,11 @@ function login(){
             let hyou1 = data1.siha;
             let hyou2 = data1.tuki + data1.day2;
             let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
-            document.getElementById('kaku_siha').value = hyou1;
-            document.getElementById('kaku_kiboubi').value = hyou2;
-            document.getElementById('kaku_juu').value = hyou2;
+            document.getElementById('kaku_siharai').textContent = hyou1;
+            document.getElementById('kaku_kiboubi').textContent = hyou2;
+            document.getElementById('kaku_juusyo').textContent = hyou3;
 
-            // for(let i = 0; i<res.length;i++){
-            //     let ele = document.createElement('div');
-            //     ele.className = 'list-all';
-            //     list.appendChild(ele);
-            //     ele = document.createElement('ol');
-            //     ele.className = 'sample1';
-            //     list.appendChild(ele);
-            //     ele = document.createElement('li');
-            //     ele.className = 'li';
-            //     let tag = document.getElementsByClassName('sample1');
-            //     tag.appendChild(ele);
-            //     ele = document.createElement('img');
-            //     ele.src = "";
-            //     ele.alt = "";
-            //     ele.className = 'i-img';
-            //     tag = document.getElementsByClassName('li');
-            //     tag.appendChild(ele);
-            //     ele = document.createElement('div');
-            //     ele.className = 'ko-gona';
-            //     ele.textContent = res[i].item_name;
-            //     tag.appendChild(ele);
-            //     ele = document.createElement('div');
-            //     ele.className = 'ko-dol';
-            //     ele.textContent = res[i].item_money;
-            // }
+            //カート詳細に入っているデータを表示させる！！！
 
             
         }).error(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -177,41 +158,3 @@ function login(){
 //決済画面でのカートに入っている情報を表示させる
 //カートでのハートボタンのJSの動作 あと少し
 
-//カートのお気に入りボタンがクリックされたときの処理
-// let okini = document.getElementById('okiniiri');
-// okini.addEventListener('click',function(){
-    function hato(){
-    let okiid = localStorage.getItem('id');
-    $.ajax({
-        url: `PHP/itoyama.php/?cart=true&id=${okiid}$timestamp=${new Date().getTime()}`
-    })
-
-    .success(function(data) {
-        //通信に成功
-        console.log(data);
-        let user = data.user_id;
-        let item = data.item_id;
-        $.ajax({
-            url: `PHP/itoyama.php/?favo=true&id=${user}&itemid=${item}$timestamp=${new Date().getTime()}`
-        })
-        .success(function(sei){
-            console.log(sei);
-            alert('お気に入り登録完了');
-        })
-        .error(function(XMLHttpRequest, textStatus, errorThrown) {
-            //通信に失敗
-            console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
-            console.log("textStatus     : " + textStatus);             //エ
-            console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
-            //PHPのエラーではなくDBのエラーをどうするか
-        });
-        
-    })
-    .error(function(XMLHttpRequest, textStatus, errorThrown) {
-        //通信に失敗
-        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
-        console.log("textStatus     : " + textStatus);             //エ
-        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
-        //PHPのエラーではなくDBのエラーをどうするか
-    });
-}
