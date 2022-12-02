@@ -11,11 +11,11 @@ if(isset($_POST['mail'])){
 
     $itoyama->prohenkou($_GET['user_id']);
 
-}else if(isset($_GET['pro']){
+}else if(isset($_GET['pro'])){
 
     $itoyama->pro($_GET['user_id']);
 
-})
+}
 
 
     class Itoyama{
