@@ -48,3 +48,16 @@ reader.onload = (event) => {
 reader.readAsDataURL(file);
 //↑base64終了
 }
+function sakujyo() {
+
+    $.ajax({
+            url: "PHP/itoyama.php/?sakujyo=13&timestamp=${new Date().getTime()}"
+        })
+        .success(function (message) {
+            alert(message);
+        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            console.log("textStatus     : " + textStatus);
+            console.log("errorThrown    : " + errorThrown.message);
+        });
+}
