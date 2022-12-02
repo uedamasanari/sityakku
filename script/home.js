@@ -5,12 +5,12 @@ let accessory = Array();
 let count = [0, 0, 0];
 let page = [0, 0, 0];
 let maxpage = [0, 0, 0];
-let category = [true, true];
+let category = [true,true,true,true];
 let value1;
 let value2;
 window.onload = function () {
     $.ajax({
-            url: "PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
+            url: "./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
         })
         .success(function (res) {
             console.log(res);
@@ -73,6 +73,15 @@ $(function () {
     });
     $('#close-syousai , #modalBg').click(function () {
         $('#goodsModal').fadeOut();
+    });
+});
+
+$(function () {
+    $('#opensityaku').click(function () {
+        $('#modalsityaku').fadeIn();
+    });
+    $('#close-sityaku , #modalBg').click(function () {
+        $('#modalsityaku').fadeOut();
     });
 });
 
@@ -184,13 +193,17 @@ const hyouji = (a, b) => {
 
                 ele = document.createElement("a");
                 ele.className = 'atag';
-                ele.href = "#";
+                ele.id = "openSyousai";
                 tag = document.getElementsByClassName("list--item_div")[sw];
                 tag.appendChild(ele);
 
                 ele = document.createElement("img");
                 ele.src = kari[index].item_image;
-                ele.style = "height:250px;width:250px;"
+                ele.style = "height:250px;width:250px;";
+                ele.onclick = function () {
+                    $('#goodsModal').fadeIn();
+                    syouhinsyousai(a, i);
+                };
                 tag = document.getElementsByClassName("atag")[sw];
                 tag.appendChild(ele);
 
@@ -208,31 +221,26 @@ const hyouji = (a, b) => {
                 ele.textContent = kari[index].item_money + '円';
                 tag = document.getElementsByClassName("list--item_div")[sw];
                 tag.appendChild(ele);
-                console.log(i);
                 count[a]++;
                 sw++;
-                index++;
             }
+            index++;
         }
     }
 }
 
+
 const sort = () => {
     const c1 = document.getElementById("c1");
     const c2 = document.getElementById("c2");
+    const c3 = document.getElementById("c3");
+    const c4 = document.getElementById("c4");
     const radio1 = document.getElementsByName("radio1");
     const radio2 = document.getElementsByName("radio2");
-    let jouken;
-    if (c1.checked) {
-        category[0] = true;
-    } else {
-        category[0] = false;
-    }
-    if (c2.checked) {
-        category[1] = true;
-    } else {
-        category[1] = false;
-    }
+    c1.checked ? category[0] = true : category[0] = false;
+    c2.checked ? category[1] = true : category[1] = false;
+    c3.checked ? category[2] = true : category[2] = false;
+    c4.checked ? category[3] = true : category[3] = false;
 
     for (let i = 0; i < radio1.length; i++) {
         if (radio1.item(i).checked) {
@@ -247,23 +255,138 @@ const sort = () => {
     //並び替え条件式
     if (value1 == 1) {
         if (value2 == 1) {
-            jouken = "a.item_time > b.item_time";
+            mens.sort(function (a, b) {
+                if (a.item_time > b.item_time) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
         } else if (value2 == 2) {
-            jouken = "a.item_time < b.item_time";
+            mens.sort(function (a, b) {
+                if (a.item_time < b.item_time) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
         }
-    } else if (value2 == 2) {
+    } else if (value1 == 2) {
         if (value2 == 1) {
-            jouken = "a.item_money > b.item_money";
+            mens.sort(function (a, b) {
+                if (a.item_money > b.item_money) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
         } else if (value2 == 2) {
-            jouken = "a.item_money < b.item_money";
+            mens.sort(function (a, b) {
+                if (a.item_money < b.item_money) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
         }
     }
-    mens.sort(function (a, b) {
 
-        if (jouken) {
-            return 1;
-        } else {
-            return -1;
+    if (value1 == 1) {
+        if (value2 == 1) {
+            ladius.sort(function (a, b) {
+                if (a.item_time > b.item_time) {
+                    return 1;
+                } else {
+
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            ladius.sort(function (a, b) {
+                if (a.item_time < b.item_time) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
         }
-    })
+    } else if (value1 == 2) {
+        if (value2 == 1) {
+            ladius.sort(function (a, b) {
+                if (a.item_money > b.item_money) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            ladius.sort(function (a, b) {
+                if (a.item_money < b.item_money) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+        }
+    }
+    if (value1 == 1) {
+        if (value2 == 1) {
+            accessory.sort(function (a, b) {
+                if (a.item_time < b.item_time) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            accessory.sort(function (a, b) {
+                if (a.item_time > b.item_time) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+        }
+    } else if (value1 == 2) {
+        if (value2 == 1) {
+            accessory.sort(function (a, b) {
+                if (a.item_money > b.item_money) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+        } else if (value2 == 2) {
+            accessory.sort(function (a, b) {
+                if (a.item_money < b.item_money) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
+        }
+    }
+    hyouji(0, 2);
+    hyouji(1, 2);
+    hyouji(2, 2);
+    
+}
+function syouhinsyousai(seibetu,a){
+    let kari=Array();
+    switch (seibetu) {
+        case 0:
+            kari = mens;
+            break;
+        case 1:
+            kari = ladius;
+            break;
+        case 2:
+            kari = accessory;
+            break;
+    }
+    document.getElementById("itemImg").src=kari[a].item_image;
+    document.getElementById("itemName").textContent=kari[a].item_name;
+    document.getElementById("size").textContent=kari[a].item_size;
+    document.getElementById("price").textContent=kari[a].item_money;
+    document.getElementById("ProductDetails").textContent=kari[a].item_feature;
 }
