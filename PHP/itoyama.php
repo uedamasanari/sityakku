@@ -61,6 +61,7 @@ if(isset($_POST['mail'])){
                 $json_array = json_encode($data);
                 print $json_array;
             }
+            
             //カート商品取り消し
             public function cartsakujo($itemid){
                 $pdo = $this->dbConnect();
@@ -78,6 +79,7 @@ if(isset($_POST['mail'])){
                 $json_array = json_encode($data);
                 print $json_array;
             }
+
             //出品商品取り消し
             public function syuppinsakujo($item){
                 $pdo = $this->dbConnect();
