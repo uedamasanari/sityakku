@@ -27,8 +27,9 @@ if(isset($_POST['mail'])){
 }else if(isset($_GET['favo'])){
 
     $itoyama->okiniiri($_get['id'],$_GET['itemid']);
+}else if(isset($_GET['sakujyo'])){
+    $itoyama->syuppinsakujo($_GET['sakujyo']);
 }
-
 
     class Itoyama{
         private function dbConnect(){
