@@ -40,6 +40,124 @@ window.onload = function () {
             console.log("textStatus     : " + textStatus);
             console.log("errorThrown    : " + errorThrown.message);
         });
+        // 実行したい処理
+    //alert('ページの読み込みが完了したよ！');
+
+    let a = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?profile=true&user_id=${a}&timestamp=${new Date().getTime()}`
+    })
+
+    .success(function(res) {
+        console.log(res);
+
+        let t1 = document.getElementById("user_name"); 
+	    t1.setAttribute("value", res[0].user_name);
+
+        let t2 = document.getElementById("user_sintyou"); 
+	    t2.setAttribute("value", res[0].user_height);
+
+        let t3 = document.getElementById("user_taiju"); 
+	    t3.setAttribute("value", res[0].user_weight);
+
+        let t5 = document.getElementById("user_jusyo"); 
+	    t5.setAttribute("value", res[0].user_address);
+
+        if(res[0].user_gender == "男"){
+            let te = document.getElementById('user_sei');
+            te.innerHTML= '男性';
+        }else{
+            let te = document.getElementById('user_sei');
+            te.innerHTML= '女性';
+        }
+
+        let t6 = document.getElementById('user_siharai');
+        t6.innerHTML = res[0].user_buy;
+
+        //編集画面の動き
+        let hename = document.getElementById("user_name1"); 
+	    hename.setAttribute("value", res[0].user_name);
+
+        let hesin = document.getElementById("user_sintyou1"); 
+	    hesin.setAttribute("value", res[0].user_height);
+
+        let hetai = document.getElementById("user_taiju1"); 
+	    hetai.setAttribute("value", res[0].user_weight);
+
+        let heju = document.getElementById("user_jusyo1"); 
+	    heju.setAttribute("value", res[0].user_address);
+
+        let hoge = document.getElementsByName("sei");
+        if(res[0].user_gender == "男"){
+            hoge[0].checked = true;
+        }else{
+            hoge[1].checked = true;
+        }
+
+        let select = document.getElementById("select_1");
+        if(res[0].user_buy == "銀行振込"){
+            select.options[0].selected = true;
+        }else if(res[0].user_buy == "コンビニ払い"){
+            select.options[1].selected = true;
+        }else if(res[0].user_buy == "クレジットカード"){
+            select.options[2].selected = true;
+        }else{
+            select.options[3].selected = true;
+        }
+
+
+    }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+
+    //console.log("javascript開始");
+    let aa = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?cart=true&id=${aa}$timestamp=${new Date().getTime()}`
+    })
+    .success(function(res) {
+        console.log(res);
+
+        //合計金額計算
+        let sum = 0;
+        for(let aa = 0; aa < res.length;a++){
+            sum = sum +  res[a].item_money;
+        }
+        //合計金額表示
+        let gou = document.getElementById('goukei');
+        gou.innerHTML = sum;
+        //カートの中の数量
+        let hyou = document.getElementById('suuryou');
+        hyou.innerHTML = res.length + "点";
+
+        let co = document.getElementById('cartcount');
+        co.innerHTML = res.length;
+
+        //表示される分の枠を作る必要がある　ここをなんとかする！！！
+        // for(let i = 0; i < res.length; i++){
+
+        //     let mei = document.getElementById('syouhin_mei');
+        //     let kin = document.getElementById('syouhin_kin');
+        //     let pic = document.getElementsByClassName('thumb');
+        //     pic.innerHTML = res[i].item_image;
+        //     mei.innerHTML = res[i].item_name;
+        //     kin.innerHTML = res[i].item_money + "円";
+        // }
+        
+        let stockList = []; //ここが配列になる
+        for (let i=0; i<res.length; i++){
+        stockList.push('<li></li><img src = "'+res[i].item_img+'"><div>'+res[i].item_name+'</div><div>'+res[i].item_money+'</div></li>'); //ここにpush()がくる
+        }
+
+        document.getElementById('li1').innerHTML = stockList.join(''); //innerHTMLへ入れる時にjoin()で文字列にする
+        
+    }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
 }
 
 $('.tabmenu-wrap .tab-nav').find('a').on('click', function (e) {

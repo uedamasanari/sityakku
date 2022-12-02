@@ -28,3 +28,12 @@ $(function () {
       $('#SyousaiArea').fadeOut();
     });
   });
+
+  $(function () {
+    $('#open-sityaku').click(function(){
+        $('#sityakuArea').fadeIn();
+    });
+    $('#sityaku-close , #SyousaiBgg').click(function(){
+      $('#sityakuArea').fadeOut();
+    });
+  });
