@@ -114,6 +114,7 @@ window.addEventListener("load", function () {
     .success(function(res) {
         console.log(res);
         location.href = 'home.html';
+        alert("プロフィール変更完了");
     }).error(function(XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);

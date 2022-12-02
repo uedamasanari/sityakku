@@ -45,6 +45,12 @@ if(isset($_POST['mail'])){
                 $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->bindValue(2,$item,PDO::PARAM_INT);
                 $ps->execute();
+                $data = array();
+                    array_push($data, array(
+                        'state' => "お気に入り追加成功"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
 
             }
 
@@ -63,6 +69,7 @@ if(isset($_POST['mail'])){
                 $json_array = json_encode($data);
                 print $json_array;
             }
+            
             //カート商品取り消し
             public function cartsakujo($itemid){
                 $pdo = $this->dbConnect();
@@ -80,6 +87,7 @@ if(isset($_POST['mail'])){
                 $json_array = json_encode($data);
                 print $json_array;
             }
+
             //出品商品取り消し
             public function syuppinsakujo($item){
                 $pdo = $this->dbConnect();
