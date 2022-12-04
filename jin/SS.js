@@ -6,12 +6,12 @@ window.onload = function(){
     .success(function (res) {
         console.log(res);
         mysyuppindata = res;
+        mysyuppin();
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);
         console.log("errorThrown    : " + errorThrown.message);
     });
-    mysyuppin();
 }
 function mein1(){
     document.getElementById("history").style.display ="none";
@@ -85,28 +85,29 @@ const mysyuppin=()=>{
             list.appendChild(ele);
 
             ele = document.createElement("img");
-            ele.src = mysyuppindata;
+            ele.src = mysyuppindata[i].item_image;
             ele.width = "100";
             let tag = document.getElementsByClassName("gazou")[i];
             tag.appendChild(ele);
             
             ele = document.createElement("p");
             ele.className = 'furaito';
-            ele.textContent = '商品名：';
+            ele.textContent = '商品名：'+mysyuppindata[i].item_name;
             list.appendChild(ele);
 
             ele = document.createElement("p");
             ele.className = 'kane';
-            ele.textContent = '値段：￥';
+            ele.textContent = '値段：￥'+mysyuppindata[i].item_money;
             list.appendChild(ele);
 
             ele = document.createElement("p");
             ele.className = 'elu';
-            ele.textContent = 'サイズ：';
+            ele.textContent = 'サイズ：'+mysyuppindata[i].item_size;
             list.appendChild(ele);
 
             ele = document.createElement("button");
             ele.className="hensyu";
+            ele.textContent="編集";
             ele.onclick = function () {
                 change(i);
             };
@@ -114,9 +115,14 @@ const mysyuppin=()=>{
 
             ele = document.createElement("button");
             ele.className="sakujyo";
+            ele.textContent="削除";
             ele.onclick = function () {
                 saku(i);
             };
             list.appendChild(ele);
     }
+}
+mysyuppindata.splice(i);
+const change=()=>{
+    
 }
