@@ -29,6 +29,9 @@ if(isset($_POST['mail'])){
     $itoyama->okiniiri($_get['id'],$_GET['itemid']);
 }else if(isset($_GET['sakujyo'])){
     $itoyama->syuppinsakujo($_GET['sakujyo']);
+}else if(isset($_POST['shinkimail'])){
+
+    $itoyama->shinki($_POST['shinkimail'],$_POST['shinkipass']);
 }
 
     class Itoyama{
@@ -133,11 +136,28 @@ if(isset($_POST['mail'])){
             //新規登録
             public function shinki($mail,$pass){
                 $pdo=$this->dbConnect();
-                $sql = "INSERT INTO users (user_mail,user_pass)VALUE(?,?)";
-                $ps = $pdo->prepare($sql);
+                $sql1 = "SELECT * FROM users WHERE user_mail = ?";
                 $ps->bindValue(1,$mail,PDO::PARAM_STR);
-                $ps->bindValue(2,$pass,PDO::PARAM_STR);
-                $ps->execute();  
+                $ps->execute();
+                $sele = $ps->fetchAll();
+                $hai = array();
+                if($sele == null){
+                    $sql2 = "INSERT INTO users (user_mail,user_pass)VALUE(?,?)";
+                    $ps = $pdo->prepare($sql2);
+                    $ps->bindValue(1,$mail,PDO::PARAM_STR);
+                    $ps->bindValue(2,$pass,PDO::PARAM_STR);
+                    $ps->execute();  
+                    array_push($hai,array(
+                        'state'=>'成功'
+                    ));
+                }else{
+                    array_push($hai,array(
+                        'state'=>'失敗'
+                    ));
+                }
+                $json_array = json_encode($hai);
+                    print $json_array;
+                
             }
 
             //支払い方法作成

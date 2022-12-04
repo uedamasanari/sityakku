@@ -15,29 +15,36 @@
         <p>新規登録</p>
         </div>
 
-        <div class="mailmoji">メールまたは電話番号
+        <form onsubmit="return false;" action="" name="shinki" method="post"> 
+            <div class="mailmoji">メールまたは電話番号
 
-        </div>
+            </div>
 
-        <div class="mail">
-            <input  type="text" style="width: 40%; height:7.5%" name="mail">
-        </div>
-        <br>
+            <div class="mail">
+                <input  type="text" style="width: 40%; height:7.5%" name="shinkimail">
+            </div>
+            <br>
 
-        <div class="passmoji">パスワード
+            <div class="passmoji">パスワード
 
-        </div>
+            </div>
 
-        <div class="pass">
-            <input type="text" style="width: 40%; height:7.5%" name="pass">
-        </div>
-        <br>
-        <div class="main">
-<div class="section">
-        <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow" id="button_04">登録</button>
-        
-    </div>
-        </div>
+            <div class="pass">
+                <input type="text" style="width: 40%; height:7.5%" name="shinkipass">
+            </div>
+            <br>
+
+            <div>
+                <h4 style="color: red; text-align: center;" id="error1"></h4>
+            </div>
+
+            <div class="main">
+                <div class="section">
+                        <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow" id="button_04" onclick="shinki()" type="submit">ログイン</button>
+                
+                </div>
+            </div>
+    </form> 
 
 
             <br>
