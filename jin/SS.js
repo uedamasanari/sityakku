@@ -122,7 +122,7 @@ const mysyuppin=()=>{
             list.appendChild(ele);
     }
 }
-mysyuppindata.splice(i);
-const change=()=>{
+// mysyuppindata.splice(i);
+// const change=()=>{
     
-}
+// }
