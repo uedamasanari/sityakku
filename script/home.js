@@ -122,8 +122,8 @@ window.onload = function () {
 
             //合計金額計算
             let sum = 0;
-            for (let aa = 0; aa < res.length; a++) {
-                sum = sum + res[a].item_money;
+            for (let aa = 0; aa < res.length; aa++) {
+                sum = sum + res[aa].item_money;
             }
             //合計金額表示
             let gou = document.getElementById('goukei');
@@ -132,19 +132,8 @@ window.onload = function () {
             let hyou = document.getElementById('suuryou');
             hyou.innerHTML = res.length + "点";
 
-            let co = document.getElementById('cartcount');
+            let co = document.getElementById('cartcou');
             co.innerHTML = res.length;
-
-            //表示される分の枠を作る必要がある　ここをなんとかする！！！
-            // for(let i = 0; i < res.length; i++){
-
-            //     let mei = document.getElementById('syouhin_mei');
-            //     let kin = document.getElementById('syouhin_kin');
-            //     let pic = document.getElementsByClassName('thumb');
-            //     pic.innerHTML = res[i].item_image;
-            //     mei.innerHTML = res[i].item_name;
-            //     kin.innerHTML = res[i].item_money + "円";
-            // }
 
             let stockList = []; //ここが配列になる
             for (let i = 0; i < res.length; i++) {
@@ -159,6 +148,56 @@ window.onload = function () {
             console.log("errorThrown    : " + errorThrown.message);
         });
 }
+
+//変更ボタンがクリックされたときの処理
+// let henbtn = document.getElementById('henkoubtn');
+// henbtn.addEventListener('click',function(){
+    function henkou(){
+
+        //↓性別の値を取得
+        let elements = document.getElementsByName('sei');
+        let len = elements.length;
+        let checkValue = '';
+    
+        for (let i = 0; i < len; i++){
+            if (elements.item(i).checked){
+                checkValue = elements.item(i).value;
+            }
+        }   
+    
+        //↓セレクトボックスの値を取得
+        const sele1 = document.form1.select1;
+        const num = sele1.selectedIndex;//値(数値)を取得
+        const str = sele1.options[num].value;// 値(数値)から値(value値)を取得
+    
+        //↓　ajaxでPHPに送信するための配列作成
+        let data = {
+            id:sessionStorage.getItem('id'),
+            name:document.getElementById('user_name1').value,
+            sin:document.getElementById('user_sintyou1').value,
+            tai:document.getElementById('user_taiju1').value,
+            gen:checkValue,
+            buy:str,
+            add:document.getElementById('user_jusyo1').value,
+        }
+    
+        //↓ajaxでPHPと通信
+        $.ajax({
+            type: "post",   //送信の通信だと定義
+            url: "PHP/itoyama.php",    //送信先のリンク
+            data: data,     //送信するデータを定義
+        })
+    
+        .success(function(res) {
+            console.log(res);
+            location.href = 'home.html';
+            alert("プロフィール変更完了");
+        }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            console.log("textStatus     : " + textStatus);
+            console.log("errorThrown    : " + errorThrown.message);
+        });
+    }
 
 $('.tabmenu-wrap .tab-nav').find('a').on('click', function (e) {
     var $this = $(this);
