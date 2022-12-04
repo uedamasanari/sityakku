@@ -102,12 +102,14 @@ button.no-shadow:hover {
 	
 }
 .history{
+  display: none;
+}
+.hrap{
   margin-left: 5%;
   box-shadow: 5px 5px 5px #808080;
   width: 280px;
   border: 1px solid;
   border-radius: 8px;
-  display: none;
   margin-top: 3%;
   margin-bottom: 3%;
 }
