@@ -87,71 +87,84 @@ function login(){
         if(window.localStorage){
             let e = sessionStorage.getItem('id');
              //↓セレクトボックスの値を取得
-            const sele1 = document.getElementById('bday-month');
-            const num = sele1.selectedIndex;//値(数値)を取得
-            const str = sele1.options[num].value;// 値(数値)から値(value値)を取得
+            let sele1 = document.getElementById('bday-month');
+            let num = sele1.selectedIndex;//値(数値)を取得
+            let str = sele1.options[num].value;// 値(数値)から値(value値)を取得月
   
-            const sele2 = document.getElementById('bday-day');
-            const num2 = sele2.selectedIndex;//値(数値)を取得
-            const str2 = sele2.options[num2].value;// 値(数値)から値(value値)を取得
+            let sele2 = document.getElementById('bday-day');
+            let num2 = sele2.selectedIndex;//値(数値)を取得
+            let str2 = sele2.options[num2].value;// 値(数値)から値(value値)を取得日にち
 
-            const sele3 = document.getElementById('sel1');
-            const num3 = sele3.selectedIndex;//値(数値)を取得
-            const str3 = sele3.options[num3].value;// 値(数値)から値(value値)を取得
+            let sele3 = document.getElementById('sel1');
+            let num3 = sele3.selectedIndex;//値(数値)を取得
+            let str3 = sele3.options[num3].value;// 値(数値)から値(value値)を取得支払い
 
-            let array = [];
-            let data = {
-                id:e,
-                siha:str3,
-                yuubin:document.getElementById('yuubin').value,
-                ken:document.getElementById('ken').value,
-                sityou:document.getElementById('sityou').value,
-                banti:document.getElementById('banti').value,
-                heyaban:document.getElementById('heyaban').value,
-                tuki:str,
-                day2:str2
+            let yuubin = document.getElementById('yuubin').value;
+            let ken = document.getElementById('ken').value;
+            let sityou = document.getElementById('sityou').value;
+            let banti = document.getElementById('sityou').value;
+            let heyaban = document.getElementById('heyaban').value;
 
-            };
-            array.push(data);
-            let json = JSON.stringify(data,undefined,1);
-            localStorage.setItem('key',json);
-        }
+            let reslte = window.confirm(str+'月'+str2+'日'+str3+''+'〒'+yuubin+ken+sityou+banti+heyaban+'の内容でよろしかったでしょうか。');
+            if(reslte == true){
+            alert("購入が確定しました！");
+            location.href = 'home.html';
+            }
+
+        //     let array = [];
+        //     let data = {
+        //         id:e,
+        //         siha:str3,
+        //         yuubin:document.getElementById('yuubin').value,
+        //         ken:document.getElementById('ken').value,
+        //         sityou:document.getElementById('sityou').value,
+        //         banti:document.getElementById('banti').value,
+        //         heyaban:document.getElementById('heyaban').value,
+        //         tuki:str,
+        //         day2:str2
+
+        //     };
+        //     array.push(data);
+        //     let json = JSON.stringify(data,undefined,1);
+        //     localStorage.setItem('key',json);
+        // }
         
 
-        let d = sessionStorage.getItem('id');
-        $.ajax({
-            url: `PHP/itoyama.php/?cart=true&id=${d}$timestamp=${new Date().getTime()}`
-        })
+        // let d = sessionStorage.getItem('id');
+        // $.ajax({
+        //     url: `PHP/itoyama.php/?cart=true&id=${d}$timestamp=${new Date().getTime()}`
+        // })
 
-        .success(function(res) {
-            console.log(res);
-            let data1 = localStorage.getItem('key');
-            data1 = JSON.parse(data1);
-            let hyou1 = data1.siha;
-            let hyou2 = data1.tuki + data1.day2;
-            let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
-            document.getElementById('kaku_siharai').textContent = hyou1;
-            document.getElementById('kaku_kiboubi').textContent = hyou2;
-            document.getElementById('kaku_juusyo').textContent = hyou3;
+        // .success(function(res) {
+        //     console.log(res);
+        //     let data1 = localStorage.getItem('key');
+        //     data1 = JSON.parse(data1);
+        //     let hyou1 = data1.siha;
+        //     let hyou2 = data1.tuki + data1.day2;
+        //     let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
+        //     document.getElementById('kaku_siharai').textContent = hyou1;
+        //     document.getElementById('kaku_kiboubi').textContent = hyou2;
+        //     document.getElementById('kaku_juusyo').textContent = hyou3;
 
-            //カート詳細に入っているデータを表示させる！！！
+        //     //カート詳細に入っているデータを表示させる！！！
 
             
-        }).error(function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-            console.log("textStatus     : " + textStatus);
-            console.log("errorThrown    : " + errorThrown.message);
-        });
+        // }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        //     console.log("textStatus     : " + textStatus);
+        //     console.log("errorThrown    : " + errorThrown.message);
+        // });
 
 }
+}   
 
 //購入確定のボタンがクリックされたときの処理
 // let kakutei= document.getElementById('kou_kakutei');
 // kakutei.addEventListener('click',function(){
-    function kakutei(){
-    alert("購入が確定しました！");
-    location.href = 'home.html';
-}
+//     function kakutei(){
+//     alert("購入が確定しました！");
+//     location.href = 'home.html';
+// }
 
 //やるべきこと
 //カートの削除機能でのitemidを取得してPHP側で動かせる・カートに入っている情報を繰り返し表示させる
