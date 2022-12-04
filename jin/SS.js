@@ -50,7 +50,7 @@ reader.onload = (event) => {
     if(Hsw==0){
     $.ajax({
         type: "post",   //送信の通信だと定義
-        url: "../PHP/Ueda.php",    //送信先のリンク
+        url: "../PHP/Ueda.php?Hsw=false",    //送信先のリンク
         data: data,     //送信するデータを定義
     })
     .success(function(data) {
@@ -63,7 +63,20 @@ reader.onload = (event) => {
         console.log("errorThrown    : " + errorThrown.message);
     });
     }else if(Hsw==1){
-        
+        $.ajax({
+            type: "post",   //送信の通信だと定義
+            url: "../PHP/Ueda.php?Hsw=true",    //送信先のリンク
+            data: data,     //送信するデータを定義
+        })
+        .success(function(data) {
+            //通信に成功
+            console.log(data);
+        }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+            //通信に失敗
+            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+            console.log("textStatus     : " + textStatus);
+            console.log("errorThrown    : " + errorThrown.message);
+        });
     }
 }
 reader.readAsDataURL(file);
@@ -88,8 +101,13 @@ const mysyuppin=()=>{
     let list = document.getElementById("history");
     for (let i = 0; i < mysyuppindata.length; i++) {
             let ele = document.createElement("div");
-            ele.className = 'hrap';
+            ele.id = 'nana';
             list.appendChild(ele);
+            let nana = document.getElementById("nana");
+
+            ele = document.createElement("div");
+            ele.className = 'hrap';
+            nana.appendChild(ele);
             hrap = document.getElementsByClassName("hrap")[i];
 
             ele = document.createElement("p");
