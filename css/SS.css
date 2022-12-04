@@ -102,7 +102,7 @@ button.no-shadow:hover {
 	
 }
 .hrap{
-  margin-left: 5%;
+  margin-left: 2%;
   box-shadow: 5px 5px 5px #808080;
   width: 280px;
   border: 1px solid;
@@ -115,7 +115,6 @@ button.no-shadow:hover {
   padding: 2.5% 0;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 6px 100px;
 }
 .history{
   display: none;
