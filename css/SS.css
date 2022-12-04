@@ -111,6 +111,16 @@ button.no-shadow:hover {
   margin-top: 3%;
   margin-bottom: 3%;
 }
+.history2{
+  /* margin-left: 5%; */
+  box-shadow: 5px 5px 5px #808080;
+  /* width: 280px; */
+  border: 1px solid;
+  border-radius: 8px;
+  display: none;
+  /* margin-top: 3%;
+  margin-bottom: 3%; */
+}
 .gazou{
   margin-left: 30%;
   margin-right: 30%;
@@ -188,26 +198,26 @@ button.no-shadow:hover {
   
 }
 /* 分類 */
-.bun{
+/* .bun{
   margin-left: -30.5%;
-}
+} */
 .b{
   border: 1px solid #000;
    background: #f2f2f2;
 }
 /* カテゴリー*/
-.ka{
+/* .ka{
   margin-top: -3%;
-}
+} */
 .k{
   border: 1px solid #000;
   background: #f2f2f2;
 }
 /* サイズ */
-.sa{
+/* .sa{
   margin-left: 30%;
   margin-top: -3%;
-}
+} */
 .saizu{
   border: 1px solid #000;
   background: #f2f2f2;
@@ -236,4 +246,12 @@ button.no-shadow:hover {
 .ga{
   margin-left: -30%;
   margin-top: 5%;
+}
+ul {
+  display: -webkit-flex;
+  display: flex;
+  margin-left: 25.1%;
+  gap: 6px 50px;
+  
+  list-style-type: none;
 }

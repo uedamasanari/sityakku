@@ -31,10 +31,6 @@
         function clickEvent() {
             alert('完了しました');
         }
-
-        function saku() {
-            alert('削除しました');
-        }
     </script>
 </head>
 
@@ -219,33 +215,41 @@
     <button class="hensyu" onclick="change()">編集</button>
     <button class="sakujyo" onclick="saku()">削除</button>
 </div>
+<div class="history2" id="history2">
+    <p class="gazou"><img src="./furaito.jpg" width="100"></p>
+    <p class="furaito">商品名: フライトジャケット</p>
+    <p class="kane">値段: ￥107600</p>
+    <p class="elu">サイズ: L</p>
+    <button class="hensyu" onclick="change()">編集</button>
+    <button class="sakujyo" onclick="saku()">削除</button>
+</div>
 <div class="grid-cen">
     <div class="none" id="none">
         <div class="ai" id="ai">
             <p class="syo">商品名 : <input type="text" class="s" name="syouhin"></p>
-            <p class="bun">分類 : <select class="b" name="example1"></p>
-            <p>
+            <ul>
+            <li class="bun">分類 : 
+                <select class="b" name="example1">
                 <option value="1">メンズ</option>
                 <option value="2">レディース</option>
                 <option value="3">ユニセックス</option>
-            </p>
-            </select>
-
-            <p class="ka">カテゴリー : <select class="k" name="example2"></p>
-            <p>
+                </select>
+            </li>
+            <li class="ka">カテゴリー : 
+                <select class="k" name="example2">
                 <option value="4">トップス</option>
                 <option value="5">ジャケット</option>
                 <option value="6">パンツ</option>
-            </p>
-            </select>
-
-            <p class="sa">サイズ : <select class="saizu" name="example2"></p>
-            <p>
+                </select>
+            </li>
+                <li class="sa">サイズ : <select class="saizu" name="example2">
                 <option value="7">S</option>
                 <option value="8">M</option>
                 <option value="9">L</option>
-            </p>
-            </select>
+                
+                </select>
+            </li>
+            </ul>
 
             <p class="ne">値段 : <input type="text" class="n" name="nedan"></p>
             <p class="to">特徴 : <input type="text" size="30" class="t" name="tokucyou"></p>
