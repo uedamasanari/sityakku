@@ -111,6 +111,16 @@ button.no-shadow:hover {
   margin-top: 3%;
   margin-bottom: 3%;
 }
+.history2{
+  /* margin-left: 5%; */
+  box-shadow: 5px 5px 5px #808080;
+  /* width: 280px; */
+  border: 1px solid;
+  border-radius: 8px;
+  display: none;
+  /* margin-top: 3%;
+  margin-bottom: 3%; */
+}
 .gazou{
   margin-left: 30%;
   margin-right: 30%;
