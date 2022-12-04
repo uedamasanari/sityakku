@@ -1,4 +1,16 @@
+let mysyuppindata;
 window.onload = function(){
+    $.ajax({
+        url: "../PHP/Ueda.php/?mysyuppin=true&user_id=1&timestamp=${new Date().getTime()}"
+    })
+    .success(function (res) {
+        console.log(res);
+        mysyuppindata = res;
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
     mysyuppin();
 }
 function mein1(){
@@ -54,13 +66,13 @@ reader.readAsDataURL(file);
 const mysyuppin=()=>{
     //データを入れる
     let list = document.getElementById("history");
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < mysyuppindata.length; i++) {
             let ele = document.createElement("p");
             ele.className = 'gazou';
             list.appendChild(ele);
 
             ele = document.createElement("img");
-            ele.src = './furaito.jpg';
+            ele.src = mysyuppindata;
             ele.width = "100";
             let tag = document.getElementsByClassName("gazou")[i];
             tag.appendChild(ele);
