@@ -2,12 +2,14 @@ let youfukudata = Array();
 let mens = Array();
 let ladius = Array();
 let accessory = Array();
+let nowarray = Array();
 let count = [0, 0, 0];
 let page = [0, 0, 0];
 let maxpage = [0, 0, 0];
 let category = [true, true, true, true];
 let value1;
 let value2;
+let now;
 window.onload = function () {
     $.ajax({
             url: "./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
@@ -626,21 +628,34 @@ const sort = () => {
 }
 
 function syouhinsyousai(seibetu, a) {
-    let kari = Array();
     switch (seibetu) {
         case 0:
-            kari = mens;
+            nowarray = mens;
             break;
         case 1:
-            kari = ladius;
+            nowarray = ladius;
             break;
         case 2:
-            kari = accessory;
+            nowarray = accessory;
             break;
     }
-    document.getElementById("itemImg").src = kari[a].item_image;
-    document.getElementById("itemName").textContent = kari[a].item_name;
-    document.getElementById("size").textContent = kari[a].item_size;
-    document.getElementById("price").textContent = kari[a].item_money;
-    document.getElementById("ProductDetails").textContent = kari[a].item_feature;
+    document.getElementById("itemImg").src = nowarray[a].item_image;
+    document.getElementById("itemName").textContent = nowarray[a].item_name;
+    document.getElementById("size").textContent = nowarray[a].item_size;
+    document.getElementById("price").textContent = nowarray[a].item_money;
+    document.getElementById("ProductDetails").textContent = nowarray[a].item_feature;
+    now=a;
+}
+const favorite=()=>{
+    console.log(now);
+    $.ajax({
+        url: `PHP/itoyama.php/?favo=${nowarray[now].item_id}&favo_user_id=${1}&timestamp=${new Date().getTime()}`
+    })
+    .success(function (reslogin) {
+        console.log(reslogin);
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
 }

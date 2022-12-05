@@ -26,7 +26,7 @@ if(isset($_POST['mail'])){
 
 }else if(isset($_GET['favo'])){
 
-    $itoyama->okiniiri($_get['id'],$_GET['itemid']);
+    $itoyama->okiniiri($_GET['favo_user_id'],$_GET['favo']);
 }else if(isset($_GET['sakujyo'])){
     $itoyama->syuppinsakujo($_GET['sakujyo']);
 }else if(isset($_POST['shinkimail'])){
