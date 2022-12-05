@@ -45,6 +45,7 @@ function login(){
 
 // let ugoku = document.getElementById('submitbtn');
 // ugoku.addEventListener('click',function(){
+//購入画面へ進むボタンがクリックされたときの処理
  function kessai_susumu(){
 
     let c = sessionStorage.getItem('id');
@@ -86,132 +87,87 @@ function login(){
         if(window.localStorage){
             let e = sessionStorage.getItem('id');
              //↓セレクトボックスの値を取得
-            const sele1 = document.getElementById('bday-month');
-            const num = sele1.selectedIndex;//値(数値)を取得
-            const str = sele1.options[num].value;// 値(数値)から値(value値)を取得
+            let sele1 = document.getElementById('bday-month');
+            let num = sele1.selectedIndex;//値(数値)を取得
+            let str = sele1.options[num].value;// 値(数値)から値(value値)を取得月
   
-            const sele2 = document.getElementById('bday-day');
-            const num2 = sele2.selectedIndex;//値(数値)を取得
-            const str2 = sele1.options[num2].value;// 値(数値)から値(value値)を取得
+            let sele2 = document.getElementById('bday-day');
+            let num2 = sele2.selectedIndex;//値(数値)を取得
+            let str2 = sele2.options[num2].value;// 値(数値)から値(value値)を取得日にち
 
-            let array = [];
-            let data = {
-                id:e,
-                siha:document.getElementById('sel1').value,
-                yuubin:document.getElementById('yuubin').value,
-                ken:document.getElementById('ken').value,
-                sityou:document.getElementById('sityou').value,
-                banti:document.getElementById('banti').value,
-                heyaban:document.getElementById('heyaban').value,
-                tuki:str,
-                day2:str2
+            let sele3 = document.getElementById('sel1');
+            let num3 = sele3.selectedIndex;//値(数値)を取得
+            let str3 = sele3.options[num3].value;// 値(数値)から値(value値)を取得支払い
 
-            };
-            array.push(data);
-            let json = JSON.stringify(data,undefined,1);
-            localStorage.setItem('key',json);
-        }
+            let yuubin = document.getElementById('yuubin').value;
+            let ken = document.getElementById('ken').value;
+            let sityou = document.getElementById('sityou').value;
+            let banti = document.getElementById('sityou').value;
+            let heyaban = document.getElementById('heyaban').value;
+
+            let reslte = window.confirm(str+'月'+str2+'日'+str3+''+'〒'+yuubin+ken+sityou+banti+heyaban+'の内容でよろしかったでしょうか。');
+            if(reslte == true){
+            alert("購入が確定しました！");
+            location.href = 'home.html';
+            }
+
+        //     let array = [];
+        //     let data = {
+        //         id:e,
+        //         siha:str3,
+        //         yuubin:document.getElementById('yuubin').value,
+        //         ken:document.getElementById('ken').value,
+        //         sityou:document.getElementById('sityou').value,
+        //         banti:document.getElementById('banti').value,
+        //         heyaban:document.getElementById('heyaban').value,
+        //         tuki:str,
+        //         day2:str2
+
+        //     };
+        //     array.push(data);
+        //     let json = JSON.stringify(data,undefined,1);
+        //     localStorage.setItem('key',json);
+        // }
         
 
-        let d = sessionStorage.getItem('id');
-        $.ajax({
-            url: `PHP/itoyama.php/?cart=true&id=${d}$timestamp=${new Date().getTime()}`
-        })
+        // let d = sessionStorage.getItem('id');
+        // $.ajax({
+        //     url: `PHP/itoyama.php/?cart=true&id=${d}$timestamp=${new Date().getTime()}`
+        // })
 
-        .success(function(res) {
-            console.log(res);
-            let data1 = localStorage.getItem('key');
-            data1 = JSON.parse(data1);
-            let hyou1 = data1.siha;
-            let hyou2 = data1.tuki + data1.day2;
-            let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
-            document.getElementById('kaku_siha').value = hyou1;
-            document.getElementById('kaku_kiboubi').value = hyou2;
-            document.getElementById('kaku_juu').value = hyou2;
+        // .success(function(res) {
+        //     console.log(res);
+        //     let data1 = localStorage.getItem('key');
+        //     data1 = JSON.parse(data1);
+        //     let hyou1 = data1.siha;
+        //     let hyou2 = data1.tuki + data1.day2;
+        //     let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
+        //     document.getElementById('kaku_siharai').textContent = hyou1;
+        //     document.getElementById('kaku_kiboubi').textContent = hyou2;
+        //     document.getElementById('kaku_juusyo').textContent = hyou3;
 
-            // for(let i = 0; i<res.length;i++){
-            //     let ele = document.createElement('div');
-            //     ele.className = 'list-all';
-            //     list.appendChild(ele);
-            //     ele = document.createElement('ol');
-            //     ele.className = 'sample1';
-            //     list.appendChild(ele);
-            //     ele = document.createElement('li');
-            //     ele.className = 'li';
-            //     let tag = document.getElementsByClassName('sample1');
-            //     tag.appendChild(ele);
-            //     ele = document.createElement('img');
-            //     ele.src = "";
-            //     ele.alt = "";
-            //     ele.className = 'i-img';
-            //     tag = document.getElementsByClassName('li');
-            //     tag.appendChild(ele);
-            //     ele = document.createElement('div');
-            //     ele.className = 'ko-gona';
-            //     ele.textContent = res[i].item_name;
-            //     tag.appendChild(ele);
-            //     ele = document.createElement('div');
-            //     ele.className = 'ko-dol';
-            //     ele.textContent = res[i].item_money;
-            // }
+        //     //カート詳細に入っているデータを表示させる！！！
 
             
-        }).error(function(XMLHttpRequest, textStatus, errorThrown) {
-            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-            console.log("textStatus     : " + textStatus);
-            console.log("errorThrown    : " + errorThrown.message);
-        });
+        // }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        //     console.log("textStatus     : " + textStatus);
+        //     console.log("errorThrown    : " + errorThrown.message);
+        // });
 
 }
+}   
 
 //購入確定のボタンがクリックされたときの処理
 // let kakutei= document.getElementById('kou_kakutei');
 // kakutei.addEventListener('click',function(){
-    function kakutei(){
-    alert("購入が確定しました！");
-    location.href = 'home.html';
-}
+//     function kakutei(){
+//     alert("購入が確定しました！");
+//     location.href = 'home.html';
+// }
 
 //やるべきこと
 //カートの削除機能でのitemidを取得してPHP側で動かせる・カートに入っている情報を繰り返し表示させる
 //決済画面でのカートに入っている情報を表示させる
 //カートでのハートボタンのJSの動作 あと少し
 
-//カートのお気に入りボタンがクリックされたときの処理
-// let okini = document.getElementById('okiniiri');
-// okini.addEventListener('click',function(){
-    function hato(){
-    let okiid = localStorage.getItem('id');
-    $.ajax({
-        url: `PHP/itoyama.php/?cart=true&id=${okiid}$timestamp=${new Date().getTime()}`
-    })
-
-    .success(function(data) {
-        //通信に成功
-        console.log(data);
-        let user = data.user_id;
-        let item = data.item_id;
-        $.ajax({
-            url: `PHP/itoyama.php/?favo=true&id=${user}&itemid=${item}$timestamp=${new Date().getTime()}`
-        })
-        .success(function(sei){
-            console.log(sei);
-            alert('お気に入り登録完了');
-        })
-        .error(function(XMLHttpRequest, textStatus, errorThrown) {
-            //通信に失敗
-            console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
-            console.log("textStatus     : " + textStatus);             //エ
-            console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
-            //PHPのエラーではなくDBのエラーをどうするか
-        });
-        
-    })
-    .error(function(XMLHttpRequest, textStatus, errorThrown) {
-        //通信に失敗
-        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
-        console.log("textStatus     : " + textStatus);             //エ
-        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
-        //PHPのエラーではなくDBのエラーをどうするか
-    });
-}

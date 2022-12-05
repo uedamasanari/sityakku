@@ -15,6 +15,7 @@ if(isset($_POST['mail'])){
 
     $itoyama->pro($_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add'],$_POST['id']);
 
+
 }else if(isset($_GET['cart'])){
 
     $itoyama->cart($_GET['id']);
@@ -26,8 +27,9 @@ if(isset($_POST['mail'])){
 }else if(isset($_GET['favo'])){
 
     $itoyama->okiniiri($_get['id'],$_GET['itemid']);
+}else if(isset($_GET['sakujyo'])){
+    $itoyama->syuppinsakujo($_GET['sakujyo']);
 }
-
 
     class Itoyama{
         private function dbConnect(){
@@ -43,6 +45,12 @@ if(isset($_POST['mail'])){
                 $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->bindValue(2,$item,PDO::PARAM_INT);
                 $ps->execute();
+                $data = array();
+                    array_push($data, array(
+                        'state' => "お気に入り追加成功"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
 
             }
 
