@@ -41,7 +41,7 @@ window.onload = function () {
             console.log("errorThrown    : " + errorThrown.message);
         });
     // 実行したい処理
-    //alert('ページの読み込みが完了したよ！');
+    //プロフィール画面の動き
 
     // let a = sessionStorage.getItem('id');
     let a = 1;
@@ -137,12 +137,107 @@ window.onload = function () {
             let co = document.getElementById('cartcou');
             co.innerHTML = res.length;
 
-            let stockList = []; //ここが配列になる
-            for (let i = 0; i < res.length; i++) {
-                stockList.push('<li></li><img src = "' + res[i].item_img + '"><div>' + res[i].item_name + '</div><div>' + res[i].item_money + '</div></li>'); //ここにpush()がくる
-            }
+            // let area = document.createElement('div');
+            // area.className = 'productitm div-flex-home div-btween';
+            // let parent = document.getElementsByClassName('tbody');
+            // parent.appendChild(area);
 
-            document.getElementById('li1').innerHTML = stockList.join(''); //innerHTMLへ入れる時にjoin()で文字列にする
+            // area = document.createElement('div');
+            // area.className ='cart_div';
+            // parent = document.getElementsByClassName('productitm div-flex-home div-btween');
+            // parent.appendChild(area);
+
+            // area = document.createElement('img');
+            // area.src = res[aa].item_image;
+            // area.className = 'thumb';
+            // parent = document.getElementsByClassName('cart_div');
+            // parent.appendChild(area);
+
+            // area = document.createElement('div');
+            // area.className = 'cart_div2';
+            // parent = document.getElementsByClassName('productitm div-flex-home div-btween');
+            // parent.appendChild(area);
+
+            // area = document.createElement('span');
+            // area.className = 'remove';
+            // parent = document.getElementsByClassName('cart_div2');
+            // parent.appendChild(area);
+
+            // area = document.createElement('div');
+            // area.className = 'wishlist-heart-group';
+            // parent = documnet.getElementsByClassName('remove');
+            // parent.appendChild(area);
+
+            // area = document.createElement('input');
+            // area.name = 'product-333';
+            // area.id = 'product-333';
+            // //area.data-product-id="333"
+            // area.type = 'checkbox';
+            // parent = document.getElementsByClassName('wishlist-heart-group');
+            // parent.appendChild(area);
+
+            // area = document.createElement('div');
+            // area.className = 'cart_hato';
+            // area.onclick = 'hato()';
+            // parent.appendChild(area);
+
+            // area = document.createElement('svg');
+            // area.xmlns="http://www.w3.org/2000/svg";
+            // area.width="16";
+            // area.height="16";
+            // area.fill="currentColor";
+            // area.className="bi bi-heart";
+            // area.viewBox="0 0 16 16";
+            // parent = document.getElementsByClassName('cart_hato');
+            // parent.appendChild(area);
+
+            // area = document.createElement('path');
+            // area.d = "m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z";
+            // parent = document.getElementsByClassName('bi bi-heart');
+            // parent.appendChild(area);
+
+            // area = document.createElement('div');
+            // area.className = 'cart_name';
+            // area.innerHTML = res[aa].item_name;
+            // parent = document.getElementsByClassName('productitm div-flex-home div-btween');
+            // parent.appendChild(area);
+
+            // area = document.createElement('div');
+            // area.className = 'cart_money';
+            // area.innerHTML = res[aa].item_money;
+            // parent.appendChild(area);
+
+            // area = document.createElement('div');
+            // area.className = 'cart_saku';
+            // parent.appendChild(area);
+
+            // area = document.createElement('span');
+            // area.className = 'remove';
+            // area.onclick = 'sakujo()';
+            // parent = document.getElementsByClassName('cart_saku');
+            // parent.appendChild(area);
+
+            // area = document.createElement('svg');
+            // area. xmlns="http://www.w3.org/2000/svg";
+            // area.width="20";
+            // area.height="20";
+            // area.fill="currentColor";
+            // area.class="bi bi-trash";
+            // area.viewBox="0 0 16 16";
+            // parent = document.getElementsByClassName('remove');
+            // parent.appendChild(area);
+
+            // area = document.createElement('path');
+            // area.d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z";
+            // parent = document.getElementsByClassName('bi bi-trash');
+            // parent.appendChild(area);
+
+            // area = document.createElement('path');
+            // //area.fill-rule="evenodd";
+            // area.d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z";
+            // parent.appendChild(area);
+
+
 
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -152,8 +247,7 @@ window.onload = function () {
 }
 
 //変更ボタンがクリックされたときの処理
-// let henbtn = document.getElementById('henkoubtn');
-// henbtn.addEventListener('click',function(){
+
     function henkou(){
 
         //↓性別の値を取得

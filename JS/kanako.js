@@ -20,7 +20,6 @@ function login(){
         if(data[0].state == '成功'){
             sessionStorage.setItem('id',data[0].user_id);
             //console.log(`dataの型は${typeof data}`); 型の確認
-           // location.href='http://xampp/htdocs/Web/sityakku/home.html';
               location.href = 'home.html';
         }else{
             if(data[0].er == 1){
@@ -30,8 +29,6 @@ function login(){
                 let element = document.getElementById('error');
                 element.innerHTML = 'メールアドレスが正しくありません。';
             }
-            
-            //location.href='http://localhost/Web/kanako/toroku.html';
         }
     })
     .error(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -43,8 +40,45 @@ function login(){
     });
 }
 
-// let ugoku = document.getElementById('submitbtn');
-// ugoku.addEventListener('click',function(){
+//新規登録ボタンがクリックされたときの処理
+    function shinki1(){
+
+    const formElements1 = document.forms['shinki'];
+
+    //↓　ajaxでPHPに送信するための配列作成
+    let data = {
+        shinkimail:formElements1.elements['shinkimail'].value,
+        shinkipass:formElements1.elements['shinkipass'].value
+    }
+    console.log(data.shinkimail+" "+data.shinkipass);
+    //↓ajaxでPHPと通信
+    $.ajax({
+        type: "post",   //送信の通信だと定義
+        url: "PHP/itoyama.php",    //送信先のリンク
+        data: data,     //送信するデータを定義
+    })
+    .success(function(data1) {
+        //通信に成功
+        console.log(data1);
+        if(data1[0].state == '成功'){
+                alert('新規登録成功');
+              location.href = 'home.html';
+        }else{
+                let element = document.getElementById('error1');
+                element.innerHTML = '既にメールアドレスが登録されています';
+
+        }
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+        console.log("textStatus     : " + textStatus);             //エ
+        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+
 //購入画面へ進むボタンがクリックされたときの処理
  function kessai_susumu(){
 
@@ -76,11 +110,9 @@ function login(){
         console.log("errorThrown    : " + errorThrown.message);
     });
 
-};
+}
 
 //購入確認ボタンクリック時の動き
-// let kaku = document.getElementById('kakunin');
-// kaku.addEventListener('click',function(){
     function kakunin(){
 
         //支払い方法などのデータをlocalstorageで保存
@@ -111,63 +143,20 @@ function login(){
             location.href = 'home.html';
             }
 
-        //     let array = [];
-        //     let data = {
-        //         id:e,
-        //         siha:str3,
-        //         yuubin:document.getElementById('yuubin').value,
-        //         ken:document.getElementById('ken').value,
-        //         sityou:document.getElementById('sityou').value,
-        //         banti:document.getElementById('banti').value,
-        //         heyaban:document.getElementById('heyaban').value,
-        //         tuki:str,
-        //         day2:str2
+ }
+}  
 
-        //     };
-        //     array.push(data);
-        //     let json = JSON.stringify(data,undefined,1);
-        //     localStorage.setItem('key',json);
-        // }
-        
 
-        // let d = sessionStorage.getItem('id');
-        // $.ajax({
-        //     url: `PHP/itoyama.php/?cart=true&id=${d}$timestamp=${new Date().getTime()}`
-        // })
 
-        // .success(function(res) {
-        //     console.log(res);
-        //     let data1 = localStorage.getItem('key');
-        //     data1 = JSON.parse(data1);
-        //     let hyou1 = data1.siha;
-        //     let hyou2 = data1.tuki + data1.day2;
-        //     let hyou3 = data1.ken + data1.sityou + data1.banti + data1.heyaban;
-        //     document.getElementById('kaku_siharai').textContent = hyou1;
-        //     document.getElementById('kaku_kiboubi').textContent = hyou2;
-        //     document.getElementById('kaku_juusyo').textContent = hyou3;
-
-        //     //カート詳細に入っているデータを表示させる！！！
-
-            
-        // }).error(function(XMLHttpRequest, textStatus, errorThrown) {
-        //     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-        //     console.log("textStatus     : " + textStatus);
-        //     console.log("errorThrown    : " + errorThrown.message);
-        // });
-
+function shinkihe(){
+    location.href = 'toroku.html';
 }
-}   
 
-//購入確定のボタンがクリックされたときの処理
-// let kakutei= document.getElementById('kou_kakutei');
-// kakutei.addEventListener('click',function(){
-//     function kakutei(){
-//     alert("購入が確定しました！");
-//     location.href = 'home.html';
-// }
+function shinkirogu(){
+    location.href = 'rogin.html';
+}
 
 //やるべきこと
 //カートの削除機能でのitemidを取得してPHP側で動かせる・カートに入っている情報を繰り返し表示させる
-//決済画面でのカートに入っている情報を表示させる
 //カートでのハートボタンのJSの動作 あと少し
 
