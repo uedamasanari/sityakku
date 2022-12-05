@@ -255,6 +255,7 @@
     </div>
 </div>
 </div>
+<form onsubmit="return false;" name="postshouhin" method="post" action="">
 <div class="grid-cen">
     <div class="none" id="none">
         <div class="ai" id="ai">
@@ -286,14 +287,15 @@
 
             <p class="ne">値段 : <input type="text" class="n" name="nedan" id="ne"></p>
             <p class="to">特徴 : <input type="text" size="30" class="t" name="tokucyou" id="to"></p>
-            <p class="ga"><input type="file" name="example" accept="image/jpeg, image/png"></p>
+            <p class="ga"><input type="file" name="image" accept="image/jpeg, image/png" id="image"></p>
             <p class="kakunin"><button class=" syu no-border txt-white bkgnd-black border-radius-50px no-shadow touroku"
-                    id="button_04" onclick="clickEvent()">出品確認</button></p>
+                    id="button_04" onclick="syuppin()">出品確認</button></p>
 
 
         </div>
     </div>
 </div>
+</form>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
