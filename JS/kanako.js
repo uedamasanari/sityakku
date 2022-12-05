@@ -40,8 +40,45 @@ function login(){
     });
 }
 
-// let ugoku = document.getElementById('submitbtn');
-// ugoku.addEventListener('click',function(){
+//新規登録ボタンがクリックされたときの処理
+    function shinki1(){
+
+    const formElements1 = document.forms['shinki'];
+
+    //↓　ajaxでPHPに送信するための配列作成
+    let data = {
+        shinkimail:formElements1.elements['shinkimail'].value,
+        shinkipass:formElements1.elements['shinkipass'].value
+    }
+    console.log(data.shinkimail+" "+data.shinkipass);
+    //↓ajaxでPHPと通信
+    $.ajax({
+        type: "post",   //送信の通信だと定義
+        url: "PHP/itoyama.php",    //送信先のリンク
+        data: data,     //送信するデータを定義
+    })
+    .success(function(data1) {
+        //通信に成功
+        console.log(data1);
+        if(data1[0].state == '成功'){
+                alert('新規登録成功');
+              location.href = 'home.html';
+        }else{
+                let element = document.getElementById('error1');
+                element.innerHTML = '既にメールアドレスが登録されています';
+
+        }
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+        console.log("textStatus     : " + textStatus);             //エ
+        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+
 //購入画面へ進むボタンがクリックされたときの処理
  function kessai_susumu(){
 
@@ -73,11 +110,9 @@ function login(){
         console.log("errorThrown    : " + errorThrown.message);
     });
 
-};
+}
 
 //購入確認ボタンクリック時の動き
-// let kaku = document.getElementById('kakunin');
-// kaku.addEventListener('click',function(){
     function kakunin(){
 
         //支払い方法などのデータをlocalstorageで保存
@@ -111,42 +146,14 @@ function login(){
  }
 }  
 
-function shinki(){
 
-    const formElements = document.forms['shinki'];
 
-    //↓　ajaxでPHPに送信するための配列作成
-    let data = {
-        shinkimail:formElements.elements['shinkimail'].value,
-        shinkipass:formElements.elements['shinkipass'].value
-    }
-    console.log(data.mail+" "+data.pass);
-    //↓ajaxでPHPと通信
-    $.ajax({
-        type: "post",   //送信の通信だと定義
-        url: "PHP/itoyama.php",    //送信先のリンク
-        data: data,     //送信するデータを定義
-    })
-    .success(function(data) {
-        //通信に成功
-        //console.log(data[0].user_id);
-        console.log(data);
-        if(data[0].state == '成功'){
-              location.href = 'home.html';
-        }else{
-                let element = document.getElementById('error1');
-                element.innerHTML = '既にメールアドレスが登録されています';
+function shinkihe(){
+    location.href = 'toroku.html';
+}
 
-        }
-    })
-    .error(function(XMLHttpRequest, textStatus, errorThrown) {
-        //通信に失敗
-        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
-        console.log("textStatus     : " + textStatus);             //エ
-        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
-        //PHPのエラーではなくDBのエラーをどうするか
-    });
-
+function shinkirogu(){
+    location.href = 'rogin.html';
 }
 
 //やるべきこと

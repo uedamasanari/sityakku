@@ -137,6 +137,7 @@ if(isset($_POST['mail'])){
             public function shinki($mail,$pass){
                 $pdo=$this->dbConnect();
                 $sql1 = "SELECT * FROM users WHERE user_mail = ?";
+                $ps = $pdo->prepare($sql1);
                 $ps->bindValue(1,$mail,PDO::PARAM_STR);
                 $ps->execute();
                 $sele = $ps->fetchAll();
