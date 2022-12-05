@@ -17,6 +17,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 3%;
+    
 }
   
 .touroku {
@@ -24,73 +25,37 @@
     padding: 20px 46px;
     font-size: 1em;
     text-transform: uppercase;
+    white-space: nowrap;
     cursor: pointer;
     transition: all 0.6s ease;
       
 }
+.grid-cen{
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
 .none{
     display: none;
-}
-.ai{
-    display: grid;
-    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px ;
-    grid-template-columns: 50px 50px 250px 250px 250px 250px;
-    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
-.syo{
-    grid-row: 1/2;
-    grid-column: 4/7;
-    margin-left: -2%;
-}
 
-.s{
-    width: 70%;
-}
-
-.bun{
-    grid-row: 2/3;
-    grid-column: 4/5;
-}
-
-.ka{
-    grid-row: 2/3;
-    grid-column: 5/6;
-} 
-  
-.sa{
-    grid-row: 2/3;
-    grid-column: 6/7;
-}
-.ne{
-    grid-row: 3/4;
-    grid-column: 4/7;
-}
-
-.n{
-    width: 70%;
-}
-.to{
-    grid-row: 4/6;
-    grid-column: 4/7;
-}
-.t{
-    width: 70%;
-    height: 100%;
-}
-
-.ga{
-    grid-row: 6/7;
-    grid-column: 4/5;
-    margin-top: 5%;
-}
 
 .no-border {
     border: none;
     margin-left:130px;
 
 }
-  
+  .ai{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    margin: 5% auto 0;
+  }
 .txt-white {
     color: white;
 	  margin-right:130px;
@@ -99,7 +64,6 @@
 .bkgnd-black {
     background-color: black;
 }
-  
 .border-radius-50px {
     border-radius: 50px;
 }
@@ -207,14 +171,69 @@ button.no-shadow:hover {
   cursor: pointer;
   transition: all 0.6s ease;
 }
-
-.syu{
-  grid-row: 6/7;
-  grid-column: 6/7;
-}
-
+/* 確認ボタン */
 .kakunin{
-  width: 5000px;
-  margin-left: 1300%;
-  margin-top: 500%;
+  margin-left: 40%;
+  margin-top: -5%;
+  
+}
+/* 商品名 */
+.syo{
+   margin-left: -1%;
+}
+.s{
+  width: 40%;
+  border: 1px solid #000;
+   background: #f2f2f2;
+  
+}
+/* 分類 */
+.bun{
+  margin-left: -30.5%;
+}
+.b{
+  border: 1px solid #000;
+   background: #f2f2f2;
+}
+/* カテゴリー*/
+.ka{
+  margin-top: -3%;
+}
+.k{
+  border: 1px solid #000;
+  background: #f2f2f2;
+}
+/* サイズ */
+.sa{
+  margin-left: 30%;
+  margin-top: -3%;
+}
+.saizu{
+  border: 1px solid #000;
+  background: #f2f2f2;
+}
+/* 値段 */
+/* .ne{
+   margin-left: -28.5%;
+} */
+.n{
+  width: 40%;
+  border: 1px solid #000;
+  background: #f2f2f2;
+}
+/* 特徴 */
+/* .to{
+  margin-left: -22.5%;
+} */
+.t{
+  width: 40%;
+  line-height: 3;
+  padding: 1em 0.5em;
+  border: 1px solid #000;
+  background: #f2f2f2;
+}
+/* 画像 */
+.ga{
+  margin-left: -30%;
+  margin-top: 5%;
 }

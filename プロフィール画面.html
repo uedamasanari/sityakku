@@ -1,42 +1,63 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <link rel="stylesheet" type="text/css" href="css/プロフィール画面.css">
-   </head>
-   <body>
-      <fieldset class="wakusenn">
-         <a href="#" class="btn-flat-border">戻る</a>
-          <div class="yu-za-mei">
-    <h4>ユーザー名</h4>
-    <input type="text" size="15" value="@@@@@@@@@" readonly>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./script/profile.js"></script>
+
+        <title>profile</title>
+        <link href="css/mプロフィール画面.css" rel="stylesheet">
+    </head>
+    <body>
+        
+        <p>プロフィール編集</p>
+
+    <fieldset class="wakusenn">
+        <a href="http://localhost/Web/sityakku/home.html" class="btn-flat-border">戻る</a>
+         <div class="yu-za-mei">
+            <h4>ユーザー名</h4>
+            <input type="text" size="15" value="@@@@@@@@@" id="user_name" readonly>
+         </div>
+          <div class="sintyou">
+            <h4>身長</h4>
+            <input type="text" size="5" value="@@@@" id="user_sintyou" readonly>
+            <label for="text_id">cm</label>
           </div>
-           <div class="sinntyou">
-    <h4>身長</h4>
-    <input type="text" size="5" value="@@@@" readonly>
-    <label for="text_id">cm</label>
+           <div class="taizyuu">
+                <h4>体重</h4>
+                <input type="text" size="5" value="@@@@" id="user_taiju" readonly>
+                <label for="text_id">kg</label>
            </div>
-            <div class="taizyuu">
-    <h4>体重</h4>
-    <input type="text" size="5" value="@@@@" readonly>
-    <label for="text_id">kg</label>
+           <div class="seibetu" id="seibetu1">
+                <h4>性別</h4>
+                <input type="radio" name="sei" value="男">男性
+                <input type="radio" name="sei" value="女">女性
+           </div> 
+            <div class="button_solid004">
+                 <a href="#">編集</a>
             </div>
-             <div class="seibetu">
-    <h4>性別</h4>
-<div>man or ledy</div>
+             <div class="kessaihouhou">
+                <h4>決済方法</h4>
+                <form>
+                <select name="select1" id="select_1">
+                    <option value="konnbinibarai">銀行振込</option>
+                    <option value="daibiki">代引</option>
+                    <option value="kurezittoka-do">クレジットカード</option>
+                </select>
+                </form> 
              </div>
-       <div class="button_solid004">
-         <a href="#">編集</a>
-       </div>
-       <div class="kessaihouhou">
-      <h4>決済方法</h4>
-      <form>
-       <div>ATM</div>
-   </div>
-    </form>
-    <div class="haisousaki">
-    <h4>配送先</h4>
-    <input type="text" size="20" value="@@@@@@@@@@@" readonly>
-    </div>
-       </fieldset>
-   </body>
+              <div class="haisousaki">
+                <h4>配送先</h4>
+                <input type="text" size="20" value="@@@@@@@@@@@" id="user_jusyo" readonly>
+              </div>
+      </fieldset>
+
+
+     <!-- JSONを扱うためのCDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- JSの読み込み -->
+    <script src="./JS/kanakotameshi.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>       
+    </body>
 </html>
