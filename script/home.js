@@ -43,7 +43,8 @@ window.onload = function () {
     // 実行したい処理
     //alert('ページの読み込みが完了したよ！');
 
-    let a = sessionStorage.getItem('id');
+    // let a = sessionStorage.getItem('id');
+    let a = 1;
     $.ajax({
             url: `PHP/itoyama.php/?profile=true&user_id=${a}&timestamp=${new Date().getTime()}`
         })
@@ -113,7 +114,8 @@ window.onload = function () {
         });
 
     //console.log("javascript開始");
-    let aa = sessionStorage.getItem('id');
+    // let aa = sessionStorage.getItem('id');
+    let aa=1;
     $.ajax({
             url: `PHP/itoyama.php/?cart=true&id=${aa}$timestamp=${new Date().getTime()}`
         })
