@@ -1139,11 +1139,18 @@ div.checkout {
   color: #414141;
   line-height: 1;
 }
-
+.qazqaz{
+  width:400px;
+height:400px;
+position: relative;
+}
 .qazimg{
+  position: absolute;
+  left: 0;
 width:400px;
 height:400px;
 mix-blend-mode: multiply;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8h9xsqRw6K8ZAGz2Y5C6y4DXfM7vA1Wu_MA&usqp=CAU");
 }
 .syousai{
   display: flex;
@@ -1165,7 +1172,7 @@ mix-blend-mode: multiply;
   grid-template-columns: 200px 170px 340px;
   width: 60%;
   margin-right: 0;
-  background-color: #FFCCCC;
+  /* background-color: #FFCCCC; */
   /* margin-top: 5%;
   margin-left: 30%;
   margin-right: 50%; */
