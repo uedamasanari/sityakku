@@ -43,17 +43,35 @@ if(isset($_POST['mail'])){
             //カートのお気に入り追加
             public function okiniiri($id,$item){
                 $pdo = $this->dbConnect();
-                $sql = "INSERT INTO favorite (user_id,item_id) VALUES(?,?)";
+                $sql = "SELECT * FROM favorite WHERE user_id = ? AND item_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->bindValue(2,$item,PDO::PARAM_INT);
                 $ps->execute();
-                $data = array();
+                foreach($ps->fetchAll() as $row){
+                }
+                if($ps-> rowCount() > 0){
+                    $data = array();
                     array_push($data, array(
-                        'state' => "お気に入り追加成功"
+                        'state' => "error",
+                        'message' => "既に登録されています"
                     ));
-                $json_array = json_encode($data);
-                print $json_array;
+                    $json_array = json_encode($data);
+                    print $json_array;
+                }else{
+                    $sql = "INSERT INTO favorite (user_id,item_id) VALUES(?,?)";
+                    $ps = $pdo->prepare($sql);
+                    $ps->bindValue(1,$id,PDO::PARAM_INT);
+                    $ps->bindValue(2,$item,PDO::PARAM_INT);
+                    $ps->execute();
+                    $data = array();
+                    array_push($data, array(
+                        'state' => "success",
+                        'message' => "お気に入りに登録しました！"
+                    ));
+                    $json_array = json_encode($data);
+                    print $json_array;
+                }
 
             }
 
