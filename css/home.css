@@ -1322,8 +1322,8 @@ color: transparent !important;
 .button_solid004 a {
   width: 100px;
   height:40px;
-  top: -150px !important;
-  left:-150px !important;
+  top: -170px !important;
+  left:-200px !important;
   position: absolute;
   /* display: flex; */
   align-items: center !important;
@@ -1362,6 +1362,9 @@ margin-bottom: 20px !important;
   border: solid 2px black;
   border-radius: 3px;
   transition: .4s;
+  position: absolute;
+  top:30px;
+  left:10px;  
 }
 
 .btn-flat-border:hover {
@@ -1449,7 +1452,7 @@ margin-bottom: 20px !important;
 .button_solid005 a {
   width: 100px;
   height:40px;
-  top: 45px;
+  top: 50px;
   left:400px;
   position: absolute;
   display: flex;
