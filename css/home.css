@@ -568,6 +568,8 @@ width: 100%;
     width: 100%;
   }
   .list--item img {
+    max-width: 315px;
+    max-height: 315px;
     display: block;
     width: 100%;
     mix-blend-mode: multiply;
