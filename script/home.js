@@ -651,8 +651,23 @@ const favorite=()=>{
     $.ajax({
         url: `PHP/itoyama.php/?favo=${nowarray[now].item_id}&favo_user_id=${1}&timestamp=${new Date().getTime()}`
     })
-    .success(function (reslogin) {
-        console.log(reslogin);
+    .success(function (res) {
+        console.log(res);
+        swal(res[0].message, "", res[0].state);
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+}
+const cartadd=()=>{
+    console.log(now);
+    $.ajax({
+        url: `PHP/itoyama.php/?cartadd=${nowarray[now].item_id}&cartadd_user_id=${1}&timestamp=${new Date().getTime()}`
+    })
+    .success(function (res) {
+        console.log(res);
+        swal(res[0].message, "", res[0].state);
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);
