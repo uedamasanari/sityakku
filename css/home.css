@@ -573,7 +573,6 @@ width: 100%;
     display: block;
     width: 100%;
     mix-blend-mode: multiply;
-    background-color: #2ecc71;
   }
   .list--item figcaption {
     padding: 6px 12px 12px;
@@ -1140,6 +1139,12 @@ div.checkout {
   color: #414141;
   line-height: 1;
 }
+
+.qazimg{
+width:400px;
+height:400px;
+mix-blend-mode: multiply;
+}
 .syousai{
   display: flex;
 }
@@ -1150,6 +1155,17 @@ div.checkout {
   width: 60%;
   margin-right: 0;
   /* background-color: #FFCCCC; */
+  /* margin-top: 5%;
+  margin-left: 30%;
+  margin-right: 50%; */
+}
+.conq{
+  display: grid;
+  grid-template-rows: 130px 110px 115px 90px;
+  grid-template-columns: 200px 170px 340px;
+  width: 60%;
+  margin-right: 0;
+  background-color: #FFCCCC;
   /* margin-top: 5%;
   margin-left: 30%;
   margin-right: 50%; */
