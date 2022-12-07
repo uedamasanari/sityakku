@@ -45,8 +45,8 @@ window.onload = function () {
     // 実行したい処理
     //プロフィール画面の動き
 
-    // let a = sessionStorage.getItem('id');
-    let a = 1;
+    let a = sessionStorage.getItem('id');
+    //let a = 1;
     $.ajax({
             url: `PHP/itoyama.php/?profile=true&user_id=${a}&timestamp=${new Date().getTime()}`
         })
@@ -116,13 +116,18 @@ window.onload = function () {
         });
 
     //console.log("javascript開始");
-    // let aa = sessionStorage.getItem('id');
-    let aa=1;
+     //let aa = sessionStorage.getItem('id');
+    //let aa=1;
     $.ajax({
-            url: `PHP/itoyama.php/?cart=true&id=${aa}$timestamp=${new Date().getTime()}`
+            url: `PHP/itoyama.php/?cart=true&id=${a}$timestamp=${new Date().getTime()}`
         })
         .success(function (res1) {
             console.log(res1);
+
+            let i_id1 = res1[0].item_id;
+            let u_id = res1[0].user_id;
+            let i_name = res1[0].item_name;
+            let i_money = res1[0].item_money;
             
 
             //合計金額計算
@@ -132,7 +137,7 @@ window.onload = function () {
             }
             //合計金額表示
             let gou = document.getElementById('goukei');
-            gou.innerHTML = sum;
+            gou.innerHTML = sum + "円";
             //カートの中の数量
             let hyou = document.getElementById('suuryou');
             hyou.innerHTML = res1.length + "点";
@@ -140,70 +145,122 @@ window.onload = function () {
             let co = document.getElementById('cartcou');
             co.innerHTML = res1.length;
 
-            let coco  = 0;
-            for(let ss = 0 ; ss < res1.length; ss++){
-                let i_img = res1[ss].item_image;
-                let i_name = res1[ss].item_name;
-                let i_money = res1[ss].item_money;
+            document.getElementById("tbody1").style.display ="none";
+            document.getElementById("tbody2").style.display ="none";
+            document.getElementById("tbody3").style.display ="none";
+            document.getElementById("tbody4").style.display ="none";
 
-                let div = document.createElement("div");
-                div.className = "productitm div-flex-home div-btween";
-                
-                let cart_div = document.createElement("div");
-                cart_div.className = "cart_div";
-                let ta = document.getElementsByClassName("productitm div-flex-home div-btween");
-                ta[0].appendChild(cart_div);
+            if(res1.length == 1){
+                document.getElementById("tbody1").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img = document.getElementById('thumb1')
+                im_img.src = i_img1;
+                let im_name = document.getElementById('cart_name1');
+                im_name.innerHTML = i_name1;
+                let im_money = document.getElementById('cart_money1');
+                im_money.innerHTML = i_money1 + "円";
+            }else if(res1.length == 2){
+                document.getElementById("tbody1").style.display ="block";
+                document.getElementById("tbody2").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img1 = document.getElementById('thumb1')
+                im_img1.src = i_img1;
+                let im_name1 = document.getElementById('cart_name1');
+                im_name1.innerHTML = i_name1;
+                let im_money1 = document.getElementById('cart_money1');
+                im_money1.innerHTML = i_money1 + "円";
 
-                let img = document.createElement("img");
-                img.src = i_img;
-                img.className = "thumb";
-                img.appendChild(cart_div);
-                let div2 = document.createElement("div");
-                div2.className = "cart_div2";
-                div2.appendChild(div);
-                let span = document.createElement("span");
-                span.className = "remove";
-                span.appendChild(div2);
-                let div3 = document.createElement("div");
-                div3.className = "wishlist-heart-group";
-                div3.appendChild(span);
-                let div4 = document.createElement("div");
-                div4.className = "cart_hato";
-                div4.onclick = function () {
-                    
-                };
-                div4.appendChild(div3);
-                let img2 = document.createElement("img");
-                img2.src="script/heart.png";
-                img2.alt="";
-                img2.width="16";
-                img2.height = "16";
-                img2.className ="bi bi-heart";
-                img2.appendChild(div4);
-                let div5 = document.createElement("div");
-                div5.className = "cart_name";
-                div5.innerHTML = i_name;
-                div5.appendChild(div);
-                let div6 = document.createElement("div");
-                div6.className = "cart_money";
-                div6.innerHTML = i_money + "円";
-                div6.appendChild(div);
-                let div7 = document.createElement("div");
-                div7.className = "cart_saku";
-                div7.onclick = function () {
-                };
-                div7.appendChild(div);
-                let img3 = document.createElement("img");
-                img3.src = "script/sakujo.png";
-                img3.alt="";
-                img3.width="20";
-                img3.height = "20";
-                img3.className ="bi bi-trash";
-                img3.appendChild(div7);
+                let i_img2 = res1[1].item_image;
+                let i_name2 = res1[1].item_name;
+                let i_money2 = res1[1].item_money;
+                let im_img = document.getElementById('thumb2')
+                im_img.src = i_img2;
+                let im_name = document.getElementById('cart_name2');
+                im_name.innerHTML = i_name2;
+                let im_money = document.getElementById('cart_money2');
+                im_money.innerHTML = i_money2 + "円";
+            }else if(res1.length == 3){
+                document.getElementById("tbody1").style.display ="block";
+                document.getElementById("tbody2").style.display ="block";
+                document.getElementById("tbody3").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img1 = document.getElementById('thumb1')
+                im_img1.src = i_img1;
+                let im_name1 = document.getElementById('cart_name1');
+                im_name1.innerHTML = i_name1;
+                let im_money1 = document.getElementById('cart_money1');
+                im_money1.innerHTML = i_money1 + "円";
 
-                let dou = document.getElementsByClassName("tbody");
-                dou[0].appendChild(div);
-                
+                let i_img2 = res1[1].item_image;
+                let i_name2 = res1[1].item_name;
+                let i_money2 = res1[1].item_money;
+                let im_img2 = document.getElementById('thumb2')
+                im_img2.src = i_img2;
+                let im_name2 = document.getElementById('cart_name2');
+                im_name2.innerHTML = i_name2;
+                let im_money2 = document.getElementById('cart_money2');
+                im_money2.innerHTML = i_money2 + "円";
+
+                let i_img3 = res1[2].item_image;
+                let i_name3 = res1[2].item_name;
+                let i_money3 = res1[2].item_money;
+                let im_img3 = document.getElementById('thumb3')
+                im_img3.src = i_img3;
+                let im_name3 = document.getElementById('cart_name3');
+                im_name3.innerHTML = i_name3;
+                let im_money3 = document.getElementById('cart_money3');
+                im_money3.innerHTML = i_money3 + "円";
+            }else if(res1.length == 4){
+                document.getElementById("tbody1").style.display ="block";
+                document.getElementById("tbody2").style.display ="block";
+                document.getElementById("tbody3").style.display ="block";
+                document.getElementById("tbody4").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img1 = document.getElementById('thumb1');
+                im_img1.src = i_img1;
+                let im_name1 = document.getElementById('cart_name1');
+                im_name1.innerHTML = i_name1;
+                let im_money1 = document.getElementById('cart_money1');
+                im_money1.innerHTML = i_money1 + "円";
+
+                let i_img2 = res1[1].item_image;
+                let i_name2 = res1[1].item_name;
+                let i_money2 = res1[1].item_money;
+                let im_img2 = document.getElementById('thumb2');
+                im_img2.src = i_img2;
+                let im_name2 = document.getElementById('cart_name2');
+                im_name2.innerHTML = i_name2;
+                let im_money2 = document.getElementById('cart_money2');
+                im_money2.innerHTML = i_money2 + "円";
+
+                let i_img3 = res1[2].item_image;
+                let i_name3 = res1[2].item_name;
+                let i_money3 = res1[2].item_money;
+                let im_img3 = document.getElementById('thumb3');
+                im_img3.src = i_img3;
+                let im_name3 = document.getElementById('cart_name3');
+                im_name3.innerHTML = i_name3;
+                let im_money3 = document.getElementById('cart_money3');
+                im_money3.innerHTML = i_money3 + "円";
+
+                let i_img4 = res1[2].item_image;
+                let i_name4 = res1[2].item_name;
+                let i_money4 = res1[2].item_money;
+                let im_img4 = document.getElementById('thumb4');
+                im_img4.src = i_img4;
+                let im_name4 = document.getElementById('cart_name4');
+                im_name4.innerHTML = i_name4;
+                let im_money4 = document.getElementById('cart_money4');
+                im_money4.innerHTML = i_money4 + "円";
+
             }
 
 
@@ -624,5 +681,28 @@ const favorite=()=>{
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);
         console.log("errorThrown    : " + errorThrown.message);
+    });
+}
+
+//カートの削除ボタンが押されたときの処理    itemidを取得する
+function sakujo(){
+
+    let b = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?cart=true&id=${b}$timestamp=${new Date().getTime()}`,
+        //ここ！！url: `PHP/itoyama.php/?cartsakujo=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
+
+    })
+    .success(function(data1) {
+        //通信に成功
+        
+        
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  
+        console.log("textStatus     : " + textStatus);             
+        console.log("errorThrown    : " + errorThrown.message);    
+        //PHPのエラーではなくDBのエラーをどうするか
     });
 }

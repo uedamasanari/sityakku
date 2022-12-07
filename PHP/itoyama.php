@@ -13,7 +13,7 @@ if(isset($_POST['mail'])){
 
 }else if(isset($_POST['sin'])){
 
-    $itoyama->pro($_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add'],$_POST['id']);
+    $itoyama->pro($_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add'],$_POST['id']);//新規登録処理
 
 
 }else if(isset($_GET['cart'])){
@@ -27,14 +27,14 @@ if(isset($_POST['mail'])){
 }else if(isset($_GET['favo'])){
 
     $itoyama->okiniiri($_GET['favo_user_id'],$_GET['favo']);
+
 }else if(isset($_GET['sakujyo'])){
+
     $itoyama->syuppinsakujo($_GET['sakujyo']);
+    
 }else if(isset($_POST['shinkimail'])){
 
     $itoyama->shinki($_POST['shinkimail'],$_POST['shinkipass']);
-}else if(isset()){
-
-    $itoyama->carttuika(,);
 }
 
 

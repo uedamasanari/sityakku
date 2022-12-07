@@ -1,26 +1,4 @@
-//カートの削除ボタンが押されたときの処理    itemidを取得する
-    function sakujo(){
 
-    let b = sessionStorage.getItem('id');
-    $.ajax({
-        url: `PHP/itoyama.php/?cart=true&id=${b}$timestamp=${new Date().getTime()}`,
-        //ここ！！url: `PHP/itoyama.php/?cartsakujo=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
-
-    })
-    .success(function(data1) {
-        //通信に成功
-        console.log(data1);
-
-        
-    })
-    .error(function(XMLHttpRequest, textStatus, errorThrown) {
-        //通信に失敗
-        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  
-        console.log("textStatus     : " + textStatus);             
-        console.log("errorThrown    : " + errorThrown.message);    
-        //PHPのエラーではなくDBのエラーをどうするか
-    });
-}
 
 //カートのお気に入りボタンがクリックされたときの処理
     function hato(){
