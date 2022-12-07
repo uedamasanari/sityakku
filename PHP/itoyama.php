@@ -36,6 +36,10 @@ if(isset($_POST['mail'])){
 
     $itoyama->shinki($_POST['shinkimail'],$_POST['shinkipass']);
 }
+// else if(isset()){
+
+//     $itoyama->carttuika();
+// }
 
 
     class Itoyama{
@@ -47,17 +51,35 @@ if(isset($_POST['mail'])){
             //カートのお気に入り追加
             public function okiniiri($item,$id){
                 $pdo = $this->dbConnect();
-                $sql = "INSERT INTO favorite (item_id,user_id) VALUE(?,?)";
+                $sql = "SELECT * FROM favorite WHERE user_id = ? AND item_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$item,PDO::PARAM_INT);
                 $ps->bindValue(2,$id,PDO::PARAM_INT);
                 $ps->execute();
-                $data11 = array();
-                    array_push($data11, array(
-                        'state' => "お気に入り追加成功"
+                foreach($ps->fetchAll() as $row){
+                }
+                if($ps-> rowCount() > 0){
+                    $data = array();
+                    array_push($data, array(
+                        'state' => "error",
+                        'message' => "既に登録されています"
                     ));
-                $json_array = json_encode($data11);
-                print $json_array;
+                    $json_array = json_encode($data);
+                    print $json_array;
+                }else{
+                    $sql = "INSERT INTO favorite (user_id,item_id) VALUES(?,?)";
+                    $ps = $pdo->prepare($sql);
+                    $ps->bindValue(1,$id,PDO::PARAM_INT);
+                    $ps->bindValue(2,$item,PDO::PARAM_INT);
+                    $ps->execute();
+                    $data = array();
+                    array_push($data, array(
+                        'state' => "success",
+                        'message' => "お気に入りに登録しました！"
+                    ));
+                    $json_array = json_encode($data);
+                    print $json_array;
+                }
 
             }
 

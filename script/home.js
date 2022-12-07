@@ -2,10 +2,11 @@ let youfukudata = Array();
 let mens = Array();
 let ladius = Array();
 let accessory = Array();
+let favoritearray = Array();
 let nowarray = Array();
-let count = [0, 0, 0];
-let page = [0, 0, 0];
-let maxpage = [0, 0, 0];
+let count = [0, 0, 0,0];
+let page = [0, 0, 0,0];
+let maxpage = [0, 0, 0,0];
 let category = [true, true, true, true];
 let value1;
 let value2;
@@ -523,6 +524,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 const hyouji = (a, b) => {
     let list = document.getElementsByClassName("list")[a];
+    if(a==3){
+        //ここから　表示する画面
+        list = document.getElementsByClassName("list")[0];
+    }
     let sw = 0;
     let loop = 20;
     let kari = Array();
@@ -577,6 +582,13 @@ const hyouji = (a, b) => {
                 count[2] = 0;
                 sw = count[0] + count[1];
                 kari = accessory;
+                break;
+            case 3:
+                while (list.firstChild) {
+                    list.removeChild(list.firstChild);
+                }
+                loop=favoritearray.length;
+                kari=favoritearray;
                 break;
         }
         for (let i = 0; i < loop; i++) {
@@ -781,6 +793,9 @@ function syouhinsyousai(seibetu, a) {
         case 2:
             nowarray = accessory;
             break;
+        case 3:
+            nowarray = favoritearray;
+            break;
     }
     document.getElementById("itemImg").src = nowarray[a].item_image;
     document.getElementById("itemName").textContent = nowarray[a].item_name;
@@ -788,14 +803,46 @@ function syouhinsyousai(seibetu, a) {
     document.getElementById("price").textContent = nowarray[a].item_money;
     document.getElementById("ProductDetails").textContent = nowarray[a].item_feature;
     now=a;
+    document.getElementById("sityakuimg1").src=nowarray[now].item_image;
+    document.getElementById("sityakuimg2").src=nowarray[now].item_image;
+    console.log(document.getElementById("sityakuimg"));
 }
 const favorite=()=>{
     console.log(now);
     $.ajax({
         url: `PHP/itoyama.php/?favo=${nowarray[now].item_id}&favo_user_id=${1}&timestamp=${new Date().getTime()}`
     })
-    .success(function (reslogin) {
-        console.log(reslogin);
+    .success(function (res) {
+        console.log(res);
+        swal(res[0].message, "", res[0].state);
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+}
+const cartadd=()=>{
+    console.log(now);
+    $.ajax({
+        url: `PHP/itoyama.php/?cartadd=${nowarray[now].item_id}&cartadd_user_id=${1}&timestamp=${new Date().getTime()}`
+    })
+    .success(function (res) {
+        console.log(res);
+        swal(res[0].message, "", res[0].state);
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+}
+const favoritehyouji=()=>{
+    $.ajax({
+        url: `PHP/ueda.php/?like=true&favoriteget_user_id=${1}&timestamp=${new Date().getTime()}`
+    })
+    .success(function (res) {
+        console.log(res);
+        favoritearray=res;
+        hyouji(3,2)
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);
@@ -1186,4 +1233,6 @@ function hato4(){
         console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
         //PHPのエラーではなくDBのエラーをどうするか
     });
-}
+const sityaku=()=>{
+    document.getElementById("sityakuimg").src=nowarray[now].item_image;
+    console.log(document.getElementById("sityakuimg"));
