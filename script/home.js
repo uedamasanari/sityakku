@@ -2,12 +2,14 @@ let youfukudata = Array();
 let mens = Array();
 let ladius = Array();
 let accessory = Array();
+let nowarray = Array();
 let count = [0, 0, 0];
 let page = [0, 0, 0];
 let maxpage = [0, 0, 0];
 let category = [true, true, true, true];
 let value1;
 let value2;
+let now;
 window.onload = function () {
     $.ajax({
             url: "./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
@@ -41,9 +43,10 @@ window.onload = function () {
             console.log("errorThrown    : " + errorThrown.message);
         });
     // 実行したい処理
-    //alert('ページの読み込みが完了したよ！');
+    //プロフィール画面の動き
 
-    let a = sessionStorage.getItem('id');
+    // let a = sessionStorage.getItem('id');
+    let a = 1;
     $.ajax({
             url: `PHP/itoyama.php/?profile=true&user_id=${a}&timestamp=${new Date().getTime()}`
         })
@@ -113,34 +116,97 @@ window.onload = function () {
         });
 
     //console.log("javascript開始");
-    let aa = sessionStorage.getItem('id');
+    // let aa = sessionStorage.getItem('id');
+    let aa=1;
     $.ajax({
             url: `PHP/itoyama.php/?cart=true&id=${aa}$timestamp=${new Date().getTime()}`
         })
-        .success(function (res) {
-            console.log(res);
+        .success(function (res1) {
+            console.log(res1);
+            
 
             //合計金額計算
             let sum = 0;
-            for (let aa = 0; aa < res.length; aa++) {
-                sum = sum + res[aa].item_money;
+            for (let aa = 0; aa < res1.length; aa++) {
+                sum = sum + res1[aa].item_money;
             }
             //合計金額表示
             let gou = document.getElementById('goukei');
             gou.innerHTML = sum;
             //カートの中の数量
             let hyou = document.getElementById('suuryou');
-            hyou.innerHTML = res.length + "点";
+            hyou.innerHTML = res1.length + "点";
 
             let co = document.getElementById('cartcou');
-            co.innerHTML = res.length;
+            co.innerHTML = res1.length;
 
-            let stockList = []; //ここが配列になる
-            for (let i = 0; i < res.length; i++) {
-                stockList.push('<li></li><img src = "' + res[i].item_img + '"><div>' + res[i].item_name + '</div><div>' + res[i].item_money + '</div></li>'); //ここにpush()がくる
+            let coco  = 0;
+            for(let ss = 0 ; ss < res1.length; ss++){
+                let i_img = res1[ss].item_image;
+                let i_name = res1[ss].item_name;
+                let i_money = res1[ss].item_money;
+
+                let div = document.createElement("div");
+                div.className = "productitm div-flex-home div-btween";
+                
+                let cart_div = document.createElement("div");
+                cart_div.className = "cart_div";
+                let ta = document.getElementsByClassName("productitm div-flex-home div-btween");
+                ta[0].appendChild(cart_div);
+
+                let img = document.createElement("img");
+                img.src = i_img;
+                img.className = "thumb";
+                img.appendChild(cart_div);
+                let div2 = document.createElement("div");
+                div2.className = "cart_div2";
+                div2.appendChild(div);
+                let span = document.createElement("span");
+                span.className = "remove";
+                span.appendChild(div2);
+                let div3 = document.createElement("div");
+                div3.className = "wishlist-heart-group";
+                div3.appendChild(span);
+                let div4 = document.createElement("div");
+                div4.className = "cart_hato";
+                div4.onclick = function () {
+                    
+                };
+                div4.appendChild(div3);
+                let img2 = document.createElement("img");
+                img2.src="script/heart.png";
+                img2.alt="";
+                img2.width="16";
+                img2.height = "16";
+                img2.className ="bi bi-heart";
+                img2.appendChild(div4);
+                let div5 = document.createElement("div");
+                div5.className = "cart_name";
+                div5.innerHTML = i_name;
+                div5.appendChild(div);
+                let div6 = document.createElement("div");
+                div6.className = "cart_money";
+                div6.innerHTML = i_money + "円";
+                div6.appendChild(div);
+                let div7 = document.createElement("div");
+                div7.className = "cart_saku";
+                div7.onclick = function () {
+                };
+                div7.appendChild(div);
+                let img3 = document.createElement("img");
+                img3.src = "script/sakujo.png";
+                img3.alt="";
+                img3.width="20";
+                img3.height = "20";
+                img3.className ="bi bi-trash";
+                img3.appendChild(div7);
+
+                let dou = document.getElementsByClassName("tbody");
+                dou[0].appendChild(div);
+                
             }
 
-            document.getElementById('li1').innerHTML = stockList.join(''); //innerHTMLへ入れる時にjoin()で文字列にする
+
 
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -150,8 +216,7 @@ window.onload = function () {
 }
 
 //変更ボタンがクリックされたときの処理
-// let henbtn = document.getElementById('henkoubtn');
-// henbtn.addEventListener('click',function(){
+
     function henkou(){
 
         //↓性別の値を取得
@@ -530,21 +595,49 @@ const sort = () => {
 }
 
 function syouhinsyousai(seibetu, a) {
-    let kari = Array();
     switch (seibetu) {
         case 0:
-            kari = mens;
+            nowarray = mens;
             break;
         case 1:
-            kari = ladius;
+            nowarray = ladius;
             break;
         case 2:
-            kari = accessory;
+            nowarray = accessory;
             break;
     }
-    document.getElementById("itemImg").src = kari[a].item_image;
-    document.getElementById("itemName").textContent = kari[a].item_name;
-    document.getElementById("size").textContent = kari[a].item_size;
-    document.getElementById("price").textContent = kari[a].item_money;
-    document.getElementById("ProductDetails").textContent = kari[a].item_feature;
+    document.getElementById("itemImg").src = nowarray[a].item_image;
+    document.getElementById("itemName").textContent = nowarray[a].item_name;
+    document.getElementById("size").textContent = nowarray[a].item_size;
+    document.getElementById("price").textContent = nowarray[a].item_money;
+    document.getElementById("ProductDetails").textContent = nowarray[a].item_feature;
+    now=a;
+}
+const favorite=()=>{
+    console.log(now);
+    $.ajax({
+        url: `PHP/itoyama.php/?favo=${nowarray[now].item_id}&favo_user_id=${1}&timestamp=${new Date().getTime()}`
+    })
+    .success(function (res) {
+        console.log(res);
+        swal(res[0].message, "", res[0].state);
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+}
+const cartadd=()=>{
+    console.log(now);
+    $.ajax({
+        url: `PHP/itoyama.php/?cartadd=${nowarray[now].item_id}&cartadd_user_id=${1}&timestamp=${new Date().getTime()}`
+    })
+    .success(function (res) {
+        console.log(res);
+        swal(res[0].message, "", res[0].state);
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
 }

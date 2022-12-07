@@ -560,7 +560,7 @@ width: 100%;
     display: flex;
   }
   .list--item_div{
-    background: #fff;
+    background: rgb(128, 128, 128);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     position: relative;
     width: 100%;
@@ -568,6 +568,7 @@ width: 100%;
   .list--item img {
     display: block;
     width: 100%;
+    mix-blend-mode: multiply;
   }
   .list--item figcaption {
     padding: 6px 12px 12px;

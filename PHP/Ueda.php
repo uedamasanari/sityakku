@@ -7,7 +7,7 @@ if(isset($_GET['login'])){
     $ueda->loginfunk();
 }else if(isset($_GET['youfuku'])){
     $ueda->SelectYoufuku();
-}else if(isset($_POST['a'])){
+}else if(isset($_GET['Hsw'])){
     $ueda->InsertSyohin(1,$_POST['b'],$_POST['a'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")));
 }else if(isset($_GET['mysyuppin'])){
     $ueda->SelectMysyuppin($_GET['user_id']);
@@ -128,7 +128,6 @@ class Ueda{
         $ps->bindValue(9,$item_tiem,PDO::PARAM_STR);
         $ps->bindValue(10,$item_id,PDO::PARAM_INT);
         $ps->execute();
-        
     }
     function SelectLike(){
         $pdo = $this->dbConnect();
