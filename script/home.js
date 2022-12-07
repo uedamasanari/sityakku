@@ -116,20 +116,12 @@ window.onload = function () {
         });
 
     //console.log("javascript開始");
-     //let aa = sessionStorage.getItem('id');
-    //let aa=1;
     $.ajax({
             url: `PHP/itoyama.php/?cart=true&id=${a}$timestamp=${new Date().getTime()}`
         })
         .success(function (res1) {
             console.log(res1);
-
-            let i_id1 = res1[0].item_id;
-            let u_id = res1[0].user_id;
-            let i_name = res1[0].item_name;
-            let i_money = res1[0].item_money;
             
-
             //合計金額計算
             let sum = 0;
             for (let aa = 0; aa < res1.length; aa++) {
@@ -161,6 +153,13 @@ window.onload = function () {
                 im_name.innerHTML = i_name1;
                 let im_money = document.getElementById('cart_money1');
                 im_money.innerHTML = i_money1 + "円";
+
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+
             }else if(res1.length == 2){
                 document.getElementById("tbody1").style.display ="block";
                 document.getElementById("tbody2").style.display ="block";
@@ -183,6 +182,18 @@ window.onload = function () {
                 im_name.innerHTML = i_name2;
                 let im_money = document.getElementById('cart_money2');
                 im_money.innerHTML = i_money2 + "円";
+
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+                let itemid2 = res1[1].item_id;
+                let itemdata2 = {
+                    itemid2,i_name2,i_money2
+                };
+                sessionStorage.setItem('itemdata2',JSON.stringify(itemdata2));
+
             }else if(res1.length == 3){
                 document.getElementById("tbody1").style.display ="block";
                 document.getElementById("tbody2").style.display ="block";
@@ -216,6 +227,24 @@ window.onload = function () {
                 im_name3.innerHTML = i_name3;
                 let im_money3 = document.getElementById('cart_money3');
                 im_money3.innerHTML = i_money3 + "円";
+
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+                let itemid2 = res1[1].item_id;
+                let itemdata2 = {
+                    itemid2,i_name2,i_money2
+                };
+                sessionStorage.setItem('itemdata2',JSON.stringify(itemdata2));
+                let itemid3 = res1[2].item_id;
+                let itemdata3 = {
+                    itemid3,i_name3,i_money3
+                };
+                sessionStorage.setItem('itemdata3',JSON.stringify(itemdata3));
+                localStorage.removeItem('itemdata1');
+
             }else if(res1.length == 4){
                 document.getElementById("tbody1").style.display ="block";
                 document.getElementById("tbody2").style.display ="block";
@@ -261,6 +290,26 @@ window.onload = function () {
                 let im_money4 = document.getElementById('cart_money4');
                 im_money4.innerHTML = i_money4 + "円";
 
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+                let itemid2 = res1[1].item_id;
+                let itemdata2 = {
+                    itemid2,i_name2,i_money2
+                };
+                sessionStorage.setItem('itemdata2',JSON.stringify(itemdata2));
+                let itemid3 = res1[2].item_id;
+                let itemdata3 = {
+                    itemid3,i_name3,i_money3
+                };
+                sessionStorage.setItem('itemdata3',JSON.stringify(itemdata3));
+                let itemid4 = res1[3].item_id;
+                let itemdata4 = {
+                    itemid4,i_name4,i_money4
+                };
+                sessionStorage.setItem('itemdata4',JSON.stringify(itemdata4));
             }
 
 
@@ -685,17 +734,21 @@ const favorite=()=>{
 }
 
 //カートの削除ボタンが押されたときの処理    itemidを取得する
-function sakujo(){
+function sakujo1(){
 
     let b = sessionStorage.getItem('id');
+    let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
+    let saku1 = storageItem1.itemid1;
     $.ajax({
-        url: `PHP/itoyama.php/?cart=true&id=${b}$timestamp=${new Date().getTime()}`,
-        //ここ！！url: `PHP/itoyama.php/?cartsakujo=true}&id=${b}&itemid=${item}$timestamp=${new Date().getTime()}`
-
+        //url: `PHP/itoyama.php/?cart=true&id=${b}$timestamp=${new Date().getTime()}`,
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku1}&$timestamp=${new Date().getTime()}`
     })
     .success(function(data1) {
         //通信に成功
-        
+        // JSON⇒オブジェクトに変換するように！
+        sessionStorage.removeItem('itemdata1');
+        document.getElementById("tbody1").style.display ="none";
+        cart_kousin();
         
     })
     .error(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -703,6 +756,364 @@ function sakujo(){
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);  
         console.log("textStatus     : " + textStatus);             
         console.log("errorThrown    : " + errorThrown.message);    
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+function sakujo2(){
+
+    let b = sessionStorage.getItem('id');
+    let storageItem2 = JSON.parse(sessionStorage.getItem('itemdata2'));
+    let saku2 = storageItem2.itemid2;
+    $.ajax({
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku2}&$timestamp=${new Date().getTime()}`
+    })
+    .success(function(data1) {
+        //通信に成功
+        sessionStorage.removeItem('itemdata2');
+        document.getElementById("tbody2").style.display ="none";
+        cart_kousin();
+        
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  
+        console.log("textStatus     : " + textStatus);             
+        console.log("errorThrown    : " + errorThrown.message);    
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+function sakujo3(){
+
+    let b = sessionStorage.getItem('id');
+    let storageItem3 = JSON.parse(sessionStorage.getItem('itemdata3'));
+    let saku3 = storageItem3.itemid3;
+    $.ajax({
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku3}&$timestamp=${new Date().getTime()}`
+    })
+    .success(function(data1) {
+        //通信に成功
+        sessionStorage.removeItem('itemdata3');
+        document.getElementById("tbody3").style.display ="none";
+        cart_kousin();
+        
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  
+        console.log("textStatus     : " + textStatus);             
+        console.log("errorThrown    : " + errorThrown.message);    
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+function sakujo4(){
+
+    let b = sessionStorage.getItem('id');
+    let storageItem4 = JSON.parse(sessionStorage.getItem('itemdata4'));
+    let saku4 = storageItem4.itemid4;
+    $.ajax({
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku4}&$timestamp=${new Date().getTime()}`
+    })
+    .success(function(data1) {
+        //通信に成功
+        sessionStorage.removeItem('itemdata4');
+        document.getElementById("tbody4").style.display ="none";
+        cart_kousin();
+        
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  
+        console.log("textStatus     : " + textStatus);             
+        console.log("errorThrown    : " + errorThrown.message);    
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+//カートの削除後の金額や数量の表示処理
+function cart_kousin(){
+
+    let b = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?cart=true&id=${b}$timestamp=${new Date().getTime()}`
+    })
+    .success(function(res1) {
+        //通信に成功
+        let cart_sum = 0;
+            for (let xx = 0; xx < res1.length; xx++) {
+                cart_sum = cart_sum + res1[xx].item_money;
+            }
+            //合計金額表示
+            let gou1 = document.getElementById('goukei');
+            gou1.innerHTML = cart_sum + "円";
+            //カートの中の数量
+            let hyou1 = document.getElementById('suuryou');
+            hyou1.innerHTML = res1.length + "点";
+
+            let co1 = document.getElementById('cartcou');
+            co1.innerHTML = res1.length;
+
+            document.getElementById("tbody1").style.display ="none";
+            document.getElementById("tbody2").style.display ="none";
+            document.getElementById("tbody3").style.display ="none";
+            document.getElementById("tbody4").style.display ="none";
+
+            if(res1.length == 1){
+                document.getElementById("tbody1").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img = document.getElementById('thumb1')
+                im_img.src = i_img1;
+                let im_name = document.getElementById('cart_name1');
+                im_name.innerHTML = i_name1;
+                let im_money = document.getElementById('cart_money1');
+                im_money.innerHTML = i_money1 + "円";
+
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+
+            }else if(res1.length == 2){
+                document.getElementById("tbody1").style.display ="block";
+                document.getElementById("tbody2").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img1 = document.getElementById('thumb1')
+                im_img1.src = i_img1;
+                let im_name1 = document.getElementById('cart_name1');
+                im_name1.innerHTML = i_name1;
+                let im_money1 = document.getElementById('cart_money1');
+                im_money1.innerHTML = i_money1 + "円";
+
+                let i_img2 = res1[1].item_image;
+                let i_name2 = res1[1].item_name;
+                let i_money2 = res1[1].item_money;
+                let im_img = document.getElementById('thumb2')
+                im_img.src = i_img2;
+                let im_name = document.getElementById('cart_name2');
+                im_name.innerHTML = i_name2;
+                let im_money = document.getElementById('cart_money2');
+                im_money.innerHTML = i_money2 + "円";
+
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+                let itemid2 = res1[1].item_id;
+                let itemdata2 = {
+                    itemid2,i_name2,i_money2
+                };
+                sessionStorage.setItem('itemdata2',JSON.stringify(itemdata2));
+
+            }else if(res1.length == 3){
+                document.getElementById("tbody1").style.display ="block";
+                document.getElementById("tbody2").style.display ="block";
+                document.getElementById("tbody3").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img1 = document.getElementById('thumb1')
+                im_img1.src = i_img1;
+                let im_name1 = document.getElementById('cart_name1');
+                im_name1.innerHTML = i_name1;
+                let im_money1 = document.getElementById('cart_money1');
+                im_money1.innerHTML = i_money1 + "円";
+
+                let i_img2 = res1[1].item_image;
+                let i_name2 = res1[1].item_name;
+                let i_money2 = res1[1].item_money;
+                let im_img2 = document.getElementById('thumb2')
+                im_img2.src = i_img2;
+                let im_name2 = document.getElementById('cart_name2');
+                im_name2.innerHTML = i_name2;
+                let im_money2 = document.getElementById('cart_money2');
+                im_money2.innerHTML = i_money2 + "円";
+
+                let i_img3 = res1[2].item_image;
+                let i_name3 = res1[2].item_name;
+                let i_money3 = res1[2].item_money;
+                let im_img3 = document.getElementById('thumb3')
+                im_img3.src = i_img3;
+                let im_name3 = document.getElementById('cart_name3');
+                im_name3.innerHTML = i_name3;
+                let im_money3 = document.getElementById('cart_money3');
+                im_money3.innerHTML = i_money3 + "円";
+
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+                let itemid2 = res1[1].item_id;
+                let itemdata2 = {
+                    itemid2,i_name2,i_money2
+                };
+                sessionStorage.setItem('itemdata2',JSON.stringify(itemdata2));
+                let itemid3 = res1[2].item_id;
+                let itemdata3 = {
+                    itemid3,i_name3,i_money3
+                };
+                sessionStorage.setItem('itemdata3',JSON.stringify(itemdata3));
+                localStorage.removeItem('itemdata1');
+
+            }else if(res1.length == 4){
+                document.getElementById("tbody1").style.display ="block";
+                document.getElementById("tbody2").style.display ="block";
+                document.getElementById("tbody3").style.display ="block";
+                document.getElementById("tbody4").style.display ="block";
+                let i_img1 = res1[0].item_image;
+                let i_name1 = res1[0].item_name;
+                let i_money1 = res1[0].item_money;
+                let im_img1 = document.getElementById('thumb1');
+                im_img1.src = i_img1;
+                let im_name1 = document.getElementById('cart_name1');
+                im_name1.innerHTML = i_name1;
+                let im_money1 = document.getElementById('cart_money1');
+                im_money1.innerHTML = i_money1 + "円";
+
+                let i_img2 = res1[1].item_image;
+                let i_name2 = res1[1].item_name;
+                let i_money2 = res1[1].item_money;
+                let im_img2 = document.getElementById('thumb2');
+                im_img2.src = i_img2;
+                let im_name2 = document.getElementById('cart_name2');
+                im_name2.innerHTML = i_name2;
+                let im_money2 = document.getElementById('cart_money2');
+                im_money2.innerHTML = i_money2 + "円";
+
+                let i_img3 = res1[2].item_image;
+                let i_name3 = res1[2].item_name;
+                let i_money3 = res1[2].item_money;
+                let im_img3 = document.getElementById('thumb3');
+                im_img3.src = i_img3;
+                let im_name3 = document.getElementById('cart_name3');
+                im_name3.innerHTML = i_name3;
+                let im_money3 = document.getElementById('cart_money3');
+                im_money3.innerHTML = i_money3 + "円";
+
+                let i_img4 = res1[2].item_image;
+                let i_name4 = res1[2].item_name;
+                let i_money4 = res1[2].item_money;
+                let im_img4 = document.getElementById('thumb4');
+                im_img4.src = i_img4;
+                let im_name4 = document.getElementById('cart_name4');
+                im_name4.innerHTML = i_name4;
+                let im_money4 = document.getElementById('cart_money4');
+                im_money4.innerHTML = i_money4 + "円";
+
+                let itemid1 = res1[0].item_id;
+                let itemdata1 = {
+                    itemid1,i_name1,i_money1
+                };
+                sessionStorage.setItem('itemdata1',JSON.stringify(itemdata1));
+                let itemid2 = res1[1].item_id;
+                let itemdata2 = {
+                    itemid2,i_name2,i_money2
+                };
+                sessionStorage.setItem('itemdata2',JSON.stringify(itemdata2));
+                let itemid3 = res1[2].item_id;
+                let itemdata3 = {
+                    itemid3,i_name3,i_money3
+                };
+                sessionStorage.setItem('itemdata3',JSON.stringify(itemdata3));
+                let itemid4 = res1[3].item_id;
+                let itemdata4 = {
+                    itemid4,i_name4,i_money4
+                };
+                sessionStorage.setItem('itemdata4',JSON.stringify(itemdata4));
+            }
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  
+        console.log("textStatus     : " + textStatus);             
+        console.log("errorThrown    : " + errorThrown.message);    
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+//カートのお気に入りボタンがクリックされたときの処理
+function hato1(){
+    let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
+    let saku1 = storageItem1.itemid1;
+    let okiid = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?favo=true&favoid=${saku1}&id=${okiid}&$timestamp=${new Date().getTime()}`
+    })
+
+    .success(function(data) {
+        sakujo1();
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+        console.log("textStatus     : " + textStatus);             //エ
+        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+function hato2(){
+    let storageItem2 = JSON.parse(sessionStorage.getItem('itemdata2'));
+    let saku1 = storageItem2.itemid2;
+    let okiid = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?favo=true&favoid=${saku1}&id=${okiid}&$timestamp=${new Date().getTime()}`
+    })
+
+    .success(function(data) {
+        sakujo2();
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+        console.log("textStatus     : " + textStatus);             //エ
+        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+function hato3(){
+    let storageItem3 = JSON.parse(sessionStorage.getItem('itemdata3'));
+    let saku1 = storageItem3.itemid3;
+    let okiid = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?favo=true&favoid=${saku1}&id=${okiid}&$timestamp=${new Date().getTime()}`
+    })
+
+    .success(function(data) {
+        sakujo3();
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+        console.log("textStatus     : " + textStatus);             //エ
+        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
+        //PHPのエラーではなくDBのエラーをどうするか
+    });
+}
+
+function hato4(){
+    let storageItem4 = JSON.parse(sessionStorage.getItem('itemdata4'));
+    let saku1 = storageItem4.itemid4;
+    let okiid = sessionStorage.getItem('id');
+    $.ajax({
+        url: `PHP/itoyama.php/?favo=true&favoid=${saku1}&id=${okiid}&$timestamp=${new Date().getTime()}`
+    })
+
+    .success(function(data) {
+        sakujo4();
+    })
+    .error(function(XMLHttpRequest, textStatus, errorThrown) {
+        //通信に失敗
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);  //エラーの番号
+        console.log("textStatus     : " + textStatus);             //エ
+        console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
         //PHPのエラーではなくDBのエラーをどうするか
     });
 }
