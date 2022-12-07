@@ -40,7 +40,7 @@
                                         <a class="nav-link syuppin_button" href="#">出品</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <button class="nav-link modalOpen button-border" data-modal="1" >
+                                        <button class="nav-link modalOpen button-border" data-modal="1">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                 fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -56,7 +56,7 @@
 
 
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="favorite.html">
+                                        <a class="nav-link" onclick="favoritehyouji()">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                 fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
@@ -105,69 +105,97 @@
                                 <div class="fifth">削除</div>
                             </div>
                         </div>
-                        <div class="tbody">
+                        <div class="tbody" id="tbody1">
                             <div class="productitm div-flex-home div-btween">
-                                <div class="cart_div"><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></div>
+                                <div class="cart_div">
+                                    <img src="https://i.imgur.com/8goC6r6.png" class="thumb" id="thumb1">
+                                </div>
                                 <div class="cart_div2">
                                     <span class="remove">
                                         <div class="wishlist-heart-group">
-                                            <input name="product-333" id="product-333" data-product-id="333"
-                                                type="checkbox" />
-                                                <div class="cart_hato" onclick="hato()">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                                                  </svg>
+                                                <div class="cart_hato">
+                                                    <img src="script/heart.png" alt="" width="16" height="16" class="bi bi-heart" onclick="hato1()">
                                                 </div>
                                         </div>
                                     </span>
                                 </div>
-                                <div class="cart_name">じゃっけと</div>
-                                <div class="cart_money">1000円</div>
-                                <div class="cart_saku" onclick="sakujo()">
-                                    <span class="remove" >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" >
-                                            <path
-                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                            <path fill-rule="evenodd"
-                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="productitm div-flex-home div-btween">
-                                <div><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></div>
-                                <div>
-                                    <span class="remove">
-                                        <div class="wishlist-heart-group">
-                                            <input name="product-333" id="product-333" data-product-id="333"
-                                                type="checkbox" />
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                                <path
-                                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                            </svg>
-                                        </div>
-                                    </span>
-                                </div>
-                                <div>じゃっけと</div>
-                                <div>1000円</div>
-                                <div>
-                                    <span class="remove">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                            <path
-                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                            <path fill-rule="evenodd"
-                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                        </svg>
-                                    </span>
+                                <div class="cart_name1" id="cart_name1">----</div>
+                                <div class="cart_money1" id="cart_money1">0円</div>
+                                <div class="cart_saku" >
+                                    <img src="script/sakujo.png" alt="" width="20" height="20" class="bi bi-trash" onclick="sakujo1()">
                                 </div>
                             </div>
                         </div>
+                        <div class="tbody" id="tbody2">
+                            <div class="productitm div-flex-home div-btween">
+                                <div class="cart_div">
+                                    <img src="https://i.imgur.com/8goC6r6.png" class="thumb" id="thumb2">
+                                </div>
+                                <div class="cart_div2">
+                                    <span class="remove">
+                                        <div class="wishlist-heart-group">
+                                                <div class="cart_hato">
+                                                    <img src="script/heart.png" alt="" width="16" height="16" class="bi bi-heart" onclick="hato2()">
+                                                </div>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="cart_name2" id="cart_name2">----</div>
+                                <div class="cart_money2" id="cart_money2">0円</div>
+                                <div class="cart_saku">
+                                    <img src="script/sakujo.png" alt="" width="20" height="20" class="bi bi-trash" onclick="sakujo2()">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="tbody" id="tbody3">
+                            <div class="productitm div-flex-home div-btween">
+                                <div class="cart_div">
+                                    <img src="https://i.imgur.com/8goC6r6.png" class="thumb" id="thumb3">
+                                </div>
+                                <div class="cart_div2">
+                                    <span class="remove">
+                                        <div class="wishlist-heart-group">
+                                                <div class="cart_hato">
+                                                    <img src="script/heart.png" alt="" width="16" height="16" class="bi bi-heart" onclick="hato3()">
+                                                </div>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="cart_name3" id="cart_name3">----</div>
+                                <div class="cart_money3" id="cart_money3">0円</div>
+                                <div class="cart_saku" >
+                                    <img src="script/sakujo.png" alt="" width="20" height="20" class="bi bi-trash" onclick="sakujo3()">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="tbody" id="tbody4">
+                            <div class="productitm div-flex-home div-btween">
+                                <div class="cart_div">
+                                    <img src="https://i.imgur.com/8goC6r6.png" class="thumb" id="thumb4">
+                                </div>
+                                <div class="cart_div2">
+                                    <span class="remove">
+                                        <div class="wishlist-heart-group">
+                                                <div class="cart_hato">
+                                                    <img src="script/heart.png" alt="" width="16" height="16" class="bi bi-heart" onclick="hato4()">
+                                                </div>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="cart_name4" id="cart_name4">----</div>
+                                <div class="cart_money4" id="cart_money4">0円</div>
+                                <div class="cart_saku">
+                                    <img src="script/sakujo.png" alt="" width="20" height="20" class="bi bi-trash" onclick="sakujo4()">
+                                </div>
+                            </div>
+                            
+                        </div>
+
 
                         <div class="extracosts div-flex-home div-btween">
-                            <div class="light">商品数量</div>
+                            <div class="light">商品数量(最大4点まで)</div>
                             <div colspan="2" class="light"></div>
                             <div id="suuryou">３点</div>
                         </div>
@@ -177,8 +205,8 @@
                             <div colspan="2"><span class="thick" id="goukei">３００円</span></div>
                         </div>
                         <div class="checkoutrow">
-                            <div colspan="5" class="checkout"><button id="submitbtn" class="modalOpen" onclick="kessai_susumu()"
-                                    data-modal="3">購入画面へ進む</button></div>
+                            <div colspan="5" class="checkout"><button id="submitbtn" class="modalOpen"
+                                    onclick="kessai_susumu()" data-modal="3">購入画面へ進む</button></div>
                         </div>
                     </div>
                 </div>
@@ -200,7 +228,7 @@
                         <!-- <input type="submit" class="try" value="  試着する  "> -->
                         <button class="modalOpen" data-modal="5">試着する</button>
 
-                        <input type="submit" class="favorite" value="♡">
+                        <input type="submit" class="favorite" value="♡" onclick="favorite()">
                         <div id="c13">
                             <input type="submit" class="try" value="カートに入れる">
                         </div>
@@ -250,17 +278,22 @@
                                             <input type="text" size="5" value="@@@@" id="user_taiju" readonly>
                                             <label for="text_id">kg</label>
                                             <h4>性別</h4>
-                                            <div><p id="user_sei"></p></div>
+                                            <div>
+                                                <p id="user_sei"></p>
+                                            </div>
                                             <div class="button_solid004 swiper-button-next">
                                                 <a href="#">編集</a>
                                             </div>
                                             <div class="kessaihouhou">
                                                 <h4>決済方法</h4>
-                                                    <div><p id="user_siharai"></p></div>
+                                                <div>
+                                                    <p id="user_siharai"></p>
+                                                </div>
                                             </div>
                                             <div class="haisousaki">
                                                 <h4>配送先</h4>
-                                                <input type="text" size="20" value="@@@@@@@@@@@" id="user_jusyo" readonly>
+                                                <input type="text" size="20" value="@@@@@@@@@@@" id="user_jusyo"
+                                                    readonly>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -341,7 +374,7 @@
                                                                 <label class="col-form-label col-sm-4">都道府県</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-level1"
-                                                                        autocomplete="address-level1" 
+                                                                        autocomplete="address-level1"
                                                                         class="form-control" placeholder="東京都" id="ken"
                                                                         required />
                                                                 </div>
@@ -350,9 +383,9 @@
                                                                 <label class="col-form-label col-sm-4">市区町村</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-level2"
-                                                                        autocomplete="address-level2" 
-                                                                        class="form-control" placeholder="中央区" id="sityou"
-                                                                        required />
+                                                                        autocomplete="address-level2"
+                                                                        class="form-control" placeholder="中央区"
+                                                                        id="sityou" required />
                                                                 </div>
                                                             </div>
 
@@ -360,9 +393,9 @@
                                                                 <label class="col-form-label col-sm-4">番地等</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-line1"
-                                                                        autocomplete="address-line1" 
-                                                                        class="form-control" placeholder="◯丁目◯番" id="banti"
-                                                                        required />
+                                                                        autocomplete="address-line1"
+                                                                        class="form-control" placeholder="◯丁目◯番"
+                                                                        id="banti" required />
                                                                 </div>
                                                             </div>
 
@@ -371,7 +404,7 @@
                                                                 <label class="col-form-label col-sm-4">建物名・部屋番号等</label>
                                                                 <div class="col-sm-8">
                                                                     <input type="text" name="address-line2"
-                                                                        autocomplete="address-line2" 
+                                                                        autocomplete="address-line2"
                                                                         class="form-control" id="heyaban"
                                                                         placeholder="コーポ◯◯ 101号室" />
                                                                 </div>
@@ -399,23 +432,24 @@
                                                             </select>
                                                             年 -->
                                                             <form name="form_1">
-                                                            <select class="custom-select w-25" title="生年月日(月)"
-                                                                name="bday-month" autocomplete="bday-month" id="bday-month">
-                                                                <option value="--">--</option>
-                                                                <option value="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                                <option value="10">10</option>
-                                                                <option value="11">11</option>
-                                                                <option value="12">12</option>
-                                                            </select>
-                                                            月
+                                                                <select class="custom-select w-25" title="生年月日(月)"
+                                                                    name="bday-month" autocomplete="bday-month"
+                                                                    id="bday-month">
+                                                                    <option value="--">--</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                </select>
+                                                                月
                                                             </form>
                                                             <select class="custom-select w-25" title="生年月日(日)"
                                                                 name="bday-day" autocomplete="bday-day" id="bday-day">
@@ -464,8 +498,9 @@
 
                                                         <div class="text-center my-5">
                                                             <button type="submit"
-                                                                class=" button-padding swiper-button-next buytext" onclick="kakunin()"><a
-                                                                    class="buttext" id="kakunin">購入確認</a></button>
+                                                                class=" button-padding swiper-button-next buytext"
+                                                                onclick="kakunin()"><a class="buttext"
+                                                                    id="kakunin">購入確認</a></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -500,22 +535,24 @@
                                         <div class="input-flex">
                                             <div class="howhowpay">
                                                 <label">支払い方法</label>
-                                                    <input type="text" class="howpay-inp" value="クレジット" id="kaku_siharai" readonly>
+                                                    <input type="text" class="howpay-inp" value="クレジット"
+                                                        id="kaku_siharai" readonly>
                                             </div>
                                             <div class="sendday">
                                                 <label">配送希望日</label>
-                                                    <input type="text" class="sendday-inp" value="yyyymmdd" id="kaku_kiboubi"
-                                                        readonly>
+                                                    <input type="text" class="sendday-inp" value="yyyymmdd"
+                                                        id="kaku_kiboubi" readonly>
                                             </div>
                                         </div>
                                         <div class="address-button">
                                             <div class="sendaddress">
                                                 <label>配送先住所</label>
-                                                <input type="text" class="sendaddress-inp" value="東京都港区青山一丁目" id="kaku_juusyo"
-                                                    readonly>
+                                                <input type="text" class="sendaddress-inp" value="東京都港区青山一丁目"
+                                                    id="kaku_juusyo" readonly>
                                             </div>
                                             <div class="submitbutton">
-                                                <button type="submit" class="btn btn-primary" id="kou_kakutei" onclick="kakutei()">購入確定</button>
+                                                <button type="submit" class="btn btn-primary" id="kou_kakutei"
+                                                    onclick="kakutei()">購入確定</button>
                                             </div>
                                         </div>
                                     </div>
@@ -528,8 +565,34 @@
                                             </header>
                                             <div class="conq" style="display: flex;">
                                                 <div class="sityaleft">
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxU5EL_QU8Ogoo991P6jT5PIwNa3bFn5mn0Q&usqp=CAU" alt="" class="qazqaz">
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMydRthxvDqcteSbU8UedolSQhxoy9b-42SQ&usqp=CAU" alt="" class="qazimg">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxU5EL_QU8Ogoo991P6jT5PIwNa3bFn5mn0Q&usqp=CAU"
+                                                        alt="" class="qazqaz">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMydRthxvDqcteSbU8UedolSQhxoy9b-42SQ&usqp=CAU"
+                                                        alt="" class="qazimg" id="sityakuimg1">
+                                                </div>
+                                                <div class="sityaright">
+                                                    <div>
+                                                        <!-- <button data-modal="6" class="modalOpen">しっかり試着する</button> -->
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <div class="swiper-slide modalInSlider">
+                                        <div class="syouhin-w">
+                                            <header id="title">
+                                                <div class="modal-title">試着画面</div>
+                                                <div class="modal-close closeModal modalClose" id="close-syousai">×
+                                                </div>
+                                            </header>
+                                            <div class="conq" style="display: flex;">
+                                                <div class="sityaleft">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxU5EL_QU8Ogoo991P6jT5PIwNa3bFn5mn0Q&usqp=CAU"
+                                                        alt="" class="qazqaz">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMydRthxvDqcteSbU8UedolSQhxoy9b-42SQ&usqp=CAU"
+                                                        alt="" class="qazimg" id="sityakuimg2">
                                                 </div>
                                                 <div class="sityaright">
                                                     <div>
@@ -539,8 +602,8 @@
 
                                             </div>
                                         </div>
-                                    </div> 
-
+                                    </div>
+                                    <!--  -->
                                 </div>
                             </div>
                         </div>
@@ -548,13 +611,13 @@
                         <div class="swiper-button-next "></div>
                     </div>
                 </div>
-               
+
                 <div id="tabcon-01" class="con-box" style="display:block;">
                     <div class="goods_footer">
                         <div class="list" id="list">
-                           <div class="list--item">
+                            <div class="list--item">
                                 <figure class="list--item_div">
-                                    <a id="openSyousai"><img src="./script/siro.jpg" alt="" onclick="hyouji(1)"></a>
+                                    <a id="openSyousai"><img src="./script/siro.jpg" alt="" ></a>
                                     <header>
                                         <h2>商品名</h2>
                                     </header>
@@ -563,7 +626,7 @@
                                     </figcaption>
                                 </figure>
                             </div>
-                        <!--      <div class="list--item">
+                            <!--      <div class="list--item">
                                 <figure class="list--item_div">
                                     <a href=""><img src="./script/siro.jpg" alt=""></a>
                                     <header>
@@ -1333,7 +1396,7 @@
 
         </div>
 
-        <section id="modalsityaku" class="modalsityaku" >
+        <section id="modalsityaku" class="modalsityaku">
             <div class="modal-close closeModal" id="close-sityaku">×</div>
         </section>
 

@@ -117,7 +117,6 @@ function login(){
 
         //支払い方法などのデータをlocalstorageで保存
         if(window.localStorage){
-            let e = sessionStorage.getItem('id');
              //↓セレクトボックスの値を取得
             let sele1 = document.getElementById('bday-month');
             let num = sele1.selectedIndex;//値(数値)を取得
@@ -156,11 +155,4 @@ function shinkirogu(){
     location.href = 'rogin.html';
 }
 
-// let tbody = document.getElementsByClassName('tbody');
-// let add_code = '<div class="productitm div-flex-home div-btween"><div class="cart_div"><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></div><div class="cart_div2"><span class="remove"><div class="wishlist-heart-group"><input name="product-333" id="product-333" data-product-id="333" type="checkbox" /><div class="cart_hato" onclick="hato()"><img src="script/heart.png" alt="" width="16" height="16" class="bi bi-heart"></div></div></span></div><div class="cart_name">じゃっけと</div><div class="cart_money">1000円</div><div class="cart_saku" onclick="sakujo()"><img src="script/sakujo.png" alt="" width="20" height="20" class="bi bi-trash"></div></div>';
-// tbody.innerHTML = add_code;
-
-//やるべきこと
-//カートの削除機能でのitemidを取得してPHP側で動かせる・カートに入っている情報を繰り返し表示させる
-//カートでのハートボタンのJSの動作 あと少し
 
