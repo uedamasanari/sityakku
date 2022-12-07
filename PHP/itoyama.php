@@ -5,11 +5,11 @@ $itoyama = new Itoyama();
 
 if(isset($_POST['mail'])){
 
-    $itoyama->login($_POST['mail'],$_POST['pass']);
+    $itoyama->login($_POST['mail'],$_POST['pass']);//ログイン処理
 
 }else if(isset($_GET['profile'])){
 
-    $itoyama->prohenkou($_GET['user_id']);
+    $itoyama->prohenkou($_GET['user_id']);//プロフィール変更処理
 
 }else if(isset($_POST['sin'])){
 
@@ -26,13 +26,17 @@ if(isset($_POST['mail'])){
 
 }else if(isset($_GET['favo'])){
 
-    $itoyama->okiniiri($_get['id'],$_GET['itemid']);
+    $itoyama->okiniiri($_GET['favo_user_id'],$_GET['favo']);
 }else if(isset($_GET['sakujyo'])){
     $itoyama->syuppinsakujo($_GET['sakujyo']);
 }else if(isset($_POST['shinkimail'])){
 
     $itoyama->shinki($_POST['shinkimail'],$_POST['shinkipass']);
+}else if(isset()){
+
+    $itoyama->carttuika(,);
 }
+
 
     class Itoyama{
         private function dbConnect(){
@@ -43,17 +47,35 @@ if(isset($_POST['mail'])){
             //カートのお気に入り追加
             public function okiniiri($id,$item){
                 $pdo = $this->dbConnect();
-                $sql = "INSERT INTO favorite (user_id,item_id) VALUES(?,?)";
+                $sql = "SELECT * FROM favorite WHERE user_id = ? AND item_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->bindValue(2,$item,PDO::PARAM_INT);
                 $ps->execute();
-                $data = array();
+                foreach($ps->fetchAll() as $row){
+                }
+                if($ps-> rowCount() > 0){
+                    $data = array();
                     array_push($data, array(
-                        'state' => "お気に入り追加成功"
+                        'state' => "error",
+                        'message' => "既に登録されています"
                     ));
-                $json_array = json_encode($data);
-                print $json_array;
+                    $json_array = json_encode($data);
+                    print $json_array;
+                }else{
+                    $sql = "INSERT INTO favorite (user_id,item_id) VALUES(?,?)";
+                    $ps = $pdo->prepare($sql);
+                    $ps->bindValue(1,$id,PDO::PARAM_INT);
+                    $ps->bindValue(2,$item,PDO::PARAM_INT);
+                    $ps->execute();
+                    $data = array();
+                    array_push($data, array(
+                        'state' => "success",
+                        'message' => "お気に入りに登録しました！"
+                    ));
+                    $json_array = json_encode($data);
+                    print $json_array;
+                }
 
             }
 
@@ -238,6 +260,29 @@ if(isset($_POST['mail'])){
                 }
                 $json_array = json_encode($data);
                 print $json_array;
+            }
+
+            //商品をカートに追加する処理
+            function carttuika($userid,$itemid){
+                $pdo = $this->dbConnect();
+                $sql = "INSERT INTO cart (user_id) VALUES(?)";
+                $ps = $pdo ->prepare($sql);
+                $ps->bindValue(1,$userid,PDO::PARAM_INT);
+                $ps->execute();
+                $sql1 = "SELECT cart_detail_id FROM cart_detail WHERE cart_id NOT IN(SELECT cart_id FROM cart WHERE user_id = ?)";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$userid,PDO::PARAM_INT);
+                $ps1->execute();
+                $dat = $ps->fetchAll();
+                $sql2 = "INSERT INTO cart_detail(cart_detail_id,item_id)VALUES(?,?)";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$dat,PDO::PARAM_INT);
+                $ps2->bindValue(2,$itemid,PDO::PARAM_INT);
+                $ps2->execute();
+                $data = array();
+                array_push($data,array(
+                    'state' =>'商品をカートに追加成功'
+                ));
             }
 
          }
