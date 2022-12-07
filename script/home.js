@@ -121,34 +121,41 @@ window.onload = function () {
     $.ajax({
             url: `PHP/itoyama.php/?cart=true&id=${aa}$timestamp=${new Date().getTime()}`
         })
-        .success(function (res) {
-            console.log(res);
+        .success(function (res1) {
+            console.log(res1);
+            
 
             //合計金額計算
             let sum = 0;
-            for (let aa = 0; aa < res.length; aa++) {
-                sum = sum + res[aa].item_money;
+            for (let aa = 0; aa < res1.length; aa++) {
+                sum = sum + res1[aa].item_money;
             }
             //合計金額表示
             let gou = document.getElementById('goukei');
             gou.innerHTML = sum;
             //カートの中の数量
             let hyou = document.getElementById('suuryou');
-            hyou.innerHTML = res.length + "点";
+            hyou.innerHTML = res1.length + "点";
 
             let co = document.getElementById('cartcou');
-            co.innerHTML = res.length;
+            co.innerHTML = res1.length;
 
-            for(let ss = 0 ; ss < res.length; ss++){
+            let coco  = 0;
+            for(let ss = 0 ; ss < res1.length; ss++){
+                let i_img = res1[ss].item_image;
+                let i_name = res1[ss].item_name;
+                let i_money = res1[ss].item_money;
+
                 let div = document.createElement("div");
                 div.className = "productitm div-flex-home div-btween";
                 
                 let cart_div = document.createElement("div");
                 cart_div.className = "cart_div";
-                cart_div.appendChild(div);
+                let ta = document.getElementsByClassName("productitm div-flex-home div-btween");
+                ta[0].appendChild(cart_div);
 
                 let img = document.createElement("img");
-                img.src = res[ss].item_image;
+                img.src = i_img;
                 img.className = "thumb";
                 img.appendChild(cart_div);
                 let div2 = document.createElement("div");
@@ -162,7 +169,9 @@ window.onload = function () {
                 div3.appendChild(span);
                 let div4 = document.createElement("div");
                 div4.className = "cart_hato";
-                div4.onclick= "hato()";
+                div4.onclick = function () {
+                    
+                };
                 div4.appendChild(div3);
                 let img2 = document.createElement("img");
                 img2.src="script/heart.png";
@@ -173,15 +182,16 @@ window.onload = function () {
                 img2.appendChild(div4);
                 let div5 = document.createElement("div");
                 div5.className = "cart_name";
-                div5.innerHTML = res[ss].item_name;
+                div5.innerHTML = i_name;
                 div5.appendChild(div);
                 let div6 = document.createElement("div");
                 div6.className = "cart_money";
-                div6.innerHTML = res[ss].item_money + "円";
+                div6.innerHTML = i_money + "円";
                 div6.appendChild(div);
                 let div7 = document.createElement("div");
                 div7.className = "cart_saku";
-                div7.onclick = "sakujo()";
+                div7.onclick = function () {
+                };
                 div7.appendChild(div);
                 let img3 = document.createElement("img");
                 img3.src = "script/sakujo.png";
@@ -193,6 +203,7 @@ window.onload = function () {
 
                 let dou = document.getElementsByClassName("tbody");
                 dou[0].appendChild(div);
+                
             }
 
 
