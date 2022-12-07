@@ -612,6 +612,7 @@ function syouhinsyousai(seibetu, a) {
     document.getElementById("price").textContent = nowarray[a].item_money;
     document.getElementById("ProductDetails").textContent = nowarray[a].item_feature;
     now=a;
+    document.getElementById("sityakuimg").src=nowarray[now].item_image;
 }
 const favorite=()=>{
     console.log(now);
@@ -647,10 +648,56 @@ const favoritehyouji=()=>{
     })
     .success(function (res) {
         console.log(res);
-        swal(res[0].message, "", res[0].state);
+        for (let i = 0; i < res.length; i++) {
+                let ele = document.createElement("div");
+                ele.className = 'list--item';
+                list.appendChild(ele);
+                ele = document.createElement("figure");
+                ele.className = 'list--item_div';
+                let tag = document.getElementsByClassName("list--item")[sw];
+                tag.appendChild(ele);
+
+                ele = document.createElement("a");
+                ele.className = 'atag';
+                ele.id = "openSyousai";
+                tag = document.getElementsByClassName("list--item_div")[sw];
+                tag.appendChild(ele);
+
+                ele = document.createElement("img");
+                ele.src = kari[index].item_image;
+                ele.style = "height:250px;width:250px;";
+                ele.onclick = function () {
+                    $('#goodsModal').fadeIn();
+                    syouhinsyousai(a, i);
+                };
+                tag = document.getElementsByClassName("atag")[sw];
+                tag.appendChild(ele);
+
+                ele = document.createElement("header");
+                ele.className = 'headertag';
+                tag = document.getElementsByClassName("list--item_div")[sw];
+                tag.appendChild(ele);
+
+                ele = document.createElement("h2");
+                ele.textContent = kari[index].item_name;
+                tag = document.getElementsByClassName("headertag")[sw];
+                tag.appendChild(ele);
+
+                ele = document.createElement("figcaption");
+                ele.textContent = kari[index].item_money + '円';
+                tag = document.getElementsByClassName("list--item_div")[sw];
+                tag.appendChild(ele);
+                count[a]++;
+                sw++;
+            index++;
+        }
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);
         console.log("errorThrown    : " + errorThrown.message);
     });
+}
+const sityaku=()=>{
+    document.getElementById("sityakuimg").src=nowarray[now].item_image;
+    console.log(document.getElementById("sityakuimg"));
 }

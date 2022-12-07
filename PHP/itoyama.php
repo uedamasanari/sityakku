@@ -32,10 +32,11 @@ if(isset($_POST['mail'])){
 }else if(isset($_POST['shinkimail'])){
 
     $itoyama->shinki($_POST['shinkimail'],$_POST['shinkipass']);
-}else if(isset()){
-
-    $itoyama->carttuika(,);
 }
+// else if(isset()){
+
+//     $itoyama->carttuika();
+// }
 
 
     class Itoyama{
