@@ -2,10 +2,11 @@ let youfukudata = Array();
 let mens = Array();
 let ladius = Array();
 let accessory = Array();
+let favoritearray = Array();
 let nowarray = Array();
-let count = [0, 0, 0];
-let page = [0, 0, 0];
-let maxpage = [0, 0, 0];
+let count = [0, 0, 0,0];
+let page = [0, 0, 0,0];
+let maxpage = [0, 0, 0,0];
 let category = [true, true, true, true];
 let value1;
 let value2;
@@ -347,6 +348,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 const hyouji = (a, b) => {
     let list = document.getElementsByClassName("list")[a];
+    if(a==3){
+        //ここから　表示する画面
+        list = document.getElementsByClassName("list")[0];
+    }
     let sw = 0;
     let loop = 20;
     let kari = Array();
@@ -401,6 +406,13 @@ const hyouji = (a, b) => {
                 count[2] = 0;
                 sw = count[0] + count[1];
                 kari = accessory;
+                break;
+            case 3:
+                while (list.firstChild) {
+                    list.removeChild(list.firstChild);
+                }
+                loop=favoritearray.length;
+                kari=favoritearray;
                 break;
         }
         for (let i = 0; i < loop; i++) {
@@ -605,6 +617,9 @@ function syouhinsyousai(seibetu, a) {
         case 2:
             nowarray = accessory;
             break;
+        case 3:
+            nowarray = favoritearray;
+            break;
     }
     document.getElementById("itemImg").src = nowarray[a].item_image;
     document.getElementById("itemName").textContent = nowarray[a].item_name;
@@ -612,7 +627,9 @@ function syouhinsyousai(seibetu, a) {
     document.getElementById("price").textContent = nowarray[a].item_money;
     document.getElementById("ProductDetails").textContent = nowarray[a].item_feature;
     now=a;
-    document.getElementById("sityakuimg").src=nowarray[now].item_image;
+    document.getElementById("sityakuimg1").src=nowarray[now].item_image;
+    document.getElementById("sityakuimg2").src=nowarray[now].item_image;
+    console.log(document.getElementById("sityakuimg"));
 }
 const favorite=()=>{
     console.log(now);
@@ -648,49 +665,8 @@ const favoritehyouji=()=>{
     })
     .success(function (res) {
         console.log(res);
-        for (let i = 0; i < res.length; i++) {
-                let ele = document.createElement("div");
-                ele.className = 'list--item';
-                list.appendChild(ele);
-                ele = document.createElement("figure");
-                ele.className = 'list--item_div';
-                let tag = document.getElementsByClassName("list--item")[sw];
-                tag.appendChild(ele);
-
-                ele = document.createElement("a");
-                ele.className = 'atag';
-                ele.id = "openSyousai";
-                tag = document.getElementsByClassName("list--item_div")[sw];
-                tag.appendChild(ele);
-
-                ele = document.createElement("img");
-                ele.src = kari[index].item_image;
-                ele.style = "height:250px;width:250px;";
-                ele.onclick = function () {
-                    $('#goodsModal').fadeIn();
-                    syouhinsyousai(a, i);
-                };
-                tag = document.getElementsByClassName("atag")[sw];
-                tag.appendChild(ele);
-
-                ele = document.createElement("header");
-                ele.className = 'headertag';
-                tag = document.getElementsByClassName("list--item_div")[sw];
-                tag.appendChild(ele);
-
-                ele = document.createElement("h2");
-                ele.textContent = kari[index].item_name;
-                tag = document.getElementsByClassName("headertag")[sw];
-                tag.appendChild(ele);
-
-                ele = document.createElement("figcaption");
-                ele.textContent = kari[index].item_money + '円';
-                tag = document.getElementsByClassName("list--item_div")[sw];
-                tag.appendChild(ele);
-                count[a]++;
-                sw++;
-            index++;
-        }
+        favoritearray=res;
+        hyouji(3,2)
     }).error(function (XMLHttpRequest, textStatus, errorThrown) {
         console.log("XMLHttpRequest : " + XMLHttpRequest.status);
         console.log("textStatus     : " + textStatus);
