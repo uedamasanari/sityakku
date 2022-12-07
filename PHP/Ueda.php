@@ -16,7 +16,7 @@ if(isset($_GET['login'])){
     $json_array = json_encode("送信完了しました！");
     echo $json_array;
 }else if(isset($_GET['like'])){
-    $ueda->SelectLike();
+    $ueda->SelectLike($_GET['favoriteget_user_id']);
 }
 
 class Ueda{
@@ -129,10 +129,11 @@ class Ueda{
         $ps->bindValue(10,$item_id,PDO::PARAM_INT);
         $ps->execute();
     }
-    function SelectLike(){
+    function SelectLike($user_id){
         $pdo = $this->dbConnect();
-        $sql = 'SELECT * FROM items WHERE item_id IN(SELECT item_id FROM favorite WHERE user_id = 1)';
+        $sql = 'SELECT * FROM items WHERE item_id IN(SELECT item_id FROM favorite WHERE user_id = ?)';
         $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$user_id,PDO::PARAM_INT);
         $ps->execute();
         $search = $ps->fetchAll();
 

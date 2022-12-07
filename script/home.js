@@ -674,3 +674,16 @@ const cartadd=()=>{
         console.log("errorThrown    : " + errorThrown.message);
     });
 }
+const favoritehyouji=()=>{
+    $.ajax({
+        url: `PHP/ueda.php/?like=true&favoriteget_user_id=${1}&timestamp=${new Date().getTime()}`
+    })
+    .success(function (res) {
+        console.log(res);
+        swal(res[0].message, "", res[0].state);
+    }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    });
+}
