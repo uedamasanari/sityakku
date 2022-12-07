@@ -56,7 +56,7 @@
 
 
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="favorite.html">
+                                        <a class="nav-link" onclick="favoritehyouji()">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
                                                 fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
@@ -202,7 +202,7 @@
                         <!-- <input type="submit" class="try" value="  試着する  "> -->
                         <button class="modalOpen" data-modal="5">試着する</button>
 
-                        <input type="submit" class="favorite" value="♡">
+                        <input type="submit" class="favorite" value="♡" onclick="favorite()">
                         <div id="c13">
                             <input type="submit" class="try" value="カートに入れる">
                         </div>
@@ -590,7 +590,7 @@
                         <div class="list" id="list">
                             <div class="list--item">
                                 <figure class="list--item_div">
-                                    <a id="openSyousai"><img src="./script/siro.jpg" alt="" onclick="hyouji(1)"></a>
+                                    <a id="openSyousai"><img src="./script/siro.jpg" alt="" ></a>
                                     <header>
                                         <h2>商品名</h2>
                                     </header>
