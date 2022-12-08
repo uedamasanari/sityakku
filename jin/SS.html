@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" 
+      content="text/html; charset=utf-8">
     <title>商品出品画面</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
     <link rel="stylesheet" href="../header/header.css">
@@ -96,7 +98,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- shopping cart contents -->
+                             <!-- shopping cart contents --> 
                             <tr class="productitm">
                                 <!-- http://www.inkydeals.com/deal/ginormous-bundle/ -->
                                 <td><img src="https://i.imgur.com/8goC6r6.png" class="thumb"></td>
@@ -174,65 +176,65 @@
             </div>
         </section>
     </div>
-</body>
-
-
-<div class="button-tag">
-    <div class="main">
-        <div class="button-space">
-            <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04"
-                onclick="mein1()">出品登録</button>
-            <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04"
-                onclick="mein2()">出品履歴</button>
+    <div class="button-tag">
+        <div class="main">
+            <div class="button-space">
+                <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04"
+                    onclick="mein1()">出品登録</button>
+                <button class="no-border txt-white bkgnd-black border-radius-50px no-shadow touroku" id="button_04"
+                    onclick="mein2()">出品履歴</button>
+            </div>
         </div>
     </div>
-</div>
-<div class="history" id="history">
-    <div id="nana">
+    <div class="history" id="history">
+        <div id="nana">
+        
+    </div>
+    </div>
+    <form onsubmit="return false;" name="postshouhin" method="post" action="">
+    <div class="grid-cen">
+        <div class="none" id="none">
+            <div class="ai" id="ai">
+                <p class="syo">商品名 : <input type="text" class="s" name="syouhin" id="syouhin"></p>
+                <ul>
+                <li class="bun">分類 : 
+                    <select class="b" name="bunrui" id="bun">
+                    <option value="メンズ">メンズ</option>
+                    <option value="レディース">レディース</option>
+                    <option value="アクセサリー">アクセサリー</option>
+                    </select>
+                </li>
+                <li class="ka">カテゴリー : 
+                    <select class="k" name="kategori" id="ka">
+                    <option value="1">トップス</option>
+                    <option value="2">ボトムス</option>
+                    <option value="3">指輪</option>
+                    <option value="4">ネックレス</option>
+                    </select>
+                </li>
+                    <li class="sa">サイズ : <select class="saizu" name="size" id="sa">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    
+                    </select>
+                </li>
+                </ul>
     
-</div>
-</div>
-<form onsubmit="return false;" name="postshouhin" method="post" action="">
-<div class="grid-cen">
-    <div class="none" id="none">
-        <div class="ai" id="ai">
-            <p class="syo">商品名 : <input type="text" class="s" name="syouhin" id="syouhin"></p>
-            <ul>
-            <li class="bun">分類 : 
-                <select class="b" name="bunrui" id="bun">
-                <option value="メンズ">メンズ</option>
-                <option value="レディース">レディース</option>
-                <option value="アクセサリー">アクセサリー</option>
-                </select>
-            </li>
-            <li class="ka">カテゴリー : 
-                <select class="k" name="kategori" id="ka">
-                <option value="1">トップス</option>
-                <option value="2">ボトムス</option>
-                <option value="3">指輪</option>
-                <option value="4">ネックレス</option>
-                </select>
-            </li>
-                <li class="sa">サイズ : <select class="saizu" name="size" id="sa">
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                
-                </select>
-            </li>
-            </ul>
-
-            <p class="ne">値段 : <input type="text" class="n" name="nedan" id="ne"></p>
-            <p class="to">特徴 : <input type="text" size="30" class="t" name="tokucyou" id="to"></p>
-            <p class="ga"><input type="file" name="image" accept="image/jpeg, image/png" id="image"></p>
-            <p class="kakunin"><button class=" syu no-border txt-white bkgnd-black border-radius-50px no-shadow touroku"
-                    id="button_04" onclick="syuppin()">出品確認</button></p>
-
-
+                <p class="ne">値段 : <input type="text" class="n" name="nedan" id="ne"></p>
+                <p class="to">特徴 : <input type="text" size="30" class="t" name="tokucyou" id="to"></p>
+                <p class="ga"><input type="file" name="image" accept="image/jpeg, image/png" id="image"></p>
+                <p class="kakunin"><button class=" syu no-border txt-white bkgnd-black border-radius-50px no-shadow touroku"
+                        id="button_04" onclick="syuppin()">出品確認</button></p>
+    
+    
+            </div>
         </div>
     </div>
-</div>
-</form>
+    </form>
+
+
+
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>

@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=UTF-8');
+ini_set('default_charset', 'UTF-8');
 header("Access-Control-Allow-Origin: *");
 $itoyama = new Itoyama();
 
@@ -61,14 +62,14 @@ if(isset($_POST['mail'])){
 
 }else if(isset($_POST['kid4'])){
 
-    $itoyama->kessai_syousai4($_GET['kid4'],$_GET['iid1'],$_GET['iid2'],$_GET['iid3'],$_GET['iid4']);
+    $itoyama->kessai_syousai4($_POST['kid4'],$_POST['iid1'],$_POST['iid2'],$_POST['iid3'],$_POST['iid4']);
 
 }
 
 
     class Itoyama{
         private function dbConnect(){
-            $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','sityakku','sityakku');
+            $pdo = new PDO('mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1417823-sityakku;charset=utf8','LAA1417823','2101004aso');
             return $pdo;
         }
 
@@ -381,11 +382,11 @@ if(isset($_POST['mail'])){
                 $cartid = $ps1->fetchAll();
                 $sql2 = "DELETE FROM cart_detail WHERE cart_id = ?";
                 $ps2 = $pdo ->prepare($sql2);
-                $ps2->bindValue(1,$cartid,PDO::PARAM_INT);
+                $ps2->bindValue(1,$cartid[0]['cart_id'],PDO::PARAM_INT);
                 $ps2->execute();
                 $data = array();
                     array_push($data, array(
-                        'message' => "カートに追加しました"
+                        'message' => "カートを削除しました"
                     ));
                 $json_array = json_encode($data);
                 print $json_array;
@@ -513,31 +514,20 @@ if(isset($_POST['mail'])){
 
             function kessai_syousai4($kid,$i1,$i2,$i3,$i4){
                 $pdo = $this->dbConnect();
-                $sql1 = "SELECT settlement_id FROM settlement WHERE user_id = ?";
+                $sql1 = "SELECT settlement_id FROM settlement WHERE user_id = ? ORDER BY settlement_id DESC";
                 $ps1 = $pdo ->prepare($sql1);
                 $ps1->bindValue(1,$kid,PDO::PARAM_INT);
                 $ps1->execute();
                 $keid = $ps1->fetchAll();
-                $sql2 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $sql2 = "UPDATE settlement SET settlement_item1=?,settlement_item2=?,settlement_item3=?,settlement_item4=? WHERE settlement_id = ?";
                 $ps2 = $pdo ->prepare($sql2);
-                $ps2->bindValue(1,$keid,PDO::PARAM_INT);
-                $ps2->bindValue(2,$i1,PDO::PARAM_INT);
+                $ps2->bindValue(1,$i1,PDO::PARAM_INT);
+                $ps2->bindValue(2,$i2,PDO::PARAM_INT);
+                $ps2->bindValue(3,$i3,PDO::PARAM_INT);
+                $ps2->bindValue(4,$i4,PDO::PARAM_INT);
+                $ps2->bindValue(5,$keid[0]['settlement_id'],PDO::PARAM_INT);
                 $ps2->execute();
-                $sql3 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
-                $ps3 = $pdo ->prepare($sql3);
-                $ps3->bindValue(1,$keid,PDO::PARAM_INT);
-                $ps3->bindValue(2,$i2,PDO::PARAM_INT);
-                $ps3->execute();
-                $sql4 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
-                $ps4 = $pdo ->prepare($sql4);
-                $ps4->bindValue(1,$keid,PDO::PARAM_INT);
-                $ps4->bindValue(2,$i3,PDO::PARAM_INT);
-                $ps4->execute();
-                $sql5 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
-                $ps5 = $pdo ->prepare($sql5);
-                $ps5->bindValue(1,$keid,PDO::PARAM_INT);
-                $ps5->bindValue(2,$i4,PDO::PARAM_INT);
-                $ps5->execute();
+                
                 $data = array();
                     array_push($data, array(
                         'message' => "決済詳細追加完了1"
