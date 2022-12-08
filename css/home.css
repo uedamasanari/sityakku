@@ -13,7 +13,9 @@ body{
 	overflow-x: hidden;
     transition: all 200ms linear;
 }
-
+.navbar-nav{
+  /* margin-right: 200px; */
+}
 .start-header {
 	opacity: 1;
 	transform: translateY(0);
@@ -1466,6 +1468,8 @@ margin-bottom: 20px !important;
 .button-border{
   border: none;
   background-color: transparent;
+  white-space: nowrap;
+  width: auto;
 }
 .hennkou{
    position:absolute;
