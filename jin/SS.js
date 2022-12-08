@@ -8,7 +8,8 @@ window.onload = function () {
             url: `../PHP/Ueda.php/?mysyuppin=true&user_id=${loginid}&timestamp=${new Date().getTime()}`
         })
         .success(function (res) {
-            console.log(res);
+            console.log(JSON.parse(res));
+            res = JSON.parse(res);
             mysyuppindata = res;
             mysyuppin();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {

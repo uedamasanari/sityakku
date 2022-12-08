@@ -168,100 +168,10 @@ function login(){
                         //alert('段階１');
                         //カートの中身を全部消す処理の前にセッションの削除
                         $.ajax({
-                            url: `PHP/itoyama.php/?cart=true&id=${cc}$timestamp=${new Date().getTime()}`
+                            url: `PHP/itoyama.php/?cartallsaku=true&id=${cc}$timestamp=${new Date().getTime()}`
                         })
                         .success(function(mo1) {
-                            console.log(mo1);
-                            let sakuco = mo1.length;
-                            if(sakuco == 1){
-                                let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
-                                let saku1 = storageItem1.itemid1;
-                                sessionStorage.removeItem('itemdata1');
-                                //決済詳細へデータを保存する処理1
-                                let ke1 = {
-                                    kid1 : cc1,//sessonid
-                                    iid1 :saku1,
-                                }
-                                console.log(data1);
-                                //↓ajaxでPHPと通信
-                                $.ajax({
-                                    type: "post",   //送信の通信だと定義
-                                    url: "PHP/itoyama.php",    //送信先のリンク
-                                    data: ke1,     //送信するデータを定義
-                                })
-                                .success(function(mo22) {
-                                    console.log(mo22);
-                                    //alert('決済詳細完了');
-                                    
-                                }).error(function(XMLHttpRequest, textStatus, errorThrown) {
-                                    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-                                    console.log("textStatus     : " + textStatus);
-                                    console.log("errorThrown    : " + errorThrown.message);
-                                });
-                            }else if(sakuco == 2){
-                                let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
-                                let saku1 = storageItem1.itemid1;
-                                let storageItem2 = JSON.parse(sessionStorage.getItem('itemdata2'));
-                                let saku2 = storageItem2.itemid2;
-                                sessionStorage.removeItem('itemdata1');
-                                sessionStorage.removeItem('itemdata2');
-                                //決済詳細へデータを保存する処理1
-                                let ke2 = {
-                                    kid2 : cc1,//sessonid
-                                    iid1 :saku1,
-                                    iid2 :saku2
-                                }
-                                console.log(data1);
-                                //↓ajaxでPHPと通信
-                                $.ajax({
-                                    type: "post",   //送信の通信だと定義
-                                    url: "PHP/itoyama.php",    //送信先のリンク
-                                    data: ke2,     //送信するデータを定義
-                                })
-                                .success(function(mo22) {
-                                    console.log(mo22);
-                                    //alert('決済詳細完了');
-                                    
-                                }).error(function(XMLHttpRequest, textStatus, errorThrown) {
-                                    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-                                    console.log("textStatus     : " + textStatus);
-                                    console.log("errorThrown    : " + errorThrown.message);
-                                });
-                            }else if(sakuco == 3){
-                                let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
-                                let saku1 = storageItem1.itemid1;
-                                let storageItem2 = JSON.parse(sessionStorage.getItem('itemdata2'));
-                                let saku2 = storageItem2.itemid2;
-                                let storageItem3 = JSON.parse(sessionStorage.getItem('itemdata3'));
-                                let saku3 = storageItem3.itemid3;
-                                sessionStorage.removeItem('itemdata1');
-                                sessionStorage.removeItem('itemdata2');
-                                sessionStorage.removeItem('itemdata3');
-                                //決済詳細へデータを保存する処理1
-                                let ke3 = {
-                                    kid3 : cc1,//sessonid
-                                    iid1 :saku1,
-                                    iid2 :saku2,
-                                    iid3 :saku3
-                                }
-                                console.log(ke3);
-                                //↓ajaxでPHPと通信
-                                $.ajax({
-                                    type: "post",   //送信の通信だと定義
-                                    url: "PHP/itoyama.php",    //送信先のリンク
-                                    data: ke3,     //送信するデータを定義
-                                })
-                                .success(function(mo22) {
-                                    console.log(mo22);
-                                    alert('決済詳細3完了');
-                                    
-                                }).error(function(XMLHttpRequest, textStatus, errorThrown) {
-                                    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-                                    console.log("textStatus     : " + textStatus);
-                                    console.log("errorThrown    : " + errorThrown.message);
-                                });
-                            }else if(sakuco == 4){
-                                let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
+                            let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
                                 let saku1 = storageItem1.itemid1;
                                 let storageItem2 = JSON.parse(sessionStorage.getItem('itemdata2'));
                                 let saku2 = storageItem2.itemid2;
@@ -297,7 +207,6 @@ function login(){
                                     console.log("textStatus     : " + textStatus);
                                     console.log("errorThrown    : " + errorThrown.message);
                                 });
-                            }
                             
                         }).error(function(XMLHttpRequest, textStatus, errorThrown) {
                             console.log("XMLHttpRequest : " + XMLHttpRequest.status);

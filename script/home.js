@@ -15,10 +15,11 @@ let loginid;
 window.onload = function () {
     loginid=sessionStorage.getItem('id');
     $.ajax({
-            url: "./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
+            url: `./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}`
         })
         .success(function (res) {
-            console.log(res);
+            console.log(JSON.parse(res));
+            res=JSON.parse(res);
             youfukudata = res;
             for (let i = 0; i < res.length; i++) {
                 switch (res[i].item_class) {
@@ -40,6 +41,7 @@ window.onload = function () {
             hyouji(0, 2);
             hyouji(1, 2);
             hyouji(2, 2);
+            console.log("終わったよ");
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("XMLHttpRequest : " + XMLHttpRequest.status);
             console.log("textStatus     : " + textStatus);
@@ -131,7 +133,7 @@ function carthyouji(a){
             //合計金額計算
             let sum = 0;
             for (let aa = 0; aa < res1.length; aa++) {
-                sum = sum + res1[aa].item_money;
+                sum = sum + Number(res1[aa].item_money);
             }
             //合計金額表示
             let gou = document.getElementById('goukei');
