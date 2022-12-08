@@ -11,7 +11,9 @@ let category = [true, true, true, true];
 let value1;
 let value2;
 let now;
+let loginid;
 window.onload = function () {
+    loginid=sessionStorage.getItem('id');
     $.ajax({
             url: "./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}"
         })
@@ -45,11 +47,8 @@ window.onload = function () {
         });
     // 実行したい処理
     //プロフィール画面の動き
-
-    let a = sessionStorage.getItem('id');
-    //let a = 1;
     $.ajax({
-            url: `PHP/itoyama.php/?profile=true&user_id=${a}&timestamp=${new Date().getTime()}`
+            url: `PHP/itoyama.php/?profile=true&user_id=${loginid}&timestamp=${new Date().getTime()}`
         })
 
         .success(function (res) {
@@ -117,7 +116,7 @@ window.onload = function () {
         });
 
     //console.log("javascript開始");
-    carthyouji(a);
+    carthyouji(loginid);
 }
 
 function carthyouji(a){
@@ -415,7 +414,7 @@ function carthyouji(a){
     
         //↓　ajaxでPHPに送信するための配列作成
         let data = {
-            id:sessionStorage.getItem('id'),
+            id:loginid,
             name:document.getElementById('user_name1').value,
             sin:document.getElementById('user_sintyou1').value,
             tai:document.getElementById('user_taiju1').value,
@@ -811,7 +810,7 @@ function syouhinsyousai(seibetu, a) {
 const favorite=()=>{
     console.log(now);
     $.ajax({
-        url: `PHP/itoyama.php/?favo=${nowarray[now].item_id}&favo_user_id=${1}&timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?favo=${nowarray[now].item_id}&favo_user_id=${loginid}&timestamp=${new Date().getTime()}`
     })
     .success(function (res) {
         console.log(res);
@@ -825,7 +824,7 @@ const favorite=()=>{
 const cartadd=()=>{
     console.log(now);
     $.ajax({
-        url: `PHP/itoyama.php/?cartadd=${nowarray[now].item_id}&cartadd_user_id=${1}&timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cartadd=${nowarray[now].item_id}&cartadd_user_id=${loginid}&timestamp=${new Date().getTime()}`
     })
     .success(function (res) {
         console.log(res);
@@ -839,7 +838,7 @@ const cartadd=()=>{
 }
 const favoritehyouji=()=>{
     $.ajax({
-        url: `PHP/ueda.php/?like=true&favoriteget_user_id=${1}&timestamp=${new Date().getTime()}`
+        url: `PHP/ueda.php/?like=true&favoriteget_user_id=${loginid}&timestamp=${new Date().getTime()}`
     })
     .success(function (res) {
         console.log(res);
@@ -854,13 +853,11 @@ const favoritehyouji=()=>{
 
 //カートの削除ボタンが押されたときの処理    itemidを取得する
 function sakujo1(){
-
-    let b = sessionStorage.getItem('id');
     let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
     let saku1 = storageItem1.itemid1;
     $.ajax({
         //url: `PHP/itoyama.php/?cart=true&id=${b}$timestamp=${new Date().getTime()}`,
-        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku1}&$timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${loginid}&itemid=${saku1}&$timestamp=${new Date().getTime()}`
     })
     .success(function(data1) {
         //通信に成功
@@ -880,12 +877,10 @@ function sakujo1(){
 }
 
 function sakujo2(){
-
-    let b = sessionStorage.getItem('id');
     let storageItem2 = JSON.parse(sessionStorage.getItem('itemdata2'));
     let saku2 = storageItem2.itemid2;
     $.ajax({
-        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku2}&$timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${loginid}&itemid=${saku2}&$timestamp=${new Date().getTime()}`
     })
     .success(function(data1) {
         //通信に成功
@@ -903,12 +898,10 @@ function sakujo2(){
     });
 }
 function sakujo3(){
-
-    let b = sessionStorage.getItem('id');
     let storageItem3 = JSON.parse(sessionStorage.getItem('itemdata3'));
     let saku3 = storageItem3.itemid3;
     $.ajax({
-        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku3}&$timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${loginid}&itemid=${saku3}&$timestamp=${new Date().getTime()}`
     })
     .success(function(data1) {
         //通信に成功
@@ -926,12 +919,10 @@ function sakujo3(){
     });
 }
 function sakujo4(){
-
-    let b = sessionStorage.getItem('id');
     let storageItem4 = JSON.parse(sessionStorage.getItem('itemdata4'));
     let saku4 = storageItem4.itemid4;
     $.ajax({
-        url: `PHP/itoyama.php/?cartsakujo=true&id=${b}&itemid=${saku4}&$timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cartsakujo=true&id=${loginid}&itemid=${saku4}&$timestamp=${new Date().getTime()}`
     })
     .success(function(data1) {
         //通信に成功
@@ -951,10 +942,8 @@ function sakujo4(){
 
 //カートの削除後の金額や数量の表示処理
 function cart_kousin(){
-
-    let b = sessionStorage.getItem('id');
     $.ajax({
-        url: `PHP/itoyama.php/?cart=true&id=${b}$timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?cart=true&id=${loginid}$timestamp=${new Date().getTime()}`
     })
     .success(function(res1) {
         //通信に成功

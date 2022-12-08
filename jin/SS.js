@@ -1,9 +1,11 @@
 let mysyuppindata;
 let Hsw = 0;
 let now;
+let loginid;
 window.onload = function () {
+    loginid=sessionStorage.getItem('id');
     $.ajax({
-            url: "../PHP/Ueda.php/?mysyuppin=true&user_id=1&timestamp=${new Date().getTime()}"
+            url: `../PHP/Ueda.php/?mysyuppin=true&user_id=${loginid}&timestamp=${new Date().getTime()}`
         })
         .success(function (res) {
             console.log(res);
@@ -50,7 +52,8 @@ function syuppin() {
                 d: formElements.elements['size'].value,
                 e: formElements.elements['nedan'].value,
                 f: formElements.elements['tokucyou'].value,
-                g: imagetxt
+                g: imagetxt,
+                id:loginid
             }
             $.ajax({
                     type: "post", //送信の通信だと定義
@@ -60,6 +63,7 @@ function syuppin() {
                 .success(function (data) {
                     //通信に成功
                     console.log(data);
+                    swal("商品を登録しました！","","success");
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     //通信に失敗
                     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -74,7 +78,8 @@ function syuppin() {
                 d: formElements.elements['size'].value,
                 e: formElements.elements['nedan'].value,
                 f: formElements.elements['tokucyou'].value,
-                g: imagetxt
+                g: imagetxt,
+                item_id:mysyuppindata[a].item_id
             }
             //↓ajaxでPHPと通信
             $.ajax({
@@ -99,18 +104,34 @@ function syuppin() {
 }
 
 function sakujyo(a) {
-
-    $.ajax({
-            url: `PHP/itoyama.php/?sakujyo=${a}&timestamp=${new Date().getTime()}`
-        })
-        .success(function (message) {
-            alert(message);
-            mysyuppindata.splice(a);
-        }).error(function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-            console.log("textStatus     : " + textStatus);
-            console.log("errorThrown    : " + errorThrown.message);
-        });
+    swal({
+        title: "本当に削除しますか？",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: `../PHP/itoyama.php/?sakujyo=${mysyuppindata[a].item_id}&timestamp=${new Date().getTime()}`
+            })
+            .success(function (message) {
+                console.log(message);
+                mysyuppindata.splice(a);
+                swal("削除しました！", {
+                    icon: "success",
+                  })
+                  .then(() => {
+                    location.href = './SS.html';
+                  });
+                
+            }).error(function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+                console.log("textStatus     : " + textStatus);
+                console.log("errorThrown    : " + errorThrown.message);
+            });
+        }
+      });
 }
 const mysyuppin = () => {
     //データを入れる

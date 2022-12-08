@@ -3,7 +3,7 @@ CREATE TABLE settlement(
     user_id            INT          NOT NULL,
     settlement_buy     VARCHAR(15)  NOT NULL,
     settlement_address VARCHAR(100) NOT NULL,
-    settlement_time    TIMESTAMP         NOT NULL,
+    settlement_time    TIMESTAMP         ,
     PRIMARY KEY (settlement_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
