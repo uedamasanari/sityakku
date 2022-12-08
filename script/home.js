@@ -1067,7 +1067,6 @@ function cart_kousin(){
                     itemid3,i_name3,i_money3
                 };
                 sessionStorage.setItem('itemdata3',JSON.stringify(itemdata3));
-                localStorage.removeItem('itemdata1');
 
             }else if(res1.length == 4){
                 document.getElementById("tbody1").style.display ="block";
