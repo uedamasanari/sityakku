@@ -15,7 +15,6 @@ if(isset($_POST['mail'])){
 
     $itoyama->pro($_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add'],$_POST['id']);//新規登録処理
 
-
 }else if(isset($_GET['cart'])){
 
     $itoyama->cart($_GET['id']);//カートの中を全表示処理
@@ -105,7 +104,7 @@ if(isset($_POST['mail'])){
                 $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->execute();
                 $sea1 = $ps->fetchAll();
-                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
+                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ?";
                 $ps2 = $pdo->prepare($sql2);
                 $ps2->bindValue(1,$sea1,PDO::PARAM_INT);
                 $ps2->bindValue(2,$itemid,PDO::PARAM_INT);
@@ -276,24 +275,39 @@ if(isset($_POST['mail'])){
                 $ps = $pdo ->prepare($sql);
                 $ps->bindValue(1,$userid,PDO::PARAM_INT);
                 $ps->execute();
+                $res = $ps->fetchAll();
                 if($ps-> rowCount() > 0){
-                    $sql1 = "SELECT cart_id FROM cart WHERE user_id = ?";
-                    $ps1 = $pdo ->prepare($sql1);
-                    $ps1->bindValue(1,$userid,PDO::PARAM_INT);
-                    $ps1->execute();
-                    $dat = $ps1->fetchAll();
-                    $sql2 = "INSERT INTO cart_detail(cart_id,item_id)VALUES(?,?)";
-                    $ps2 = $pdo ->prepare($sql2);
-                    $ps2->bindValue(1,$dat[0]['cart_id'],PDO::PARAM_INT);
-                    $ps2->bindValue(2,$itemid,PDO::PARAM_INT);
-                    $ps2->execute();
-                    $data = array();
-                    array_push($data, array(
-                        'state' => "success",
-                        'message' => "カートに追加しました"
-                    ));
-                    $json_array = json_encode($data);
-                    print $json_array;
+                    $sql = "SELECT cart_detail_id FROM cart_detail WHERE cart_id = ?";
+                    $ps = $pdo ->prepare($sql);
+                    $ps->bindValue(1,$res[0]['cart_id'],PDO::PARAM_INT);
+                    $ps->execute();
+                    if($ps-> rowCount() > 3){
+                        $data = array();
+                        array_push($data, array(
+                            'state' => "error",
+                            'message' => "申し訳ございません。１回に購入できる数量は４点までです。"
+                        ));
+                        $json_array = json_encode($data);
+                        print $json_array;
+                    }else{
+                        $sql1 = "SELECT cart_id FROM cart WHERE user_id = ?";
+                        $ps1 = $pdo ->prepare($sql1);
+                        $ps1->bindValue(1,$userid,PDO::PARAM_INT);
+                        $ps1->execute();
+                        $dat = $ps1->fetchAll();
+                        $sql2 = "INSERT INTO cart_detail(cart_id,item_id)VALUES(?,?)";
+                        $ps2 = $pdo ->prepare($sql2);
+                        $ps2->bindValue(1,$dat[0]['cart_id'],PDO::PARAM_INT);
+                        $ps2->bindValue(2,$itemid,PDO::PARAM_INT);
+                        $ps2->execute();
+                        $data = array();
+                        array_push($data, array(
+                            'state' => "success",
+                            'message' => "カートに追加しました"
+                        ));
+                        $json_array = json_encode($data);
+                        print $json_array;
+                    }
                 }else{
                     $pdo = $this->dbConnect();
                     $sql = "INSERT INTO cart (user_id) VALUES(?)";
