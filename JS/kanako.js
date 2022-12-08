@@ -135,13 +135,23 @@ function login(){
             let sityou = document.getElementById('sityou').value;
             let banti = document.getElementById('sityou').value;
             let heyaban = document.getElementById('heyaban').value;
-
-            let reslte = window.confirm(str+'月'+str2+'日'+str3+''+'〒'+yuubin+ken+sityou+banti+heyaban+'の内容でよろしかったでしょうか。');
-            if(reslte == true){
-            alert("購入が確定しました！");
-            location.href = 'home.html';
-            }
-
+            swal({
+                title: "下の内容で確定しますか？",
+                text: str+'月'+str2+'日'+str3+''+'〒'+yuubin+ken+sityou+banti+heyaban,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  swal("購入が確定しました！", {
+                    icon: "success",
+                  })
+                  .then(() => {
+                    location.href = 'home.html';
+                  });
+                }
+              });
  }
 }  
 
