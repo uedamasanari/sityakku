@@ -139,13 +139,17 @@ function login(){
             let heyaban = document.getElementById('heyaban').value;
             let jusyo =ken+sityou+banti+heyaban;
             //let time1 = str+'月'+str2+'日';
-
-            let reslte = window.confirm(str+'月'+str2+'日'+str3+''+'〒'+yuubin+ken+sityou+banti+heyaban+'の内容でよろしかったでしょうか。');
-            
-            if(reslte == true){
-            alert("購入が確定しました！");
-
-                    //決済にデータを入れる処理をする
+             
+             swal({
+                title: "下の内容で確定しますか？",
+                text: str+'月'+str2+'日'+str3+''+'〒'+yuubin+ken+sityou+banti+heyaban,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                //決済にデータを入れる処理をする
                     let cc1 = Number(cc);
                     let data1 = {
                         kid : cc1,
@@ -309,9 +313,18 @@ function login(){
                         console.log("errorThrown    : " + errorThrown.message);    //エラーの情報
                         //PHPのエラーではなくDBのエラーをどうするか
                     });
+                  swal("購入が確定しました！", {
+                    icon: "success",
+                  })
+                  .then(() => {
+                    location.href = 'home.html';
+                  });
+                }
+              });
+
+                    
 
                 //location.href = 'home.html';
-            }
 
  }
 //}  

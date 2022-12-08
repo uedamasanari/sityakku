@@ -31,12 +31,12 @@ body{
 }
 /* logo */
 .navbar-brand img{
-	height: 28px;
-	width: auto;
+	height: 65px;
+	width: 65px;
 	display: block;
-  filter: brightness(10%);
+  /* filter: brightness(10%);
 	-webkit-transition : all 0.3s ease-out;
-	transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out; */
 }
 .cart-button{
   border: 0px ;
@@ -1506,7 +1506,7 @@ margin-bottom: 20px !important;
   justify-content: space-around;
 }
 .button-padding{
-  padding: 10px 50px;
+  padding: 10px 60px 10px 50px;
 }
 /*  */
 .list-all{
@@ -1728,9 +1728,9 @@ color: transparent !important;
   display: flex;
   justify-content: space-around;
 }
-.button-padding{
-  padding: 10px 50px;
-}
+/* .button-padding{
+  padding: 10px auto;
+} */
 /*  */
 .list-all{
   width: 700px;
@@ -1820,7 +1820,8 @@ width: 80%;
 }
 .buttext{
 color: white !important;
-position: absolute;
+/* position: absolute; */
+white-space: nowrap
 }
 .buytext{
   border-radius: 10px;
@@ -1829,7 +1830,8 @@ position: absolute;
   border: none;
   margin-right: 50px;
   background-color: rgb(24, 126, 247);
-  
+  text-align: center;
+  justify-content: center;
 }
 .modalsityaku {
   display: none;

@@ -30,6 +30,8 @@ if(isset($_POST['mail'])){
 }else if(isset($_GET['sakujyo'])){
 
     $itoyama->syuppinsakujo($_GET['sakujyo']);
+    $json_array = json_encode("削除成功");
+    print $json_array;
     
 }else if(isset($_POST['shinkimail'])){
 
@@ -147,7 +149,17 @@ if(isset($_POST['mail'])){
             //出品商品取り消し
             public function syuppinsakujo($item){
                 $pdo = $this->dbConnect();
-                $sql = "DELETE FROM settlement_detail WHERE item_id = ?";
+                $sql = "DELETE FROM cart_detail WHERE item_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$item,PDO::PARAM_INT);
+                $ps->execute();
+                $pdo = $this->dbConnect();
+                $sql = "DELETE FROM favorite WHERE item_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$item,PDO::PARAM_INT);
+                $ps->execute();
+                $pdo = $this->dbConnect();
+                $sql = "DELETE FROM items WHERE item_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$item,PDO::PARAM_INT);
                 $ps->execute();
