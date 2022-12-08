@@ -35,6 +35,7 @@ function change() {
 }
 
 function syuppin() {
+    try{
     const formElements = document.forms['postshouhin'];
     //↓base64(画像を文字へ変換)
     const uploadImage = document.querySelector('#image')
@@ -79,7 +80,7 @@ function syuppin() {
                 e: formElements.elements['nedan'].value,
                 f: formElements.elements['tokucyou'].value,
                 g: imagetxt,
-                item_id:mysyuppindata[a].item_id
+                item_id:mysyuppindata[now].item_id
             }
             //↓ajaxでPHPと通信
             $.ajax({
@@ -89,7 +90,7 @@ function syuppin() {
                 })
                 .success(function (data) {
                     //通信に成功
-                    console.log(data);
+                    swal("編集内容を登録しました！","","success");
                 }).error(function (XMLHttpRequest, textStatus, errorThrown) {
                     //通信に失敗
                     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -101,6 +102,9 @@ function syuppin() {
     }
     reader.readAsDataURL(file);
     //↑base64終了
+    }catch(error){
+        swal("すべて入力してください","","error");
+    }
 }
 
 function sakujyo(a) {
