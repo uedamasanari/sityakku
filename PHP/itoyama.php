@@ -13,22 +13,25 @@ if(isset($_POST['mail'])){
 
 }else if(isset($_POST['sin'])){
 
-    $itoyama->pro($_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add'],$_POST['id']);
+    $itoyama->pro($_POST['name'],$_POST['sin'],$_POST['tai'],$_POST['gen'],$_POST['buy'],$_POST['add'],$_POST['id']);//新規登録処理
 
 
 }else if(isset($_GET['cart'])){
 
-    $itoyama->cart($_GET['id']);
+    $itoyama->cart($_GET['id']);//カートの中を全表示処理
 
 }else if(isset($_GET['cartsakujo'])){
 
-    $itoyama->cartsakujo($_GET['id'].$_GET['itemid']);
+    $itoyama->cartsakujo($_GET['id'],$_GET['itemid']);//カートの中の削除する処理
 
 }else if(isset($_GET['favo'])){
 
-    $itoyama->okiniiri($_GET['favo_user_id'],$_GET['favo']);
+    $itoyama->okiniiri($_GET['favoid'],$_GET['id']);//カートの中のお気に入りへ追加する処理
+
 }else if(isset($_GET['sakujyo'])){
+
     $itoyama->syuppinsakujo($_GET['sakujyo']);
+    
 }else if(isset($_POST['shinkimail'])){
 
     $itoyama->shinki($_POST['shinkimail'],$_POST['shinkipass']);
@@ -44,12 +47,12 @@ if(isset($_POST['mail'])){
         }
 
             //カートのお気に入り追加
-            public function okiniiri($id,$item){
+            public function okiniiri($item,$id){
                 $pdo = $this->dbConnect();
                 $sql = "SELECT * FROM favorite WHERE user_id = ? AND item_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$id,PDO::PARAM_INT);
-                $ps->bindValue(2,$item,PDO::PARAM_INT);
+                $ps->bindValue(1,$item,PDO::PARAM_INT);
+                $ps->bindValue(2,$id,PDO::PARAM_INT);
                 $ps->execute();
                 foreach($ps->fetchAll() as $row){
                 }
@@ -95,18 +98,23 @@ if(isset($_POST['mail'])){
             }
             
             //カート商品取り消し
-            public function cartsakujo($itemid){
+            public function cartsakujo($id,$itemid){
                 $pdo = $this->dbConnect();
-                $sql = "DELETE FROM cart_detail WHERE item_id =?";
+                $sql = "SELECT cart_id FROM cart WHERE user_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$itemid,PDO::PARAM_INT);
+                $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->execute();
-                $sea = $ps->fetchAll();
+                $sea1 = $ps->fetchAll();
+                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
+                $ps2 = $pdo->prepare($sql2);
+                $ps2->bindValue(1,$sea1,PDO::PARAM_INT);
+                $ps2->bindValue(2,$itemid,PDO::PARAM_INT);
+                $ps2->execute();
+                $sea2 = $ps2->fetchAll();
                 $data = array();
                     array_push($data, array(
                         'state' => "成功"
                     ));
-
                 
                 $json_array = json_encode($data);
                 print $json_array;
