@@ -8,11 +8,11 @@ if(isset($_GET['login'])){
 }else if(isset($_GET['youfuku'])){
     $ueda->SelectYoufuku();
 }else if(isset($_GET['Hsw'])){
-    $ueda->InsertSyohin(1,$_POST['b'],$_POST['a'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")));
+    $ueda->InsertSyohin($_POST['id'],$_POST['b'],$_POST['a'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")));
 }else if(isset($_GET['mysyuppin'])){
     $ueda->SelectMysyuppin($_GET['user_id']);
 }else if(isset($_POST['A'])){
-    $ueda->UpdataSyohin($_POST['b'],$_POST['A'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")),13);
+    $ueda->UpdataSyohin($_POST['b'],$_POST['A'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")),$_POST['item_id']);
     $json_array = json_encode("送信完了しました！");
     echo $json_array;
 }else if(isset($_GET['like'])){
