@@ -36,6 +36,31 @@ if(isset($_POST['mail'])){
     $itoyama->shinki($_POST['shinkimail'],$_POST['shinkipass']);
 }else if(isset($_GET['cartadd'])){
     $itoyama->carttuika($_GET['cartadd_user_id'],$_GET['cartadd']);
+
+}else if(isset($_GET['cartallsaku'])){
+
+    $itoyama->cart_allsaku($_GET['id']);
+
+}else if(isset($_POST['address1'])){
+
+    $itoyama->kessai($_POST['kid'],$_POST['buy'],$_POST['address1']);
+
+}else if(isset($_POST['kid1'])){
+
+    $itoyama->kessai_syousai1($_GET['kid1'],$_GET['iid1']);
+
+}else if(isset($_POST['kid2'])){
+
+    $itoyama->kessai_syousai2($_GET['kid2'],$_GET['iid1'],$_GET['iid2']);
+
+}else if(isset($_POST['kid3'])){
+
+    $itoyama->kessai_syousai3($_GET['kid3'],$_GET['iid1'],$_GET['iid2'],$_GET['iid3']);
+
+}else if(isset($_POST['kid4'])){
+
+    $itoyama->kessai_syousai4($_GET['kid4'],$_GET['iid1'],$_GET['iid2'],$_GET['iid3'],$_GET['iid4']);
+
 }
 
 
@@ -104,7 +129,7 @@ if(isset($_POST['mail'])){
                 $ps->bindValue(1,$id,PDO::PARAM_INT);
                 $ps->execute();
                 $sea1 = $ps->fetchAll();
-                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ?";
+                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
                 $ps2 = $pdo->prepare($sql2);
                 $ps2->bindValue(1,$sea1,PDO::PARAM_INT);
                 $ps2->bindValue(2,$itemid,PDO::PARAM_INT);
@@ -332,6 +357,181 @@ if(isset($_POST['mail'])){
                     $json_array = json_encode($data);
                     print $json_array;
                 }
+            }
+
+            //カートの全削除
+            function cart_allsaku($id){
+                $pdo = $this->dbConnect();
+                $sql1 = "SELECT cart_id FROM cart WHERE user_id = ?";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$id,PDO::PARAM_INT);
+                $ps1->execute();
+                $cartid = $ps1->fetchAll();
+                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ?";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$cartid,PDO::PARAM_INT);
+                $ps2->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "カートに追加しました"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            //決済に追加する処理
+            function kessai($uid,$buy,$add){
+                $pdo = $this->dbConnect();
+                    $sql2 = "INSERT INTO settlement(user_id,settlement_buy,settlement_address)VALUE(?,?,?)";
+                    $ps2 = $pdo ->prepare($sql2);
+                    $ps2->bindValue(1,$uid,PDO::PARAM_INT);
+                    $ps2->bindValue(2,$buy,PDO::PARAM_STR);
+                    $ps2->bindValue(3,$add,PDO::PARAM_STR);
+                    //$ps2->bindValue(4,$time,PDO::PARAM_STR);
+
+                    $ps2->execute();
+                    $data = array();
+                    array_push($data, array(
+                        'message' => "決済追加完了"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            function kessai_syousai1($kid,$i1){
+                $pdo = $this->dbConnect();
+                $sql1 = "SELECT settlement_id FROM settlement WHERE user_id = ?";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$kid,PDO::PARAM_INT);
+                $ps1->execute();
+                $keid = $ps1->fetchAll();
+                $sql2 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$keid,PDO::PARAM_INT);
+                $ps2->bindValue(2,$i1,PDO::PARAM_INT);
+                $ps2->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "決済詳細追加完了1"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            function kessai_syousai2($kid,$i1,$i2){
+                $pdo = $this->dbConnect();
+                $sql1 = "SELECT settlement_id FROM settlement WHERE user_id = ?";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$kid,PDO::PARAM_INT);
+                $ps1->execute();
+                $keid = $ps1->fetchAll();
+                $sql2 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$keid,PDO::PARAM_INT);
+                $ps2->bindValue(2,$i1,PDO::PARAM_INT);
+                $ps2->execute();
+                $sql3 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $ps3 = $pdo ->prepare($sql3);
+                $ps3->bindValue(1,$keid,PDO::PARAM_INT);
+                $ps3->bindValue(2,$i2,PDO::PARAM_INT);
+                $ps3->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "決済詳細追加完了1"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            function kessai_syousai3($kid,$i1,$i2,$i3){
+                    $pdo = $this->dbConnect();
+                    $tui1 = "INSERT INTO settlement_detail (settlement_id,item_id)VALUE(?,?)";
+                    $ps1 = $pdo->prepare($tui1);
+                    $ps1->bindValue(1,$kid,PDO::PARAM_INT);
+                    $ps1->bindValue(2,$i1,PDO::PARAM_INT);
+                    $ps1->execute();
+
+                    $tui2 = "INSERT INTO settlement_detail (settlement_id,item_id)VALUE(?,?)";
+                    $ps2 = $pdo->prepare($tui2);
+                    $ps2->bindValue(1,$kid,PDO::PARAM_INT);
+                    $ps2->bindValue(2,$i2,PDO::PARAM_INT);
+                    $ps2->execute();
+
+                    $tui3 = "INSERT INTO settlement_detail (settlement_id,item_id)VALUE(?,?)";
+                    $ps3 = $pdo->prepare($tui3);
+                    $ps3->bindValue(1,$kid,PDO::PARAM_INT);
+                    $ps3->bindValue(2,$i3,PDO::PARAM_INT);
+                    $ps3->execute();
+                
+
+                //$sql1 = "SELECT settlement_id FROM settlement_detail WHERE settlement_id IN(SELECT settlement_id FROM settlement WHERE user_id = ?)";
+                // $ps1 = $pdo ->prepare($sql1);
+                // $ps1->bindValue(1,$kid,PDO::PARAM_INT);
+                // $ps1->execute();
+                // $keid = $ps1->fetchAll();
+                // if($keid == null){
+                //     $tui = "INSERT INTO settlement_detail SELECT settlement_id FROM settlement WHERE user_id = ?";
+                //     $ps22 = $pdo ->prepare($tui);
+                //     $ps22->bindValue(1,$kid,PDO::PARAM_INT);
+                //     $ps22->execute();
+                // }
+                // $sql2 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                // $ps2 = $pdo ->prepare($sql2);
+                // $ps2->bindValue(1,$row,PDO::PARAM_INT);
+                // $ps2->bindValue(2,$i1,PDO::PARAM_INT);
+                // $ps2->execute();
+                
+                // $sql3 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                // $ps3 = $pdo ->prepare($sql3);
+                // $ps3->bindValue(1,$keid,PDO::PARAM_INT);
+                // $ps3->bindValue(2,$i2,PDO::PARAM_INT);
+                // $ps3->execute();
+                // $sql4 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                // $ps4 = $pdo ->prepare($sql4);
+                // $ps4->bindValue(1,$keid,PDO::PARAM_INT);
+                // $ps4->bindValue(2,$i3,PDO::PARAM_INT);
+                // $ps4->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "決済詳細追加完了1"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            function kessai_syousai4($kid,$i1,$i2,$i3,$i4){
+                $pdo = $this->dbConnect();
+                $sql1 = "SELECT settlement_id FROM settlement WHERE user_id = ?";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$kid,PDO::PARAM_INT);
+                $ps1->execute();
+                $keid = $ps1->fetchAll();
+                $sql2 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$keid,PDO::PARAM_INT);
+                $ps2->bindValue(2,$i1,PDO::PARAM_INT);
+                $ps2->execute();
+                $sql3 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $ps3 = $pdo ->prepare($sql3);
+                $ps3->bindValue(1,$keid,PDO::PARAM_INT);
+                $ps3->bindValue(2,$i2,PDO::PARAM_INT);
+                $ps3->execute();
+                $sql4 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $ps4 = $pdo ->prepare($sql4);
+                $ps4->bindValue(1,$keid,PDO::PARAM_INT);
+                $ps4->bindValue(2,$i3,PDO::PARAM_INT);
+                $ps4->execute();
+                $sql5 = "INSERT INTO settlement_detail(settlement_id,item_id) VALUES(?,?)";
+                $ps5 = $pdo ->prepare($sql5);
+                $ps5->bindValue(1,$keid,PDO::PARAM_INT);
+                $ps5->bindValue(2,$i4,PDO::PARAM_INT);
+                $ps5->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "決済詳細追加完了1"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
             }
 
          }
