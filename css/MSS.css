@@ -117,16 +117,24 @@ button.no-shadow2:hover {
 	position:relative;
 }
 
+.hrap{
+  margin-left: 15%;
+  box-shadow: 5px 5px 5px #808080;
+  width: 280px;
+  border: 1px solid;
+  border-radius: 8px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+#nana{
+  display: flex;
+  padding: 2.5% 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .history{
-    margin-left: 15%;
-    box-shadow: 5px 5px 5px #808080;
-    width: 280px;
-    border: 1px solid;
-    border-radius: 8px;
-    display: none;
-    margin-top: 10%;
-    margin-bottom: 3%;
-  }
+  display: none;
+}
 
   .gazou{
     margin-left: 30%;

@@ -8,32 +8,8 @@
     <link rel="stylesheet" href="../header/header.css">
     <link rel="stylesheet" href="../css/SS.css">
     <script>
-        function mein1() {
-            document.getElementById("history").style.display = "none";
-            document.getElementById("none").style.display = "block";
-        }
-
-        function mein2() {
-            document.getElementById("history").style.display = "block";
-            document.getElementById("none").style.display = "none";
-        }
-
-        function change() {
-            document.getElementById("history").style.display = "none";
-            document.getElementById("none").style.display = "block";
-        }
-
-        function saku() {
-            document.getElementById("history").style.display = "block";
-            document.getElementById("none").style.display = "none";
-        }
-
         function clickEvent() {
             alert('完了しました');
-        }
-
-        function saku() {
-            alert('削除しました');
         }
     </script>
 </head>
@@ -46,8 +22,8 @@
                     <div class="col-11">
                         <nav class="navbar navbar-expand-md navbar-light">
 
-                            <a class="navbar-brand" href="#" target="_blank">
-                                <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
+                            <a class="navbar-brand" href="../home.html">
+                                <img src="../script/logo.png" alt="">
                             </a>
 
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -212,56 +188,59 @@
     </div>
 </div>
 <div class="history" id="history">
-    <p class="gazou"><img src="./furaito.jpg" width="100"></p>
-    <p class="furaito">商品名: フライトジャケット</p>
-    <p class="kane">値段: ￥107600</p>
-    <p class="elu">サイズ: L</p>
-    <button class="hensyu" onclick="change()">編集</button>
-    <button class="sakujyo" onclick="saku()">削除</button>
+    <div id="nana">
+    
 </div>
+</div>
+<form onsubmit="return false;" name="postshouhin" method="post" action="">
 <div class="grid-cen">
     <div class="none" id="none">
         <div class="ai" id="ai">
-            <p class="syo">商品名 : <input type="text" class="s" name="syouhin"></p>
-            <p class="bun">分類 : <select class="b" name="example1"></p>
-            <p>
-                <option value="1">メンズ</option>
-                <option value="2">レディース</option>
-                <option value="3">ユニセックス</option>
-            </p>
-            </select>
+            <p class="syo">商品名 : <input type="text" class="s" name="syouhin" id="syouhin"></p>
+            <ul>
+            <li class="bun">分類 : 
+                <select class="b" name="bunrui" id="bun">
+                <option value="メンズ">メンズ</option>
+                <option value="レディース">レディース</option>
+                <option value="アクセサリー">アクセサリー</option>
+                </select>
+            </li>
+            <li class="ka">カテゴリー : 
+                <select class="k" name="kategori" id="ka">
+                <option value="1">トップス</option>
+                <option value="2">ボトムス</option>
+                <option value="3">指輪</option>
+                <option value="4">ネックレス</option>
+                </select>
+            </li>
+                <li class="sa">サイズ : <select class="saizu" name="size" id="sa">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                
+                </select>
+            </li>
+            </ul>
 
-            <p class="ka">カテゴリー : <select class="k" name="example2"></p>
-            <p>
-                <option value="4">トップス</option>
-                <option value="5">ジャケット</option>
-                <option value="6">パンツ</option>
-            </p>
-            </select>
-
-            <p class="sa">サイズ : <select class="saizu" name="example2"></p>
-            <p>
-                <option value="7">S</option>
-                <option value="8">M</option>
-                <option value="9">L</option>
-            </p>
-            </select>
-
-            <p class="ne">値段 : <input type="text" class="n" name="nedan"></p>
-            <p class="to">特徴 : <input type="text" size="30" class="t" name="tokucyou"></p>
-            <p class="ga"><input type="file" name="example" accept="image/jpeg, image/png"></p>
+            <p class="ne">値段 : <input type="text" class="n" name="nedan" id="ne"></p>
+            <p class="to">特徴 : <input type="text" size="30" class="t" name="tokucyou" id="to"></p>
+            <p class="ga"><input type="file" name="image" accept="image/jpeg, image/png" id="image"></p>
             <p class="kakunin"><button class=" syu no-border txt-white bkgnd-black border-radius-50px no-shadow touroku"
-                    id="button_04" onclick="clickEvent()">出品確認</button></p>
+                    id="button_04" onclick="syuppin()">出品確認</button></p>
 
 
         </div>
     </div>
 </div>
+</form>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="header.js"></script>
+<script src="SS.js"></script>
 </body>
 
 </html>
