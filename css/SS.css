@@ -258,7 +258,13 @@ button.no-shadow:hover {
 ul {
   display: -webkit-flex;
   display: flex;
-  margin-left: 25.9%;
+  margin-left: 28.3%;
   gap: 6px 50px;
   list-style-type: none;
 }
+*{
+  padding:0;
+  margin:0;
+  font-size:100%;
+  line-height:1.5em;
+  }
