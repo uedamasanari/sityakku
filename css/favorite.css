@@ -560,7 +560,11 @@ width: 100%;
     display: flex;
   }
   .list--item_div{
+<<<<<<< Updated upstream
     background: rgb(128, 128, 128);
+=======
+    background: rgb(0, 0, 0);
+>>>>>>> Stashed changes
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     position: relative;
     width: 100%;
