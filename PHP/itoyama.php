@@ -63,6 +63,9 @@ if(isset($_POST['mail'])){
 
     $itoyama->kessai_syousai4($_GET['kid4'],$_GET['iid1'],$_GET['iid2'],$_GET['iid3'],$_GET['iid4']);
 
+}else if(isset($_POST['sa3'])){
+
+    $itoyama->cart_saku3($_GET['kid3'],$_GET['iid1'],$_GET['iid2'],$_GET['iid3']);
 }
 
 
@@ -371,8 +374,80 @@ if(isset($_POST['mail'])){
                 }
             }
 
-            //カートの全削除
-            function cart_allsaku($id){
+            //カートの削除1
+            function cart_saku1($id,$itemid1){
+                $pdo = $this->dbConnect();
+                $sql1 = "SELECT cart_id FROM cart WHERE user_id = ?";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$id,PDO::PARAM_INT);
+                $ps1->execute();
+                $cartid = $ps1->fetchAll();
+                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$cartid,PDO::PARAM_INT);
+                $ps2->bindValue(2,$itemid1,PDO::PARAM_INT);
+                $ps2->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "カートを削除しました"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            //カートの削除2
+            function cart_saku2($id){
+                $pdo = $this->dbConnect();
+                $sql1 = "SELECT cart_id FROM cart WHERE user_id = ?";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$id,PDO::PARAM_INT);
+                $ps1->execute();
+                $cartid = $ps1->fetchAll();
+                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ?";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$cartid,PDO::PARAM_INT);
+                $ps2->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "カートに追加しました"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            //カートの削除3
+            function cart_saku3($id,$i1,$i2,$i3){
+                $pdo = $this->dbConnect();
+                $sql1 = "SELECT cart_id FROM cart WHERE user_id = ?";
+                $ps1 = $pdo ->prepare($sql1);
+                $ps1->bindValue(1,$id,PDO::PARAM_INT);
+                $ps1->execute();
+                $cartid = $ps1->fetchAll();
+                $sql2 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
+                $ps2 = $pdo ->prepare($sql2);
+                $ps2->bindValue(1,$cartid,PDO::PARAM_INT);
+                $ps2->bindValue(2,$i1,PDO::PARAM_INT);
+                $ps2->execute();
+                $sql3 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
+                $ps3 = $pdo ->prepare($sql3);
+                $ps3->bindValue(1,$cartid,PDO::PARAM_INT);
+                $ps3->bindValue(2,$i2,PDO::PARAM_INT);
+                $ps3->execute();
+                $sql4 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
+                $ps4 = $pdo ->prepare($sql4);
+                $ps4->bindValue(1,$cartid,PDO::PARAM_INT);
+                $ps4->bindValue(2,$i3,PDO::PARAM_INT);
+                $ps4->execute();
+                $data = array();
+                    array_push($data, array(
+                        'message' => "カートを削除しました"
+                    ));
+                $json_array = json_encode($data);
+                print $json_array;
+            }
+
+            //カートの削除4
+            function cart_saku4($id){
                 $pdo = $this->dbConnect();
                 $sql1 = "SELECT cart_id FROM cart WHERE user_id = ?";
                 $ps1 = $pdo ->prepare($sql1);
@@ -392,7 +467,7 @@ if(isset($_POST['mail'])){
             }
 
             //決済に追加する処理
-            function kessai($uid,$buy,$add){
+            function kessai($uid,$buy,$add,$time){
                 $pdo = $this->dbConnect();
                     $sql2 = "INSERT INTO settlement(user_id,settlement_buy,settlement_address)VALUE(?,?,?)";
                     $ps2 = $pdo ->prepare($sql2);
@@ -457,21 +532,28 @@ if(isset($_POST['mail'])){
 
             function kessai_syousai3($kid,$i1,$i2,$i3){
                     $pdo = $this->dbConnect();
+
+                     $sql = "SELECT settlement_id FROM settlement WHERE user_id = ?";
+                     $ps = $pdo->prepare($sql);
+                     $ps->bindValue(1,$kid,PDO::PARAM_INT);
+                     $ps->execute();
+                     $uid = $ps->fecthAll();
+
                     $tui1 = "INSERT INTO settlement_detail (settlement_id,item_id)VALUE(?,?)";
                     $ps1 = $pdo->prepare($tui1);
-                    $ps1->bindValue(1,$kid,PDO::PARAM_INT);
+                    $ps1->bindValue(1,$uid,PDO::PARAM_INT);
                     $ps1->bindValue(2,$i1,PDO::PARAM_INT);
                     $ps1->execute();
 
                     $tui2 = "INSERT INTO settlement_detail (settlement_id,item_id)VALUE(?,?)";
                     $ps2 = $pdo->prepare($tui2);
-                    $ps2->bindValue(1,$kid,PDO::PARAM_INT);
+                    $ps2->bindValue(1,$uid,PDO::PARAM_INT);
                     $ps2->bindValue(2,$i2,PDO::PARAM_INT);
                     $ps2->execute();
 
                     $tui3 = "INSERT INTO settlement_detail (settlement_id,item_id)VALUE(?,?)";
                     $ps3 = $pdo->prepare($tui3);
-                    $ps3->bindValue(1,$kid,PDO::PARAM_INT);
+                    $ps3->bindValue(1,$uid,PDO::PARAM_INT);
                     $ps3->bindValue(2,$i3,PDO::PARAM_INT);
                     $ps3->execute();
                 
