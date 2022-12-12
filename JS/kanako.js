@@ -253,7 +253,28 @@ function login(){
                                 })
                                 .success(function(mo22) {
                                     console.log(mo22);
-                                    alert('決済詳細3完了');
+                                     alert('決済詳細3完了');
+                                        //カートの中身を消す処理
+                                        // let sa3 = {
+                                        //     kid3 : cc1,//sessonid
+                                        //     iid1 :saku1,
+                                        //     iid2 :saku2,
+                                        //     iid3 :saku3
+                                        // }
+                                        // $.ajax({
+                                        //     type: "post",   //送信の通信だと定義
+                                        //     url: "PHP/itoyama.php",    //送信先のリンク
+                                        //     data: sa3,     //送信するデータを定義
+                                        // })
+                                        // .success(function(mo2) {
+                                        //     console.log(mo2);
+                                        //     alert('カートの中身削除完了');
+                                            
+                                        // }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+                                        //     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+                                        //     console.log("textStatus     : " + textStatus);
+                                        //     console.log("errorThrown    : " + errorThrown.message);
+                                        // });
                                     
                                 }).error(function(XMLHttpRequest, textStatus, errorThrown) {
                                     console.log("XMLHttpRequest : " + XMLHttpRequest.status);
@@ -342,10 +363,13 @@ function shinkirogu(){
 
 
 
-//カートの中身を全部消す処理
-// $.ajax({
-//     url: `PHP/itoyama.php/?cartallsaku=true&id=${cc}&timestamp=${new Date().getTime()}`
-// })
+// カートの中身を消す処理
+// let sa3 = {
+//     kid3 : cc1,//sessonid
+//     iid1 :saku1,
+//     iid2 :saku2,
+//     iid3 :saku3
+// }
 // .success(function(mo2) {
 //     console.log(mo2);
 //     //alert('カートの中身削除完了');
