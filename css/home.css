@@ -13,7 +13,9 @@ body{
 	overflow-x: hidden;
     transition: all 200ms linear;
 }
-
+.navbar-nav{
+  /* margin-right: 200px; */
+}
 .start-header {
 	opacity: 1;
 	transform: translateY(0);
@@ -31,12 +33,12 @@ body{
 }
 /* logo */
 .navbar-brand img{
-	height: 28px;
-	width: auto;
+	height: 65px;
+	width: 65px;
 	display: block;
-  filter: brightness(10%);
+  /* filter: brightness(10%);
 	-webkit-transition : all 0.3s ease-out;
-	transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out; */
 }
 .cart-button{
   border: 0px ;
@@ -1190,6 +1192,14 @@ background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8h
   padding: 3%;
   margin-bottom: 2%;
 }
+.modalOpen{
+  background: white;
+  color: black;
+  border-radius:10px;
+  width: 60%;
+  padding: 3%;
+  margin-bottom: 2%;
+}
 .favorite{/*お気に入りボタン*/
   background: white;
   color: black;
@@ -1215,8 +1225,13 @@ background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8h
   white-space: pre-line;
   font-size: 20px;
 }
+
+.sukima{ /*商品名　サイズ　値段 商品詳細の余白*/
+  margin-bottom: 2%;
+}
+
 #c22{ /*商品詳細*/
-  grid-row: 2 / 5;
+  grid-row: 3 / 5;
   grid-column: 3 / 4;
   /* background-color: #FFCCCC; */
   /* background-color: orange; */
@@ -1453,6 +1468,8 @@ margin-bottom: 20px !important;
 .button-border{
   border: none;
   background-color: transparent;
+  white-space: nowrap;
+  width: auto;
 }
 .hennkou{
    position:absolute;
@@ -1493,7 +1510,7 @@ margin-bottom: 20px !important;
   justify-content: space-around;
 }
 .button-padding{
-  padding: 10px 50px;
+  padding: 10px 60px 10px 50px;
 }
 /*  */
 .list-all{
@@ -1715,9 +1732,9 @@ color: transparent !important;
   display: flex;
   justify-content: space-around;
 }
-.button-padding{
-  padding: 10px 50px;
-}
+/* .button-padding{
+  padding: 10px auto;
+} */
 /*  */
 .list-all{
   width: 700px;
@@ -1807,7 +1824,8 @@ width: 80%;
 }
 .buttext{
 color: white !important;
-position: absolute;
+/* position: absolute; */
+white-space: nowrap
 }
 .buytext{
   border-radius: 10px;
@@ -1816,7 +1834,8 @@ position: absolute;
   border: none;
   margin-right: 50px;
   background-color: rgb(24, 126, 247);
-  
+  text-align: center;
+  justify-content: center;
 }
 .modalsityaku {
   display: none;

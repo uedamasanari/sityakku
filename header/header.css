@@ -27,12 +27,12 @@ body{
 }
 /* logo */
 .navbar-brand img{
-	height: 28px;
-	width: auto;
+	height: 65px;
+	width: 65px;
 	display: block;
-  filter: brightness(10%);
+  /* filter: brightness(10%);
 	-webkit-transition : all 0.3s ease-out;
-	transition : all 0.3s ease-out;
+	transition : all 0.3s ease-out; */
 }
 .cart-button{
   border: 0px ;

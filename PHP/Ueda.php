@@ -8,15 +8,15 @@ if(isset($_GET['login'])){
 }else if(isset($_GET['youfuku'])){
     $ueda->SelectYoufuku();
 }else if(isset($_GET['Hsw'])){
-    $ueda->InsertSyohin(1,$_POST['b'],$_POST['a'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")));
+    $ueda->InsertSyohin($_POST['id'],$_POST['b'],$_POST['a'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")));
 }else if(isset($_GET['mysyuppin'])){
     $ueda->SelectMysyuppin($_GET['user_id']);
 }else if(isset($_POST['A'])){
-    $ueda->UpdataSyohin($_POST['b'],$_POST['A'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")),13);
+    $ueda->UpdataSyohin($_POST['b'],$_POST['A'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")),$_POST['item_id']);
     $json_array = json_encode("送信完了しました！");
     echo $json_array;
 }else if(isset($_GET['like'])){
-    $ueda->SelectLike();
+    $ueda->SelectLike($_GET['favoriteget_user_id']);
 }
 
 class Ueda{
@@ -129,10 +129,11 @@ class Ueda{
         $ps->bindValue(10,$item_id,PDO::PARAM_INT);
         $ps->execute();
     }
-    function SelectLike(){
+    function SelectLike($user_id){
         $pdo = $this->dbConnect();
-        $sql = 'SELECT * FROM items WHERE item_id IN(SELECT item_id FROM favorite WHERE user_id = 1)';
+        $sql = 'SELECT * FROM items WHERE item_id IN(SELECT item_id FROM favorite WHERE user_id = ?)';
         $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$user_id,PDO::PARAM_INT);
         $ps->execute();
         $search = $ps->fetchAll();
 
