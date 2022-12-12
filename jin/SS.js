@@ -8,10 +8,9 @@ window.onload = function () {
             url: `../PHP/Ueda.php/?mysyuppin=true&user_id=${loginid}&timestamp=${new Date().getTime()}`
         })
         .success(function (res) {
-            console.log(JSON.parse(res));
-            res = JSON.parse(res);
-            mysyuppindata = res;
-            mysyuppin();
+            mysyuppindata = JSON.parse(res);
+            console.log(res);
+            // mysyuppin();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("XMLHttpRequest : " + XMLHttpRequest.status);
             console.log("textStatus     : " + textStatus);

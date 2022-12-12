@@ -111,7 +111,7 @@ class Ueda{
                 'item_time' => $row['item_time']
             ));
         }
-        $json_array = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $json_array = json_encode($data);
         echo $json_array;
     }
     public function UpdataSyohin($category_id,$item_name,$item_class,$item_size,$item_money,$item_feature,$item_image,$item_fitting,$item_tiem,$item_id){
