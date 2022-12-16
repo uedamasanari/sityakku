@@ -8,9 +8,9 @@ window.onload = function () {
             url: `../PHP/Ueda.php/?mysyuppin=true&user_id=${loginid}&timestamp=${new Date().getTime()}`
         })
         .success(function (res) {
-            mysyuppindata = JSON.parse(res);
+            mysyuppindata = res;
             console.log(res);
-            // mysyuppin();
+            mysyuppin();
         }).error(function (XMLHttpRequest, textStatus, errorThrown) {
             console.log("XMLHttpRequest : " + XMLHttpRequest.status);
             console.log("textStatus     : " + textStatus);
@@ -138,6 +138,7 @@ function sakujyo(a) {
       });
 }
 const mysyuppin = () => {
+    console.log("動いてる")
     //データを入れる
     let list = document.getElementById("history");
     for (let i = 0; i < mysyuppindata.length; i++) {

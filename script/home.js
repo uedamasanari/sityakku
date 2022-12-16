@@ -18,8 +18,8 @@ window.onload = function () {
             url: `./PHP/Ueda.php/?youfuku=true&timestamp=${new Date().getTime()}`
         })
         .success(function (res) {
-            console.log(JSON.parse(res));
-            res=JSON.parse(res);
+            console.log("res");
+            res=res;
             youfukudata = res;
             for (let i = 0; i < res.length; i++) {
                 switch (res[i].item_class) {
@@ -807,12 +807,11 @@ function syouhinsyousai(seibetu, a) {
     now=a;
     document.getElementById("sityakuimg1").src=nowarray[now].item_image;
     document.getElementById("sityakuimg2").src=nowarray[now].item_image;
-    console.log(document.getElementById("sityakuimg"));
 }
 const favorite=()=>{
-    console.log(now);
+    console.log(nowarray[now].item_id+" "+loginid);
     $.ajax({
-        url: `PHP/itoyama.php/?favo=${nowarray[now].item_id}&favo_user_id=${loginid}&timestamp=${new Date().getTime()}`
+        url: `PHP/itoyama.php/?favoadd=${nowarray[now].item_id}&favo_user_id=${loginid}&timestamp=${new Date().getTime()}`
     })
     .success(function (res) {
         console.log(res);
@@ -864,6 +863,7 @@ function sakujo1(){
     .success(function(data1) {
         //通信に成功
         // JSON⇒オブジェクトに変換するように！
+        console.log(data1);
         sessionStorage.removeItem('itemdata1');
         document.getElementById("tbody1").style.display ="none";
         cart_kousin();

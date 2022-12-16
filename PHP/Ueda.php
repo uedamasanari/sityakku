@@ -1,8 +1,8 @@
 
 <?php
-header('Content-Type: application/json; charset=UTF-8');
-ini_set('default_charset', 'UTF-8');
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers:Content-Type");
+header('Content-Type: application/json; charset=UTF-8');
 $ueda = new Ueda();
 if(isset($_GET['login'])){
     $ueda->loginfunk();
@@ -15,14 +15,15 @@ if(isset($_GET['login'])){
 }else if(isset($_POST['A'])){
     $ueda->UpdataSyohin($_POST['b'],$_POST['A'],$_POST['c'],$_POST['d'],$_POST['e'],$_POST['f'],$_POST['g'],$_POST['g'],date('Y-m-d H:i:s',strtotime("now")),13);
     $json_array = json_encode("送信完了しました！");
-    echo $json_array;
+    print $json_array;
 }else if(isset($_GET['like'])){
     $ueda->SelectLike($_GET['favoriteget_user_id']);
 }
 
 class Ueda{
     private function dbConnect(){
-        $pdo=new PDO('mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1417823-sityakku;charset=utf8','LAA1417823','2101004aso');
+        // $pdo=new PDO('mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1417823-sityakku;charset=utf8','LAA1417823','2101004aso');
+        $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','sityakku','sityakku');
         return $pdo;
     }
     function loginfunk(){
@@ -39,7 +40,7 @@ class Ueda{
             array_push($data, array('username' => $row['user_name']));
         }
         $json_array = json_encode($data);
-        echo $json_array;
+        print $json_array;
     }
     function SelectYoufuku(){
         $pdo = $this->dbConnect();
@@ -65,8 +66,8 @@ class Ueda{
                 'item_time' => $row['item_time']
             ));
         }
-        $json_array = json_encode($data, JSON_UNESCAPED_UNICODE);
-        echo $json_array;
+        $json_array = json_encode($data,);
+        print $json_array;
     }
     public function InsertSyohin($user_id,$category_id,$item_name,$item_class,$item_size,$item_money,$item_feature,$item_image,$item_fitting,$item_tiem){
         $pdo = $this->dbConnect();
@@ -84,7 +85,7 @@ class Ueda{
         $ps->bindValue(10,$item_tiem,PDO::PARAM_STR);
         $ps->execute();
         $json_array = json_encode("送信完了しました！");
-        echo $json_array;
+        print $json_array;
     }
     function SelectMysyuppin($user_id){
         $pdo = $this->dbConnect();
@@ -112,7 +113,7 @@ class Ueda{
             ));
         }
         $json_array = json_encode($data);
-        echo $json_array;
+        print $json_array;
     }
     public function UpdataSyohin($category_id,$item_name,$item_class,$item_size,$item_money,$item_feature,$item_image,$item_fitting,$item_tiem,$item_id){
         $pdo = $this->dbConnect();
@@ -155,7 +156,7 @@ class Ueda{
                 'item_time' => $row['item_time']
             ));
         }
-        $json_array = json_encode($data, JSON_UNESCAPED_UNICODE);
-        echo $json_array;
+        $json_array = json_encode($data,);
+        print $json_array;
     }
 }

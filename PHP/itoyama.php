@@ -64,12 +64,17 @@ if(isset($_POST['mail'])){
 
     $itoyama->kessai_syousai4($_POST['kid4'],$_POST['iid1'],$_POST['iid2'],$_POST['iid3'],$_POST['iid4']);
 
+}else if(isset($_GET['favoadd'])){
+
+    $itoyama->okiniiri($_GET['favoadd'],$_GET['favo_user_id']);//カートの中のお気に入りへ追加する処理
+
 }
 
 
     class Itoyama{
         private function dbConnect(){
-            $pdo = new PDO('mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1417823-sityakku;charset=utf8','LAA1417823','2101004aso');
+            // $pdo = new PDO('mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1417823-sityakku;charset=utf8','LAA1417823','2101004aso');
+            $pdo = new PDO('mysql:host=localhost;dbname=sityakku;charset=utf8','sityakku','sityakku');
             return $pdo;
         }
 
@@ -81,8 +86,6 @@ if(isset($_POST['mail'])){
                 $ps->bindValue(1,$item,PDO::PARAM_INT);
                 $ps->bindValue(2,$id,PDO::PARAM_INT);
                 $ps->execute();
-                foreach($ps->fetchAll() as $row){
-                }
                 if($ps-> rowCount() > 0){
                     $data = array();
                     array_push($data, array(
@@ -134,7 +137,7 @@ if(isset($_POST['mail'])){
                 $sea1 = $ps->fetchAll();
                 $sql2 = "DELETE FROM cart_detail WHERE cart_id = ? AND item_id = ?";
                 $ps2 = $pdo->prepare($sql2);
-                $ps2->bindValue(1,$sea1,PDO::PARAM_INT);
+                $ps2->bindValue(1,$sea1[0]["cart_id"],PDO::PARAM_INT);
                 $ps2->bindValue(2,$itemid,PDO::PARAM_INT);
                 $ps2->execute();
                 $sea2 = $ps2->fetchAll();

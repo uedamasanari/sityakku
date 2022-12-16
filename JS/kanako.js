@@ -61,8 +61,10 @@ function login(){
         //通信に成功
         console.log(data1);
         if(data1[0].state == '成功'){
-                alert('新規登録成功');
-              location.href = 'home.html';
+                swal('新規登録成功',"","success")
+                .then((willDelete) => {
+                    location.href = 'home.html';
+                })
         }else{
                 let element = document.getElementById('error1');
                 element.innerHTML = '既にメールアドレスが登録されています';
@@ -171,14 +173,34 @@ function login(){
                             url: `PHP/itoyama.php/?cartallsaku=true&id=${cc}$timestamp=${new Date().getTime()}`
                         })
                         .success(function(mo1) {
-                            let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
-                                let saku1 = storageItem1.itemid1;
+                            let saku1;
+                            let saku2;
+                            let saku3;
+                            let saku4;
+                            try{
+                                let storageItem1 = JSON.parse(sessionStorage.getItem('itemdata1'));
+                                saku1 = storageItem1.itemid1;
+                            }catch(error){
+                                saku1="";
+                            }
+                            try{
                                 let storageItem2 = JSON.parse(sessionStorage.getItem('itemdata2'));
-                                let saku2 = storageItem2.itemid2;
+                                saku2 = storageItem2.itemid2;
+                            }catch(error){
+                                saku2="";
+                            }
+                            try{
                                 let storageItem3 = JSON.parse(sessionStorage.getItem('itemdata3'));
-                                let saku3 = storageItem3.itemid3;
+                                saku3 = storageItem3.itemid3;
+                            }catch(error){
+                                saku3="";
+                            }
+                            try{
                                 let storageItem4 = JSON.parse(sessionStorage.getItem('itemdata4'));
-                                let saku4 = storageItem4.itemid4;
+                                saku4 = storageItem4.itemid4;
+                            }catch(error){
+                                saku4="";
+                            }
                                 sessionStorage.removeItem('itemdata1');
                                 sessionStorage.removeItem('itemdata2');
                                 sessionStorage.removeItem('itemdata3');
@@ -230,10 +252,6 @@ function login(){
                   });
                 }
               });
-
-                    
-
-                //location.href = 'home.html';
 
  }
 //}  
