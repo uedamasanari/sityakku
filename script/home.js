@@ -631,6 +631,7 @@ const hyouji = (a, b) => {
                 ele.textContent = kari[index].item_money + '円';
                 tag = document.getElementsByClassName("list--item_div")[sw];
                 tag.appendChild(ele);
+
                 count[a]++;
                 sw++;
             }
